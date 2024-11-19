@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryManagementSystem.Data_Connectivity.Configurations
+namespace LibraryManagementSystem.Data_Connectivity.Interfaces
 {
-    public class BooksConfiguration
+    public interface IBooksRepository
     {
+
 
     }
 }

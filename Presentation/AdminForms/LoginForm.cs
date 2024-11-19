@@ -17,16 +17,18 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     public partial class LoginForm : Form
     {
 
-        private readonly AdminRepository _adminRepository;
-        private readonly MainForm_ADMIN _mainFormAdmin;
+        private readonly AdminRepository adminRepository;
+        private readonly MainForm_ADMIN mainFormAdmin;
+        private readonly SignInForm signInForm;
 
         public LoginForm
-            (AdminRepository adminRepository, MainForm_ADMIN mainForm_Admin)
+            (AdminRepository adminRepository, MainForm_ADMIN mainFormAdmin, SignInForm signInForm)
         {
 
             InitializeComponent();
-            _adminRepository = adminRepository;
-            _mainFormAdmin = mainForm_Admin;
+            this.adminRepository = adminRepository;
+            this.mainFormAdmin = mainFormAdmin;
+            this.signInForm = signInForm;
         }
 
         private async void LoginBTN_Click(object sender, EventArgs e)
@@ -39,27 +41,23 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 MessageBox.Show("Email and Password cannor be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            try
+
+            var admin = await adminRepository.GetAdminByEmailAsync(email);
+
+            if (admin != null)
             {
+                MessageBox.Show("Login Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
-                var admin = await _adminRepository.AuthenticateAdminAsync(email, password);
-
-                if (admin != null)
-                {
-                    MessageBox.Show("Login Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    _mainFormAdmin.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid credentials. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }catch(Exception ex)
+            }
+            else
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid credentials. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+
+            this.Hide();
+            var mainFormAdmin = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
+            mainFormAdmin.Show();
         }
 
         private void ExitBTN_Click(object sender, EventArgs e)
@@ -77,6 +75,13 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             {
                 PasswordTXT.PasswordChar = '●';
             }
+        }
+
+        private void SignInLabel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var signInForm = Program.ServiceProvider.GetRequiredService<SignInForm>();
+            signInForm.Show();
         }
     }
 }

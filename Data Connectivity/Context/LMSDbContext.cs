@@ -16,8 +16,10 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
         {
 
         }
+        public LMSDbContext(DbContextOptions<LMSDbContext> options) : base(options)
+        {
 
-        public LMSDbContext(DbContextOptions<LMSDbContext> options) : base(options) { }
+        }
 
         public DbSet<AdminEntity> Admins { get; set; } = null!;
         public DbSet<BooksEntity> Books { get; set; } = null!;
@@ -31,7 +33,11 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
            
         }
 
-       
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Data Source=DJOKERZ\SQLEXPRESS;Initial Catalog=LibraryManagementDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;");
+        }
+
 
     }
 }

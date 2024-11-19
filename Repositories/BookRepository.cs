@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryManagementSystem.Data_Connectivity.Configurations
+namespace LibraryManagementSystem.Repositories
 {
-    public class BooksConfiguration
+    public class BookRepository
     {
 
     }

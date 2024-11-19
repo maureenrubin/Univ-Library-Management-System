@@ -36,9 +36,10 @@
             LoginBTN = new Krypton.Toolkit.KryptonButton();
             label3 = new Label();
             label4 = new Label();
-            label5 = new Label();
+            SignInLabel = new Label();
             pictureBox2 = new PictureBox();
             ShowPassCB = new CheckBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -174,17 +175,19 @@
             label4.TabIndex = 12;
             label4.Text = "LOGIN YOUR ACCOUNT";
             // 
-            // label5
+            // SignInLabel
             // 
-            label5.AutoSize = true;
-            label5.Cursor = Cursors.Hand;
-            label5.FlatStyle = FlatStyle.System;
-            label5.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(668, 569);
-            label5.Name = "label5";
-            label5.Size = new Size(155, 19);
-            label5.TabIndex = 13;
-            label5.Text = "FORGOT PASSWORD?";
+            SignInLabel.AutoSize = true;
+            SignInLabel.Cursor = Cursors.Hand;
+            SignInLabel.FlatStyle = FlatStyle.System;
+            SignInLabel.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            SignInLabel.ForeColor = Color.Red;
+            SignInLabel.Location = new Point(788, 570);
+            SignInLabel.Name = "SignInLabel";
+            SignInLabel.Size = new Size(61, 19);
+            SignInLabel.TabIndex = 13;
+            SignInLabel.Text = "SIGN IN";
+            SignInLabel.Click += SignInLabel_Click;
             // 
             // pictureBox2
             // 
@@ -208,16 +211,28 @@
             ShowPassCB.UseVisualStyleBackColor = true;
             ShowPassCB.CheckedChanged += ShowPassCB_CheckedChanged;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.FlatStyle = FlatStyle.System;
+            label5.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(628, 573);
+            label5.Name = "label5";
+            label5.Size = new Size(154, 16);
+            label5.TabIndex = 17;
+            label5.Text = "doesn't have an account?";
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(1473, 873);
+            Controls.Add(label5);
             Controls.Add(ShowPassCB);
             Controls.Add(label3);
             Controls.Add(ExitBTN);
-            Controls.Add(label5);
+            Controls.Add(SignInLabel);
             Controls.Add(pictureBox2);
             Controls.Add(label4);
             Controls.Add(LoginBTN);
@@ -243,8 +258,9 @@
         private Krypton.Toolkit.KryptonButton LoginBTN;
         private Label label3;
         private Label label4;
-        private Label label5;
+        private Label SignInLabel;
         private PictureBox pictureBox2;
         private CheckBox ShowPassCB;
+        private Label label5;
     }
 }

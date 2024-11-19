@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Presentation\Animations\**" />
+    <EmbeddedResource Remove="Presentation\Animations\**" />
+    <None Remove="Presentation\Animations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="85.24.10.288" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.35" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.35">
@@ -26,9 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data Connectivity\Interfaces\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Presentation\UserForms\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

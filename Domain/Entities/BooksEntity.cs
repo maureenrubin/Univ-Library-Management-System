@@ -27,7 +27,7 @@ namespace LibraryManagementSystem.Domain.Entities
         [Range(0, int.MaxValue)]
         public int BookStock { get; set; }
 
-        [Column(TypeName = "decimal(10,20)")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal BookPrice { get; set; }
     }
 }

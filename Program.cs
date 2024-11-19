@@ -1,6 +1,8 @@
 using LibraryManagementSystem.Data_Connectivity.Context;
+using LibraryManagementSystem.Data_Connectivity.Interfaces;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Presentation.AdminForms;
+using LibraryManagementSystem.Presentation.UserForms;
 using LibraryManagementSystem.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,28 +23,45 @@ namespace WinFormsApp2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // configuration for appsettings.json
+
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
 
 
-
             var services = new ServiceCollection();
 
-            services.AddDbContext<LMSDbContext>
-                (options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<LMSDbContext>(options =>
+                  options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+                      );
+
+            services.AddTransient<AdminEntity>();
+
+            services.AddTransient<ICreateAccountRepository, CreateAccountRepository>();
+            services.AddTransient<IAdminRepository, AdminRepository>();
+          
+            
+            
+            
+            services.AddTransient<LoginForm>();
+            services.AddTransient<SignInForm>();
+
+         
+            
+            services.AddTransient<MainForm_ADMIN>();
+            services.AddTransient<AdminAccountForm>();
+            services.AddTransient<AdminBooksForm>();
+            services.AddTransient<AdminTransactionForm>();
+
+
+            services.AddTransient<UserMainForm>();
+
+
 
            
-            services.AddTransient<AdminEntity>();
-            services.AddTransient<BooksEntity>();
 
-            services.AddTransient<LoginForm>();
-            services.AddTransient<MainForm_ADMIN>();
-
-            services.AddTransient<AdminRepository>();
-
+           
             ServiceProvider = services.BuildServiceProvider();
 
             // Run the application
