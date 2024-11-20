@@ -30,6 +30,13 @@ namespace LibraryManagementSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminID"), 1L, 1);
 
+                    b.Property<byte[]>("AdminPicture")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("ConfirmPassword")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -64,7 +71,7 @@ namespace LibraryManagementSystem.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookId"), 1L, 1);
 
                     b.Property<decimal>("BookPrice")
-                        .HasColumnType("decimal(10,20)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("BookStock")
                         .HasColumnType("int");

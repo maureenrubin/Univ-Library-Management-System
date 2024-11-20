@@ -43,17 +43,20 @@
             label6 = new Label();
             ConfirmPassTB = new Krypton.Toolkit.KryptonTextBox();
             label7 = new Label();
-            checkBox1 = new CheckBox();
+            ShowPasswordTB = new CheckBox();
+            AdminPicPB = new PictureBox();
+            SelectImageBTN = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AdminPicPB).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Bottom;
             pictureBox1.Image = Properties.Resources.abstract_water_ocean_wave_background;
-            pictureBox1.Location = new Point(0, 436);
+            pictureBox1.Location = new Point(0, 486);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1033, 266);
+            pictureBox1.Size = new Size(1039, 221);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -62,7 +65,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(403, 137);
+            label1.Location = new Point(400, 115);
             label1.Name = "label1";
             label1.Size = new Size(187, 19);
             label1.TabIndex = 1;
@@ -72,7 +75,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(228, 97);
+            label2.Location = new Point(225, 75);
             label2.Name = "label2";
             label2.Size = new Size(537, 28);
             label2.TabIndex = 2;
@@ -91,14 +94,15 @@
             GoBackBTN.Location = new Point(21, 21);
             GoBackBTN.Name = "GoBackBTN";
             GoBackBTN.Size = new Size(125, 26);
-            GoBackBTN.TabIndex = 3;
+            GoBackBTN.TabIndex = 8;
             GoBackBTN.Text = "Go Back";
             GoBackBTN.UseVisualStyleBackColor = false;
+            GoBackBTN.Click += GoBackBTN_Click;
             // 
             // FirstNameTB
             // 
             FirstNameTB.Cursor = Cursors.IBeam;
-            FirstNameTB.Location = new Point(177, 187);
+            FirstNameTB.Location = new Point(217, 183);
             FirstNameTB.Name = "FirstNameTB";
             FirstNameTB.Size = new Size(271, 34);
             FirstNameTB.StateActive.Back.Color1 = Color.White;
@@ -133,7 +137,7 @@
             // LastNameTB
             // 
             LastNameTB.Cursor = Cursors.IBeam;
-            LastNameTB.Location = new Point(582, 187);
+            LastNameTB.Location = new Point(217, 236);
             LastNameTB.Name = "LastNameTB";
             LastNameTB.Size = new Size(271, 34);
             LastNameTB.StateActive.Back.Color1 = Color.White;
@@ -168,7 +172,7 @@
             // EmailTB
             // 
             EmailTB.Cursor = Cursors.IBeam;
-            EmailTB.Location = new Point(177, 271);
+            EmailTB.Location = new Point(217, 290);
             EmailTB.Name = "EmailTB";
             EmailTB.Size = new Size(271, 34);
             EmailTB.StateActive.Back.Color1 = Color.White;
@@ -203,8 +207,9 @@
             // PasswordTB
             // 
             PasswordTB.Cursor = Cursors.IBeam;
-            PasswordTB.Location = new Point(582, 271);
+            PasswordTB.Location = new Point(217, 350);
             PasswordTB.Name = "PasswordTB";
+            PasswordTB.PasswordChar = '●';
             PasswordTB.Size = new Size(271, 34);
             PasswordTB.StateActive.Back.Color1 = Color.White;
             PasswordTB.StateActive.Border.Color1 = Color.Black;
@@ -234,11 +239,12 @@
             PasswordTB.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             PasswordTB.StateNormal.Content.Padding = new Padding(5);
             PasswordTB.TabIndex = 4;
+            PasswordTB.UseSystemPasswordChar = true;
             // 
             // SignInBTN
             // 
             SignInBTN.Cursor = Cursors.Hand;
-            SignInBTN.Location = new Point(347, 458);
+            SignInBTN.Location = new Point(342, 517);
             SignInBTN.Name = "SignInBTN";
             SignInBTN.Size = new Size(271, 34);
             SignInBTN.StateCommon.Back.Color1 = Color.SteelBlue;
@@ -256,7 +262,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(105, 196);
+            label3.Location = new Point(129, 201);
             label3.Name = "label3";
             label3.Size = new Size(66, 16);
             label3.TabIndex = 8;
@@ -266,7 +272,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(514, 196);
+            label4.Location = new Point(130, 254);
             label4.Name = "label4";
             label4.Size = new Size(65, 16);
             label4.TabIndex = 9;
@@ -276,7 +282,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(108, 280);
+            label5.Location = new Point(154, 308);
             label5.Name = "label5";
             label5.Size = new Size(41, 16);
             label5.TabIndex = 10;
@@ -286,7 +292,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(514, 280);
+            label6.Location = new Point(129, 368);
             label6.Name = "label6";
             label6.Size = new Size(66, 16);
             label6.TabIndex = 11;
@@ -295,8 +301,9 @@
             // ConfirmPassTB
             // 
             ConfirmPassTB.Cursor = Cursors.IBeam;
-            ConfirmPassTB.Location = new Point(582, 343);
+            ConfirmPassTB.Location = new Point(217, 403);
             ConfirmPassTB.Name = "ConfirmPassTB";
+            ConfirmPassTB.PasswordChar = '●';
             ConfirmPassTB.Size = new Size(271, 34);
             ConfirmPassTB.StateActive.Back.Color1 = Color.White;
             ConfirmPassTB.StateActive.Border.Color1 = Color.Black;
@@ -325,35 +332,64 @@
             ConfirmPassTB.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
             ConfirmPassTB.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             ConfirmPassTB.StateNormal.Content.Padding = new Padding(5);
-            ConfirmPassTB.TabIndex = 12;
+            ConfirmPassTB.TabIndex = 5;
+            ConfirmPassTB.UseSystemPasswordChar = true;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(464, 352);
+            label7.Location = new Point(79, 412);
             label7.Name = "label7";
             label7.Size = new Size(116, 16);
             label7.TabIndex = 13;
             label7.Text = "Confirm Password:";
             // 
-            // checkBox1
+            // ShowPasswordTB
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(598, 385);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(109, 19);
-            checkBox1.TabIndex = 14;
-            checkBox1.Text = "Show Password";
-            checkBox1.UseVisualStyleBackColor = true;
+            ShowPasswordTB.AutoSize = true;
+            ShowPasswordTB.Cursor = Cursors.Hand;
+            ShowPasswordTB.Location = new Point(217, 454);
+            ShowPasswordTB.Name = "ShowPasswordTB";
+            ShowPasswordTB.Size = new Size(109, 19);
+            ShowPasswordTB.TabIndex = 6;
+            ShowPasswordTB.Text = "Show Password";
+            ShowPasswordTB.UseVisualStyleBackColor = true;
+            // 
+            // AdminPicPB
+            // 
+            AdminPicPB.Image = Properties.Resources.UserQQ;
+            AdminPicPB.Location = new Point(676, 183);
+            AdminPicPB.Name = "AdminPicPB";
+            AdminPicPB.Size = new Size(218, 183);
+            AdminPicPB.SizeMode = PictureBoxSizeMode.Zoom;
+            AdminPicPB.TabIndex = 14;
+            AdminPicPB.TabStop = false;
+            // 
+            // SelectImageBTN
+            // 
+            SelectImageBTN.Cursor = Cursors.Hand;
+            SelectImageBTN.FlatAppearance.BorderSize = 0;
+            SelectImageBTN.FlatStyle = FlatStyle.Flat;
+            SelectImageBTN.Image = Properties.Resources.Image;
+            SelectImageBTN.ImageAlign = ContentAlignment.MiddleLeft;
+            SelectImageBTN.Location = new Point(676, 383);
+            SelectImageBTN.Name = "SelectImageBTN";
+            SelectImageBTN.Size = new Size(218, 23);
+            SelectImageBTN.TabIndex = 15;
+            SelectImageBTN.Text = "Select Image from Files";
+            SelectImageBTN.UseVisualStyleBackColor = true;
+            SelectImageBTN.Click += SelectImageBTN_Click;
             // 
             // SignInForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
-            ClientSize = new Size(1033, 702);
-            Controls.Add(checkBox1);
+            ClientSize = new Size(1039, 707);
+            Controls.Add(SelectImageBTN);
+            Controls.Add(AdminPicPB);
+            Controls.Add(ShowPasswordTB);
             Controls.Add(label7);
             Controls.Add(ConfirmPassTB);
             Controls.Add(SignInBTN);
@@ -375,6 +411,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SignInForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AdminPicPB).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -396,6 +433,8 @@
         private Label label6;
         private Krypton.Toolkit.KryptonTextBox ConfirmPassTB;
         private Label label7;
-        private CheckBox checkBox1;
+        private CheckBox ShowPasswordTB;
+        private PictureBox AdminPicPB;
+        private Button SelectImageBTN;
     }
 }

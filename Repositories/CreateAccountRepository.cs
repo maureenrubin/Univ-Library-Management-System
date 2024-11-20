@@ -23,11 +23,11 @@ namespace LibraryManagementSystem.Repositories
 
         public async Task CreateAccountAsync(AdminDto adminDto)
         {
-            var errorMessagers = new List<string>();
+            var errorMessages = new List<string>();
 
             if(adminDto.Password != adminDto.ConfirmPass)
             {
-                errorMessagers.Add("Password doesn't match.");
+                errorMessages.Add("Password doesn't match.");
             }
 
             var existingAdmin = await applicationDBContext.Admins

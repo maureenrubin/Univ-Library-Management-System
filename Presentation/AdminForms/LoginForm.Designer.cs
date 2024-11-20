@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             UsernameTXT = new Krypton.Toolkit.KryptonTextBox();
             PasswordTXT = new Krypton.Toolkit.KryptonTextBox();
-            label2 = new Label();
             ExitBTN = new Button();
             LoginBTN = new Krypton.Toolkit.KryptonButton();
             label3 = new Label();
@@ -40,19 +38,12 @@
             pictureBox2 = new PictureBox();
             ShowPassCB = new CheckBox();
             label5 = new Label();
+            pictureBox1 = new PictureBox();
+            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.FlatStyle = FlatStyle.System;
-            label1.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(575, 274);
-            label1.Name = "label1";
-            label1.Size = new Size(76, 19);
-            label1.TabIndex = 4;
-            label1.Text = "username";
             // 
             // UsernameTXT
             // 
@@ -69,17 +60,19 @@
             UsernameTXT.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             UsernameTXT.StateCommon.Border.Rounding = 10F;
             UsernameTXT.StateCommon.Border.Width = 1;
+            UsernameTXT.StateCommon.Content.Color1 = Color.DimGray;
             UsernameTXT.StateCommon.Content.Font = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             UsernameTXT.StateCommon.Content.Padding = new Padding(8);
             UsernameTXT.StateDisabled.Back.Color1 = Color.White;
             UsernameTXT.StateDisabled.Content.Font = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             UsernameTXT.StateDisabled.Content.Padding = new Padding(8);
-            UsernameTXT.TabIndex = 5;
+            UsernameTXT.StateNormal.Content.Color1 = Color.Gray;
+            UsernameTXT.TabIndex = 1;
             // 
             // PasswordTXT
             // 
             PasswordTXT.Cursor = Cursors.IBeam;
-            PasswordTXT.Location = new Point(575, 403);
+            PasswordTXT.Location = new Point(575, 392);
             PasswordTXT.Name = "PasswordTXT";
             PasswordTXT.PasswordChar = '●';
             PasswordTXT.Size = new Size(331, 40);
@@ -92,23 +85,14 @@
             PasswordTXT.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             PasswordTXT.StateCommon.Border.Rounding = 10F;
             PasswordTXT.StateCommon.Border.Width = 1;
+            PasswordTXT.StateCommon.Content.Color1 = Color.DimGray;
             PasswordTXT.StateCommon.Content.Font = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             PasswordTXT.StateCommon.Content.Padding = new Padding(8);
             PasswordTXT.StateDisabled.Back.Color1 = Color.White;
             PasswordTXT.StateDisabled.Content.Font = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             PasswordTXT.StateDisabled.Content.Padding = new Padding(8);
-            PasswordTXT.TabIndex = 6;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.FlatStyle = FlatStyle.System;
-            label2.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(575, 381);
-            label2.Name = "label2";
-            label2.Size = new Size(74, 19);
-            label2.TabIndex = 7;
-            label2.Text = "password";
+            PasswordTXT.TabIndex = 2;
+            PasswordTXT.UseSystemPasswordChar = true;
             // 
             // ExitBTN
             // 
@@ -149,7 +133,7 @@
             LoginBTN.StatePressed.Content.ShortText.Color2 = Color.White;
             LoginBTN.StateTracking.Back.Color1 = Color.FromArgb(192, 255, 255);
             LoginBTN.StateTracking.Back.Color2 = Color.DarkSlateGray;
-            LoginBTN.TabIndex = 10;
+            LoginBTN.TabIndex = 4;
             LoginBTN.Values.Text = "LOGIN";
             LoginBTN.Click += LoginBTN_Click;
             // 
@@ -182,11 +166,11 @@
             SignInLabel.FlatStyle = FlatStyle.System;
             SignInLabel.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             SignInLabel.ForeColor = Color.Red;
-            SignInLabel.Location = new Point(788, 570);
+            SignInLabel.Location = new Point(684, 570);
             SignInLabel.Name = "SignInLabel";
-            SignInLabel.Size = new Size(61, 19);
-            SignInLabel.TabIndex = 13;
-            SignInLabel.Text = "SIGN IN";
+            SignInLabel.Size = new Size(114, 19);
+            SignInLabel.TabIndex = 5;
+            SignInLabel.Text = "ADMIN SIGN IN";
             SignInLabel.Click += SignInLabel_Click;
             // 
             // pictureBox2
@@ -206,7 +190,7 @@
             ShowPassCB.Location = new Point(587, 449);
             ShowPassCB.Name = "ShowPassCB";
             ShowPassCB.Size = new Size(108, 19);
-            ShowPassCB.TabIndex = 16;
+            ShowPassCB.TabIndex = 3;
             ShowPassCB.Text = "Show Password";
             ShowPassCB.UseVisualStyleBackColor = true;
             ShowPassCB.CheckedChanged += ShowPassCB_CheckedChanged;
@@ -216,11 +200,30 @@
             label5.AutoSize = true;
             label5.FlatStyle = FlatStyle.System;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(628, 573);
+            label5.Location = new Point(684, 573);
             label5.Name = "label5";
-            label5.Size = new Size(154, 16);
+            label5.Size = new Size(0, 16);
             label5.TabIndex = 17;
-            label5.Text = "doesn't have an account?";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Male_User;
+            pictureBox1.Location = new Point(544, 308);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(25, 40);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 18;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.Password;
+            pictureBox3.Location = new Point(544, 392);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(25, 40);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 19;
+            pictureBox3.TabStop = false;
             // 
             // LoginForm
             // 
@@ -228,6 +231,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(1473, 873);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox1);
             Controls.Add(label5);
             Controls.Add(ShowPassCB);
             Controls.Add(label3);
@@ -236,24 +241,22 @@
             Controls.Add(pictureBox2);
             Controls.Add(label4);
             Controls.Add(LoginBTN);
-            Controls.Add(label2);
             Controls.Add(PasswordTXT);
             Controls.Add(UsernameTXT);
-            Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label label1;
         private Krypton.Toolkit.KryptonTextBox UsernameTXT;
         private Krypton.Toolkit.KryptonTextBox PasswordTXT;
-        private Label label2;
         private Button ExitBTN;
         private Krypton.Toolkit.KryptonButton LoginBTN;
         private Label label3;
@@ -262,5 +265,7 @@
         private PictureBox pictureBox2;
         private CheckBox ShowPassCB;
         private Label label5;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox3;
     }
 }

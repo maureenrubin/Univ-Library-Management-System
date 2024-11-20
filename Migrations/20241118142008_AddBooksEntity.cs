@@ -42,6 +42,8 @@ namespace LibraryManagementSystem.Migrations
                 {
                     table.PrimaryKey("PK_Books", x => x.BookId);
                 });
+
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

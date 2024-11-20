@@ -13,8 +13,8 @@ using System.Windows.Forms;
 
 namespace WinFormsApp2
 {
-    public static class Program
-    {
+     static class Program
+     {
         public static IServiceProvider? ServiceProvider { get; private set; }
 
         [STAThread]
@@ -33,29 +33,26 @@ namespace WinFormsApp2
             var services = new ServiceCollection();
 
             services.AddDbContext<LMSDbContext>(options =>
-                  options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
-                      );
+                  options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<AdminEntity>();
+            services.AddScoped<ICreateAccountRepository, CreateAccountRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
 
-            services.AddTransient<ICreateAccountRepository, CreateAccountRepository>();
-            services.AddTransient<IAdminRepository, AdminRepository>();
-          
-            
-            
-            
-            services.AddTransient<LoginForm>();
-            services.AddTransient<SignInForm>();
+            services.AddScoped<AdminEntity>();
+
+
+            services.AddScoped<LoginForm>();
+            services.AddScoped<SignInForm>();
 
          
             
-            services.AddTransient<MainForm_ADMIN>();
-            services.AddTransient<AdminAccountForm>();
-            services.AddTransient<AdminBooksForm>();
-            services.AddTransient<AdminTransactionForm>();
+            services.AddScoped<MainForm_ADMIN>();
+            services.AddScoped<AdminAccountForm>();
+            services.AddScoped<AdminBooksForm>();
+            services.AddScoped<AdminTransactionForm>();
 
 
-            services.AddTransient<UserMainForm>();
+            services.AddScoped<UserMainForm>();
 
 
 
@@ -64,7 +61,7 @@ namespace WinFormsApp2
            
             ServiceProvider = services.BuildServiceProvider();
 
-            // Run the application
+            
             Application.Run(ServiceProvider.GetRequiredService<LoginForm>());
         }
     }

@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm_ADMIN));
+            s = new Krypton.Toolkit.KryptonPanel();
             AccountNameLBL = new Label();
             AccountPic_PB = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -40,8 +41,8 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             MainPanel = new Panel();
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
-            kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)s).BeginInit();
+            s.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AccountPic_PB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).BeginInit();
@@ -50,22 +51,26 @@
             MainPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // kryptonPanel1
+            // s
             // 
-            kryptonPanel1.Controls.Add(AccountNameLBL);
-            kryptonPanel1.Controls.Add(AccountPic_PB);
-            kryptonPanel1.Controls.Add(pictureBox2);
-            kryptonPanel1.Dock = DockStyle.Left;
-            kryptonPanel1.Location = new Point(0, 0);
-            kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new Size(359, 887);
-            kryptonPanel1.StateCommon.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
-            kryptonPanel1.TabIndex = 1;
+            s.Controls.Add(TransactionButton);
+            s.Controls.Add(LogoutBTN);
+            s.Controls.Add(AccountNameLBL);
+            s.Controls.Add(AccountsButton);
+            s.Controls.Add(BooksButton);
+            s.Controls.Add(AccountPic_PB);
+            s.Controls.Add(pictureBox2);
+            s.Dock = DockStyle.Left;
+            s.Location = new Point(0, 0);
+            s.Name = "s";
+            s.Size = new Size(359, 887);
+            s.StateCommon.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
+            s.TabIndex = 1;
             // 
             // AccountNameLBL
             // 
             AccountNameLBL.AutoSize = true;
-            AccountNameLBL.Location = new Point(130, 317);
+            AccountNameLBL.Location = new Point(129, 350);
             AccountNameLBL.Name = "AccountNameLBL";
             AccountNameLBL.Size = new Size(100, 15);
             AccountNameLBL.TabIndex = 7;
@@ -73,7 +78,7 @@
             // 
             // AccountPic_PB
             // 
-            AccountPic_PB.Location = new Point(75, 91);
+            AccountPic_PB.Location = new Point(72, 132);
             AccountPic_PB.Name = "AccountPic_PB";
             AccountPic_PB.Size = new Size(217, 204);
             AccountPic_PB.TabIndex = 6;
@@ -89,14 +94,11 @@
             // 
             // kryptonPanel2
             // 
-            kryptonPanel2.Controls.Add(TransactionButton);
-            kryptonPanel2.Controls.Add(BooksButton);
-            kryptonPanel2.Controls.Add(AccountsButton);
-            kryptonPanel2.Controls.Add(LogoutBTN);
+            kryptonPanel2.Controls.Add(label1);
             kryptonPanel2.Dock = DockStyle.Top;
             kryptonPanel2.Location = new Point(359, 0);
             kryptonPanel2.Name = "kryptonPanel2";
-            kryptonPanel2.Size = new Size(1109, 126);
+            kryptonPanel2.Size = new Size(1109, 101);
             kryptonPanel2.TabIndex = 3;
             // 
             // TransactionButton
@@ -106,7 +108,7 @@
             TransactionButton.FlatStyle = FlatStyle.Flat;
             TransactionButton.Image = Properties.Resources.Ledger;
             TransactionButton.ImageAlign = ContentAlignment.MiddleRight;
-            TransactionButton.Location = new Point(691, 47);
+            TransactionButton.Location = new Point(104, 570);
             TransactionButton.Name = "TransactionButton";
             TransactionButton.Size = new Size(136, 39);
             TransactionButton.TabIndex = 8;
@@ -122,9 +124,9 @@
             BooksButton.FlatStyle = FlatStyle.Flat;
             BooksButton.Image = Properties.Resources.Books;
             BooksButton.ImageAlign = ContentAlignment.MiddleRight;
-            BooksButton.Location = new Point(218, 47);
+            BooksButton.Location = new Point(104, 468);
             BooksButton.Name = "BooksButton";
-            BooksButton.Size = new Size(111, 39);
+            BooksButton.Size = new Size(137, 39);
             BooksButton.TabIndex = 7;
             BooksButton.Text = "BOOKS";
             BooksButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -138,9 +140,9 @@
             AccountsButton.FlatStyle = FlatStyle.Flat;
             AccountsButton.Image = Properties.Resources.Community;
             AccountsButton.ImageAlign = ContentAlignment.MiddleRight;
-            AccountsButton.Location = new Point(475, 47);
+            AccountsButton.Location = new Point(104, 513);
             AccountsButton.Name = "AccountsButton";
-            AccountsButton.Size = new Size(119, 39);
+            AccountsButton.Size = new Size(136, 39);
             AccountsButton.TabIndex = 6;
             AccountsButton.Text = "ACCOUNTS";
             AccountsButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -152,11 +154,12 @@
             LogoutBTN.BackColor = Color.Transparent;
             LogoutBTN.FlatAppearance.BorderSize = 0;
             LogoutBTN.FlatStyle = FlatStyle.Flat;
+            LogoutBTN.ForeColor = Color.Red;
             LogoutBTN.Image = Properties.Resources.Logout_30PX;
             LogoutBTN.ImageAlign = ContentAlignment.MiddleRight;
-            LogoutBTN.Location = new Point(963, 47);
+            LogoutBTN.Location = new Point(104, 786);
             LogoutBTN.Name = "LogoutBTN";
-            LogoutBTN.Size = new Size(103, 39);
+            LogoutBTN.Size = new Size(137, 39);
             LogoutBTN.TabIndex = 4;
             LogoutBTN.Text = "LOGOUT";
             LogoutBTN.TextAlign = ContentAlignment.MiddleLeft;
@@ -165,7 +168,8 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(87, 87);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(89, 53);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(932, 639);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -177,7 +181,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Gadugi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(312, 28);
+            label1.Location = new Point(308, 45);
             label1.Name = "label1";
             label1.Size = new Size(472, 25);
             label1.TabIndex = 5;
@@ -185,11 +189,10 @@
             // 
             // MainPanel
             // 
-            MainPanel.Controls.Add(label1);
             MainPanel.Controls.Add(pictureBox1);
-            MainPanel.Location = new Point(365, 132);
+            MainPanel.Location = new Point(365, 107);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1091, 743);
+            MainPanel.Size = new Size(1091, 768);
             MainPanel.TabIndex = 4;
             // 
             // MainForm_ADMIN
@@ -200,26 +203,26 @@
             ClientSize = new Size(1468, 887);
             Controls.Add(MainPanel);
             Controls.Add(kryptonPanel2);
-            Controls.Add(kryptonPanel1);
+            Controls.Add(s);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm_ADMIN";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainForm_ADMIN";
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
-            kryptonPanel1.ResumeLayout(false);
-            kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)s).EndInit();
+            s.ResumeLayout(false);
+            s.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)AccountPic_PB).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).EndInit();
             kryptonPanel2.ResumeLayout(false);
+            kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             MainPanel.ResumeLayout(false);
-            MainPanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private Krypton.Toolkit.KryptonPanel s;
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private Button LogoutBTN;
         private Label AccountNameLBL;

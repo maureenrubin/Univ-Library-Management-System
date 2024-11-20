@@ -1,4 +1,5 @@
 ﻿using LibraryManagementSystem.Data_Connectivity;
+using LibraryManagementSystem.Data_Connectivity.Interfaces;
 using LibraryManagementSystem.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -17,12 +18,12 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     public partial class LoginForm : Form
     {
 
-        private readonly AdminRepository adminRepository;
+        private readonly IAdminRepository adminRepository;
         private readonly MainForm_ADMIN mainFormAdmin;
         private readonly SignInForm signInForm;
 
         public LoginForm
-            (AdminRepository adminRepository, MainForm_ADMIN mainFormAdmin, SignInForm signInForm)
+            (IAdminRepository adminRepository, MainForm_ADMIN mainFormAdmin, SignInForm signInForm)
         {
 
             InitializeComponent();
@@ -79,9 +80,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void SignInLabel_Click(object sender, EventArgs e)
         {
+            UsernameTXT.Clear();
+            PasswordTXT.Clear();
+
             this.Hide();
             var signInForm = Program.ServiceProvider.GetRequiredService<SignInForm>();
             signInForm.Show();
         }
+
+        
     }
 }

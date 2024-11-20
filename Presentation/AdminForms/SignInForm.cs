@@ -1,5 +1,6 @@
 ﻿using LibraryManagementSystem.Data_Connectivity.Interfaces;
 using LibraryManagementSystem.Domain.DTO;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp2;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -16,7 +18,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     {
 
         private readonly ICreateAccountRepository createAccountRepository;
-
+        private byte[] AdminPicture;
 
         public SignInForm(ICreateAccountRepository createAccountRepository)
         {
@@ -32,10 +34,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             string password = PasswordTB.Text;
             string confirmPass = ConfirmPassTB.Text;
 
-            if(string.IsNullOrEmpty(firstName)|| string.IsNullOrEmpty(lastName) ||
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) ||
                 string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
                 string.IsNullOrEmpty(confirmPass))
-              
+
             {
                 MessageBox.Show("All fields are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -54,6 +56,33 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             MessageBox.Show("Admin created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //Clear Controls
 
+        }
+
+        private void GoBackBTN_Click(object sender, EventArgs e)
+        {
+            FirstNameTB.Clear();
+            LastNameTB.Clear();
+            EmailTB.Clear();
+            PasswordTB.Clear();
+            ConfirmPassTB.Clear();
+
+            this.Hide();
+            var loginForm = Program.ServiceProvider.GetRequiredService<LoginForm>();
+            loginForm.Show();
+        }
+
+        private void SelectImageBTN_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Images Files | *.jp;*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    AdminPicture = File.ReadAllBytes(openFileDialog.FileName);
+                    AdminPicPB.Image = Image.FromStream(new MemoryStream(AdminPicture));
+                }
+            }
         }
     }
 }
