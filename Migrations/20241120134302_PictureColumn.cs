@@ -15,6 +15,7 @@ namespace LibraryManagementSystem.Migrations
                 type: "varbinary(max)",
                 nullable: false,
                 defaultValue: new byte[0]);
+               
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -22,6 +23,7 @@ namespace LibraryManagementSystem.Migrations
             migrationBuilder.DropColumn(
                 name: "AdminPicture",
                 table: "Admins");
+
         }
     }
 }

@@ -29,5 +29,11 @@ namespace LibraryManagementSystem.Domain.Entities
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal BookPrice { get; set; }
+
+        [Column(TypeName = "varbinary(max)")]
+        public byte[] BooksPicture { get; set; }
+
+        [MaxLength(100)]
+        public string Category { get; set; }
     }
 }

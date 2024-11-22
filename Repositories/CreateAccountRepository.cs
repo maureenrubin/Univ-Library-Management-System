@@ -47,7 +47,10 @@ namespace LibraryManagementSystem.Repositories
                 FirstName = adminDto.FirstName,
                 Email = adminDto.Email,
                 Password = adminDto.Password,
-                ConfirmPassword = adminDto.ConfirmPass
+                ConfirmPassword = adminDto.ConfirmPass,
+                AdminPicture = adminDto.AdminPicture,
+                Gender = adminDto.Gender,
+                Role = "Admin"
             };
 
             applicationDBContext.Admins.Add(createAdmin);

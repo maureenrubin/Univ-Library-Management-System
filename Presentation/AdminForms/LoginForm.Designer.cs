@@ -34,7 +34,6 @@
             LoginBTN = new Krypton.Toolkit.KryptonButton();
             label3 = new Label();
             label4 = new Label();
-            SignInLabel = new Label();
             pictureBox2 = new PictureBox();
             ShowPassCB = new CheckBox();
             label5 = new Label();
@@ -92,7 +91,6 @@
             PasswordTXT.StateDisabled.Content.Font = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             PasswordTXT.StateDisabled.Content.Padding = new Padding(8);
             PasswordTXT.TabIndex = 2;
-            PasswordTXT.UseSystemPasswordChar = true;
             // 
             // ExitBTN
             // 
@@ -153,25 +151,11 @@
             label4.AutoSize = true;
             label4.FlatStyle = FlatStyle.System;
             label4.Font = new Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(641, 220);
+            label4.Location = new Point(637, 180);
             label4.Name = "label4";
             label4.Size = new Size(215, 26);
             label4.TabIndex = 12;
             label4.Text = "LOGIN YOUR ACCOUNT";
-            // 
-            // SignInLabel
-            // 
-            SignInLabel.AutoSize = true;
-            SignInLabel.Cursor = Cursors.Hand;
-            SignInLabel.FlatStyle = FlatStyle.System;
-            SignInLabel.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            SignInLabel.ForeColor = Color.Red;
-            SignInLabel.Location = new Point(684, 570);
-            SignInLabel.Name = "SignInLabel";
-            SignInLabel.Size = new Size(114, 19);
-            SignInLabel.TabIndex = 5;
-            SignInLabel.Text = "ADMIN SIGN IN";
-            SignInLabel.Click += SignInLabel_Click;
             // 
             // pictureBox2
             // 
@@ -237,7 +221,6 @@
             Controls.Add(ShowPassCB);
             Controls.Add(label3);
             Controls.Add(ExitBTN);
-            Controls.Add(SignInLabel);
             Controls.Add(pictureBox2);
             Controls.Add(label4);
             Controls.Add(LoginBTN);
@@ -261,7 +244,6 @@
         private Krypton.Toolkit.KryptonButton LoginBTN;
         private Label label3;
         private Label label4;
-        private Label SignInLabel;
         private PictureBox pictureBox2;
         private CheckBox ShowPassCB;
         private Label label5;

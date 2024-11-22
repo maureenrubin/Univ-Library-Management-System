@@ -15,8 +15,8 @@ namespace LibraryManagementSystem.Domain.DTO
         public string? LastName { get; set; }
         public string? Password { get; set; }
         public string? ConfirmPass { get; set; }
-      
-       
         public byte[] AdminPicture { get; set; }
+        public string Role { get; set; }
+        public string Gender { get; set; }
     }
 }

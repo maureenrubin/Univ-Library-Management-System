@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LibraryManagementSystem.Domain.Entities;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,16 +9,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp2;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
     public partial class MainForm_ADMIN : Form
     {
+        public AdminEntity CurrentAdmin;
+
         public MainForm_ADMIN()
         {
             InitializeComponent();
             MainPanel.Visible = true;
         }
+      
+        
+        private void MainForm_ADMIN_Load(object sender, EventArgs e)
+        {
+           if(CurrentAdmin != null)
+            {
+                AccountNameLBL.Text = $"{CurrentAdmin.FirstName} {CurrentAdmin.LastName}";
+
+                if (CurrentAdmin.AdminPicture != null && CurrentAdmin.AdminPicture.Length > 0)
+                {
+                    using (var ms = new MemoryStream(CurrentAdmin.AdminPicture))
+                    {
+                        AccountPic_PB.Image = Image.FromStream(ms);
+                    }
+                }
+             
+           }
+
+        }
+
 
         public void LoadForm(object Form)
         {
@@ -49,7 +74,17 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private void LogoutBTN_Click(object sender, EventArgs e)
         {
             this.Hide();
-            
+            var loginForm = Program.ServiceProvider.GetRequiredService<LoginForm>();
+
         }
+
+
+        private void AddAdminBTN_Click_1(object sender, EventArgs e)
+        {
+            var signInForm = Program.ServiceProvider.GetRequiredService<SignInForm>();
+            signInForm.Show();
+        }
+
+       
     }
 }

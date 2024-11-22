@@ -21,6 +21,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private readonly IAdminRepository adminRepository;
         private readonly MainForm_ADMIN mainFormAdmin;
         private readonly SignInForm signInForm;
+        
 
         public LoginForm
             (IAdminRepository adminRepository, MainForm_ADMIN mainFormAdmin, SignInForm signInForm)
@@ -36,18 +37,26 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             string email = UsernameTXT.Text;
             string password = PasswordTXT.Text;
+            
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Email and Password cannor be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Email and Password cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             var admin = await adminRepository.GetAdminByEmailAsync(email);
 
-            if (admin != null)
+            if (admin != null && admin.Password == password)
             {
                 MessageBox.Show("Login Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                var mainFormAdmin = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
+                mainFormAdmin.CurrentAdmin = admin;
+                
+                
+                this.Hide();
+                mainFormAdmin.Show();
 
             }
             else
@@ -56,9 +65,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
 
 
-            this.Hide();
-            var mainFormAdmin = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
-            mainFormAdmin.Show();
+           
+           
         }
 
         private void ExitBTN_Click(object sender, EventArgs e)
@@ -68,6 +76,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void ShowPassCB_CheckedChanged(object sender, EventArgs e)
         {
+            
             if (ShowPassCB.Checked)
             {
                 PasswordTXT.PasswordChar = '\0';
@@ -78,16 +87,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
-        private void SignInLabel_Click(object sender, EventArgs e)
-        {
-            UsernameTXT.Clear();
-            PasswordTXT.Clear();
-
-            this.Hide();
-            var signInForm = Program.ServiceProvider.GetRequiredService<SignInForm>();
-            signInForm.Show();
-        }
-
+       
         
     }
 }

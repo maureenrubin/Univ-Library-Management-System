@@ -30,16 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm_ADMIN));
             s = new Krypton.Toolkit.KryptonPanel();
+            label1 = new Label();
             AccountNameLBL = new Label();
             AccountPic_PB = new PictureBox();
             pictureBox2 = new PictureBox();
-            kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            AddAdminBTN = new Button();
             TransactionButton = new Button();
-            BooksButton = new Button();
-            AccountsButton = new Button();
             LogoutBTN = new Button();
+            AccountsButton = new Button();
+            BooksButton = new Button();
+            kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             pictureBox1 = new PictureBox();
-            label1 = new Label();
             MainPanel = new Panel();
             ((System.ComponentModel.ISupportInitialize)s).BeginInit();
             s.SuspendLayout();
@@ -53,34 +54,45 @@
             // 
             // s
             // 
-            s.Controls.Add(TransactionButton);
-            s.Controls.Add(LogoutBTN);
+            s.Controls.Add(label1);
             s.Controls.Add(AccountNameLBL);
-            s.Controls.Add(AccountsButton);
-            s.Controls.Add(BooksButton);
             s.Controls.Add(AccountPic_PB);
             s.Controls.Add(pictureBox2);
             s.Dock = DockStyle.Left;
             s.Location = new Point(0, 0);
             s.Name = "s";
-            s.Size = new Size(359, 887);
+            s.Size = new Size(310, 887);
             s.StateCommon.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             s.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Gadugi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(31, 53);
+            label1.Name = "label1";
+            label1.Size = new Size(257, 50);
+            label1.TabIndex = 5;
+            label1.Text = "   UNIVERSITY LIBRARY\r\n MANAGEMENT SYSTEM";
             // 
             // AccountNameLBL
             // 
             AccountNameLBL.AutoSize = true;
-            AccountNameLBL.Location = new Point(129, 350);
+            AccountNameLBL.BackColor = Color.Transparent;
+            AccountNameLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            AccountNameLBL.Location = new Point(104, 342);
             AccountNameLBL.Name = "AccountNameLBL";
-            AccountNameLBL.Size = new Size(100, 15);
+            AccountNameLBL.Size = new Size(98, 16);
             AccountNameLBL.TabIndex = 7;
-            AccountNameLBL.Text = "ACCOUNT NAME";
+            AccountNameLBL.Text = "Nameeeeeeeee";
             // 
             // AccountPic_PB
             // 
-            AccountPic_PB.Location = new Point(72, 132);
+            AccountPic_PB.Location = new Point(44, 122);
             AccountPic_PB.Name = "AccountPic_PB";
             AccountPic_PB.Size = new Size(217, 204);
+            AccountPic_PB.SizeMode = PictureBoxSizeMode.Zoom;
             AccountPic_PB.TabIndex = 6;
             AccountPic_PB.TabStop = false;
             // 
@@ -92,23 +104,32 @@
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
             // 
-            // kryptonPanel2
+            // AddAdminBTN
             // 
-            kryptonPanel2.Controls.Add(label1);
-            kryptonPanel2.Dock = DockStyle.Top;
-            kryptonPanel2.Location = new Point(359, 0);
-            kryptonPanel2.Name = "kryptonPanel2";
-            kryptonPanel2.Size = new Size(1109, 101);
-            kryptonPanel2.TabIndex = 3;
+            AddAdminBTN.BackColor = Color.Transparent;
+            AddAdminBTN.Cursor = Cursors.Hand;
+            AddAdminBTN.FlatAppearance.BorderSize = 0;
+            AddAdminBTN.FlatStyle = FlatStyle.Flat;
+            AddAdminBTN.Image = (Image)resources.GetObject("AddAdminBTN.Image");
+            AddAdminBTN.ImageAlign = ContentAlignment.MiddleRight;
+            AddAdminBTN.Location = new Point(537, 49);
+            AddAdminBTN.Name = "AddAdminBTN";
+            AddAdminBTN.Size = new Size(140, 39);
+            AddAdminBTN.TabIndex = 9;
+            AddAdminBTN.Text = "ADD ADMIN";
+            AddAdminBTN.TextAlign = ContentAlignment.MiddleLeft;
+            AddAdminBTN.UseVisualStyleBackColor = false;
+            AddAdminBTN.Click += AddAdminBTN_Click_1;
             // 
             // TransactionButton
             // 
             TransactionButton.BackColor = Color.Transparent;
+            TransactionButton.Cursor = Cursors.Hand;
             TransactionButton.FlatAppearance.BorderSize = 0;
             TransactionButton.FlatStyle = FlatStyle.Flat;
             TransactionButton.Image = Properties.Resources.Ledger;
             TransactionButton.ImageAlign = ContentAlignment.MiddleRight;
-            TransactionButton.Location = new Point(104, 570);
+            TransactionButton.Location = new Point(374, 49);
             TransactionButton.Name = "TransactionButton";
             TransactionButton.Size = new Size(136, 39);
             TransactionButton.TabIndex = 8;
@@ -117,30 +138,32 @@
             TransactionButton.UseVisualStyleBackColor = false;
             TransactionButton.Click += TransactionButton_Click;
             // 
-            // BooksButton
+            // LogoutBTN
             // 
-            BooksButton.BackColor = Color.Transparent;
-            BooksButton.FlatAppearance.BorderSize = 0;
-            BooksButton.FlatStyle = FlatStyle.Flat;
-            BooksButton.Image = Properties.Resources.Books;
-            BooksButton.ImageAlign = ContentAlignment.MiddleRight;
-            BooksButton.Location = new Point(104, 468);
-            BooksButton.Name = "BooksButton";
-            BooksButton.Size = new Size(137, 39);
-            BooksButton.TabIndex = 7;
-            BooksButton.Text = "BOOKS";
-            BooksButton.TextAlign = ContentAlignment.MiddleLeft;
-            BooksButton.UseVisualStyleBackColor = false;
-            BooksButton.Click += BooksButton_Click;
+            LogoutBTN.BackColor = Color.Transparent;
+            LogoutBTN.FlatAppearance.BorderSize = 0;
+            LogoutBTN.FlatStyle = FlatStyle.Flat;
+            LogoutBTN.ForeColor = Color.Red;
+            LogoutBTN.Image = (Image)resources.GetObject("LogoutBTN.Image");
+            LogoutBTN.ImageAlign = ContentAlignment.MiddleRight;
+            LogoutBTN.Location = new Point(1039, 49);
+            LogoutBTN.Name = "LogoutBTN";
+            LogoutBTN.Size = new Size(107, 39);
+            LogoutBTN.TabIndex = 4;
+            LogoutBTN.Text = "LOG OUT";
+            LogoutBTN.TextAlign = ContentAlignment.MiddleLeft;
+            LogoutBTN.UseVisualStyleBackColor = false;
+            LogoutBTN.Click += LogoutBTN_Click;
             // 
             // AccountsButton
             // 
             AccountsButton.BackColor = Color.Transparent;
+            AccountsButton.Cursor = Cursors.Hand;
             AccountsButton.FlatAppearance.BorderSize = 0;
             AccountsButton.FlatStyle = FlatStyle.Flat;
             AccountsButton.Image = Properties.Resources.Community;
             AccountsButton.ImageAlign = ContentAlignment.MiddleRight;
-            AccountsButton.Location = new Point(104, 513);
+            AccountsButton.Location = new Point(232, 49);
             AccountsButton.Name = "AccountsButton";
             AccountsButton.Size = new Size(136, 39);
             AccountsButton.TabIndex = 6;
@@ -149,22 +172,35 @@
             AccountsButton.UseVisualStyleBackColor = false;
             AccountsButton.Click += AccountsButton_Click;
             // 
-            // LogoutBTN
+            // BooksButton
             // 
-            LogoutBTN.BackColor = Color.Transparent;
-            LogoutBTN.FlatAppearance.BorderSize = 0;
-            LogoutBTN.FlatStyle = FlatStyle.Flat;
-            LogoutBTN.ForeColor = Color.Red;
-            LogoutBTN.Image = Properties.Resources.Logout_30PX;
-            LogoutBTN.ImageAlign = ContentAlignment.MiddleRight;
-            LogoutBTN.Location = new Point(104, 786);
-            LogoutBTN.Name = "LogoutBTN";
-            LogoutBTN.Size = new Size(137, 39);
-            LogoutBTN.TabIndex = 4;
-            LogoutBTN.Text = "LOGOUT";
-            LogoutBTN.TextAlign = ContentAlignment.MiddleLeft;
-            LogoutBTN.UseVisualStyleBackColor = false;
-            LogoutBTN.Click += LogoutBTN_Click;
+            BooksButton.BackColor = Color.Transparent;
+            BooksButton.Cursor = Cursors.Hand;
+            BooksButton.FlatAppearance.BorderSize = 0;
+            BooksButton.FlatStyle = FlatStyle.Flat;
+            BooksButton.Image = Properties.Resources.Books;
+            BooksButton.ImageAlign = ContentAlignment.MiddleRight;
+            BooksButton.Location = new Point(97, 49);
+            BooksButton.Name = "BooksButton";
+            BooksButton.Size = new Size(129, 39);
+            BooksButton.TabIndex = 7;
+            BooksButton.Text = "BOOKS";
+            BooksButton.TextAlign = ContentAlignment.MiddleLeft;
+            BooksButton.UseVisualStyleBackColor = false;
+            BooksButton.Click += BooksButton_Click;
+            // 
+            // kryptonPanel2
+            // 
+            kryptonPanel2.Controls.Add(AddAdminBTN);
+            kryptonPanel2.Controls.Add(BooksButton);
+            kryptonPanel2.Controls.Add(TransactionButton);
+            kryptonPanel2.Controls.Add(LogoutBTN);
+            kryptonPanel2.Controls.Add(AccountsButton);
+            kryptonPanel2.Dock = DockStyle.Top;
+            kryptonPanel2.Location = new Point(310, 0);
+            kryptonPanel2.Name = "kryptonPanel2";
+            kryptonPanel2.Size = new Size(1158, 101);
+            kryptonPanel2.TabIndex = 3;
             // 
             // pictureBox1
             // 
@@ -176,23 +212,12 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Gadugi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(308, 45);
-            label1.Name = "label1";
-            label1.Size = new Size(472, 25);
-            label1.TabIndex = 5;
-            label1.Text = "UNIVERSITY LIBRARY MANAGEMENT SYSTEM";
-            // 
             // MainPanel
             // 
             MainPanel.Controls.Add(pictureBox1);
-            MainPanel.Location = new Point(365, 107);
+            MainPanel.Location = new Point(316, 119);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1091, 768);
+            MainPanel.Size = new Size(1140, 756);
             MainPanel.TabIndex = 4;
             // 
             // MainForm_ADMIN
@@ -208,6 +233,7 @@
             Name = "MainForm_ADMIN";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainForm_ADMIN";
+            Load += MainForm_ADMIN_Load;
             ((System.ComponentModel.ISupportInitialize)s).EndInit();
             s.ResumeLayout(false);
             s.PerformLayout();
@@ -215,7 +241,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).EndInit();
             kryptonPanel2.ResumeLayout(false);
-            kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             MainPanel.ResumeLayout(false);
             ResumeLayout(false);
@@ -234,5 +259,6 @@
         private PictureBox pictureBox1;
         private Label label1;
         private Panel MainPanel;
+        private Button AddAdminBTN;
     }
 }

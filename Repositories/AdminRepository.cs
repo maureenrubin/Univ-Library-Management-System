@@ -20,33 +20,28 @@ namespace LibraryManagementSystem.Repositories
             _applicationDbContext = dbContextOptions;
 
         }
-
-        public async Task<int> AddAdminAsync(AdminEntity admin)
-        {
-            using (var dbContextOptions = new LMSDbContext(_applicationDbContext))
-            {
-                await dbContextOptions.Admins.AddAsync(admin);
-                await dbContextOptions.SaveChangesAsync();
-
-                return admin.AdminID;
-            }
-        }
         
         public async Task<AdminEntity?> GetAdminByEmailAsync(string email)
         {
             using (var dbContextOptions = new LMSDbContext(_applicationDbContext))
             {
                 return await dbContextOptions.Admins
-                    .FirstOrDefaultAsync(a => a.Email == email);
+                    .Where(a => a.Email == email)
+                    .Select(a => new AdminEntity
+                    {
+                        FirstName = a.FirstName,
+                        LastName = a.LastName,
+                        AdminPicture = a.AdminPicture,
+                        Password = a.Password
+
+
+                    })
+                    .FirstOrDefaultAsync();
             }
         }
 
         
 
-      //  public async Task<AdminEntity> AddNewAdminAsync(string email, string password)
-       // {
-           // var existingAccount = await applicationDBContext.Admins
-               // .SingleOrDefaultAsync(a => a.)
-       // }
+    
     }
 }

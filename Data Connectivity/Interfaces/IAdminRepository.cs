@@ -10,6 +10,6 @@ namespace LibraryManagementSystem.Data_Connectivity.Interfaces
     public interface IAdminRepository
     {
         Task<AdminEntity> GetAdminByEmailAsync(string email);
-        Task<int> AddAdminAsync(AdminEntity admin);
+       
     }
 }
