@@ -15,7 +15,7 @@ namespace WinFormsApp2
 {
      static class Program
      {
-        public static IServiceProvider? ServiceProvider { get; private set; }
+        public static IServiceProvider ServiceProvider { get; private set; }
 
         [STAThread]
         static void Main()
@@ -36,9 +36,11 @@ namespace WinFormsApp2
                   options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ICreateAccountRepository, CreateAccountRepository>();
+            services.AddScoped<IBooksRepository, BookRepository>();
             services.AddScoped<IAdminRepository, AdminRepository>();
 
             services.AddScoped<AdminEntity>();
+            services.AddScoped<BooksEntity>();
 
 
             services.AddScoped<LoginForm>();
@@ -50,6 +52,7 @@ namespace WinFormsApp2
             services.AddScoped<AdminAccountForm>();
             services.AddScoped<AdminBooksForm>();
             services.AddScoped<AdminTransactionForm>();
+       
 
 
             services.AddScoped<UserMainForm>();

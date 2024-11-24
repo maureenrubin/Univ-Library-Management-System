@@ -31,9 +31,9 @@ namespace LibraryManagementSystem.Domain.Entities
         public decimal BookPrice { get; set; }
 
         [Column(TypeName = "varbinary(max)")]
-        public byte[] BooksPicture { get; set; }
+        public byte[]? BooksPicture { get; set; }
 
         [MaxLength(100)]
-        public string Category { get; set; }
+        public string? Category { get; set; }
     }
 }

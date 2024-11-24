@@ -9,7 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibraryManagementSystem.Presentation.Animation;
 using WinFormsApp2;
+using LibraryManagementSystem.Data_Connectivity.Interfaces;
+using LibraryManagementSystem.Repositories;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -17,16 +20,26 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     {
         public AdminEntity CurrentAdmin;
 
-        public MainForm_ADMIN()
+        private System.Windows.Forms.Timer _viewsideTransition;
+        private Animations _animation;
+        private bool _sidebarExpanded;
+
+        public MainForm_ADMIN(IBooksRepository _bookRepository)
         {
+           
             InitializeComponent();
+            
+            _viewsideTransition = new System.Windows.Forms.Timer { Interval = 10 };
+            _animation = new Animations();
+            _animation.ViewSideTransition(_viewsideTransition, AdminPanel, _sidebarExpanded);
             MainPanel.Visible = true;
+
         }
-      
-        
+
+
         private void MainForm_ADMIN_Load(object sender, EventArgs e)
         {
-           if(CurrentAdmin != null)
+            if (CurrentAdmin != null)
             {
                 AccountNameLBL.Text = $"{CurrentAdmin.FirstName} {CurrentAdmin.LastName}";
 
@@ -37,8 +50,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                         AccountPic_PB.Image = Image.FromStream(ms);
                     }
                 }
-             
-           }
+
+            }
 
         }
 
@@ -58,7 +71,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void BooksButton_Click(object sender, EventArgs e)
         {
-            LoadForm(new AdminBooksForm());
+            var adminBooksForm = Program.ServiceProvider.GetRequiredService<AdminBooksForm>();
+            LoadForm(adminBooksForm);
         }
 
         private void AccountsButton_Click(object sender, EventArgs e)
@@ -83,6 +97,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             var signInForm = Program.ServiceProvider.GetRequiredService<SignInForm>();
             signInForm.Show();
+        }
+
+        private void ViewProfileBTN_Click(object sender, EventArgs e)
+        {
+            _viewsideTransition.Start();
         }
 
        
