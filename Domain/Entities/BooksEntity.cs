@@ -34,6 +34,6 @@ namespace LibraryManagementSystem.Domain.Entities
         public byte[]? BooksPicture { get; set; }
 
         [MaxLength(100)]
-        public string? Category { get; set; }
+        public string Category { get; set; } = string.Empty;
     }
 }

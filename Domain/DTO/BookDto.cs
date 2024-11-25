@@ -18,7 +18,7 @@ namespace LibraryManagementSystem.Domain.DTO
 
         public int BookStock { get; set; }
 
-        public decimal BooksPrice { get; set; }
+        public decimal BookPrice { get; set; }
 
         public byte []? BooksPicture { get; set; }
 

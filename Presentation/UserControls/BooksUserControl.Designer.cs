@@ -47,6 +47,7 @@
             BooksPB.Location = new Point(20, 38);
             BooksPB.Name = "BooksPB";
             BooksPB.Size = new Size(164, 189);
+            BooksPB.SizeMode = PictureBoxSizeMode.Zoom;
             BooksPB.TabIndex = 0;
             BooksPB.TabStop = false;
             // 

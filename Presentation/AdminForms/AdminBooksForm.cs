@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibraryManagementSystem.Data_Connectivity.Context;
 using LibraryManagementSystem.Data_Connectivity.Interfaces;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
@@ -24,9 +26,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private Animations _animations;
         private bool _sidebarExpanded;
         private byte[] BooksPicture;
+        private readonly BooksEntity _addedBook;
 
 
-        public AdminBooksForm(IBooksRepository booksRepository)
+        public AdminBooksForm(IBooksRepository booksRepository, BooksEntity booksEntity)
         {
 
             _booksRepository = booksRepository;
@@ -37,8 +40,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             _animations.CrudBooksTransition(_crudBooksTransition, BooksPanel, _sidebarExpanded);
             _animations.SideBooksTransition(_sideBooksTransition, BooksPanel, _sidebarExpanded);
 
+            _addedBook = booksEntity;
 
-
+            LoadBookDetails();
 
         }
 
@@ -87,7 +91,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 return;
             }
 
-            var book = new BookDto
+            var book = new BooksEntity
             {
                 BookId = bookId,
                 Title = title,
@@ -95,7 +99,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 PublishedDate = publishedDate,
                 BookStock = bookStock,
                 BooksPicture = booksPicture,
-                BooksPrice = bookPrice,
+                BookPrice = bookPrice,
 
             };
 
@@ -129,6 +133,25 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     BooksPB.Image = Image.FromStream(new MemoryStream(BooksPicture));
                 }
             }
+        }
+
+        private async void LoadBookDetails()
+        {
+            var bookList = await _booksRepository.GetAllBooksAsync();
+            BooksFLP.Controls.Clear();
+            
+            foreach (var book in bookList)
+            {
+                DisplayBooksToUI(book);
+            }
+        }
+
+        private void DisplayBooksToUI(BooksEntity addedBooks)
+        {
+            BooksUserControl bookDisplay = new BooksUserControl(addedBooks);
+
+
+            BooksFLP.Controls.Add(bookDisplay);
         }
     }
 

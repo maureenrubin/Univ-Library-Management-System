@@ -1,4 +1,5 @@
 ﻿using LibraryManagementSystem.Domain.DTO;
+using LibraryManagementSystem.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace LibraryManagementSystem.Data_Connectivity.Interfaces
 {
     public interface IBooksRepository
     {
-        Task AddBookAsync(BookDto bookDto);
-
+        Task<int> AddBookAsync(BooksEntity books);
+        Task<IEnumerable<BooksEntity>> GetAllBooksAsync();
     }
 }

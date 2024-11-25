@@ -29,8 +29,8 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfiguration<AdminEntity>(new AdminConfiguration());
-           
+            modelBuilder.ApplyConfiguration(new AdminConfiguration());
+            modelBuilder.ApplyConfiguration(new BooksConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
