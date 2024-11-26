@@ -41,6 +41,7 @@ namespace WinFormsApp2
 
             services.AddScoped<AdminEntity>();
             services.AddScoped<BooksEntity>();
+            services.AddScoped<UserEntity>();
 
 
             services.AddScoped<LoginForm>();
@@ -49,7 +50,7 @@ namespace WinFormsApp2
          
             
             services.AddScoped<MainForm_ADMIN>();
-            services.AddScoped<AdminAccountForm>();
+            services.AddScoped<AdminManageUserForm>();
             services.AddScoped<AdminBooksForm>();
             services.AddScoped<AdminTransactionForm>();
        

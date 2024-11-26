@@ -120,15 +120,18 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ManageBooksBTN.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAahJREFUSEtj
-        GAUUAQUDAwEFFV17YjFUG/EAZEGprdeXPb4x//el1xLEGxLL/nsaO2yGaicOKKjoOIAsAOHPdTOIwukO
-        Afuh2okDMEuuhaTADXlaMfF/a2L5/9qY/P8tMbkY2Mcl6LmDe/B8GLZzDiiGGocdYPNJDjBIimYd/z99
-        29X/x+9/JIirOqd9U1A1MIAaiQmwWZKSUv2/YtGl//UzNmM1FB3PXb//P8gcqJGYAJ8l/WtOgQ1Zvvs0
-        2MIGJDx5/RnqWALzCcgQUPAlNa2A49xJe/83z95KXUtA/PSuTXBL0OUptmTP5Sf/+xbvxMArD1yhniWE
-        8OCxpMPe91+Bteefcs/IzyAcGlf8l7qWKOtF5EQnff/39/3/D+8f/T92bN//+Nx66vpEUd1Ir7e3592V
-        y6fAFtDEEhBwdvPy8fULXgDDTn6x34KTyv8ERGX8ikrM+YkFf4tOyn0Pw36h8Z+V1HS9oMYRB2wdPB+D
-        gg+EkX2IC4eERp2DaiUehEVET1mzZvmXuXNm/icG+/kHvwTVS1DtxANQqQoKZ6IxOZaMAghgYAAARLs6
-        2bVIgO8AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAn1JREFUWEdj
+        GAWjYBQMV6CgamBgrWNxx1Pf+p2LvvULO32r++RiA02ThyDzoEZTB9jrWDw4GZDw/2N0zv+PmXX/P9fN
+        IBufzm3+D3TkfqjR1AHeBtYfwY4D4j3hmVgtJgWDQhJqNHWAt771pyHjwGsJJRgWbkgs+18Zlfe/Irbg
+        f0tMLkHsYO/92cE9eD46NjJ36lcwMBCAWks8QHbgyZg8FMetTKv+b+8d/z+pacX/vO41/+eu30827pi+
+        7L+OgfV5qLXEA3xR7O4Q8L9o1vH/FYsu/a+ec+j/8fsfKcLmth6kRz8+B7o4B4EdB8KgEMRmKSmYpg4s
+        mbwdxbJNx2/8n7vhAE6MrBaGaepA9Cgu71sBTpu48IIDD1HUgzBdo7h+xmawODbHgTBIrnn2VhQ9A+JA
+        UCbySapHwbCMBVKDrGdAHIgPD6gDp687CnYAPgxSg6yHrg4kB486EJulpODh7cA9vjH/p3pF/d+XXgvH
+        Do4BA+9ATRX9P7Y65n9jnHx+xHkGf4n2C/sMw5b2vv8G3IHKyrp/Hz269v/f3/dg/OH9o//Hju0DY0eP
+        0IEPQT0D8w8gh4Ec1N/fi4JtXQIH3oEmprbzauvqfhwHOhAdD4oQBAEFZd0EX7/gBejYwt73e0Bq4z8L
+        x8B/Jjae/yxsPf4SwpZ2Hn+A9G9sWEnV4A/USuoAU2vPT6Hhsb9h6ROWFLCFNiE8YULff119sw6o0dQB
+        mjpmX5EdB3MgOTg7O/epgoqOA9Ro6gB9Q6s1q1Yt/f/o4bX/fcBMQwnOzM79CUpKUKOpA0DdRFs71x1m
+        FvbP7R097lOCzSwcnquqGz6FGj0KRsEoGGaAgQEAtkYKet542uQAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

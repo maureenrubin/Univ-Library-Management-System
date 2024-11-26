@@ -77,7 +77,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void AccountsButton_Click(object sender, EventArgs e)
         {
-            LoadForm(new AdminAccountForm());
+            LoadForm(new AdminManageUserForm());
         }
 
         private void TransactionButton_Click(object sender, EventArgs e)

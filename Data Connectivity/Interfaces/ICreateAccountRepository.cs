@@ -10,8 +10,8 @@ namespace LibraryManagementSystem.Data_Connectivity.Interfaces
     public interface ICreateAccountRepository
     {
 
-        Task CreateAccountAsync(AdminDto adminDto);
+        Task CreateAdminAccountAsync(AdminDto adminDto);
 
-
+        Task CreateUserAccountAsync(UserDto userDto);
     }
 }

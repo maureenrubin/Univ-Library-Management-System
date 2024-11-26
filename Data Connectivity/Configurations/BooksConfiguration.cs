@@ -33,14 +33,13 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
 
             builder.Property(b => b.BookStock)
                 .IsRequired()
-                .HasDefaultValue(0)
-                .HasAnnotation("Range", new { Min = 0 });
+                .HasDefaultValue(0);
 
             builder.Property(b => b.BookPrice)
                 .IsRequired()
                 .HasColumnType("decimal(18,2)");
 
-
+            builder.ToTable("Books");
                 
         }
 

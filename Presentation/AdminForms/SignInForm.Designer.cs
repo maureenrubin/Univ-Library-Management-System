@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
             label1 = new Label();
             label2 = new Label();
             GoBackBTN = new Button();
@@ -47,26 +46,18 @@
             AdminPicPB = new PictureBox();
             SelectImageBTN = new Button();
             GenderCB = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            panel4 = new Panel();
             ((System.ComponentModel.ISupportInitialize)AdminPicPB).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Dock = DockStyle.Bottom;
-            pictureBox1.Image = Properties.Resources.abstract_water_ocean_wave_background;
-            pictureBox1.Location = new Point(0, 579);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1039, 128);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(335, 106);
+            label1.Location = new Point(320, 86);
             label1.Name = "label1";
             label1.Size = new Size(265, 19);
             label1.TabIndex = 1;
@@ -76,7 +67,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(362, 74);
+            label2.Location = new Point(293, 49);
             label2.Name = "label2";
             label2.Size = new Size(336, 28);
             label2.TabIndex = 2;
@@ -103,7 +94,7 @@
             // FirstNameTB
             // 
             FirstNameTB.Cursor = Cursors.IBeam;
-            FirstNameTB.Location = new Point(241, 172);
+            FirstNameTB.Location = new Point(199, 143);
             FirstNameTB.Name = "FirstNameTB";
             FirstNameTB.Size = new Size(271, 34);
             FirstNameTB.StateActive.Back.Color1 = Color.White;
@@ -138,7 +129,7 @@
             // LastNameTB
             // 
             LastNameTB.Cursor = Cursors.IBeam;
-            LastNameTB.Location = new Point(241, 225);
+            LastNameTB.Location = new Point(199, 196);
             LastNameTB.Name = "LastNameTB";
             LastNameTB.Size = new Size(271, 34);
             LastNameTB.StateActive.Back.Color1 = Color.White;
@@ -173,7 +164,7 @@
             // EmailTB
             // 
             EmailTB.Cursor = Cursors.IBeam;
-            EmailTB.Location = new Point(241, 279);
+            EmailTB.Location = new Point(199, 250);
             EmailTB.Name = "EmailTB";
             EmailTB.Size = new Size(271, 34);
             EmailTB.StateActive.Back.Color1 = Color.White;
@@ -208,7 +199,7 @@
             // PasswordTB
             // 
             PasswordTB.Cursor = Cursors.IBeam;
-            PasswordTB.Location = new Point(241, 339);
+            PasswordTB.Location = new Point(199, 310);
             PasswordTB.Name = "PasswordTB";
             PasswordTB.PasswordChar = '●';
             PasswordTB.Size = new Size(271, 34);
@@ -244,9 +235,9 @@
             // SignInBTN
             // 
             SignInBTN.Cursor = Cursors.Hand;
-            SignInBTN.Location = new Point(362, 539);
+            SignInBTN.Location = new Point(320, 518);
             SignInBTN.Name = "SignInBTN";
-            SignInBTN.Size = new Size(271, 34);
+            SignInBTN.Size = new Size(254, 34);
             SignInBTN.StateCommon.Back.Color1 = Color.SteelBlue;
             SignInBTN.StateCommon.Back.Color2 = Color.SteelBlue;
             SignInBTN.StateCommon.Border.Color1 = Color.Black;
@@ -262,7 +253,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(103, 190);
+            label3.Location = new Point(61, 161);
             label3.Name = "label3";
             label3.Size = new Size(66, 16);
             label3.TabIndex = 8;
@@ -272,7 +263,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(104, 234);
+            label4.Location = new Point(62, 205);
             label4.Name = "label4";
             label4.Size = new Size(65, 16);
             label4.TabIndex = 9;
@@ -282,7 +273,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(104, 293);
+            label5.Location = new Point(62, 264);
             label5.Name = "label5";
             label5.Size = new Size(41, 16);
             label5.TabIndex = 10;
@@ -292,7 +283,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(104, 348);
+            label6.Location = new Point(62, 319);
             label6.Name = "label6";
             label6.Size = new Size(66, 16);
             label6.TabIndex = 11;
@@ -301,7 +292,7 @@
             // ConfirmPassTB
             // 
             ConfirmPassTB.Cursor = Cursors.IBeam;
-            ConfirmPassTB.Location = new Point(241, 392);
+            ConfirmPassTB.Location = new Point(199, 363);
             ConfirmPassTB.Name = "ConfirmPassTB";
             ConfirmPassTB.PasswordChar = '●';
             ConfirmPassTB.Size = new Size(271, 34);
@@ -338,7 +329,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(103, 401);
+            label7.Location = new Point(61, 372);
             label7.Name = "label7";
             label7.Size = new Size(116, 16);
             label7.TabIndex = 13;
@@ -348,7 +339,7 @@
             // 
             ShowPasswordTB.AutoSize = true;
             ShowPasswordTB.Cursor = Cursors.Hand;
-            ShowPasswordTB.Location = new Point(241, 443);
+            ShowPasswordTB.Location = new Point(199, 414);
             ShowPasswordTB.Name = "ShowPasswordTB";
             ShowPasswordTB.Size = new Size(109, 19);
             ShowPasswordTB.TabIndex = 6;
@@ -359,7 +350,7 @@
             // AdminPicPB
             // 
             AdminPicPB.Image = Properties.Resources.UserQQ;
-            AdminPicPB.Location = new Point(621, 170);
+            AdminPicPB.Location = new Point(579, 163);
             AdminPicPB.Name = "AdminPicPB";
             AdminPicPB.Size = new Size(218, 183);
             AdminPicPB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -369,13 +360,12 @@
             // SelectImageBTN
             // 
             SelectImageBTN.Cursor = Cursors.Hand;
-            SelectImageBTN.FlatAppearance.BorderSize = 0;
+            SelectImageBTN.FlatAppearance.BorderColor = Color.Black;
             SelectImageBTN.FlatStyle = FlatStyle.Flat;
-            SelectImageBTN.Image = Properties.Resources.Image;
             SelectImageBTN.ImageAlign = ContentAlignment.MiddleLeft;
-            SelectImageBTN.Location = new Point(621, 370);
+            SelectImageBTN.Location = new Point(579, 363);
             SelectImageBTN.Name = "SelectImageBTN";
-            SelectImageBTN.Size = new Size(218, 23);
+            SelectImageBTN.Size = new Size(218, 25);
             SelectImageBTN.TabIndex = 15;
             SelectImageBTN.Text = "Select Image from Files";
             SelectImageBTN.UseVisualStyleBackColor = true;
@@ -387,19 +377,59 @@
             GenderCB.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             GenderCB.FormattingEnabled = true;
             GenderCB.Items.AddRange(new object[] { "Female", "Male" });
-            GenderCB.Location = new Point(651, 402);
+            GenderCB.Location = new Point(606, 409);
             GenderCB.Margin = new Padding(5);
             GenderCB.Name = "GenderCB";
             GenderCB.Size = new Size(163, 24);
             GenderCB.TabIndex = 17;
             GenderCB.Text = "        GENDER";
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.SteelBlue;
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 625);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(940, 10);
+            panel1.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(940, 10);
+            panel2.TabIndex = 19;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.SteelBlue;
+            panel3.Dock = DockStyle.Left;
+            panel3.Location = new Point(0, 10);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(10, 615);
+            panel3.TabIndex = 19;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.SteelBlue;
+            panel4.Dock = DockStyle.Right;
+            panel4.Location = new Point(930, 10);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(10, 615);
+            panel4.TabIndex = 19;
+            // 
             // SignInForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
-            ClientSize = new Size(1039, 707);
+            ClientSize = new Size(940, 635);
+            Controls.Add(panel4);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(GenderCB);
             Controls.Add(SelectImageBTN);
             Controls.Add(AdminPicPB);
@@ -418,21 +448,17 @@
             Controls.Add(GoBackBTN);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(pictureBox1);
             Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Name = "SignInForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SignInForm";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)AdminPicPB).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private Label label1;
         private Label label2;
         private Button GoBackBTN;
@@ -451,5 +477,9 @@
         private PictureBox AdminPicPB;
         private Button SelectImageBTN;
         private ComboBox GenderCB;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel4;
     }
 }

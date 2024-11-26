@@ -21,11 +21,11 @@ namespace LibraryManagementSystem.Repositories
             this.applicationDBContext = applicationDBContext;
         }
 
-        public async Task CreateAccountAsync(AdminDto adminDto)
+        public async Task CreateAdminAccountAsync(AdminDto adminDto)
         {
             var errorMessages = new List<string>();
 
-            if(adminDto.Password != adminDto.ConfirmPass)
+            if (adminDto.Password != adminDto.ConfirmPass)
             {
                 errorMessages.Add("Password doesn't match.");
             }
@@ -34,7 +34,7 @@ namespace LibraryManagementSystem.Repositories
                 .AsNoTracking()
                 .SingleOrDefaultAsync(a => a.Email == adminDto.Email);
 
-            if(existingAdmin != null)
+            if (existingAdmin != null)
             {
                 MessageBox.Show($"An admin with this email: '{adminDto.Email}' already exists. Please use a different email", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -57,5 +57,12 @@ namespace LibraryManagementSystem.Repositories
             await applicationDBContext.SaveChangesAsync();
         }
 
+
+
+
+        public async Task CreateUserAccountAsync(UserDto userDto)
+        {
+
+        }
     }
 }

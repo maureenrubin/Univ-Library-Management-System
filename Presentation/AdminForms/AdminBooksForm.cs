@@ -34,7 +34,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             _booksRepository = booksRepository;
             InitializeComponent();
-            _crudBooksTransition = new System.Windows.Forms.Timer { Interval = 5 };
+            _crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10};
             _sideBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
             _animations = new Animations();
             _animations.CrudBooksTransition(_crudBooksTransition, BooksPanel, _sidebarExpanded);
@@ -108,6 +108,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             ClearForm();
 
+            AdminBooksUserControl bookDisplay = new AdminBooksUserControl(book);
+            BooksFLP.Controls.Add(bookDisplay);
+
         }
 
         private void ClearForm()
@@ -148,7 +151,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void DisplayBooksToUI(BooksEntity addedBooks)
         {
-            BooksUserControl bookDisplay = new BooksUserControl(addedBooks);
+            AdminBooksUserControl bookDisplay = new AdminBooksUserControl(addedBooks);
 
 
             BooksFLP.Controls.Add(bookDisplay);

@@ -76,7 +76,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             };
 
-            await createAccountRepository.CreateAccountAsync(createAdminDto);
+            await createAccountRepository.CreateAdminAccountAsync(createAdminDto);
             MessageBox.Show("New Administrator created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //Clear Controls
 

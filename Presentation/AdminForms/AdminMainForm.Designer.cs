@@ -40,6 +40,7 @@
             AccountsButton = new Button();
             BooksButton = new Button();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            ViewAdminBtn = new Button();
             ViewProfileBTN = new Button();
             MainPanel = new Panel();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
@@ -156,7 +157,7 @@
             TransactionButton.FlatStyle = FlatStyle.Flat;
             TransactionButton.Image = (Image)resources.GetObject("TransactionButton.Image");
             TransactionButton.ImageAlign = ContentAlignment.MiddleRight;
-            TransactionButton.Location = new Point(671, 12);
+            TransactionButton.Location = new Point(681, 12);
             TransactionButton.Name = "TransactionButton";
             TransactionButton.Size = new Size(156, 52);
             TransactionButton.TabIndex = 8;
@@ -173,11 +174,11 @@
             AccountsButton.FlatStyle = FlatStyle.Flat;
             AccountsButton.Image = (Image)resources.GetObject("AccountsButton.Image");
             AccountsButton.ImageAlign = ContentAlignment.MiddleRight;
-            AccountsButton.Location = new Point(506, 12);
+            AccountsButton.Location = new Point(532, 12);
             AccountsButton.Name = "AccountsButton";
             AccountsButton.Size = new Size(143, 52);
             AccountsButton.TabIndex = 6;
-            AccountsButton.Text = "Manage Accounts";
+            AccountsButton.Text = "Manage Students";
             AccountsButton.TextAlign = ContentAlignment.MiddleLeft;
             AccountsButton.UseVisualStyleBackColor = false;
             AccountsButton.Click += AccountsButton_Click;
@@ -190,7 +191,7 @@
             BooksButton.FlatStyle = FlatStyle.Flat;
             BooksButton.Image = (Image)resources.GetObject("BooksButton.Image");
             BooksButton.ImageAlign = ContentAlignment.MiddleRight;
-            BooksButton.Location = new Point(332, 12);
+            BooksButton.Location = new Point(376, 12);
             BooksButton.Name = "BooksButton";
             BooksButton.Size = new Size(150, 52);
             BooksButton.TabIndex = 7;
@@ -201,6 +202,7 @@
             // 
             // kryptonPanel2
             // 
+            kryptonPanel2.Controls.Add(ViewAdminBtn);
             kryptonPanel2.Controls.Add(ViewProfileBTN);
             kryptonPanel2.Controls.Add(BooksButton);
             kryptonPanel2.Controls.Add(TransactionButton);
@@ -209,6 +211,22 @@
             kryptonPanel2.Name = "kryptonPanel2";
             kryptonPanel2.Size = new Size(1465, 70);
             kryptonPanel2.TabIndex = 3;
+            // 
+            // ViewAdminBtn
+            // 
+            ViewAdminBtn.BackColor = Color.Transparent;
+            ViewAdminBtn.Cursor = Cursors.Hand;
+            ViewAdminBtn.FlatAppearance.BorderSize = 0;
+            ViewAdminBtn.FlatStyle = FlatStyle.Flat;
+            ViewAdminBtn.Image = (Image)resources.GetObject("ViewAdminBtn.Image");
+            ViewAdminBtn.ImageAlign = ContentAlignment.MiddleRight;
+            ViewAdminBtn.Location = new Point(843, 12);
+            ViewAdminBtn.Name = "ViewAdminBtn";
+            ViewAdminBtn.Size = new Size(143, 52);
+            ViewAdminBtn.TabIndex = 9;
+            ViewAdminBtn.Text = " View Admin Details";
+            ViewAdminBtn.TextAlign = ContentAlignment.MiddleLeft;
+            ViewAdminBtn.UseVisualStyleBackColor = false;
             // 
             // ViewProfileBTN
             // 
@@ -315,5 +333,6 @@
         private Krypton.Toolkit.KryptonPanel kryptonPanel3;
         private Krypton.Toolkit.KryptonPanel kryptonPanel4;
         private Krypton.Toolkit.KryptonPanel kryptonPanel5;
+        private Button ViewAdminBtn;
     }
 }

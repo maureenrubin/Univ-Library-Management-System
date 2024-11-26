@@ -61,20 +61,20 @@
             // 
             // BooksPanel
             // 
-            BooksPanel.BackColor = Color.LavenderBlush;
+            BooksPanel.BackColor = Color.LightCyan;
             BooksPanel.Controls.Add(panel1);
             BooksPanel.Controls.Add(DeleteBookBtn);
             BooksPanel.Controls.Add(EditBookBtn);
             BooksPanel.Controls.Add(AddBookBtn);
             BooksPanel.Controls.Add(ManageBooksBTN);
-            BooksPanel.Location = new Point(12, 12);
+            BooksPanel.Location = new Point(9, 52);
             BooksPanel.Name = "BooksPanel";
-            BooksPanel.Size = new Size(31, 777);
+            BooksPanel.Size = new Size(50, 611);
             BooksPanel.TabIndex = 0;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Thistle;
+            panel1.BackColor = Color.FromArgb(187, 206, 230, 255);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(BooksCategoryTXT);
             panel1.Controls.Add(BrowseImageBtn);
@@ -91,9 +91,9 @@
             panel1.Controls.Add(CancelBtn);
             panel1.Controls.Add(SaveBooksBtn);
             panel1.Controls.Add(BooksTitleTXT);
-            panel1.Location = new Point(259, 3);
+            panel1.Location = new Point(265, 18);
             panel1.Name = "panel1";
-            panel1.Size = new Size(893, 762);
+            panel1.Size = new Size(813, 577);
             panel1.TabIndex = 4;
             // 
             // label6
@@ -139,7 +139,7 @@
             BooksCategoryTXT.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
             BooksCategoryTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             BooksCategoryTXT.StateNormal.Content.Padding = new Padding(5);
-            BooksCategoryTXT.TabIndex = 18;
+            BooksCategoryTXT.TabIndex = 5;
             // 
             // BrowseImageBtn
             // 
@@ -150,7 +150,7 @@
             BrowseImageBtn.Location = new Point(84, 362);
             BrowseImageBtn.Name = "BrowseImageBtn";
             BrowseImageBtn.Size = new Size(224, 27);
-            BrowseImageBtn.TabIndex = 17;
+            BrowseImageBtn.TabIndex = 9;
             BrowseImageBtn.Text = "Browse Image";
             BrowseImageBtn.UseVisualStyleBackColor = true;
             BrowseImageBtn.Click += BrowseImageBtn_Click;
@@ -159,7 +159,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(148, 472);
+            label5.Location = new Point(148, 431);
             label5.Name = "label5";
             label5.Size = new Size(86, 16);
             label5.TabIndex = 16;
@@ -217,10 +217,10 @@
             // PublisedDateTime
             // 
             PublisedDateTime.Cursor = Cursors.Hand;
-            PublisedDateTime.Location = new Point(84, 491);
+            PublisedDateTime.Location = new Point(84, 450);
             PublisedDateTime.Name = "PublisedDateTime";
             PublisedDateTime.Size = new Size(224, 23);
-            PublisedDateTime.TabIndex = 10;
+            PublisedDateTime.TabIndex = 6;
             // 
             // BooksStocksTXT
             // 
@@ -255,7 +255,7 @@
             BooksStocksTXT.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
             BooksStocksTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             BooksStocksTXT.StateNormal.Content.Padding = new Padding(5);
-            BooksStocksTXT.TabIndex = 9;
+            BooksStocksTXT.TabIndex = 4;
             // 
             // BooksPriceTXT
             // 
@@ -290,7 +290,7 @@
             BooksPriceTXT.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
             BooksPriceTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             BooksPriceTXT.StateNormal.Content.Padding = new Padding(5);
-            BooksPriceTXT.TabIndex = 8;
+            BooksPriceTXT.TabIndex = 3;
             // 
             // BooksGenreTXT
             // 
@@ -325,14 +325,14 @@
             BooksGenreTXT.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
             BooksGenreTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             BooksGenreTXT.StateNormal.Content.Padding = new Padding(5);
-            BooksGenreTXT.TabIndex = 7;
+            BooksGenreTXT.TabIndex = 2;
             // 
             // CancelBtn
             // 
             CancelBtn.Cursor = Cursors.Hand;
-            CancelBtn.Location = new Point(601, 710);
+            CancelBtn.Location = new Point(393, 497);
             CancelBtn.Name = "CancelBtn";
-            CancelBtn.Size = new Size(135, 34);
+            CancelBtn.Size = new Size(135, 30);
             CancelBtn.StateCommon.Back.Color1 = Color.Crimson;
             CancelBtn.StateCommon.Back.Color2 = Color.Crimson;
             CancelBtn.StateCommon.Border.Color1 = Color.Black;
@@ -341,15 +341,15 @@
             CancelBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
             CancelBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
             CancelBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            CancelBtn.TabIndex = 6;
+            CancelBtn.TabIndex = 8;
             CancelBtn.Values.Text = "CANCEL";
             // 
             // SaveBooksBtn
             // 
             SaveBooksBtn.Cursor = Cursors.Hand;
-            SaveBooksBtn.Location = new Point(742, 710);
+            SaveBooksBtn.Location = new Point(569, 497);
             SaveBooksBtn.Name = "SaveBooksBtn";
-            SaveBooksBtn.Size = new Size(135, 34);
+            SaveBooksBtn.Size = new Size(135, 30);
             SaveBooksBtn.StateCommon.Back.Color1 = Color.RoyalBlue;
             SaveBooksBtn.StateCommon.Back.Color2 = Color.RoyalBlue;
             SaveBooksBtn.StateCommon.Border.Color1 = Color.Black;
@@ -358,7 +358,7 @@
             SaveBooksBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
             SaveBooksBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
             SaveBooksBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            SaveBooksBtn.TabIndex = 5;
+            SaveBooksBtn.TabIndex = 7;
             SaveBooksBtn.Values.Text = "SAVE";
             SaveBooksBtn.Click += SaveBooksBtn_Click;
             // 
@@ -395,34 +395,34 @@
             BooksTitleTXT.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
             BooksTitleTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             BooksTitleTXT.StateNormal.Content.Padding = new Padding(5);
-            BooksTitleTXT.TabIndex = 3;
+            BooksTitleTXT.TabIndex = 1;
             // 
             // DeleteBookBtn
             // 
-            DeleteBookBtn.Location = new Point(40, 365);
+            DeleteBookBtn.Location = new Point(68, 366);
             DeleteBookBtn.Name = "DeleteBookBtn";
             DeleteBookBtn.Size = new Size(164, 42);
-            DeleteBookBtn.StateCommon.Back.Color1 = Color.DarkSlateBlue;
-            DeleteBookBtn.StateCommon.Back.Color2 = Color.DarkSlateBlue;
+            DeleteBookBtn.StateCommon.Back.Color1 = Color.Firebrick;
+            DeleteBookBtn.StateCommon.Back.Color2 = Color.Firebrick;
             DeleteBookBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             DeleteBookBtn.StateCommon.Border.Rounding = 6F;
-            DeleteBookBtn.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
-            DeleteBookBtn.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
+            DeleteBookBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
+            DeleteBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
             DeleteBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             DeleteBookBtn.TabIndex = 3;
             DeleteBookBtn.Values.Text = "DELETE BOOK";
             // 
             // EditBookBtn
             // 
-            EditBookBtn.Location = new Point(40, 302);
+            EditBookBtn.Location = new Point(68, 303);
             EditBookBtn.Name = "EditBookBtn";
             EditBookBtn.Size = new Size(164, 42);
-            EditBookBtn.StateCommon.Back.Color1 = Color.DarkSlateBlue;
-            EditBookBtn.StateCommon.Back.Color2 = Color.DarkSlateBlue;
+            EditBookBtn.StateCommon.Back.Color1 = Color.Turquoise;
+            EditBookBtn.StateCommon.Back.Color2 = Color.Turquoise;
             EditBookBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             EditBookBtn.StateCommon.Border.Rounding = 6F;
-            EditBookBtn.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
-            EditBookBtn.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
+            EditBookBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
+            EditBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
             EditBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             EditBookBtn.TabIndex = 2;
             EditBookBtn.Values.Text = "EDIT BOOK";
@@ -430,15 +430,15 @@
             // AddBookBtn
             // 
             AddBookBtn.Cursor = Cursors.Hand;
-            AddBookBtn.Location = new Point(40, 232);
+            AddBookBtn.Location = new Point(68, 233);
             AddBookBtn.Name = "AddBookBtn";
             AddBookBtn.Size = new Size(164, 42);
-            AddBookBtn.StateCommon.Back.Color1 = Color.DarkSlateBlue;
-            AddBookBtn.StateCommon.Back.Color2 = Color.DarkSlateBlue;
+            AddBookBtn.StateCommon.Back.Color1 = Color.MediumSeaGreen;
+            AddBookBtn.StateCommon.Back.Color2 = Color.MediumSeaGreen;
             AddBookBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             AddBookBtn.StateCommon.Border.Rounding = 6F;
-            AddBookBtn.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
-            AddBookBtn.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
+            AddBookBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
+            AddBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
             AddBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             AddBookBtn.TabIndex = 1;
             AddBookBtn.Values.Text = "ADD BOOK";
@@ -452,7 +452,7 @@
             ManageBooksBTN.Image = (Image)resources.GetObject("ManageBooksBTN.Image");
             ManageBooksBTN.Location = new Point(3, 3);
             ManageBooksBTN.Name = "ManageBooksBTN";
-            ManageBooksBTN.Size = new Size(25, 28);
+            ManageBooksBTN.Size = new Size(44, 47);
             ManageBooksBTN.TabIndex = 0;
             ManageBooksBTN.UseVisualStyleBackColor = true;
             ManageBooksBTN.Click += ManageBooksBTN_Click;
@@ -460,24 +460,26 @@
             // panel2
             // 
             panel2.Controls.Add(BooksFLP);
-            panel2.Location = new Point(46, 12);
+            panel2.Dock = DockStyle.Right;
+            panel2.Location = new Point(65, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1378, 771);
+            panel2.Size = new Size(1371, 795);
             panel2.TabIndex = 1;
             // 
             // BooksFLP
             // 
-            BooksFLP.BackColor = Color.LightCyan;
-            BooksFLP.Location = new Point(3, 3);
+            BooksFLP.AutoScroll = true;
+            BooksFLP.BackColor = Color.FromArgb(187, 206, 230, 255);
+            BooksFLP.Location = new Point(12, 24);
             BooksFLP.Name = "BooksFLP";
-            BooksFLP.Size = new Size(1372, 765);
+            BooksFLP.Size = new Size(1352, 759);
             BooksFLP.TabIndex = 0;
             // 
             // AdminBooksForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LavenderBlush;
+            BackColor = Color.LightCyan;
             ClientSize = new Size(1436, 795);
             Controls.Add(BooksPanel);
             Controls.Add(panel2);

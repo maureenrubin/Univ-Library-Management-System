@@ -23,7 +23,7 @@ namespace LibraryManagementSystem.Domain.DTO
 
         public byte[]? AdminPicture { get; set; }
 
-        public string? Role { get; set; }
+        public string? Role { get; set; } = "Admin";
 
         public string? Gender { get; set; }
     }

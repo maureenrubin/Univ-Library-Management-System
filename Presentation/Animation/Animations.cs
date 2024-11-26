@@ -11,8 +11,7 @@ namespace LibraryManagementSystem.Presentation.Animation
        
         private int _animationStep = 10;
         private bool _sidebarExpanded;
-      
-
+       
      
 
         public void ViewSideTransition(System.Windows.Forms.Timer timer, Panel AdminPanel, bool sidebarExpanded)
@@ -52,7 +51,7 @@ namespace LibraryManagementSystem.Presentation.Animation
                 if (sidebarExpanded)
                 {
                     BooksPanel.Width -= _animationStep;
-                    if (BooksPanel.Width <= 31)
+                    if (BooksPanel.Width <= 50 )
                     {
                         sidebarExpanded = false;
                         timer.Stop();
@@ -82,7 +81,7 @@ namespace LibraryManagementSystem.Presentation.Animation
                 if (sidebarExpanded)
                 {
                     BooksPanel.Width -= _animationStep;
-                    if (BooksPanel.Width <= 242)
+                    if (BooksPanel.Width <= 263)
                     {
                         sidebarExpanded = false;
                         timer.Stop();
@@ -92,7 +91,61 @@ namespace LibraryManagementSystem.Presentation.Animation
                 else
                 {
                     BooksPanel.Width += _animationStep;
-                    if (BooksPanel.Width >= 1159)
+                    if (BooksPanel.Width >= 1092)
+                    {
+                        sidebarExpanded = true;
+                        timer.Stop();
+                    }
+                }
+            };
+
+        }
+
+        public void CrudStudentTransition(System.Windows.Forms.Timer timer, Panel StudentPanel, bool sidebarExpanded)
+        {
+            timer.Tick += (sender, e) =>
+            {
+                if (sidebarExpanded)
+                {
+                    StudentPanel.Width -= _animationStep;
+                    if (StudentPanel.Width <= 263)
+                    {
+                        sidebarExpanded = false;
+                        timer.Stop();
+
+                    }
+                }
+                else
+                {
+                    StudentPanel.Width += _animationStep;
+                    if (StudentPanel.Width >= 1092)
+                    {
+                        sidebarExpanded = true;
+                        timer.Stop();
+                    }
+                }
+            };
+
+        }
+
+        public void SideUserTransition(System.Windows.Forms.Timer timer, Panel StudentPanel, bool sidebarExpanded)
+        {
+            timer.Tick += (sender, e) =>
+            {
+                if (sidebarExpanded)
+                {
+                    StudentPanel.Width -= _animationStep;
+                    if (StudentPanel.Width <= 50)
+                    {
+                        sidebarExpanded = false;
+                        timer.Stop();
+
+                    }
+                }
+                else
+                {
+                    StudentPanel.Width += _animationStep;
+                    if (StudentPanel.Width >= 246)
                     {
                         sidebarExpanded = true;
                         timer.Stop();
@@ -103,7 +156,5 @@ namespace LibraryManagementSystem.Presentation.Animation
 
 
         }
-
-
     }
 }

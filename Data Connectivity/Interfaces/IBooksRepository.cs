@@ -12,5 +12,6 @@ namespace LibraryManagementSystem.Data_Connectivity.Interfaces
     {
         Task<int> AddBookAsync(BooksEntity books);
         Task<IEnumerable<BooksEntity>> GetAllBooksAsync();
+  
     }
 }

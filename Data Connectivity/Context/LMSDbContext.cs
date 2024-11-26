@@ -23,14 +23,15 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
 
         public DbSet<AdminEntity> Admins { get; set; } = null!;
         public DbSet<BooksEntity> Books { get; set; } = null!;
+        public DbSet<UserEntity> Users { get; set; } = null;
 
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfiguration(new AdminConfiguration());
-            modelBuilder.ApplyConfiguration(new BooksConfiguration());
+            modelBuilder.ApplyConfiguration<AdminEntity>(new AdminConfiguration());
+            modelBuilder.ApplyConfiguration<BooksEntity>(new BooksConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
