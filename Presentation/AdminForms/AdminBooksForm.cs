@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryManagementSystem.Data_Connectivity.Context;
-using LibraryManagementSystem.Data_Connectivity.Interfaces;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Presentation.Animation;
 using LibraryManagementSystem.Repositories;
+using LibraryManagementSystem.Repositories.Interfaces;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {

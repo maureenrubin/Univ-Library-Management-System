@@ -1,9 +1,9 @@
 using LibraryManagementSystem.Data_Connectivity.Context;
-using LibraryManagementSystem.Data_Connectivity.Interfaces;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Presentation.AdminForms;
 using LibraryManagementSystem.Presentation.UserForms;
 using LibraryManagementSystem.Repositories;
+using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace WinFormsApp2
 {
-     static class Program
+    static class Program
      {
         public static IServiceProvider ServiceProvider { get; private set; }
 

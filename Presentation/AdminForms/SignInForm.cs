@@ -1,5 +1,5 @@
-﻿using LibraryManagementSystem.Data_Connectivity.Interfaces;
-using LibraryManagementSystem.Domain.DTO;
+﻿using LibraryManagementSystem.Domain.DTO;
+using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

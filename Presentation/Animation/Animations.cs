@@ -128,7 +128,7 @@ namespace LibraryManagementSystem.Presentation.Animation
 
         }
 
-        public void SideUserTransition(System.Windows.Forms.Timer timer, Panel StudentPanel, bool sidebarExpanded)
+        public void SideStudentTransition(System.Windows.Forms.Timer timer, Panel StudentPanel, bool sidebarExpanded)
         {
             timer.Tick += (sender, e) =>
             {
@@ -145,7 +145,7 @@ namespace LibraryManagementSystem.Presentation.Animation
                 else
                 {
                     StudentPanel.Width += _animationStep;
-                    if (StudentPanel.Width >= 246)
+                    if (StudentPanel.Width >= 287)
                     {
                         sidebarExpanded = true;
                         timer.Stop();

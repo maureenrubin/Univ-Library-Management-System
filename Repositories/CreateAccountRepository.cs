@@ -1,7 +1,8 @@
 ﻿using LibraryManagementSystem.Data_Connectivity.Context;
-using LibraryManagementSystem.Data_Connectivity.Interfaces;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Helpers;
+using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -62,6 +63,44 @@ namespace LibraryManagementSystem.Repositories
 
         public async Task CreateUserAccountAsync(UserDto userDto)
         {
+           
+            if (userDto.Password != userDto.ConfirmPassword)
+            {
+                MessageBox.Show("Passwords don't match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var existingUser = await applicationDBContext.Users
+                .AsNoTracking()
+                .SingleOrDefaultAsync(u => u.Email.ToLower() == userDto.Email.ToLower());
+
+            if(existingUser != null)
+            {
+                MessageBox.Show($"A User with this email: '{userDto.Email}' already exists. Please use a different email", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            PasswordHelper.CreatePasswordHash(userDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
+
+            
+            var user = new UserEntity
+            {
+                Email = userDto.Email,
+                FirstName = userDto.FirstName,
+                LastName = userDto.LastName,
+                Course = userDto.Course,
+                UserPicture = userDto.UserPicture,
+                CreatedAt = userDto.CreatedAt,
+                Role = userDto.Role,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+
+            };
+
+            applicationDBContext.Users.Add(user);
+            await applicationDBContext.SaveChangesAsync();
+
+          
 
         }
     }

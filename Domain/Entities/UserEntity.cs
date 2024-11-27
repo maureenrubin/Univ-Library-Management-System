@@ -16,11 +16,13 @@ namespace LibraryManagementSystem.Domain.Entities
         [Required]
         [MaxLength(200)]
         public string Email { get; set; } = string.Empty;
-       
-        [Required]
-        [MaxLength(200)]
-        public string Password { get; set; } = string.Empty;
-       
+
+        [Column(TypeName = "varbinary(max)")]
+        public byte[]? PasswordHash { get; set; }
+
+        [Column(TypeName = "varbinary(max)")]
+        public byte[]? PasswordSalt { get; set; }
+
         [Required]
         [MaxLength(200)]
         public string FirstName { get; set; } = string.Empty;
@@ -33,7 +35,7 @@ namespace LibraryManagementSystem.Domain.Entities
         public byte[]? UserPicture { get; set; }
 
         [Required]
-        public string Role { get; set; } 
+        public string Role { get; set; } = "User";
 
         [Required]
         [MaxLength(200)]

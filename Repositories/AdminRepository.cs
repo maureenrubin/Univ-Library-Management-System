@@ -1,7 +1,7 @@
 ﻿using LibraryManagementSystem.Data_Connectivity.Context;
-using LibraryManagementSystem.Data_Connectivity.Interfaces;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

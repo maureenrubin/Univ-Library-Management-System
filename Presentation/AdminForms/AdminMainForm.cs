@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryManagementSystem.Presentation.Animation;
 using WinFormsApp2;
-using LibraryManagementSystem.Data_Connectivity.Interfaces;
 using LibraryManagementSystem.Repositories;
+using LibraryManagementSystem.Repositories.Interfaces;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -77,7 +77,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void AccountsButton_Click(object sender, EventArgs e)
         {
-            LoadForm(new AdminManageUserForm());
+            var adminManageUserForm = Program.ServiceProvider.GetRequiredService<AdminManageUserForm>();
+            LoadForm(adminManageUserForm);
         }
 
         private void TransactionButton_Click(object sender, EventArgs e)
