@@ -173,7 +173,7 @@
             AccountsButton.Cursor = Cursors.Hand;
             AccountsButton.FlatAppearance.BorderSize = 0;
             AccountsButton.FlatStyle = FlatStyle.Flat;
-            AccountsButton.Image = (Image)resources.GetObject("AccountsButton.Image");
+            AccountsButton.Image = Properties.Resources.Student_Male;
             AccountsButton.ImageAlign = ContentAlignment.MiddleRight;
             AccountsButton.Location = new Point(532, 12);
             AccountsButton.Name = "AccountsButton";

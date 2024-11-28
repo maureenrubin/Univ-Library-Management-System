@@ -79,7 +79,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
 
                         var studentMainForm = Program.ServiceProvider.GetRequiredService<UserMainForm>();
-                        // studentMainForm.CurrentUser = user;
+                        studentMainForm.CurrentUser = user;
                         
                         this.Hide();
                         studentMainForm.Show();
