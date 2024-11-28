@@ -38,6 +38,7 @@ namespace WinFormsApp2
             services.AddScoped<ICreateAccountRepository, CreateAccountRepository>();
             services.AddScoped<IBooksRepository, BookRepository>();
             services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<AdminEntity>();
             services.AddScoped<BooksEntity>();

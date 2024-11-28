@@ -83,9 +83,9 @@
             label1.Font = new Font("Gadugi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(64, 73);
             label1.Name = "label1";
-            label1.Size = new Size(154, 25);
+            label1.Size = new Size(134, 25);
             label1.TabIndex = 5;
-            label1.Text = "VIEW PROFILE";
+            label1.Text = "MY PROFILE";
             // 
             // LogoutBTN
             // 
@@ -134,6 +134,7 @@
             // 
             // AccountPic_PB
             // 
+            AccountPic_PB.BackColor = Color.Transparent;
             AccountPic_PB.Location = new Point(27, 107);
             AccountPic_PB.Name = "AccountPic_PB";
             AccountPic_PB.Size = new Size(217, 204);

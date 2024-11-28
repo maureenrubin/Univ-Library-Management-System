@@ -139,7 +139,7 @@
             StudentPanel.Controls.Add(panel3);
             StudentPanel.Location = new Point(4, 57);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(1087, 698);
+            StudentPanel.Size = new Size(50, 698);
             StudentPanel.TabIndex = 1;
             // 
             // DeleteUserBtn

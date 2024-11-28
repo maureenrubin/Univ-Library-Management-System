@@ -161,9 +161,9 @@
             // 
             pictureBox2.Dock = DockStyle.Bottom;
             pictureBox2.Image = Properties.Resources.abstract_water_ocean_wave_background;
-            pictureBox2.Location = new Point(0, 640);
+            pictureBox2.Location = new Point(0, 628);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1473, 233);
+            pictureBox2.Size = new Size(1473, 245);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 15;
             pictureBox2.TabStop = false;

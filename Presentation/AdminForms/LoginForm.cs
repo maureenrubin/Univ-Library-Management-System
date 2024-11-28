@@ -1,4 +1,6 @@
 ﻿using LibraryManagementSystem.Data_Connectivity;
+using LibraryManagementSystem.Helpers;
+using LibraryManagementSystem.Presentation.UserForms;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,16 +21,23 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     {
 
         private readonly IAdminRepository adminRepository;
+        private readonly IUserRepository userRepository;
+
+
+
         private readonly MainForm_ADMIN mainFormAdmin;
         private readonly SignInForm signInForm;
-        
+
 
         public LoginForm
-            (IAdminRepository adminRepository, MainForm_ADMIN mainFormAdmin, SignInForm signInForm)
+            (IAdminRepository adminRepository, IUserRepository userRepository,
+            MainForm_ADMIN mainFormAdmin, 
+            SignInForm signInForm)
         {
 
             InitializeComponent();
             this.adminRepository = adminRepository;
+            this.userRepository = userRepository;
             this.mainFormAdmin = mainFormAdmin;
             this.signInForm = signInForm;
         }
@@ -45,31 +54,46 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 return;
             }
 
-
-           
-
             var admin = await adminRepository.GetAdminByEmailAsync(email);
-
             if (admin != null && admin.Password == password)
             {
-                MessageBox.Show("Login Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Login Successfully, Welcome! '", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 var mainFormAdmin = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
                 mainFormAdmin.CurrentAdmin = admin;
                 
-                
                 this.Hide();
                 mainFormAdmin.Show();
+                return;
 
             }
-            else
-            {
-                MessageBox.Show("Invalid credentials. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
 
-           
-           
+            var user = await userRepository.GetUserByEmailAsync(email);
+             if (user != null)
+
+             {
+                    if (PasswordHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                    {
+                        MessageBox.Show("Student Login Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        var studentMainForm = Program.ServiceProvider.GetRequiredService<UserMainForm>();
+                        // studentMainForm.CurrentUser = user;
+                        
+                        this.Hide();
+                        studentMainForm.Show();
+                        return;
+                    }
+             }
+            
+            
+            MessageBox.Show("Invalid email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+            
+
+          
+
         }
 
         private void ExitBTN_Click(object sender, EventArgs e)

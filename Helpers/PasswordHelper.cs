@@ -23,6 +23,11 @@ namespace LibraryManagementSystem.Helpers
             using (var hmac = new System.Security.Cryptography.HMACSHA512(storedSalt))
             {
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+
+
+                if (storedHash.Length != computedHash.Length)
+                    return false;
+
                 return computedHash.SequenceEqual(storedHash);
             }
         }

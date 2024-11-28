@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryManagementSystem.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace LibraryManagementSystem.Repositories.Interfaces
 {
     public interface IUserRepository
     {
-
+        Task<UserEntity>GetUserByEmailAsync(string email);
 
 
     }

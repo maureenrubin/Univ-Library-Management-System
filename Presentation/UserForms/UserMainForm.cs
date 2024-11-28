@@ -16,5 +16,10 @@ namespace LibraryManagementSystem.Presentation.UserForms
         {
             InitializeComponent();
         }
+
+        private void UserMainForm_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
