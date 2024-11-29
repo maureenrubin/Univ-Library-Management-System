@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryManagementSystem.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,10 +23,15 @@ namespace LibraryManagementSystem.Domain.DTO
 
         public string? Role { get; set; } = "User";
 
-        public string? Course { get; set; }
+        public int? CourseId { get; set; }
 
         public byte []? UserPicture { get; set; }
 
+        
+
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+  
+    
+      public virtual ICollection<CourseEntity> Courses { get; set; }
     }
 }

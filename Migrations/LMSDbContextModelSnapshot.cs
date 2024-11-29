@@ -114,6 +114,24 @@ namespace LibraryManagementSystem.Migrations
                     b.ToTable("Books", (string)null);
                 });
 
+            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.CourseEntity", b =>
+                {
+                    b.Property<int>("CourseId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CourseId"), 1L, 1);
+
+                    b.Property<string>("Course")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("CourseId");
+
+                    b.ToTable("Courses");
+                });
+
             modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.UserEntity", b =>
                 {
                     b.Property<int>("UserId")
@@ -122,10 +140,11 @@ namespace LibraryManagementSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
-                    b.Property<string>("Course")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CoursesCourseId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -160,7 +179,25 @@ namespace LibraryManagementSystem.Migrations
 
                     b.HasKey("UserId");
 
+                    b.HasIndex("CoursesCourseId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.UserEntity", b =>
+                {
+                    b.HasOne("LibraryManagementSystem.Domain.Entities.CourseEntity", "Courses")
+                        .WithMany("Students")
+                        .HasForeignKey("CoursesCourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Courses");
+                });
+
+            modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.CourseEntity", b =>
+                {
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

@@ -30,9 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminManageUserForm));
             panel1 = new Panel();
+            label8 = new Label();
+            label7 = new Label();
+            label5 = new Label();
+            LABLE = new Label();
+            BAStudentFLP = new FlowLayoutPanel();
+            BEStudentFLP = new FlowLayoutPanel();
+            SWStudentFLP = new FlowLayoutPanel();
+            ITStudentFLP = new FlowLayoutPanel();
             button1 = new Button();
             kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
-            StudentFLP = new FlowLayoutPanel();
             StudentPanel = new Panel();
             DeleteUserBtn = new Krypton.Toolkit.KryptonButton();
             EditUserBtn = new Krypton.Toolkit.KryptonButton();
@@ -63,14 +70,96 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(LABLE);
+            panel1.Controls.Add(BAStudentFLP);
+            panel1.Controls.Add(BEStudentFLP);
+            panel1.Controls.Add(SWStudentFLP);
+            panel1.Controls.Add(ITStudentFLP);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(kryptonTextBox1);
-            panel1.Controls.Add(StudentFLP);
-            panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(60, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1376, 795);
             panel1.TabIndex = 0;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(1006, 75);
+            label8.Name = "label8";
+            label8.Size = new Size(228, 17);
+            label8.TabIndex = 24;
+            label8.Text = "BS IN BUSSINESS ADMINISTRATION";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(699, 80);
+            label7.Name = "label7";
+            label7.Size = new Size(207, 17);
+            label7.TabIndex = 23;
+            label7.Text = "BS IN ELEMENTARY EDUCATION\r\n";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(433, 81);
+            label5.Name = "label5";
+            label5.Size = new Size(133, 17);
+            label5.TabIndex = 22;
+            label5.Text = "BS IN SOCIAL WORK\r\n";
+            // 
+            // LABLE
+            // 
+            LABLE.AutoSize = true;
+            LABLE.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            LABLE.Location = new Point(65, 81);
+            LABLE.Name = "LABLE";
+            LABLE.Size = new Size(261, 17);
+            LABLE.TabIndex = 21;
+            LABLE.Text = "BS IN INFORMATION AND TECHNOLOGY\r\n";
+            // 
+            // BAStudentFLP
+            // 
+            BAStudentFLP.AutoScroll = true;
+            BAStudentFLP.BackColor = Color.White;
+            BAStudentFLP.Location = new Point(974, 101);
+            BAStudentFLP.Name = "BAStudentFLP";
+            BAStudentFLP.Size = new Size(305, 673);
+            BAStudentFLP.TabIndex = 20;
+            // 
+            // BEStudentFLP
+            // 
+            BEStudentFLP.AutoScroll = true;
+            BEStudentFLP.BackColor = Color.White;
+            BEStudentFLP.Location = new Point(663, 100);
+            BEStudentFLP.Name = "BEStudentFLP";
+            BEStudentFLP.Size = new Size(305, 673);
+            BEStudentFLP.TabIndex = 19;
+            // 
+            // SWStudentFLP
+            // 
+            SWStudentFLP.AutoScroll = true;
+            SWStudentFLP.BackColor = Color.White;
+            SWStudentFLP.Location = new Point(352, 101);
+            SWStudentFLP.Name = "SWStudentFLP";
+            SWStudentFLP.Size = new Size(305, 673);
+            SWStudentFLP.TabIndex = 19;
+            // 
+            // ITStudentFLP
+            // 
+            ITStudentFLP.AutoScroll = true;
+            ITStudentFLP.BackColor = Color.White;
+            ITStudentFLP.Location = new Point(41, 101);
+            ITStudentFLP.Name = "ITStudentFLP";
+            ITStudentFLP.Size = new Size(305, 673);
+            ITStudentFLP.TabIndex = 18;
             // 
             // button1
             // 
@@ -79,7 +168,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Image = Properties.Resources.Search;
             button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(77, 12);
+            button1.Location = new Point(62, 22);
             button1.Name = "button1";
             button1.Size = new Size(37, 34);
             button1.TabIndex = 5;
@@ -88,7 +177,7 @@
             // kryptonTextBox1
             // 
             kryptonTextBox1.Cursor = Cursors.IBeam;
-            kryptonTextBox1.Location = new Point(120, 12);
+            kryptonTextBox1.Location = new Point(105, 22);
             kryptonTextBox1.Name = "kryptonTextBox1";
             kryptonTextBox1.Size = new Size(381, 34);
             kryptonTextBox1.StateActive.Back.Color1 = Color.White;
@@ -120,15 +209,6 @@
             kryptonTextBox1.StateNormal.Content.Padding = new Padding(5);
             kryptonTextBox1.TabIndex = 17;
             // 
-            // StudentFLP
-            // 
-            StudentFLP.AutoScroll = true;
-            StudentFLP.BackColor = Color.AliceBlue;
-            StudentFLP.Location = new Point(3, 57);
-            StudentFLP.Name = "StudentFLP";
-            StudentFLP.Size = new Size(1361, 726);
-            StudentFLP.TabIndex = 0;
-            // 
             // StudentPanel
             // 
             StudentPanel.BackColor = Color.FromArgb(187, 206, 230);
@@ -137,9 +217,9 @@
             StudentPanel.Controls.Add(AddUserBtn);
             StudentPanel.Controls.Add(ManageUserBTN);
             StudentPanel.Controls.Add(panel3);
-            StudentPanel.Location = new Point(4, 57);
+            StudentPanel.Location = new Point(4, 75);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(50, 698);
+            StudentPanel.Size = new Size(1092, 698);
             StudentPanel.TabIndex = 1;
             // 
             // DeleteUserBtn
@@ -404,7 +484,7 @@
             // 
             UserCourseCB.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             UserCourseCB.FormattingEnabled = true;
-            UserCourseCB.Items.AddRange(new object[] { "BS in & Information Technology", "BS in & Business Administration", "BS in & Elementary Education", "BS in & Social Work" });
+            UserCourseCB.Items.AddRange(new object[] { "BS in Information and Technology", "BS in Business Administration", "BS in Elementary Education", "BS in Social Work" });
             UserCourseCB.Location = new Point(463, 245);
             UserCourseCB.Name = "UserCourseCB";
             UserCourseCB.Size = new Size(219, 22);
@@ -596,7 +676,6 @@
 
         private Panel panel1;
         private Panel StudentPanel;
-        private FlowLayoutPanel StudentFLP;
         private Panel panel3;
         private Button ManageUserBTN;
         private Krypton.Toolkit.KryptonButton AddUserBtn;
@@ -620,5 +699,13 @@
         private Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
         private Label label6;
         private Krypton.Toolkit.KryptonTextBox UserConfirmPassTXT;
+        private FlowLayoutPanel ITStudentFLP;
+        private FlowLayoutPanel BEStudentFLP;
+        private FlowLayoutPanel SWStudentFLP;
+        private FlowLayoutPanel BAStudentFLP;
+        private Label label7;
+        private Label label5;
+        private Label LABLE;
+        private Label label8;
     }
 }

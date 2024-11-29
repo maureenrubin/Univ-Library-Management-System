@@ -40,7 +40,7 @@ namespace LibraryManagementSystem.Presentation.UserForms
             if (CurrentUser != null)
             {
                 StudentNameTEXT.Text = $"{CurrentUser.FirstName} {CurrentUser.LastName}";
-                StudentCourseTEXT.Text = $"{CurrentUser.Course}";
+               // StudentCourseTEXT.Text = $"{CurrentUser.Course}";
 
                 if (CurrentUser.UserPicture != null && CurrentUser.UserPicture.Length > 0)
                 {

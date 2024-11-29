@@ -16,6 +16,9 @@
     <Compile Update="Presentation\AdminForms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Presentation\AdminForms\ManageAdminsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Presentation\AdminForms\SignInForm.cs">
       <SubType>Form</SubType>
     </Compile>

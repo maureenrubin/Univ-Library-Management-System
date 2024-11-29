@@ -2,6 +2,7 @@
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Presentation.Animation;
+using LibraryManagementSystem.Presentation.UserControls;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.VisualBasic;
 using System;
@@ -13,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -21,7 +23,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     {
 
         private readonly ICreateAccountRepository _createAccountRepository;
-
+        private readonly IUserRepository _userRepository;
+        private readonly ICourseRepository _courseRepository;
+        private readonly UserDto _userDto;
 
         private System.Windows.Forms.Timer _crudStudentTransition;
         private System.Windows.Forms.Timer _sideUserTransition;
@@ -31,17 +35,25 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private readonly UserEntity _addedUser;
 
 
-        public AdminManageUserForm(ICreateAccountRepository createAccountRepository)
+        public AdminManageUserForm(ICreateAccountRepository createAccountRepository, 
+               IUserRepository userRepository, 
+               ICourseRepository courseRepository)
         {
-            _createAccountRepository = createAccountRepository;
+            
             InitializeComponent();
+            _createAccountRepository = createAccountRepository;
+            _userRepository = userRepository;
+            _courseRepository = courseRepository;
+
             _crudStudentTransition = new System.Windows.Forms.Timer { Interval = 10 };
             _sideUserTransition = new System.Windows.Forms.Timer { Interval = 10 };
             _animations = new Animations();
             _animations.CrudStudentTransition(_crudStudentTransition, StudentPanel, _sidebarExpanded);
             _animations.SideStudentTransition(_sideUserTransition, StudentPanel, _sidebarExpanded);
 
+            LoadCources();
             LoadStudentDetails();
+           
 
         }
 
@@ -59,11 +71,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             string firstName = UserFirstNameTXT.Text;
             string lastName = UserLastNameTXT.Text;
-            string course = UserCourseCB.Text;
             string email = UserEmailTXT.Text;
             string password = UserPasswordTXT.Text;
             string confirmPassword = UserConfirmPassTXT.Text;
             byte[] userPicture = null;
+            int selectedCourseId;
 
             if (UserPicturePB.Image != null)
             {
@@ -74,7 +86,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 }
             }
 
-            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(course) ||
+
+            if (UserCourseCB.SelectedValue == null || !int.TryParse(UserCourseCB.SelectedValue.ToString(), out selectedCourseId))
+            {
+                MessageBox.Show("Invalid course selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) ||
                 string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
 
             {
@@ -92,7 +111,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             {
                 FirstName = firstName,
                 LastName = lastName,
-                Course = course,
+                CourseId = selectedCourseId,
                 Email = email,
                 Password = password,
                 ConfirmPassword = confirmPassword,
@@ -101,17 +120,48 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             };
 
+            try
+            {
+                await _createAccountRepository.CreateUserAccountAsync(createUser);
+                MessageBox.Show("Student Account Created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                FormsControlHelper.ClearControls(this);
 
-            await _createAccountRepository.CreateUserAccountAsync(createUser);
-            MessageBox.Show("Student Account Created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            FormsControlHelper.ClearControls(this);
+                LoadStudentDetails();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
-        private void LoadStudentDetails()
+        private async void LoadCources()
         {
+            var courses = await _courseRepository.GetAllCourseAsync();
+            UserCourseCB.DataSource = courses;
+            UserCourseCB.DisplayMember = "Course";
+            UserCourseCB.ValueMember = "CourseId";
 
         }
+        private async void LoadStudentDetails()
+        {
+            var userList = await _userRepository.GetAllUsersAsync();
+            FormsControlHelper.ClearControls(this);
+
+            foreach (var student in userList)
+            {
+                DisplayUsersToUI(student);
+            }
+        }
+
+        private void DisplayUsersToUI(UserEntity addedStudent)
+        {
+            UserDetailsUC userDisplay = new UserDetailsUC(addedStudent);
+
+            ITStudentFLP.Controls.Add(userDisplay);
+        }
+
 
         private void BrowseImageBtn_Click(object sender, EventArgs e)
         {

@@ -88,7 +88,7 @@ namespace LibraryManagementSystem.Repositories
                 Email = userDto.Email,
                 FirstName = userDto.FirstName,
                 LastName = userDto.LastName,
-                Course = userDto.Course,
+                CourseId = userDto.CourseId,
                 UserPicture = userDto.UserPicture,
                 CreatedAt = userDto.CreatedAt,
                 Role = userDto.Role,

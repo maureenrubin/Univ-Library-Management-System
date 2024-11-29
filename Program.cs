@@ -39,10 +39,12 @@ namespace WinFormsApp2
             services.AddScoped<IBooksRepository, BookRepository>();
             services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
 
             services.AddScoped<AdminEntity>();
             services.AddScoped<BooksEntity>();
             services.AddScoped<UserEntity>();
+            services.AddScoped<CourseEntity>();
 
 
             services.AddScoped<LoginForm>();

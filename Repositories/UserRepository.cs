@@ -30,7 +30,13 @@ namespace LibraryManagementSystem.Repositories
             }
         }
 
-
+        public async Task<IEnumerable<UserEntity>> GetAllUsersAsync()
+        {
+            using (var dbContextOption = new LMSDbContext(_applicationDbContext))
+            {
+                return await dbContextOption.Users.ToListAsync();
+            }
+        }
 
     }
 }

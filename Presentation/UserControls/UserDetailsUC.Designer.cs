@@ -28,32 +28,138 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            StudentProfilePB = new PictureBox();
+            label1 = new Label();
+            label2 = new Label();
+            LblFirstname = new Label();
+            LblLastname = new Label();
+            LblCourse = new Label();
+            StudentID = new Label();
+            label5 = new Label();
+            LblCreatedAt = new Label();
+            ((System.ComponentModel.ISupportInitialize)StudentProfilePB).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // StudentProfilePB
             // 
-            pictureBox1.Location = new Point(19, 33);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(69, 68);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            StudentProfilePB.Location = new Point(12, 10);
+            StudentProfilePB.Name = "StudentProfilePB";
+            StudentProfilePB.Size = new Size(65, 74);
+            StudentProfilePB.SizeMode = PictureBoxSizeMode.Zoom;
+            StudentProfilePB.TabIndex = 0;
+            StudentProfilePB.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(88, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 14);
+            label1.TabIndex = 1;
+            label1.Text = "Name:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(87, 39);
+            label2.Name = "label2";
+            label2.Size = new Size(46, 14);
+            label2.TabIndex = 2;
+            label2.Text = "Course:";
+            // 
+            // LblFirstname
+            // 
+            LblFirstname.AutoSize = true;
+            LblFirstname.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LblFirstname.Location = new Point(129, 25);
+            LblFirstname.Name = "LblFirstname";
+            LblFirstname.Size = new Size(60, 14);
+            LblFirstname.TabIndex = 5;
+            LblFirstname.Text = "FirstName";
+            // 
+            // LblLastname
+            // 
+            LblLastname.AutoSize = true;
+            LblLastname.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LblLastname.Location = new Point(192, 25);
+            LblLastname.Name = "LblLastname";
+            LblLastname.Size = new Size(62, 14);
+            LblLastname.TabIndex = 6;
+            LblLastname.Text = "LastName:";
+            // 
+            // LblCourse
+            // 
+            LblCourse.AutoSize = true;
+            LblCourse.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LblCourse.Location = new Point(129, 39);
+            LblCourse.Name = "LblCourse";
+            LblCourse.Size = new Size(162, 14);
+            LblCourse.TabIndex = 9;
+            LblCourse.Text = "BS in Inforamtion Technology";
+            // 
+            // StudentID
+            // 
+            StudentID.AutoSize = true;
+            StudentID.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            StudentID.Location = new Point(26, 87);
+            StudentID.Name = "StudentID";
+            StudentID.Size = new Size(35, 16);
+            StudentID.TabIndex = 10;
+            StudentID.Text = "1000";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(88, 56);
+            label5.Name = "label5";
+            label5.Size = new Size(95, 14);
+            label5.TabIndex = 11;
+            label5.Text = "Account Created:";
+            // 
+            // LblCreatedAt
+            // 
+            LblCreatedAt.AutoSize = true;
+            LblCreatedAt.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LblCreatedAt.Location = new Point(189, 56);
+            LblCreatedAt.Name = "LblCreatedAt";
+            LblCreatedAt.Size = new Size(57, 14);
+            LblCreatedAt.TabIndex = 12;
+            LblCreatedAt.Text = "password";
             // 
             // UserDetailsUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pictureBox1);
+            BackColor = Color.Azure;
+            Controls.Add(LblCreatedAt);
+            Controls.Add(label5);
+            Controls.Add(StudentID);
+            Controls.Add(LblCourse);
+            Controls.Add(LblLastname);
+            Controls.Add(LblFirstname);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(StudentProfilePB);
             Name = "UserDetailsUC";
-            Size = new Size(322, 137);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Size = new Size(302, 115);
+            ((System.ComponentModel.ISupportInitialize)StudentProfilePB).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox StudentProfilePB;
+        private Label label1;
+        private Label label2;
+        private Label LblFirstname;
+        private Label LblLastname;
+        private Label LblCourse;
+        private Label StudentID;
+        private Label label5;
+        private Label LblCreatedAt;
     }
 }
