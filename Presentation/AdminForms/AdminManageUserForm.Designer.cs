@@ -219,7 +219,7 @@
             StudentPanel.Controls.Add(panel3);
             StudentPanel.Location = new Point(4, 75);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(1092, 698);
+            StudentPanel.Size = new Size(1090, 698);
             StudentPanel.TabIndex = 1;
             // 
             // DeleteUserBtn
@@ -484,12 +484,10 @@
             // 
             UserCourseCB.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             UserCourseCB.FormattingEnabled = true;
-            UserCourseCB.Items.AddRange(new object[] { "BS in Information and Technology", "BS in Business Administration", "BS in Elementary Education", "BS in Social Work" });
             UserCourseCB.Location = new Point(463, 245);
             UserCourseCB.Name = "UserCourseCB";
             UserCourseCB.Size = new Size(219, 22);
             UserCourseCB.TabIndex = 3;
-            UserCourseCB.Text = "Course";
             // 
             // UserLastNameTXT
             // 

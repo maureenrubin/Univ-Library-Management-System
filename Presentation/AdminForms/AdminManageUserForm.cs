@@ -120,26 +120,22 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             };
 
-            try
-            {
+           
                 await _createAccountRepository.CreateUserAccountAsync(createUser);
                 MessageBox.Show("Student Account Created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 FormsControlHelper.ClearControls(this);
 
                 LoadStudentDetails();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
+            
 
         }
 
         private async void LoadCources()
         {
             var courses = await _courseRepository.GetAllCourseAsync();
-            UserCourseCB.DataSource = courses;
+            UserCourseCB.DataSource = courses.ToList();
             UserCourseCB.DisplayMember = "Course";
             UserCourseCB.ValueMember = "CourseId";
 

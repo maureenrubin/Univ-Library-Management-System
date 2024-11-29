@@ -37,14 +37,12 @@ namespace LibraryManagementSystem.Domain.Entities
         [Required]
         public string Role { get; set; } = "User";
 
-        [ForeignKey("CourseId")]
+      
         public int? CourseId { get; set; }
 
 
         public DateTime CreatedAt { get; set; }
-      
-        
-   
+
 
 
         public virtual CourseEntity Courses { get; set; }
