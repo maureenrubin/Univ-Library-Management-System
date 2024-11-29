@@ -90,6 +90,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             this.Hide();
             var loginForm = Program.ServiceProvider.GetRequiredService<LoginForm>();
+            loginForm.Show();
 
         }
 

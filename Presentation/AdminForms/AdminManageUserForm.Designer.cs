@@ -32,7 +32,7 @@
             panel1 = new Panel();
             button1 = new Button();
             kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            StudentFLP = new FlowLayoutPanel();
             StudentPanel = new Panel();
             DeleteUserBtn = new Krypton.Toolkit.KryptonButton();
             EditUserBtn = new Krypton.Toolkit.KryptonButton();
@@ -65,7 +65,7 @@
             // 
             panel1.Controls.Add(button1);
             panel1.Controls.Add(kryptonTextBox1);
-            panel1.Controls.Add(flowLayoutPanel1);
+            panel1.Controls.Add(StudentFLP);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(60, 0);
             panel1.Name = "panel1";
@@ -120,14 +120,14 @@
             kryptonTextBox1.StateNormal.Content.Padding = new Padding(5);
             kryptonTextBox1.TabIndex = 17;
             // 
-            // flowLayoutPanel1
+            // StudentFLP
             // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.BackColor = Color.AliceBlue;
-            flowLayoutPanel1.Location = new Point(16, 57);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1348, 726);
-            flowLayoutPanel1.TabIndex = 0;
+            StudentFLP.AutoScroll = true;
+            StudentFLP.BackColor = Color.AliceBlue;
+            StudentFLP.Location = new Point(3, 57);
+            StudentFLP.Name = "StudentFLP";
+            StudentFLP.Size = new Size(1361, 726);
+            StudentFLP.TabIndex = 0;
             // 
             // StudentPanel
             // 
@@ -380,6 +380,7 @@
             CancelBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             CancelBtn.TabIndex = 10;
             CancelBtn.Values.Text = "CANCEL";
+            CancelBtn.Click += CancelBtn_Click;
             // 
             // BTNCreateUser
             // 
@@ -595,7 +596,7 @@
 
         private Panel panel1;
         private Panel StudentPanel;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel StudentFLP;
         private Panel panel3;
         private Button ManageUserBTN;
         private Krypton.Toolkit.KryptonButton AddUserBtn;

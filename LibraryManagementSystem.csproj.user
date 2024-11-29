@@ -22,7 +22,7 @@
     <Compile Update="Presentation\UserControls\AdminBooksUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Presentation\UserControls\UserBookUC.cs">
+    <Compile Update="Presentation\UserControls\UserDetailsUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Presentation\UserForms\UserMainForm.cs">

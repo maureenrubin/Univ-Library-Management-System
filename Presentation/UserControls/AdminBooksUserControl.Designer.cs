@@ -44,7 +44,7 @@
             // 
             // BooksPB
             // 
-            BooksPB.Location = new Point(20, 38);
+            BooksPB.Location = new Point(20, 16);
             BooksPB.Name = "BooksPB";
             BooksPB.Size = new Size(164, 189);
             BooksPB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -55,7 +55,7 @@
             // 
             BooksTitleLbl.AutoSize = true;
             BooksTitleLbl.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            BooksTitleLbl.Location = new Point(20, 248);
+            BooksTitleLbl.Location = new Point(20, 218);
             BooksTitleLbl.Name = "BooksTitleLbl";
             BooksTitleLbl.Size = new Size(77, 17);
             BooksTitleLbl.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             BooksGenreLbl.AutoSize = true;
             BooksGenreLbl.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            BooksGenreLbl.Location = new Point(270, 77);
+            BooksGenreLbl.Location = new Point(268, 42);
             BooksGenreLbl.Name = "BooksGenreLbl";
             BooksGenreLbl.Size = new Size(38, 16);
             BooksGenreLbl.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             PublishedDate.AutoSize = true;
             PublishedDate.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            PublishedDate.Location = new Point(270, 138);
+            PublishedDate.Location = new Point(268, 119);
             PublishedDate.Name = "PublishedDate";
             PublishedDate.Size = new Size(65, 16);
             PublishedDate.TabIndex = 3;
@@ -85,7 +85,7 @@
             // 
             BooksStockLbl.AutoSize = true;
             BooksStockLbl.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            BooksStockLbl.Location = new Point(270, 108);
+            BooksStockLbl.Location = new Point(268, 73);
             BooksStockLbl.Name = "BooksStockLbl";
             BooksStockLbl.Size = new Size(25, 16);
             BooksStockLbl.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(206, 77);
+            label1.Location = new Point(204, 42);
             label1.Name = "label1";
             label1.Size = new Size(46, 16);
             label1.TabIndex = 5;
@@ -105,17 +105,17 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(206, 138);
+            label2.Location = new Point(204, 103);
             label2.Name = "label2";
-            label2.Size = new Size(39, 16);
+            label2.Size = new Size(70, 32);
             label2.TabIndex = 6;
-            label2.Text = "DATE:";
+            label2.Text = "PUBLISHED \r\nDATE:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(206, 108);
+            label3.Location = new Point(204, 73);
             label3.Name = "label3";
             label3.Size = new Size(53, 16);
             label3.TabIndex = 7;
@@ -125,7 +125,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(206, 174);
+            label4.Location = new Point(204, 150);
             label4.Name = "label4";
             label4.Size = new Size(41, 16);
             label4.TabIndex = 8;
@@ -135,7 +135,7 @@
             // 
             BooksPriceLbl.AutoSize = true;
             BooksPriceLbl.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            BooksPriceLbl.Location = new Point(270, 174);
+            BooksPriceLbl.Location = new Point(268, 150);
             BooksPriceLbl.Name = "BooksPriceLbl";
             BooksPriceLbl.Size = new Size(25, 16);
             BooksPriceLbl.TabIndex = 9;
@@ -148,11 +148,11 @@
             BarrowBtn.FlatAppearance.BorderColor = Color.Black;
             BarrowBtn.FlatStyle = FlatStyle.Flat;
             BarrowBtn.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            BarrowBtn.Location = new Point(206, 248);
+            BarrowBtn.Location = new Point(204, 208);
             BarrowBtn.Name = "BarrowBtn";
-            BarrowBtn.Size = new Size(140, 38);
+            BarrowBtn.Size = new Size(129, 38);
             BarrowBtn.TabIndex = 10;
-            BarrowBtn.Text = "View Book Details";
+            BarrowBtn.Text = "Barrow Book";
             BarrowBtn.UseVisualStyleBackColor = false;
             // 
             // AdminBooksUserControl
@@ -171,7 +171,7 @@
             Controls.Add(BooksTitleLbl);
             Controls.Add(BooksPB);
             Name = "AdminBooksUserControl";
-            Size = new Size(362, 313);
+            Size = new Size(354, 269);
             ((System.ComponentModel.ISupportInitialize)BooksPB).EndInit();
             ResumeLayout(false);
             PerformLayout();

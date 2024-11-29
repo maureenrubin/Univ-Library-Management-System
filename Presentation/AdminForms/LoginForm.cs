@@ -57,13 +57,15 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             var admin = await adminRepository.GetAdminByEmailAsync(email);
             if (admin != null && admin.Password == password)
             {
-                MessageBox.Show("Login Successfully, Welcome! '", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Admin Logged in Successfully, Welcome! '", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 var mainFormAdmin = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
                 mainFormAdmin.CurrentAdmin = admin;
                 
                 this.Hide();
                 mainFormAdmin.Show();
+                FormsControlHelper.ClearControls(this);
+
                 return;
 
             }
@@ -75,7 +77,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
              {
                     if (PasswordHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                     {
-                        MessageBox.Show("Student Login Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Student Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                         var studentMainForm = Program.ServiceProvider.GetRequiredService<UserMainForm>();
@@ -83,17 +85,19 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                         
                         this.Hide();
                         studentMainForm.Show();
-                        return;
+                        FormsControlHelper.ClearControls(this);
+
+                    return;
                     }
              }
-            
-            
+
+           
             MessageBox.Show("Invalid email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
-            
 
-          
 
+
+
+            
         }
 
         private void ExitBTN_Click(object sender, EventArgs e)

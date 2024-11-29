@@ -38,7 +38,7 @@
             kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel4 = new Krypton.Toolkit.KryptonPanel();
             BooksPanel = new Panel();
-            BooksFLP = new FlowLayoutPanel();
+            UserBooksFLP = new FlowLayoutPanel();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             button1 = new Button();
             SearchTXT = new Krypton.Toolkit.KryptonTextBox();
@@ -137,18 +137,18 @@
             // 
             // BooksPanel
             // 
-            BooksPanel.Controls.Add(BooksFLP);
+            BooksPanel.Controls.Add(UserBooksFLP);
             BooksPanel.Location = new Point(16, 91);
             BooksPanel.Name = "BooksPanel";
             BooksPanel.Size = new Size(1441, 766);
             BooksPanel.TabIndex = 5;
             // 
-            // BooksFLP
+            // UserBooksFLP
             // 
-            BooksFLP.Location = new Point(3, 3);
-            BooksFLP.Name = "BooksFLP";
-            BooksFLP.Size = new Size(1435, 760);
-            BooksFLP.TabIndex = 0;
+            UserBooksFLP.Location = new Point(3, 3);
+            UserBooksFLP.Name = "UserBooksFLP";
+            UserBooksFLP.Size = new Size(1435, 760);
+            UserBooksFLP.TabIndex = 0;
             // 
             // kryptonPanel2
             // 
@@ -308,7 +308,7 @@
         private Button UserViewProfileBTN;
         private Button UserTransactionBTN;
         private Krypton.Toolkit.KryptonPanel kryptonPanel5;
-        private FlowLayoutPanel BooksFLP;
+        private FlowLayoutPanel UserBooksFLP;
         private Button button1;
         private Krypton.Toolkit.KryptonTextBox SearchTXT;
     }

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using LibraryManagementSystem.Data_Connectivity.Context;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Presentation.Animation;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
@@ -32,7 +33,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         public AdminBooksForm(IBooksRepository booksRepository, BooksEntity booksEntity)
         {
 
-            _booksRepository = booksRepository;
+           
             InitializeComponent();
             _crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10};
             _sideBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
@@ -41,7 +42,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             _animations.SideBooksTransition(_sideBooksTransition, BooksPanel, _sidebarExpanded);
 
             _addedBook = booksEntity;
-
+            _booksRepository = booksRepository;
             LoadBookDetails();
 
         }
@@ -106,23 +107,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             await _booksRepository.AddBookAsync(book);
             MessageBox.Show("Book Added Successfully!");
 
-            ClearForm();
+            FormsControlHelper.ClearControls(this);
 
             AdminBooksUserControl bookDisplay = new AdminBooksUserControl(book);
             BooksFLP.Controls.Add(bookDisplay);
 
         }
 
-        private void ClearForm()
-        {
-            BooksTitleTXT.Clear();
-            BooksGenreTXT.Clear();
-            BooksStocksTXT.Clear();
-            BooksPriceTXT.Clear();
-            BooksCategoryTXT.Clear();
-            PublisedDateTime.Value = DateTime.Now;
-            BooksPB.Image = null;
-        }
+       
 
         private void BrowseImageBtn_Click(object sender, EventArgs e)
         {

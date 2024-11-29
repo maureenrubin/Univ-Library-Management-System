@@ -1,5 +1,6 @@
 ﻿using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Presentation.Animation;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.VisualBasic;
@@ -104,22 +105,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             await _createAccountRepository.CreateUserAccountAsync(createUser);
             MessageBox.Show("Student Account Created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ClearForm();
+            FormsControlHelper.ClearControls(this);
         }
-
-        private void ClearForm()
-        {
-            UserFirstNameTXT.Clear();
-            UserLastNameTXT.Clear();
-            UserEmailTXT.Clear();
-            UserPasswordTXT.Clear();
-        }
-
-
-
-
-
-
 
         private void LoadStudentDetails()
         {
@@ -144,6 +131,12 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             UserPasswordTXT.PasswordChar = CBShowpass.Checked ? '\0' : '●';
             UserConfirmPassTXT.PasswordChar = CBShowpass.Checked ? '\0' : '●';
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            FormsControlHelper.ClearControls(this);
+
         }
     }
 }

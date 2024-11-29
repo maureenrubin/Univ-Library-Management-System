@@ -1,4 +1,5 @@
 ﻿using LibraryManagementSystem.Domain.DTO;
+using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -78,17 +79,13 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             await createAccountRepository.CreateAdminAccountAsync(createAdminDto);
             MessageBox.Show("New Administrator created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //Clear Controls
+            FormsControlHelper.ClearControls(this);
 
         }
 
         private void GoBackBTN_Click(object sender, EventArgs e)
         {
-            FirstNameTB.Clear();
-            LastNameTB.Clear();
-            EmailTB.Clear();
-            PasswordTB.Clear();
-            ConfirmPassTB.Clear();
+            FormsControlHelper.ClearControls(this);
 
 
             this.Hide();
