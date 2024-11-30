@@ -10,6 +10,9 @@ namespace LibraryManagementSystem.Repositories.Interfaces
     public interface IUserRepository
     {
         Task<UserEntity>GetUserByEmailAsync(string email);
+        
         Task<IEnumerable<UserEntity>> GetAllUsersAsync();
+       
+        Task<IEnumerable<UserEntity>> GetUserByCourseAsync(int courseId);
     }
 }

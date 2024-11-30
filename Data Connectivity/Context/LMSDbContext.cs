@@ -24,7 +24,8 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
         public DbSet<AdminEntity> Admins { get; set; } = null!;
         public DbSet<BooksEntity> Books { get; set; } = null!;
         public DbSet<UserEntity> Users { get; set; } = null;
-        public DbSet<CourseEntity> Courses { get; set; } 
+        public DbSet<CourseEntity> Courses { get; set; }
+      
 
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)

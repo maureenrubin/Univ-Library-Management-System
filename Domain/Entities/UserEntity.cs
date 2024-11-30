@@ -37,7 +37,8 @@ namespace LibraryManagementSystem.Domain.Entities
         [Required]
         public string Role { get; set; } = "User";
 
-      
+        public string? CourseName { get; set; }
+
         public int? CourseId { get; set; }
 
 
@@ -45,7 +46,7 @@ namespace LibraryManagementSystem.Domain.Entities
 
 
 
-        public virtual CourseEntity Courses { get; set; }
+      
 
     }
 }

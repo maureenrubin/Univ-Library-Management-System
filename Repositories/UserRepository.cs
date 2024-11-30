@@ -34,7 +34,36 @@ namespace LibraryManagementSystem.Repositories
         {
             using (var dbContextOption = new LMSDbContext(_applicationDbContext))
             {
-                return await dbContextOption.Users.ToListAsync();
+                return await dbContextOption.Users
+                    .Join(dbContextOption.Courses,
+                     user => user.CourseId,
+                     course => course.CourseId,
+                     (user, course) => new UserEntity
+                    { 
+                      UserId = user.UserId,
+                      FirstName = user.FirstName,
+                      LastName = user.LastName,
+                      CourseId = user.CourseId,
+                      CourseName = course.Course,
+                      UserPicture = user.UserPicture,
+                      CreatedAt = user.CreatedAt
+
+                    })
+                    
+                    
+                    
+                    
+                    .ToListAsync();
+            }
+        }
+
+        public async Task<IEnumerable<UserEntity>> GetUserByCourseAsync(int courseId)
+        {
+            using (var dbContextOptions = new LMSDbContext(_applicationDbContext))
+            {
+                return await dbContextOptions.Users
+                    .Where(u => u.CourseId == courseId)
+                    .ToListAsync();
             }
         }
 

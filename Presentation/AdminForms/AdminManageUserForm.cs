@@ -135,19 +135,28 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private async void LoadCources()
         {
             var courses = await _courseRepository.GetAllCourseAsync();
-            UserCourseCB.DataSource = courses.ToList();
-            UserCourseCB.DisplayMember = "Course";
-            UserCourseCB.ValueMember = "CourseId";
+            if (courses.Any())
+            {
+                UserCourseCB.DataSource = courses.ToList();
+                UserCourseCB.DisplayMember = "Course";
+                UserCourseCB.ValueMember = "CourseId";
+            }
+            else
+            {
+                MessageBox.Show("No courses available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
+
         private async void LoadStudentDetails()
         {
             var userList = await _userRepository.GetAllUsersAsync();
+            
             FormsControlHelper.ClearControls(this);
 
             foreach (var student in userList)
             {
-                DisplayUsersToUI(student);
+                UserControlHelper.AddUserContromToPanel(student, ITStudentFLP, SWStudentFLP, BEStudentFLP, BAStudentFLP);
             }
         }
 

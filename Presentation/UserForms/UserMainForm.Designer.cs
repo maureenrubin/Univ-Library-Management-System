@@ -66,9 +66,9 @@
             UserPanel.Controls.Add(StudentNameTEXT);
             UserPanel.Controls.Add(StudentProfilePB);
             UserPanel.Dock = DockStyle.Right;
-            UserPanel.Location = new Point(1463, 82);
+            UserPanel.Location = new Point(1188, 82);
             UserPanel.Name = "UserPanel";
-            UserPanel.Size = new Size(10, 781);
+            UserPanel.Size = new Size(285, 781);
             UserPanel.TabIndex = 0;
             // 
             // label1

@@ -22,13 +22,6 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
                 .Property(s => s.UserId)
                 .ValueGeneratedOnAdd();
 
-            builder
-                 .HasOne(u => u.Courses)
-                 .WithMany(c => c.Students) 
-                 .HasForeignKey(u => u.CourseId);
-
-
-
 
         }
 

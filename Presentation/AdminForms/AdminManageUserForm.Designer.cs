@@ -89,17 +89,17 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(1006, 75);
+            label8.Location = new Point(1052, 80);
             label8.Name = "label8";
-            label8.Size = new Size(228, 17);
+            label8.Size = new Size(221, 17);
             label8.TabIndex = 24;
-            label8.Text = "BS IN BUSSINESS ADMINISTRATION";
+            label8.Text = "BS IN BUSINESS ADMINISTRATION";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(699, 80);
+            label7.Location = new Point(735, 81);
             label7.Name = "label7";
             label7.Size = new Size(207, 17);
             label7.TabIndex = 23;
@@ -109,7 +109,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(433, 81);
+            label5.Location = new Point(435, 81);
             label5.Name = "label5";
             label5.Size = new Size(133, 17);
             label5.TabIndex = 22;
@@ -119,7 +119,7 @@
             // 
             LABLE.AutoSize = true;
             LABLE.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LABLE.Location = new Point(65, 81);
+            LABLE.Location = new Point(62, 80);
             LABLE.Name = "LABLE";
             LABLE.Size = new Size(261, 17);
             LABLE.TabIndex = 21;
@@ -129,36 +129,36 @@
             // 
             BAStudentFLP.AutoScroll = true;
             BAStudentFLP.BackColor = Color.White;
-            BAStudentFLP.Location = new Point(974, 101);
+            BAStudentFLP.Location = new Point(1006, 100);
             BAStudentFLP.Name = "BAStudentFLP";
-            BAStudentFLP.Size = new Size(305, 673);
+            BAStudentFLP.Size = new Size(325, 673);
             BAStudentFLP.TabIndex = 20;
             // 
             // BEStudentFLP
             // 
             BEStudentFLP.AutoScroll = true;
             BEStudentFLP.BackColor = Color.White;
-            BEStudentFLP.Location = new Point(663, 100);
+            BEStudentFLP.Location = new Point(673, 100);
             BEStudentFLP.Name = "BEStudentFLP";
-            BEStudentFLP.Size = new Size(305, 673);
+            BEStudentFLP.Size = new Size(327, 673);
             BEStudentFLP.TabIndex = 19;
             // 
             // SWStudentFLP
             // 
             SWStudentFLP.AutoScroll = true;
             SWStudentFLP.BackColor = Color.White;
-            SWStudentFLP.Location = new Point(352, 101);
+            SWStudentFLP.Location = new Point(350, 101);
             SWStudentFLP.Name = "SWStudentFLP";
-            SWStudentFLP.Size = new Size(305, 673);
+            SWStudentFLP.Size = new Size(317, 673);
             SWStudentFLP.TabIndex = 19;
             // 
             // ITStudentFLP
             // 
             ITStudentFLP.AutoScroll = true;
             ITStudentFLP.BackColor = Color.White;
-            ITStudentFLP.Location = new Point(41, 101);
+            ITStudentFLP.Location = new Point(19, 101);
             ITStudentFLP.Name = "ITStudentFLP";
-            ITStudentFLP.Size = new Size(305, 673);
+            ITStudentFLP.Size = new Size(325, 673);
             ITStudentFLP.TabIndex = 18;
             // 
             // button1
@@ -217,9 +217,9 @@
             StudentPanel.Controls.Add(AddUserBtn);
             StudentPanel.Controls.Add(ManageUserBTN);
             StudentPanel.Controls.Add(panel3);
-            StudentPanel.Location = new Point(4, 75);
+            StudentPanel.Location = new Point(12, 85);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(1090, 698);
+            StudentPanel.Size = new Size(42, 698);
             StudentPanel.TabIndex = 1;
             // 
             // DeleteUserBtn
@@ -318,7 +318,7 @@
             ManageUserBTN.Image = (Image)resources.GetObject("ManageUserBTN.Image");
             ManageUserBTN.Location = new Point(3, 14);
             ManageUserBTN.Name = "ManageUserBTN";
-            ManageUserBTN.Size = new Size(39, 44);
+            ManageUserBTN.Size = new Size(36, 44);
             ManageUserBTN.TabIndex = 1;
             ManageUserBTN.UseVisualStyleBackColor = true;
             ManageUserBTN.Click += ManageUserBTN_Click;
@@ -362,6 +362,7 @@
             UserConfirmPassTXT.Cursor = Cursors.IBeam;
             UserConfirmPassTXT.Location = new Point(463, 452);
             UserConfirmPassTXT.Name = "UserConfirmPassTXT";
+            UserConfirmPassTXT.PasswordChar = '●';
             UserConfirmPassTXT.Size = new Size(219, 34);
             UserConfirmPassTXT.StateActive.Back.Color1 = Color.White;
             UserConfirmPassTXT.StateActive.Border.Color1 = Color.Black;
@@ -391,6 +392,7 @@
             UserConfirmPassTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             UserConfirmPassTXT.StateNormal.Content.Padding = new Padding(5);
             UserConfirmPassTXT.TabIndex = 6;
+            UserConfirmPassTXT.UseSystemPasswordChar = true;
             // 
             // CBShowpass
             // 
@@ -564,6 +566,7 @@
             UserPasswordTXT.Cursor = Cursors.IBeam;
             UserPasswordTXT.Location = new Point(463, 374);
             UserPasswordTXT.Name = "UserPasswordTXT";
+            UserPasswordTXT.PasswordChar = '●';
             UserPasswordTXT.Size = new Size(219, 34);
             UserPasswordTXT.StateActive.Back.Color1 = Color.White;
             UserPasswordTXT.StateActive.Border.Color1 = Color.Black;
@@ -593,6 +596,7 @@
             UserPasswordTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             UserPasswordTXT.StateNormal.Content.Padding = new Padding(5);
             UserPasswordTXT.TabIndex = 5;
+            UserPasswordTXT.UseSystemPasswordChar = true;
             // 
             // UserEmailTXT
             // 

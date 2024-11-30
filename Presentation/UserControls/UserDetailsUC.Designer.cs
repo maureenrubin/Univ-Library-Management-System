@@ -42,7 +42,7 @@
             // 
             // StudentProfilePB
             // 
-            StudentProfilePB.Location = new Point(12, 10);
+            StudentProfilePB.Location = new Point(12, 14);
             StudentProfilePB.Name = "StudentProfilePB";
             StudentProfilePB.Size = new Size(65, 74);
             StudentProfilePB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -53,7 +53,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(88, 25);
+            label1.Location = new Point(78, 29);
             label1.Name = "label1";
             label1.Size = new Size(39, 14);
             label1.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(87, 39);
+            label2.Location = new Point(77, 43);
             label2.Name = "label2";
             label2.Size = new Size(46, 14);
             label2.TabIndex = 2;
@@ -73,7 +73,7 @@
             // 
             LblFirstname.AutoSize = true;
             LblFirstname.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LblFirstname.Location = new Point(129, 25);
+            LblFirstname.Location = new Point(119, 29);
             LblFirstname.Name = "LblFirstname";
             LblFirstname.Size = new Size(60, 14);
             LblFirstname.TabIndex = 5;
@@ -83,7 +83,7 @@
             // 
             LblLastname.AutoSize = true;
             LblLastname.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LblLastname.Location = new Point(192, 25);
+            LblLastname.Location = new Point(182, 29);
             LblLastname.Name = "LblLastname";
             LblLastname.Size = new Size(62, 14);
             LblLastname.TabIndex = 6;
@@ -93,17 +93,17 @@
             // 
             LblCourse.AutoSize = true;
             LblCourse.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LblCourse.Location = new Point(129, 39);
+            LblCourse.Location = new Point(119, 43);
             LblCourse.Name = "LblCourse";
-            LblCourse.Size = new Size(162, 14);
+            LblCourse.Size = new Size(185, 14);
             LblCourse.TabIndex = 9;
-            LblCourse.Text = "BS in Inforamtion Technology";
+            LblCourse.Text = "BS in Inforamtion and Technology";
             // 
             // StudentID
             // 
             StudentID.AutoSize = true;
             StudentID.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            StudentID.Location = new Point(26, 87);
+            StudentID.Location = new Point(26, 91);
             StudentID.Name = "StudentID";
             StudentID.Size = new Size(35, 16);
             StudentID.TabIndex = 10;
@@ -113,7 +113,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(88, 56);
+            label5.Location = new Point(78, 60);
             label5.Name = "label5";
             label5.Size = new Size(95, 14);
             label5.TabIndex = 11;
@@ -123,7 +123,7 @@
             // 
             LblCreatedAt.AutoSize = true;
             LblCreatedAt.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LblCreatedAt.Location = new Point(189, 56);
+            LblCreatedAt.Location = new Point(179, 60);
             LblCreatedAt.Name = "LblCreatedAt";
             LblCreatedAt.Size = new Size(57, 14);
             LblCreatedAt.TabIndex = 12;
@@ -144,7 +144,7 @@
             Controls.Add(label1);
             Controls.Add(StudentProfilePB);
             Name = "UserDetailsUC";
-            Size = new Size(302, 115);
+            Size = new Size(306, 115);
             ((System.ComponentModel.ISupportInitialize)StudentProfilePB).EndInit();
             ResumeLayout(false);
             PerformLayout();

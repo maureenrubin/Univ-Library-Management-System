@@ -9,7 +9,7 @@ namespace LibraryManagementSystem.Domain.DTO
 {
     public class UserDto
     {
-        public int Userid { get; set; }
+        public int UserId { get; set; }
     
         public string? Email{ get; set; }
 
@@ -23,15 +23,18 @@ namespace LibraryManagementSystem.Domain.DTO
 
         public string? Role { get; set; } = "User";
 
-        public int? CourseId { get; set; }
-
+       
         public byte []? UserPicture { get; set; }
 
-        
+       
+        public int? CourseId { get; set; }
+
+        public string? CourseName { get; set; }
+
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
   
     
-      public virtual ICollection<CourseEntity> Courses { get; set; }
+     
     }
 }

@@ -15,7 +15,7 @@ namespace LibraryManagementSystem.Presentation.UserControls
     public partial class UserDetailsUC : UserControl
     {
         private readonly UserEntity userEntity;
-        
+
         public UserDetailsUC(UserEntity userEntity)
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace LibraryManagementSystem.Presentation.UserControls
         {
             LblFirstname.Text = userEntity.FirstName;
             LblLastname.Text = userEntity.LastName;
-           // LblCourse.Text = userEntity.Course;
+            LblCourse.Text = userEntity.CourseName;
             LblCreatedAt.Text = userEntity.CreatedAt.ToShortDateString();
             StudentID.Text = userEntity.UserId.ToString();
 
@@ -40,5 +40,7 @@ namespace LibraryManagementSystem.Presentation.UserControls
             }
 
         }
+
+        
     }
 }

@@ -7,18 +7,12 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Domain.Entities
 {
-    public class CourseEntity
+     public class CourseEntity
     {
         [Key]
         public int CourseId { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string Course { get; set; }
+        public string Course { get; set; } = string.Empty;
 
-
-
-        public virtual ICollection<UserEntity> Students {get; set;}
-        
     }
 }
