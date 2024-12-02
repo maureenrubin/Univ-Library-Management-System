@@ -9,10 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LibraryManagementSystem.Presentation.Animation;
 using WinFormsApp2;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
+using LibraryManagementSystem.Helpers.Animation;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -24,7 +24,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private Animations _animation;
         private bool _sidebarExpanded;
 
-        public MainForm_ADMIN(IBooksRepository _bookRepository)
+        public MainForm_ADMIN(IBookServices bookServices)
         {
            
             InitializeComponent();

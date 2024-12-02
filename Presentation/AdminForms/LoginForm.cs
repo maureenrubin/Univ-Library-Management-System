@@ -20,8 +20,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     public partial class LoginForm : Form
     {
 
-        private readonly IAdminRepository adminRepository;
-        private readonly IUserRepository userRepository;
+        private readonly IAdminServices adminServices;
+        private readonly IUserServices userServices;
 
 
 
@@ -30,14 +30,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
 
         public LoginForm
-            (IAdminRepository adminRepository, IUserRepository userRepository,
-            MainForm_ADMIN mainFormAdmin, 
+            (IAdminServices adminServices, IUserServices userServices,
+            MainForm_ADMIN mainFormAdmin,
             SignInForm signInForm)
         {
 
             InitializeComponent();
-            this.adminRepository = adminRepository;
-            this.userRepository = userRepository;
+            this.adminServices = adminServices;
+            this.userServices = userServices;
             this.mainFormAdmin = mainFormAdmin;
             this.signInForm = signInForm;
         }
@@ -46,7 +46,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             string email = UsernameTXT.Text;
             string password = PasswordTXT.Text;
-            
+
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
@@ -54,14 +54,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 return;
             }
 
-            var admin = await adminRepository.GetAdminByEmailAsync(email);
+            var admin = await adminServices.GetAdminByEmailAsync(email);
             if (admin != null && admin.Password == password)
             {
                 MessageBox.Show("Admin Logged in Successfully, Welcome! '", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 var mainFormAdmin = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
                 mainFormAdmin.CurrentAdmin = admin;
-                
+
                 this.Hide();
                 mainFormAdmin.Show();
                 FormsControlHelper.ClearControls(this);
@@ -71,33 +71,32 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
 
 
-            var user = await userRepository.GetUserByEmailAsync(email);
-             if (user != null)
+            var user = await userServices.GetUserByEmailAsync(email);
+           
+            if (user != null)
 
-             {
-                    if (PasswordHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-                    {
-                        MessageBox.Show("Student Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {
+                if (PasswordHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                {
+                    MessageBox.Show("Student Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                        var studentMainForm = Program.ServiceProvider.GetRequiredService<UserMainForm>();
-                        studentMainForm.CurrentUser = user;
-                        
-                        this.Hide();
-                        studentMainForm.Show();
-                        FormsControlHelper.ClearControls(this);
+                    var studentMainForm = Program.ServiceProvider.GetRequiredService<UserMainForm>();
+                    studentMainForm.CurrentUsers = user;
+
+                    this.Hide();
+                    studentMainForm.Show();
+                    FormsControlHelper.ClearControls(this);
 
                     return;
-                    }
-             }
+                }
+            }
 
-           
+
             MessageBox.Show("Invalid email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
 
-
-            
         }
 
         private void ExitBTN_Click(object sender, EventArgs e)
@@ -107,7 +106,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void ShowPassCB_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             if (ShowPassCB.Checked)
             {
                 PasswordTXT.PasswordChar = '\0';
@@ -118,7 +117,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
-       
-        
+
+
     }
 }

@@ -217,9 +217,9 @@
             StudentPanel.Controls.Add(AddUserBtn);
             StudentPanel.Controls.Add(ManageUserBTN);
             StudentPanel.Controls.Add(panel3);
-            StudentPanel.Location = new Point(12, 85);
+            StudentPanel.Location = new Point(12, 101);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(42, 698);
+            StudentPanel.Size = new Size(42, 694);
             StudentPanel.TabIndex = 1;
             // 
             // DeleteUserBtn
@@ -344,7 +344,7 @@
             panel3.Controls.Add(UserPicturePB);
             panel3.Location = new Point(290, 14);
             panel3.Name = "panel3";
-            panel3.Size = new Size(788, 671);
+            panel3.Size = new Size(785, 671);
             panel3.TabIndex = 0;
             // 
             // label6
@@ -392,7 +392,6 @@
             UserConfirmPassTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             UserConfirmPassTXT.StateNormal.Content.Padding = new Padding(5);
             UserConfirmPassTXT.TabIndex = 6;
-            UserConfirmPassTXT.UseSystemPasswordChar = true;
             // 
             // CBShowpass
             // 
@@ -564,7 +563,7 @@
             // UserPasswordTXT
             // 
             UserPasswordTXT.Cursor = Cursors.IBeam;
-            UserPasswordTXT.Location = new Point(463, 374);
+            UserPasswordTXT.Location = new Point(463, 376);
             UserPasswordTXT.Name = "UserPasswordTXT";
             UserPasswordTXT.PasswordChar = '●';
             UserPasswordTXT.Size = new Size(219, 34);
@@ -596,7 +595,6 @@
             UserPasswordTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             UserPasswordTXT.StateNormal.Content.Padding = new Padding(5);
             UserPasswordTXT.TabIndex = 5;
-            UserPasswordTXT.UseSystemPasswordChar = true;
             // 
             // UserEmailTXT
             // 

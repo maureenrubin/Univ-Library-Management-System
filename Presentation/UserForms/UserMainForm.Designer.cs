@@ -32,7 +32,6 @@
             UserPanel = new Krypton.Toolkit.KryptonPanel();
             label1 = new Label();
             UserActivityLogs = new Panel();
-            StudentCourseTEXT = new Label();
             StudentNameTEXT = new Label();
             StudentProfilePB = new PictureBox();
             kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
@@ -46,6 +45,7 @@
             UserTransactionBTN = new Button();
             kryptonPanel5 = new Krypton.Toolkit.KryptonPanel();
             UserViewProfileBTN = new Button();
+            StudentCourseTEXT = new Label();
             ((System.ComponentModel.ISupportInitialize)UserPanel).BeginInit();
             UserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)StudentProfilePB).BeginInit();
@@ -60,9 +60,9 @@
             // 
             // UserPanel
             // 
+            UserPanel.Controls.Add(StudentCourseTEXT);
             UserPanel.Controls.Add(label1);
             UserPanel.Controls.Add(UserActivityLogs);
-            UserPanel.Controls.Add(StudentCourseTEXT);
             UserPanel.Controls.Add(StudentNameTEXT);
             UserPanel.Controls.Add(StudentProfilePB);
             UserPanel.Dock = DockStyle.Right;
@@ -88,24 +88,14 @@
             UserActivityLogs.Size = new Size(237, 379);
             UserActivityLogs.TabIndex = 3;
             // 
-            // StudentCourseTEXT
-            // 
-            StudentCourseTEXT.AutoSize = true;
-            StudentCourseTEXT.BackColor = Color.Transparent;
-            StudentCourseTEXT.Location = new Point(51, 282);
-            StudentCourseTEXT.Name = "StudentCourseTEXT";
-            StudentCourseTEXT.Size = new Size(96, 15);
-            StudentCourseTEXT.TabIndex = 2;
-            StudentCourseTEXT.Text = "Student's Course\r\n";
-            StudentCourseTEXT.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // StudentNameTEXT
             // 
             StudentNameTEXT.AutoSize = true;
             StudentNameTEXT.BackColor = Color.Transparent;
-            StudentNameTEXT.Location = new Point(88, 253);
+            StudentNameTEXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            StudentNameTEXT.Location = new Point(88, 249);
             StudentNameTEXT.Name = "StudentNameTEXT";
-            StudentNameTEXT.Size = new Size(83, 15);
+            StudentNameTEXT.Size = new Size(96, 17);
             StudentNameTEXT.TabIndex = 1;
             StudentNameTEXT.Text = "Student Name";
             // 
@@ -261,6 +251,17 @@
             UserViewProfileBTN.UseVisualStyleBackColor = false;
             UserViewProfileBTN.Click += UserViewProfileBTN_Click;
             // 
+            // StudentCourseTEXT
+            // 
+            StudentCourseTEXT.AutoSize = true;
+            StudentCourseTEXT.BackColor = Color.Transparent;
+            StudentCourseTEXT.Location = new Point(47, 279);
+            StudentCourseTEXT.Name = "StudentCourseTEXT";
+            StudentCourseTEXT.Size = new Size(96, 15);
+            StudentCourseTEXT.TabIndex = 5;
+            StudentCourseTEXT.Text = "Student's Course\r\n";
+            StudentCourseTEXT.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // UserMainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -302,7 +303,6 @@
         private Panel panel2;
         private Label StudentNameTEXT;
         private PictureBox StudentProfilePB;
-        private Label StudentCourseTEXT;
         private Panel UserActivityLogs;
         private Label label1;
         private Button UserViewProfileBTN;
@@ -311,5 +311,6 @@
         private FlowLayoutPanel UserBooksFLP;
         private Button button1;
         private Krypton.Toolkit.KryptonTextBox SearchTXT;
+        private Label StudentCourseTEXT;
     }
 }

@@ -12,7 +12,7 @@ using LibraryManagementSystem.Data_Connectivity.Context;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
-using LibraryManagementSystem.Presentation.Animation;
+using LibraryManagementSystem.Helpers.Animation;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
 
@@ -20,29 +20,30 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 {
     public partial class AdminBooksForm : Form
     {
-        private readonly IBooksRepository _booksRepository;
+        private readonly IBookServices bookServices;
 
         private System.Windows.Forms.Timer _sideBooksTransition;
         private System.Windows.Forms.Timer _crudBooksTransition;
         private Animations _animations;
         private bool _sidebarExpanded;
         private byte[] BooksPicture;
-        private readonly BooksEntity _addedBook;
+        private readonly BooksEntity booksEntity;
 
 
-        public AdminBooksForm(IBooksRepository booksRepository, BooksEntity booksEntity)
+        public AdminBooksForm(IBookServices bookServices, BooksEntity booksEntity)
         {
 
-           
+
             InitializeComponent();
-            _crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10};
+            _crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
             _sideBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
             _animations = new Animations();
             _animations.CrudBooksTransition(_crudBooksTransition, BooksPanel, _sidebarExpanded);
             _animations.SideBooksTransition(_sideBooksTransition, BooksPanel, _sidebarExpanded);
 
-            _addedBook = booksEntity;
-            _booksRepository = booksRepository;
+            this.booksEntity = booksEntity;
+            
+            this.bookServices = bookServices;
             LoadBookDetails();
 
         }
@@ -104,7 +105,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             };
 
-            await _booksRepository.AddBookAsync(book);
+            await bookServices.AddBookAsync(book);
             MessageBox.Show("Book Added Successfully!");
 
             FormsControlHelper.ClearControls(this);
@@ -114,7 +115,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         }
 
-       
+
 
         private void BrowseImageBtn_Click(object sender, EventArgs e)
         {
@@ -132,9 +133,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private async void LoadBookDetails()
         {
-            var bookList = await _booksRepository.GetAllBooksAsync();
+            var bookList = await bookServices.GetAllBooksAsync();
             BooksFLP.Controls.Clear();
-            
+
             foreach (var book in bookList)
             {
                 DisplayBooksToUI(book);

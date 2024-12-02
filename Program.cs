@@ -32,14 +32,13 @@ namespace WinFormsApp2
 
             var services = new ServiceCollection();
 
-            services.AddDbContext<LMSDbContext>(options =>
-                  options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<ICreateAccountRepository, CreateAccountRepository>();
-            services.AddScoped<IBooksRepository, BookRepository>();
-            services.AddScoped<IAdminRepository, AdminRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IAdminServices, AdminServices>();
+            services.AddScoped<IBookServices, BookServices>();
+            services.AddScoped<ICourseServices, CourseServices>();
+            services.AddScoped<ICreateAccountServices, CreateAccountServices>();
+            services.AddScoped<IUserServices, UserServices>();
+            
 
             services.AddScoped<AdminEntity>();
             services.AddScoped<BooksEntity>();
@@ -63,9 +62,11 @@ namespace WinFormsApp2
 
 
 
-           
 
-           
+            services.AddDbContext<LMSDbContext>(options =>
+                   options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+
             ServiceProvider = services.BuildServiceProvider();
 
             

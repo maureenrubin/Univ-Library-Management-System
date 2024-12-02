@@ -1,7 +1,7 @@
 ﻿using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
-using LibraryManagementSystem.Presentation.Animation;
+using LibraryManagementSystem.Helpers.Animation;
 using LibraryManagementSystem.Presentation.UserControls;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.VisualBasic;
@@ -22,28 +22,30 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
     {
 
-        private readonly ICreateAccountRepository _createAccountRepository;
-        private readonly IUserRepository _userRepository;
-        private readonly ICourseRepository _courseRepository;
+        private readonly ICreateAccountServices createAcoountServices;
+        private readonly IUserServices userServices;
+        private readonly ICourseServices courseServices;
         private readonly UserDto _userDto;
 
         private System.Windows.Forms.Timer _crudStudentTransition;
         private System.Windows.Forms.Timer _sideUserTransition;
         private Animations _animations;
         private bool _sidebarExpanded;
+
         private byte[] UserPicture;
         private readonly UserEntity _addedUser;
 
 
-        public AdminManageUserForm(ICreateAccountRepository createAccountRepository, 
-               IUserRepository userRepository, 
-               ICourseRepository courseRepository)
+        public AdminManageUserForm(
+               ICreateAccountServices createAcoountServices,
+               IUserServices userServices,
+               ICourseServices courseServices)
         {
-            
+
             InitializeComponent();
-            _createAccountRepository = createAccountRepository;
-            _userRepository = userRepository;
-            _courseRepository = courseRepository;
+            this.createAcoountServices = createAcoountServices;
+            this.userServices = userServices;
+            this.courseServices = courseServices;
 
             _crudStudentTransition = new System.Windows.Forms.Timer { Interval = 10 };
             _sideUserTransition = new System.Windows.Forms.Timer { Interval = 10 };
@@ -53,7 +55,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             LoadCources();
             LoadStudentDetails();
-           
+
 
         }
 
@@ -120,21 +122,23 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             };
 
-           
-                await _createAccountRepository.CreateUserAccountAsync(createUser);
-                MessageBox.Show("Student Account Created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                FormsControlHelper.ClearControls(this);
+            await createAcoountServices.CreateUserAccountAsync(createUser);
+            MessageBox.Show("Student Account Created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                LoadStudentDetails();
             
             
+            
+            FormsControlHelper.ClearControls(this);
+
+            LoadStudentDetails();
+
 
         }
 
         private async void LoadCources()
         {
-            var courses = await _courseRepository.GetAllCourseAsync();
+            var courses = await courseServices.GetAllCourseAsync();
             if (courses.Any())
             {
                 UserCourseCB.DataSource = courses.ToList();
@@ -150,21 +154,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private async void LoadStudentDetails()
         {
-            var userList = await _userRepository.GetAllUsersAsync();
-            
+            var userList = await userServices.GetAllUsersAsync();
+
             FormsControlHelper.ClearControls(this);
 
             foreach (var student in userList)
             {
                 UserControlHelper.AddUserContromToPanel(student, ITStudentFLP, SWStudentFLP, BEStudentFLP, BAStudentFLP);
             }
-        }
-
-        private void DisplayUsersToUI(UserEntity addedStudent)
-        {
-            UserDetailsUC userDisplay = new UserDetailsUC(addedStudent);
-
-            ITStudentFLP.Controls.Add(userDisplay);
         }
 
 

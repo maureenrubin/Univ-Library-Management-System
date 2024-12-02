@@ -18,13 +18,13 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     public partial class SignInForm : Form
     {
 
-        private readonly ICreateAccountRepository createAccountRepository;
+        private readonly ICreateAccountServices createAcoountServices;
         private byte[] AdminPicture;
 
-        public SignInForm(ICreateAccountRepository createAccountRepository)
+        public SignInForm(ICreateAccountServices createAcoountServices)
         {
             InitializeComponent();
-            this.createAccountRepository = createAccountRepository;
+            this.createAcoountServices = createAcoountServices;
 
         }
 
@@ -47,8 +47,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     adminPicture = ms.ToArray();
                 }
             }
-
-
 
             if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) ||
                 string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
@@ -77,20 +75,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             };
 
-            await createAccountRepository.CreateAdminAccountAsync(createAdminDto);
+            await createAcoountServices.CreateAdminAccountAsync(createAdminDto);
             MessageBox.Show("New Administrator created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             FormsControlHelper.ClearControls(this);
 
-        }
-
-        private void GoBackBTN_Click(object sender, EventArgs e)
-        {
-            FormsControlHelper.ClearControls(this);
-
-
-            this.Hide();
-            var adminMainForm = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
-            adminMainForm.Show();
         }
 
         private void SelectImageBTN_Click(object sender, EventArgs e)
@@ -112,5 +100,17 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             PasswordTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
             ConfirmPassTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
         }
+
+        private void GoBackBTN_Click(object sender, EventArgs e)
+        {
+            FormsControlHelper.ClearControls(this);
+
+
+            this.Hide();
+            var adminMainForm = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
+            adminMainForm.Show();
+        }
+
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿using LibraryManagementSystem.Domain.Entities;
-using LibraryManagementSystem.Presentation.Animation;
+using LibraryManagementSystem.Helpers.Animation;
 using LibraryManagementSystem.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,20 +10,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace LibraryManagementSystem.Presentation.UserForms
 {
     public partial class UserMainForm : Form
     {
-        public UserEntity CurrentUser;
+        public UserEntity CurrentUsers;
         private readonly BooksEntity booksEntity;
-        private readonly IBooksRepository _booksRepository;
+        private readonly IBookServices bookServices;
+        private readonly IUserServices userServices;
 
         private System.Windows.Forms.Timer _viewUsersideTransition;
         private Animations _animation;
         private bool _sidebarExpanded;
 
-        public UserMainForm(IBooksRepository bookRepository, BooksEntity booksEntity)
+        public UserMainForm(
+                            IBookServices bookServices, 
+                            BooksEntity booksEntity,
+                            IUserServices userServices)
         {
 
             InitializeComponent();
@@ -31,20 +36,22 @@ namespace LibraryManagementSystem.Presentation.UserForms
             _animation = new Animations();
             _animation.ViewSideTransition(_viewUsersideTransition, UserPanel, _sidebarExpanded);
 
-            _booksRepository = bookRepository;
+            this.userServices = userServices;
+            this.bookServices = bookServices;
             LoadBookDetails();
         }
 
         private void UserMainForm_Load(object sender, EventArgs e)
         {
-            if (CurrentUser != null)
+            if (CurrentUsers != null)
             {
-                StudentNameTEXT.Text = $"{CurrentUser.FirstName} {CurrentUser.LastName}";
-                StudentCourseTEXT.Text = $"{CurrentUser.CourseName}";
+                StudentCourseTEXT.Text = $"{CurrentUsers.CourseName}";
+                StudentNameTEXT.Text = $"{CurrentUsers.FirstName} {CurrentUsers.LastName}";
+                
 
-                if (CurrentUser.UserPicture != null && CurrentUser.UserPicture.Length > 0)
+                if (CurrentUsers.UserPicture != null && CurrentUsers.UserPicture.Length > 0)
                 {
-                    using (var ms = new MemoryStream(CurrentUser.UserPicture))
+                    using (var ms = new MemoryStream(CurrentUsers.UserPicture))
                     {
                         StudentProfilePB.Image = Image.FromStream(ms);
                     }
@@ -56,7 +63,7 @@ namespace LibraryManagementSystem.Presentation.UserForms
 
         private async void LoadBookDetails()
         {
-            var bookList = await _booksRepository.GetAllBooksAsync();
+            var bookList = await bookServices.GetAllBooksAsync();
             UserBooksFLP.Controls.Clear();
 
             foreach (var book in bookList)
