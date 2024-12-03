@@ -10,6 +10,8 @@ namespace LibraryManagementSystem.Repositories.Interfaces
     public interface IAdminServices
     {
         Task<AdminEntity> GetAdminByEmailAsync(string email);
+        
+        Task<IEnumerable<AdminEntity>> GetAllAdminAsync();
 
     }
 }

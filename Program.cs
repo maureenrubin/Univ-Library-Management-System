@@ -47,7 +47,7 @@ namespace WinFormsApp2
 
 
             services.AddScoped<LoginForm>();
-            services.AddScoped<SignInForm>();
+            services.AddScoped<CreateAdminAccForm>();
 
          
             

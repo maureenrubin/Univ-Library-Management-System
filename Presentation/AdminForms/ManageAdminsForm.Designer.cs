@@ -28,12 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ManageAdminsForm";
+            AdminsFLP = new FlowLayoutPanel();
+            SuspendLayout();
+            // 
+            // AdminsFLP
+            // 
+            AdminsFLP.Location = new Point(40, 24);
+            AdminsFLP.Name = "AdminsFLP";
+            AdminsFLP.Size = new Size(1281, 708);
+            AdminsFLP.TabIndex = 0;
+            // 
+            // ManageAdminsForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1360, 756);
+            Controls.Add(AdminsFLP);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "ManageAdminsForm";
+            Text = "ManageAdminsForm";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private FlowLayoutPanel AdminsFLP;
     }
 }

@@ -21,8 +21,8 @@ namespace LibraryManagementSystem.Presentation.UserForms
         private readonly IBookServices bookServices;
         private readonly IUserServices userServices;
 
-        private System.Windows.Forms.Timer _viewUsersideTransition;
-        private Animations _animation;
+        private System.Windows.Forms.Timer viewUserTransition;
+        private Animations animation;
         private bool _sidebarExpanded;
 
         public UserMainForm(
@@ -32,9 +32,9 @@ namespace LibraryManagementSystem.Presentation.UserForms
         {
 
             InitializeComponent();
-            _viewUsersideTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            _animation = new Animations();
-            _animation.ViewSideTransition(_viewUsersideTransition, UserPanel, _sidebarExpanded);
+            this.viewUserTransition = new System.Windows.Forms.Timer { Interval = 10 };
+            this.animation = new Animations();
+            this.animation.ViewSideTransition(viewUserTransition, UserPanel, _sidebarExpanded);
 
             this.userServices = userServices;
             this.bookServices = bookServices;
@@ -79,7 +79,7 @@ namespace LibraryManagementSystem.Presentation.UserForms
         } 
         private void UserViewProfileBTN_Click(object sender, EventArgs e)
         {
-            _viewUsersideTransition.Start();
+            viewUserTransition.Start();
         }
     }
 }

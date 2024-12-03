@@ -25,7 +25,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private readonly ICreateAccountServices createAcoountServices;
         private readonly IUserServices userServices;
         private readonly ICourseServices courseServices;
-        private readonly UserDto _userDto;
+       
 
         private System.Windows.Forms.Timer _crudStudentTransition;
         private System.Windows.Forms.Timer _sideUserTransition;
@@ -59,14 +59,33 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         }
 
-        private void ManageUserBTN_Click(object sender, EventArgs e)
+      
+        private async void LoadStudentDetails()
         {
-            _sideUserTransition.Start();
+            var userList = await userServices.GetAllUsersAsync();
+
+            FormsControlHelper.ClearControls(this);
+
+            foreach (var student in userList)
+            {
+                UserControlHelper.AddUserContromToPanel(student, ITStudentFLP, SWStudentFLP, BEStudentFLP, BAStudentFLP);
+            }
         }
 
-        private void AddUserBtn_Click(object sender, EventArgs e)
+        private async void LoadCources()
         {
-            _crudStudentTransition.Start();
+            var courses = await courseServices.GetAllCourseAsync();
+            if (courses.Any())
+            {
+                UserCourseCB.DataSource = courses.ToList();
+                UserCourseCB.DisplayMember = "Course";
+                UserCourseCB.ValueMember = "CourseId";
+            }
+            else
+            {
+                MessageBox.Show("No courses available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private async void SaveUserBtn_Click(object sender, EventArgs e)
@@ -127,43 +146,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             MessageBox.Show("Student Account Created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             
-            
-            
             FormsControlHelper.ClearControls(this);
-
             LoadStudentDetails();
 
 
         }
 
-        private async void LoadCources()
-        {
-            var courses = await courseServices.GetAllCourseAsync();
-            if (courses.Any())
-            {
-                UserCourseCB.DataSource = courses.ToList();
-                UserCourseCB.DisplayMember = "Course";
-                UserCourseCB.ValueMember = "CourseId";
-            }
-            else
-            {
-                MessageBox.Show("No courses available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private async void LoadStudentDetails()
-        {
-            var userList = await userServices.GetAllUsersAsync();
-
-            FormsControlHelper.ClearControls(this);
-
-            foreach (var student in userList)
-            {
-                UserControlHelper.AddUserContromToPanel(student, ITStudentFLP, SWStudentFLP, BEStudentFLP, BAStudentFLP);
-            }
-        }
-
+       
+       
 
         private void BrowseImageBtn_Click(object sender, EventArgs e)
         {
@@ -189,6 +179,16 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             FormsControlHelper.ClearControls(this);
 
+        }
+
+        private void ManageUserBTN_Click(object sender, EventArgs e)
+        {
+            _sideUserTransition.Start();
+        }
+
+        private void AddUserBtn_Click(object sender, EventArgs e)
+        {
+            _crudStudentTransition.Start();
         }
     }
 }

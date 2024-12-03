@@ -11,14 +11,18 @@ namespace LibraryManagementSystem.Domain.Entities
     public class AdminEntity
     {
         public int AdminID { get; set; }
-        public string? Email { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string? Password { get; set; }
-        public string? ConfirmPassword { get; set; }
-      
+
+        public string Email { get; set; } = string.Empty;
+       
+        public string FirstName { get; set; } = string.Empty;
+
+        public string LastName { get; set; } = string.Empty;
+
+        public string Password { get; set; } = string.Empty;
+
+
         [Column(TypeName = "varbinary(max)")]
-        public byte[] AdminPicture { get; set; }
+        public byte[] AdminPicture { get; set; } 
 
         [Required]
         [MaxLength(10)]

@@ -52,7 +52,6 @@ namespace LibraryManagementSystem.Repositories
                     FirstName = adminDto.FirstName,
                     Email = adminDto.Email,
                     Password = adminDto.Password,
-                    ConfirmPassword = adminDto.ConfirmPass,
                     AdminPicture = adminDto.AdminPicture,
                     Gender = adminDto.Gender,
                     Role = adminDto.Role,
@@ -115,7 +114,7 @@ namespace LibraryManagementSystem.Repositories
             }
             catch (Exception ex)
             {
-                throw new Exception($"Errir Adding User:  {ex.Message}", ex);
+                throw new Exception($"Error Adding User:  {ex.Message}", ex);
             }
 
         }

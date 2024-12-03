@@ -97,7 +97,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void AddAdminBTN_Click_1(object sender, EventArgs e)
         {
-            var signInForm = Program.ServiceProvider.GetRequiredService<SignInForm>();
+            var signInForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
             signInForm.Show();
         }
 

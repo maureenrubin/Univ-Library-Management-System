@@ -13,12 +13,12 @@ namespace LibraryManagementSystem.Repositories
 {
     public class AdminServices : IAdminServices
     {
-        private readonly LMSDbContext applicationDbContext;
+        private readonly LMSDbContext dbContext;
 
 
-        public AdminServices(LMSDbContext applicationDbContext)
+        public AdminServices(LMSDbContext dbContext)
         {
-            this.applicationDbContext = applicationDbContext;
+            this.dbContext = dbContext;
 
         }
 
@@ -26,7 +26,7 @@ namespace LibraryManagementSystem.Repositories
         {
             try
             {
-                return await applicationDbContext.Admins
+                return await dbContext.Admins
                     .Where(a => a.Email == email)
 
                     .Select(a => new AdminEntity
@@ -42,10 +42,14 @@ namespace LibraryManagementSystem.Repositories
             }
             catch (Exception ex)
             {
-                throw new Exception($"An Error Occured:  {ex.Message}", ex);
+                throw new Exception($"Error Getiing Admin Email:  {ex.Message}", ex);
             }
         }
-
+        
+        public async Task<IEnumerable<AdminEntity>> GetAllAdminAsync()
+        {
+            return await dbContext.Admins.ToListAsync();
+        }
 
 
     }
