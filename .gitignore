@@ -1,0 +1,9 @@
+/bin/
+/obj/
+
+# Ignore Visual Studio specific files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
