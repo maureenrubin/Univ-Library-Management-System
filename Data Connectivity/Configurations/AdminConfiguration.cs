@@ -28,11 +28,6 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
                 .IsRequired()
                 .HasMaxLength(100);
 
-            builder.Property(a => a.Password)
-                .IsRequired()
-                .HasMaxLength(255);
-
-
         }
     }
 }

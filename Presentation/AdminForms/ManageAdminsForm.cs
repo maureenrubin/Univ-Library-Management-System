@@ -1,7 +1,9 @@
-﻿using LibraryManagementSystem.Helpers;
+﻿using LibraryManagementSystem.Domain.DTO;
+using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Presentation.UserControls;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp2;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -21,23 +24,37 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         public ManageAdminsForm(IAdminServices adminServices)
         {
             InitializeComponent();
+            this.adminServices = adminServices;
             LoadAdminDetails();
         }
 
-        private async void LoadAdminDetails()
+       
+        public async void LoadAdminDetails()
         {
-            var adminList = await adminServices.GetAllAdminAsync();
-            
-            FormsControlHelper.ClearControls(this);
-
-            foreach (var admin in adminList)
+            try
             {
-                AdminDetailsUC adminDetails = new AdminDetailsUC(admin);
-             
+                var adminList = await adminServices.GetAllAdminAsync();
 
-               AdminsFLP.Controls.Add(adminDetails);
+                FormsControlHelper.ClearControls(this);
+
+                foreach (var admin in adminList)
+                {
+                    AdminDetailsUC adminDetails = new AdminDetailsUC(admin);
+                    AdminsFLP.Controls.Add(adminDetails);
+                }
+
+            }catch(Exception ex)
+            {
+                throw new Exception($"Error Loading Admin Details: {ex.Message}", ex);
             }
-
         }
+
+        private void AddAdminBTN_Click(object sender, EventArgs e)
+        {
+            var signInForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
+            signInForm.Show();
+        }
+
+
     }
 }

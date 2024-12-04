@@ -18,8 +18,9 @@ namespace LibraryManagementSystem.Domain.Entities
 
         public string LastName { get; set; } = string.Empty;
 
-        public string Password { get; set; } = string.Empty;
+        public byte[]? PasswordHash { get; set; }
 
+        public byte[]?PasswordSalt { get; set; }
 
         [Column(TypeName = "varbinary(max)")]
         public byte[] AdminPicture { get; set; } 

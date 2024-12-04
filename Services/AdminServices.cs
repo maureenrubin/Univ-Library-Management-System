@@ -27,18 +27,8 @@ namespace LibraryManagementSystem.Repositories
             try
             {
                 return await dbContext.Admins
-                    .Where(a => a.Email == email)
-
-                    .Select(a => new AdminEntity
-                    {
-                        FirstName = a.FirstName,
-                        LastName = a.LastName,
-                        AdminPicture = a.AdminPicture,
-                        Password = a.Password
-
-
-                    })
-                    .FirstOrDefaultAsync();
+                    .SingleOrDefaultAsync(a => a.Email == email);
+                   
             }
             catch (Exception ex)
             {

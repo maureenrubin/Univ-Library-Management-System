@@ -21,15 +21,18 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private readonly ICreateAccountServices createAcoountServices;
         private readonly IAdminServices adminServices;
+        private readonly ManageAdminsForm manageAdminsForms;
         private byte[] AdminPicture;
 
         public CreateAdminAccForm(
                                     ICreateAccountServices createAcoountServices,
-                                    IAdminServices adminServices)
+                                    IAdminServices adminServices,
+                                    ManageAdminsForm manageAdminsForm)
         {
             InitializeComponent();
             this.createAcoountServices = createAcoountServices;
             this.adminServices = adminServices;
+            this.manageAdminsForms = manageAdminsForm;
             
 
         }
@@ -37,16 +40,17 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         
         private async void CreateAdminBTN_Click(object sender, EventArgs e)
         {
-            string firstName = FirstNameTB.Text;
-            string lastName = LastNameTB.Text;
-            string email = EmailTB.Text;
-            string password = PasswordTB.Text;
-            string confirmPass = ConfirmPassTB.Text;
-            string gender = GenderCB.Text;
-            byte[] adminPicture = null;
-
             try
             {
+                string firstName = FirstNameTB.Text;
+                string lastName = LastNameTB.Text;
+                string email = EmailTB.Text;
+                string password = PasswordTB.Text;
+                string confirmPass = ConfirmPassTB.Text;
+                string gender = GenderCB.Text;
+                byte[] adminPicture = null;
+
+            
 
                 if (AdminPicPB.Image != null)
                 {
@@ -72,7 +76,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     return;
                 }
 
-                var createAdminDto = new AdminDto
+                var createAdminDto = new AdminDTO
                 {
                     LastName = lastName,
                     FirstName = firstName,
@@ -87,6 +91,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 await createAcoountServices.CreateAdminAccountAsync(createAdminDto);
                 MessageBox.Show("New Administrator created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormsControlHelper.ClearControls(this);
+
+                manageAdminsForms.LoadAdminDetails();
             }
             catch (Exception ex)
             {

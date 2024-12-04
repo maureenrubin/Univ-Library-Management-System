@@ -228,6 +228,7 @@
             ViewAdminBtn.Text = " View Admin Details";
             ViewAdminBtn.TextAlign = ContentAlignment.MiddleLeft;
             ViewAdminBtn.UseVisualStyleBackColor = false;
+            ViewAdminBtn.Click += ViewAdminBtn_Click;
             // 
             // ViewProfileBTN
             // 

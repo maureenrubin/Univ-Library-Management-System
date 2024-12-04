@@ -29,10 +29,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private readonly CreateAdminAccForm signInForm;
 
 
-        public LoginForm
-            (IAdminServices adminServices, IUserServices userServices,
-            MainForm_ADMIN mainFormAdmin,
-            CreateAdminAccForm signInForm)
+        public LoginForm (
+                            IAdminServices adminServices, IUserServices userServices,
+                            MainForm_ADMIN mainFormAdmin,
+                            CreateAdminAccForm signInForm)
         {
 
             InitializeComponent();
@@ -55,9 +55,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
 
             var admin = await adminServices.GetAdminByEmailAsync(email);
-            if (admin != null && admin.Password == password)
+
+            if (admin != null && PasswordHelper.VerifyPasswordHash(password, admin.PasswordHash, admin.PasswordSalt))
             {
-                MessageBox.Show("Admin Logged in Successfully, Welcome! '", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Admin Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 var mainFormAdmin = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
                 mainFormAdmin.CurrentAdmin = admin;
@@ -65,37 +66,25 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 this.Hide();
                 mainFormAdmin.Show();
                 FormsControlHelper.ClearControls(this);
-
                 return;
-
             }
-
-
+           
             var user = await userServices.GetUserByEmailAsync(email);
            
-            if (user != null)
-
+            if (user != null && PasswordHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
-                if (PasswordHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-                {
-                    MessageBox.Show("Student Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Student Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                var studentMainForm = Program.ServiceProvider.GetRequiredService<UserMainForm>();
+                studentMainForm.CurrentUsers = user;
 
-                    var studentMainForm = Program.ServiceProvider.GetRequiredService<UserMainForm>();
-                    studentMainForm.CurrentUsers = user;
-
-                    this.Hide();
-                    studentMainForm.Show();
-                    FormsControlHelper.ClearControls(this);
-
-                    return;
-                }
+                this.Hide();
+                studentMainForm.Show();
+                FormsControlHelper.ClearControls(this);
+                return;
             }
 
-
-            MessageBox.Show("Invalid email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
+            MessageBox.Show("Incorrect email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
@@ -103,6 +92,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             Application.Exit();
         }
+
 
         private void ShowPassCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -116,8 +106,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 PasswordTXT.PasswordChar = '●';
             }
         }
-
-
 
     }
 }

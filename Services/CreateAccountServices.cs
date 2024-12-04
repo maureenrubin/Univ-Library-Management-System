@@ -23,38 +23,39 @@ namespace LibraryManagementSystem.Repositories
             this.applicationDBContext = applicationDBContext;
         }
 
-        public async Task CreateAdminAccountAsync(AdminDto adminDto)
+        public async Task CreateAdminAccountAsync(AdminDTO adminDTO)
         {
             try
             {
 
                 var errorMessages = new List<string>();
 
-                if (adminDto.Password != adminDto.ConfirmPass)
+                if (adminDTO.Password != adminDTO.ConfirmPass)
                 {
                     errorMessages.Add("Password doesn't match.");
                 }
 
                 var existingAdmin = await applicationDBContext.Admins
-                    .AsNoTracking()
-                    .SingleOrDefaultAsync(a => a.Email == adminDto.Email);
+                                    .SingleOrDefaultAsync(a => a.Email == adminDTO.Email);
 
                 if (existingAdmin != null)
                 {
-                    MessageBox.Show($"An admin with this email: '{adminDto.Email}' already exists. Please use a different email", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"An admin with this email: '{adminDTO.Email}' already exists. Please use a different email", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
+                PasswordHelper.CreatePasswordHash(adminDTO.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
                 var createAdmin = new AdminEntity
                 {
-                    LastName = adminDto.LastName,
-                    FirstName = adminDto.FirstName,
-                    Email = adminDto.Email,
-                    Password = adminDto.Password,
-                    AdminPicture = adminDto.AdminPicture,
-                    Gender = adminDto.Gender,
-                    Role = adminDto.Role,
+                    LastName = adminDTO.LastName,
+                    FirstName = adminDTO.FirstName,
+                    Email = adminDTO.Email,
+                    AdminPicture = adminDTO.AdminPicture,
+                    Gender = adminDTO.Gender,
+                    Role = adminDTO.Role,
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
                 };
 
                 applicationDBContext.Admins.Add(createAdmin);
@@ -70,39 +71,38 @@ namespace LibraryManagementSystem.Repositories
 
 
 
-        public async Task CreateUserAccountAsync(UserDto userDto)
+        public async Task CreateUserAccountAsync(UserDTO userDTO)
         {
             try
             {
 
-                if (userDto.Password != userDto.ConfirmPassword)
+                if (userDTO.Password != userDTO.ConfirmPassword)
                 {
                     MessageBox.Show("Passwords don't match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 var existingUser = await applicationDBContext.Users
-                    .AsNoTracking()
-                    .SingleOrDefaultAsync(u => u.Email.ToLower() == userDto.Email.ToLower());
+                                          .SingleOrDefaultAsync(u => u.Email.ToLower() == userDTO.Email.ToLower());
 
                 if (existingUser != null)
                 {
-                    MessageBox.Show($"A User with this email: '{userDto.Email}' already exists. Please use a different email", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"A User with this email: '{userDTO.Email}' already exists. Please use a different email", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                PasswordHelper.CreatePasswordHash(userDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
+                PasswordHelper.CreatePasswordHash(userDTO.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
 
                 var createUser = new UserEntity
                 {
-                    Email = userDto.Email,
-                    FirstName = userDto.FirstName,
-                    LastName = userDto.LastName,
-                    CourseId = userDto.CourseId,
-                    UserPicture = userDto.UserPicture,
-                    CreatedAt = userDto.CreatedAt,
-                    Role = userDto.Role,
+                    Email = userDTO.Email,
+                    FirstName = userDTO.FirstName,
+                    LastName = userDTO.LastName,
+                    CourseId = userDTO.CourseId,
+                    UserPicture = userDTO.UserPicture,
+                    CreatedAt = userDTO.CreatedAt,
+                    Role = userDTO.Role,
                     PasswordHash = passwordHash,
                     PasswordSalt = passwordSalt,
 

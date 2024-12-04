@@ -55,6 +55,7 @@ namespace WinFormsApp2
             services.AddScoped<AdminManageUserForm>();
             services.AddScoped<AdminBooksForm>();
             services.AddScoped<AdminTransactionForm>();
+            services.AddScoped<ManageAdminsForm>();
        
 
 

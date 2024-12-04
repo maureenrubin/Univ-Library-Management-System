@@ -16,6 +16,7 @@ namespace LibraryManagementSystem.Presentation.UserControls
     {
         private readonly AdminEntity adminEntity;
 
+
         public AdminDetailsUC(AdminEntity adminEntity)
         {
             InitializeComponent();
@@ -28,14 +29,23 @@ namespace LibraryManagementSystem.Presentation.UserControls
             AdminFnameTXT.Text = adminEntity.FirstName;
             AdminLnameTXT.Text = adminEntity.LastName;
             AdminID.Text = adminEntity.AdminID.ToString();
-                    
-            if (adminEntity.AdminPicture != null)
+            AdminEmailTXT.Text = adminEntity.Email;
+            GenderTXT.Text = adminEntity.Gender;
+
+
+            if (adminEntity.AdminPicture != null && adminEntity.AdminPicture.Length > 0)
             {
-                using(MemoryStream ms = new MemoryStream(adminEntity.AdminPicture))
+                using (MemoryStream ms = new MemoryStream(adminEntity.AdminPicture))
                 {
                     AdminPicPB.Image = Image.FromStream(ms);
                 }
             }
+            else
+            {
+                MessageBox.Show("Invalid image data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+       
     }
 }

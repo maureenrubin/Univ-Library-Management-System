@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Domain.DTO
 {
-    public class AdminDto
+    public class AdminDTO
     {
         public int AdminID { get; set; }
 

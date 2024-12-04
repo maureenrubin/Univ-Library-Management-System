@@ -12,17 +12,17 @@ namespace LibraryManagementSystem.Repositories
 {
     public class CourseServices : ICourseServices
     {
-        private readonly LMSDbContext applicationDbContext;
+        private readonly LMSDbContext dBContext;
 
-        public CourseServices(LMSDbContext applicationDbContext)
+        public CourseServices(LMSDbContext dBContext)
         {
-            this.applicationDbContext = applicationDbContext;
+            this.dBContext = dBContext;
         }
 
 
         public async Task<IEnumerable<CourseEntity>> GetAllCourseAsync()
         {
-            return await applicationDbContext.Courses.ToListAsync();
+            return await dBContext.Courses.ToListAsync();
 
         }
     }

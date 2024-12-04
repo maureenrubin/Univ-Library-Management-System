@@ -44,7 +44,7 @@
             DeleteUserBtn = new Krypton.Toolkit.KryptonButton();
             EditUserBtn = new Krypton.Toolkit.KryptonButton();
             AddUserBtn = new Krypton.Toolkit.KryptonButton();
-            ManageUserBTN = new Button();
+            ManageUserBtn = new Button();
             panel3 = new Panel();
             label6 = new Label();
             UserConfirmPassTXT = new Krypton.Toolkit.KryptonTextBox();
@@ -62,6 +62,7 @@
             UserEmailTXT = new Krypton.Toolkit.KryptonTextBox();
             BrowseImageBtn = new Button();
             UserPicturePB = new PictureBox();
+            label9 = new Label();
             panel1.SuspendLayout();
             StudentPanel.SuspendLayout();
             panel3.SuspendLayout();
@@ -80,16 +81,16 @@
             panel1.Controls.Add(ITStudentFLP);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(kryptonTextBox1);
-            panel1.Location = new Point(60, 0);
+            panel1.Location = new Point(60, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1376, 795);
+            panel1.Size = new Size(1364, 792);
             panel1.TabIndex = 0;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(1052, 80);
+            label8.Location = new Point(1066, 68);
             label8.Name = "label8";
             label8.Size = new Size(221, 17);
             label8.TabIndex = 24;
@@ -99,7 +100,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(735, 81);
+            label7.Location = new Point(734, 68);
             label7.Name = "label7";
             label7.Size = new Size(207, 17);
             label7.TabIndex = 23;
@@ -109,7 +110,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(435, 81);
+            label5.Location = new Point(433, 68);
             label5.Name = "label5";
             label5.Size = new Size(133, 17);
             label5.TabIndex = 22;
@@ -119,7 +120,7 @@
             // 
             LABLE.AutoSize = true;
             LABLE.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LABLE.Location = new Point(62, 80);
+            LABLE.Location = new Point(31, 68);
             LABLE.Name = "LABLE";
             LABLE.Size = new Size(261, 17);
             LABLE.TabIndex = 21;
@@ -129,25 +130,25 @@
             // 
             BAStudentFLP.AutoScroll = true;
             BAStudentFLP.BackColor = Color.White;
-            BAStudentFLP.Location = new Point(1006, 100);
+            BAStudentFLP.Location = new Point(1033, 98);
             BAStudentFLP.Name = "BAStudentFLP";
-            BAStudentFLP.Size = new Size(325, 673);
+            BAStudentFLP.Size = new Size(317, 673);
             BAStudentFLP.TabIndex = 20;
             // 
             // BEStudentFLP
             // 
             BEStudentFLP.AutoScroll = true;
             BEStudentFLP.BackColor = Color.White;
-            BEStudentFLP.Location = new Point(673, 100);
+            BEStudentFLP.Location = new Point(692, 98);
             BEStudentFLP.Name = "BEStudentFLP";
-            BEStudentFLP.Size = new Size(327, 673);
+            BEStudentFLP.Size = new Size(317, 673);
             BEStudentFLP.TabIndex = 19;
             // 
             // SWStudentFLP
             // 
             SWStudentFLP.AutoScroll = true;
             SWStudentFLP.BackColor = Color.White;
-            SWStudentFLP.Location = new Point(350, 101);
+            SWStudentFLP.Location = new Point(348, 98);
             SWStudentFLP.Name = "SWStudentFLP";
             SWStudentFLP.Size = new Size(317, 673);
             SWStudentFLP.TabIndex = 19;
@@ -156,9 +157,9 @@
             // 
             ITStudentFLP.AutoScroll = true;
             ITStudentFLP.BackColor = Color.White;
-            ITStudentFLP.Location = new Point(19, 101);
+            ITStudentFLP.Location = new Point(6, 100);
             ITStudentFLP.Name = "ITStudentFLP";
-            ITStudentFLP.Size = new Size(325, 673);
+            ITStudentFLP.Size = new Size(317, 673);
             ITStudentFLP.TabIndex = 18;
             // 
             // button1
@@ -168,7 +169,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Image = Properties.Resources.Search;
             button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(62, 22);
+            button1.Location = new Point(36, 9);
             button1.Name = "button1";
             button1.Size = new Size(37, 34);
             button1.TabIndex = 5;
@@ -177,7 +178,7 @@
             // kryptonTextBox1
             // 
             kryptonTextBox1.Cursor = Cursors.IBeam;
-            kryptonTextBox1.Location = new Point(105, 22);
+            kryptonTextBox1.Location = new Point(79, 9);
             kryptonTextBox1.Name = "kryptonTextBox1";
             kryptonTextBox1.Size = new Size(381, 34);
             kryptonTextBox1.StateActive.Back.Color1 = Color.White;
@@ -215,17 +216,17 @@
             StudentPanel.Controls.Add(DeleteUserBtn);
             StudentPanel.Controls.Add(EditUserBtn);
             StudentPanel.Controls.Add(AddUserBtn);
-            StudentPanel.Controls.Add(ManageUserBTN);
+            StudentPanel.Controls.Add(ManageUserBtn);
             StudentPanel.Controls.Add(panel3);
             StudentPanel.Location = new Point(12, 101);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(42, 694);
+            StudentPanel.Size = new Size(42, 635);
             StudentPanel.TabIndex = 1;
             // 
             // DeleteUserBtn
             // 
             DeleteUserBtn.Cursor = Cursors.Hand;
-            DeleteUserBtn.Location = new Point(95, 338);
+            DeleteUserBtn.Location = new Point(101, 266);
             DeleteUserBtn.Name = "DeleteUserBtn";
             DeleteUserBtn.Size = new Size(164, 42);
             DeleteUserBtn.StateCommon.Back.Color1 = Color.Firebrick;
@@ -254,7 +255,7 @@
             // EditUserBtn
             // 
             EditUserBtn.Cursor = Cursors.Hand;
-            EditUserBtn.Location = new Point(95, 270);
+            EditUserBtn.Location = new Point(101, 198);
             EditUserBtn.Name = "EditUserBtn";
             EditUserBtn.Size = new Size(164, 42);
             EditUserBtn.StateCommon.Back.Color1 = Color.DodgerBlue;
@@ -283,7 +284,7 @@
             // AddUserBtn
             // 
             AddUserBtn.Cursor = Cursors.Hand;
-            AddUserBtn.Location = new Point(94, 205);
+            AddUserBtn.Location = new Point(100, 133);
             AddUserBtn.Name = "AddUserBtn";
             AddUserBtn.Size = new Size(164, 42);
             AddUserBtn.StateCommon.Back.Color1 = Color.MediumSeaGreen;
@@ -310,22 +311,23 @@
             AddUserBtn.Values.Text = "ADD STUDENT";
             AddUserBtn.Click += AddUserBtn_Click;
             // 
-            // ManageUserBTN
+            // ManageUserBtn
             // 
-            ManageUserBTN.Cursor = Cursors.Hand;
-            ManageUserBTN.FlatAppearance.BorderSize = 0;
-            ManageUserBTN.FlatStyle = FlatStyle.Flat;
-            ManageUserBTN.Image = (Image)resources.GetObject("ManageUserBTN.Image");
-            ManageUserBTN.Location = new Point(3, 14);
-            ManageUserBTN.Name = "ManageUserBTN";
-            ManageUserBTN.Size = new Size(36, 44);
-            ManageUserBTN.TabIndex = 1;
-            ManageUserBTN.UseVisualStyleBackColor = true;
-            ManageUserBTN.Click += ManageUserBTN_Click;
+            ManageUserBtn.Cursor = Cursors.Hand;
+            ManageUserBtn.FlatAppearance.BorderSize = 0;
+            ManageUserBtn.FlatStyle = FlatStyle.Flat;
+            ManageUserBtn.Image = (Image)resources.GetObject("ManageUserBtn.Image");
+            ManageUserBtn.Location = new Point(3, 14);
+            ManageUserBtn.Name = "ManageUserBtn";
+            ManageUserBtn.Size = new Size(36, 44);
+            ManageUserBtn.TabIndex = 1;
+            ManageUserBtn.UseVisualStyleBackColor = true;
+            ManageUserBtn.Click += ManageUserBtn_Click_1;
             // 
             // panel3
             // 
             panel3.BackColor = Color.AliceBlue;
+            panel3.Controls.Add(label9);
             panel3.Controls.Add(label6);
             panel3.Controls.Add(UserConfirmPassTXT);
             panel3.Controls.Add(CBShowpass);
@@ -344,14 +346,14 @@
             panel3.Controls.Add(UserPicturePB);
             panel3.Location = new Point(290, 14);
             panel3.Name = "panel3";
-            panel3.Size = new Size(785, 671);
+            panel3.Size = new Size(785, 612);
             panel3.TabIndex = 0;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(354, 462);
+            label6.Location = new Point(353, 408);
             label6.Name = "label6";
             label6.Size = new Size(103, 14);
             label6.TabIndex = 18;
@@ -360,7 +362,7 @@
             // UserConfirmPassTXT
             // 
             UserConfirmPassTXT.Cursor = Cursors.IBeam;
-            UserConfirmPassTXT.Location = new Point(463, 452);
+            UserConfirmPassTXT.Location = new Point(462, 398);
             UserConfirmPassTXT.Name = "UserConfirmPassTXT";
             UserConfirmPassTXT.PasswordChar = '●';
             UserConfirmPassTXT.Size = new Size(219, 34);
@@ -397,7 +399,7 @@
             // 
             CBShowpass.AutoSize = true;
             CBShowpass.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            CBShowpass.Location = new Point(476, 492);
+            CBShowpass.Location = new Point(475, 438);
             CBShowpass.Name = "CBShowpass";
             CBShowpass.Size = new Size(107, 18);
             CBShowpass.TabIndex = 7;
@@ -409,7 +411,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(354, 385);
+            label4.Location = new Point(353, 331);
             label4.Name = "label4";
             label4.Size = new Size(59, 14);
             label4.TabIndex = 14;
@@ -419,7 +421,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(354, 306);
+            label3.Location = new Point(353, 252);
             label3.Name = "label3";
             label3.Size = new Size(37, 14);
             label3.TabIndex = 13;
@@ -429,7 +431,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(354, 191);
+            label2.Location = new Point(353, 137);
             label2.Name = "label2";
             label2.Size = new Size(58, 14);
             label2.TabIndex = 12;
@@ -439,7 +441,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(354, 115);
+            label1.Location = new Point(353, 61);
             label1.Name = "label1";
             label1.Size = new Size(60, 14);
             label1.TabIndex = 11;
@@ -448,9 +450,9 @@
             // CancelBtn
             // 
             CancelBtn.Cursor = Cursors.Hand;
-            CancelBtn.Location = new Point(439, 608);
+            CancelBtn.Location = new Point(353, 502);
             CancelBtn.Name = "CancelBtn";
-            CancelBtn.Size = new Size(135, 30);
+            CancelBtn.Size = new Size(143, 38);
             CancelBtn.StateCommon.Back.Color1 = Color.Crimson;
             CancelBtn.StateCommon.Back.Color2 = Color.Crimson;
             CancelBtn.StateCommon.Border.Color1 = Color.Black;
@@ -466,9 +468,9 @@
             // BTNCreateUser
             // 
             BTNCreateUser.Cursor = Cursors.Hand;
-            BTNCreateUser.Location = new Point(599, 608);
+            BTNCreateUser.Location = new Point(538, 502);
             BTNCreateUser.Name = "BTNCreateUser";
-            BTNCreateUser.Size = new Size(135, 30);
+            BTNCreateUser.Size = new Size(143, 38);
             BTNCreateUser.StateCommon.Back.Color1 = Color.RoyalBlue;
             BTNCreateUser.StateCommon.Back.Color2 = Color.RoyalBlue;
             BTNCreateUser.StateCommon.Border.Color1 = Color.Black;
@@ -485,7 +487,7 @@
             // 
             UserCourseCB.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             UserCourseCB.FormattingEnabled = true;
-            UserCourseCB.Location = new Point(463, 245);
+            UserCourseCB.Location = new Point(462, 191);
             UserCourseCB.Name = "UserCourseCB";
             UserCourseCB.Size = new Size(219, 22);
             UserCourseCB.TabIndex = 3;
@@ -493,7 +495,7 @@
             // UserLastNameTXT
             // 
             UserLastNameTXT.Cursor = Cursors.IBeam;
-            UserLastNameTXT.Location = new Point(463, 179);
+            UserLastNameTXT.Location = new Point(462, 125);
             UserLastNameTXT.Name = "UserLastNameTXT";
             UserLastNameTXT.Size = new Size(219, 34);
             UserLastNameTXT.StateActive.Back.Color1 = Color.White;
@@ -528,7 +530,7 @@
             // UserFirstNameTXT
             // 
             UserFirstNameTXT.Cursor = Cursors.IBeam;
-            UserFirstNameTXT.Location = new Point(463, 104);
+            UserFirstNameTXT.Location = new Point(462, 50);
             UserFirstNameTXT.Name = "UserFirstNameTXT";
             UserFirstNameTXT.Size = new Size(219, 34);
             UserFirstNameTXT.StateActive.Back.Color1 = Color.White;
@@ -563,7 +565,7 @@
             // UserPasswordTXT
             // 
             UserPasswordTXT.Cursor = Cursors.IBeam;
-            UserPasswordTXT.Location = new Point(463, 376);
+            UserPasswordTXT.Location = new Point(462, 322);
             UserPasswordTXT.Name = "UserPasswordTXT";
             UserPasswordTXT.PasswordChar = '●';
             UserPasswordTXT.Size = new Size(219, 34);
@@ -599,7 +601,7 @@
             // UserEmailTXT
             // 
             UserEmailTXT.Cursor = Cursors.IBeam;
-            UserEmailTXT.Location = new Point(463, 297);
+            UserEmailTXT.Location = new Point(462, 243);
             UserEmailTXT.Name = "UserEmailTXT";
             UserEmailTXT.Size = new Size(219, 34);
             UserEmailTXT.StateActive.Back.Color1 = Color.White;
@@ -635,7 +637,7 @@
             // 
             BrowseImageBtn.FlatStyle = FlatStyle.Flat;
             BrowseImageBtn.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            BrowseImageBtn.Location = new Point(61, 340);
+            BrowseImageBtn.Location = new Point(60, 286);
             BrowseImageBtn.Name = "BrowseImageBtn";
             BrowseImageBtn.Size = new Size(206, 27);
             BrowseImageBtn.TabIndex = 8;
@@ -645,12 +647,22 @@
             // 
             // UserPicturePB
             // 
-            UserPicturePB.Location = new Point(78, 99);
+            UserPicturePB.Location = new Point(77, 45);
             UserPicturePB.Name = "UserPicturePB";
             UserPicturePB.Size = new Size(174, 221);
             UserPicturePB.SizeMode = PictureBoxSizeMode.Zoom;
             UserPicturePB.TabIndex = 0;
             UserPicturePB.TabStop = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(353, 194);
+            label9.Name = "label9";
+            label9.Size = new Size(46, 14);
+            label9.TabIndex = 19;
+            label9.Text = "Course:";
             // 
             // AdminManageUserForm
             // 
@@ -677,7 +689,7 @@
         private Panel panel1;
         private Panel StudentPanel;
         private Panel panel3;
-        private Button ManageUserBTN;
+        private Button ManageUserBtn;
         private Krypton.Toolkit.KryptonButton AddUserBtn;
         private Krypton.Toolkit.KryptonButton EditUserBtn;
         private Krypton.Toolkit.KryptonButton DeleteUserBtn;
@@ -707,5 +719,6 @@
         private Label label5;
         private Label LABLE;
         private Label label8;
+        private Label label9;
     }
 }

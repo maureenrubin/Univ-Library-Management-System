@@ -22,24 +22,25 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     {
         private readonly IBookServices bookServices;
 
-        private System.Windows.Forms.Timer _sideBooksTransition;
-        private System.Windows.Forms.Timer _crudBooksTransition;
-        private Animations _animations;
-        private bool _sidebarExpanded;
+        private System.Windows.Forms.Timer sideBooksTransition;
+        private System.Windows.Forms.Timer crudBooksTransition;
+        private Animations animations;
+        private bool sidebarExpanded;
         private byte[] BooksPicture;
         private readonly BooksEntity booksEntity;
 
 
-        public AdminBooksForm(IBookServices bookServices, BooksEntity booksEntity)
+        public AdminBooksForm(IBookServices bookServices, 
+                              BooksEntity booksEntity)
         {
 
 
             InitializeComponent();
-            _crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            _sideBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            _animations = new Animations();
-            _animations.CrudBooksTransition(_crudBooksTransition, BooksPanel, _sidebarExpanded);
-            _animations.SideBooksTransition(_sideBooksTransition, BooksPanel, _sidebarExpanded);
+            this.crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
+            this.sideBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
+            this.animations = new Animations();
+            this.animations.CrudBooksTransition(crudBooksTransition, BooksPanel, sidebarExpanded);
+            this.animations.SideBooksTransition(sideBooksTransition, BooksPanel, sidebarExpanded);
 
             this.booksEntity = booksEntity;
             
@@ -50,12 +51,12 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void ManageBooksBTN_Click(object sender, EventArgs e)
         {
-            _sideBooksTransition.Start();
+            sideBooksTransition.Start();
         }
 
         private void AddBookBtn_Click(object sender, EventArgs e)
         {
-            _crudBooksTransition.Start();
+            crudBooksTransition.Start();
         }
 
         private async void SaveBooksBtn_Click(object sender, EventArgs e)

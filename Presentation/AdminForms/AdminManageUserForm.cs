@@ -25,15 +25,15 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private readonly ICreateAccountServices createAcoountServices;
         private readonly IUserServices userServices;
         private readonly ICourseServices courseServices;
-       
 
-        private System.Windows.Forms.Timer _crudStudentTransition;
-        private System.Windows.Forms.Timer _sideUserTransition;
-        private Animations _animations;
+
+        private System.Windows.Forms.Timer crudStudentTransition;
+        private System.Windows.Forms.Timer sideUserTransition;
+        private Animations animations;
         private bool _sidebarExpanded;
 
         private byte[] UserPicture;
-        private readonly UserEntity _addedUser;
+
 
 
         public AdminManageUserForm(
@@ -47,11 +47,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             this.userServices = userServices;
             this.courseServices = courseServices;
 
-            _crudStudentTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            _sideUserTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            _animations = new Animations();
-            _animations.CrudStudentTransition(_crudStudentTransition, StudentPanel, _sidebarExpanded);
-            _animations.SideStudentTransition(_sideUserTransition, StudentPanel, _sidebarExpanded);
+            this.crudStudentTransition = new System.Windows.Forms.Timer { Interval = 10 };
+            this.sideUserTransition = new System.Windows.Forms.Timer { Interval = 10 };
+            this.animations = new Animations();
+            this.animations.CrudStudentTransition(crudStudentTransition, StudentPanel, _sidebarExpanded);
+            this.animations.SideStudentTransition(sideUserTransition, StudentPanel, _sidebarExpanded);
 
             LoadCources();
             LoadStudentDetails();
@@ -59,7 +59,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         }
 
-      
+
         private async void LoadStudentDetails()
         {
             var userList = await userServices.GetAllUsersAsync();
@@ -74,86 +74,101 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private async void LoadCources()
         {
-            var courses = await courseServices.GetAllCourseAsync();
-            if (courses.Any())
+            try
             {
-                UserCourseCB.DataSource = courses.ToList();
-                UserCourseCB.DisplayMember = "Course";
-                UserCourseCB.ValueMember = "CourseId";
-            }
-            else
-            {
-                MessageBox.Show("No courses available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
+                var courses = await courseServices.GetAllCourseAsync();
+                if (courses.Any())
+                {
+                    UserCourseCB.DataSource = courses.ToList();
+                    UserCourseCB.ValueMember = "CourseId";
+                }
+                else
+                {
+                    MessageBox.Show("No courses available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error Loading Course: {ex.Message}", ex);
+            }
         }
 
         private async void SaveUserBtn_Click(object sender, EventArgs e)
         {
-            string firstName = UserFirstNameTXT.Text;
-            string lastName = UserLastNameTXT.Text;
-            string email = UserEmailTXT.Text;
-            string password = UserPasswordTXT.Text;
-            string confirmPassword = UserConfirmPassTXT.Text;
-            byte[] userPicture = null;
-            int selectedCourseId;
-
-            if (UserPicturePB.Image != null)
+            try
             {
-                using (var ms = new MemoryStream())
+
+
+                string firstName = UserFirstNameTXT.Text;
+                string lastName = UserLastNameTXT.Text;
+                string email = UserEmailTXT.Text;
+                string password = UserPasswordTXT.Text;
+                string confirmPassword = UserConfirmPassTXT.Text;
+                byte[] userPicture = null;
+                int selectedCourseId;
+
+                if (UserPicturePB.Image != null)
                 {
-                    UserPicturePB.Image.Save(ms, UserPicturePB.Image.RawFormat);
-                    userPicture = ms.ToArray();
+                    using (var ms = new MemoryStream())
+                    {
+                        UserPicturePB.Image.Save(ms, UserPicturePB.Image.RawFormat);
+                        userPicture = ms.ToArray();
+                    }
                 }
+
+
+                if (UserCourseCB.SelectedValue == null || !int.TryParse(UserCourseCB.SelectedValue.ToString(), out selectedCourseId))
+                {
+                    MessageBox.Show("Invalid course selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) ||
+                    string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
+
+                {
+                    MessageBox.Show("All fields are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (password != confirmPassword)
+                {
+                    MessageBox.Show("Password do not match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
+                var createUser = new UserDTO
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    CourseId = selectedCourseId,
+                    Email = email,
+                    Password = password,
+                    ConfirmPassword = confirmPassword,
+                    Role = "User",
+                    UserPicture = userPicture,
+                    
+
+                };
+
+
+                await createAcoountServices.CreateUserAccountAsync(createUser);
+                MessageBox.Show("Student Account Created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                FormsControlHelper.ClearControls(this);
+                LoadStudentDetails();
+
             }
-
-
-            if (UserCourseCB.SelectedValue == null || !int.TryParse(UserCourseCB.SelectedValue.ToString(), out selectedCourseId))
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid course selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                throw new Exception($"Error Saving User: {ex.Message}", ex);
             }
-
-            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) ||
-                string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
-
-            {
-                MessageBox.Show("All fields are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (password != confirmPassword)
-            {
-                MessageBox.Show("Password do not match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-            var createUser = new UserDto
-            {
-                FirstName = firstName,
-                LastName = lastName,
-                CourseId = selectedCourseId,
-                Email = email,
-                Password = password,
-                ConfirmPassword = confirmPassword,
-                Role = "User",
-                UserPicture = userPicture,
-
-            };
-
-
-            await createAcoountServices.CreateUserAccountAsync(createUser);
-            MessageBox.Show("Student Account Created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            
-            FormsControlHelper.ClearControls(this);
-            LoadStudentDetails();
-
-
         }
 
-       
-       
+
+
 
         private void BrowseImageBtn_Click(object sender, EventArgs e)
         {
@@ -181,14 +196,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         }
 
-        private void ManageUserBTN_Click(object sender, EventArgs e)
-        {
-            _sideUserTransition.Start();
-        }
-
         private void AddUserBtn_Click(object sender, EventArgs e)
         {
-            _crudStudentTransition.Start();
+            crudStudentTransition.Start();
+        }
+
+        private void ManageUserBtn_Click_1(object sender, EventArgs e)
+        {
+            sideUserTransition.Start();
         }
     }
 }

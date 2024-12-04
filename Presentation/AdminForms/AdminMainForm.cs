@@ -20,18 +20,18 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     {
         public AdminEntity CurrentAdmin;
 
-        private System.Windows.Forms.Timer _viewsideTransition;
-        private Animations _animation;
-        private bool _sidebarExpanded;
+        private System.Windows.Forms.Timer viewsideTransition;
+        private Animations animation;
+        private bool sidebarExpanded;
 
         public MainForm_ADMIN(IBookServices bookServices)
         {
-           
+
             InitializeComponent();
-            
-            _viewsideTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            _animation = new Animations();
-            _animation.ViewSideTransition(_viewsideTransition, AdminPanel, _sidebarExpanded);
+
+            this.viewsideTransition = new System.Windows.Forms.Timer { Interval = 10 };
+            this.animation = new Animations();
+            this.animation.ViewSideTransition(viewsideTransition, AdminPanel, sidebarExpanded);
             MainPanel.Visible = true;
 
         }
@@ -103,9 +103,13 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void ViewProfileBTN_Click(object sender, EventArgs e)
         {
-            _viewsideTransition.Start();
+            viewsideTransition.Start();
         }
 
-       
+        private void ViewAdminBtn_Click(object sender, EventArgs e)
+        {
+            var manageAdminsForm = Program.ServiceProvider.GetRequiredService<ManageAdminsForm>();
+            LoadForm(manageAdminsForm);
+        }
     }
 }

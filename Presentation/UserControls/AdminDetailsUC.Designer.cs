@@ -33,6 +33,11 @@
             GenderTXT = new Label();
             AdminID = new Label();
             AdminLnameTXT = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            AdminEmailTXT = new Label();
             ((System.ComponentModel.ISupportInitialize)AdminPicPB).BeginInit();
             SuspendLayout();
             // 
@@ -49,7 +54,7 @@
             // 
             AdminFnameTXT.AutoSize = true;
             AdminFnameTXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            AdminFnameTXT.Location = new Point(27, 225);
+            AdminFnameTXT.Location = new Point(54, 223);
             AdminFnameTXT.Name = "AdminFnameTXT";
             AdminFnameTXT.Size = new Size(45, 17);
             AdminFnameTXT.TabIndex = 1;
@@ -58,10 +63,10 @@
             // GenderTXT
             // 
             GenderTXT.AutoSize = true;
-            GenderTXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            GenderTXT.Location = new Point(27, 255);
+            GenderTXT.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            GenderTXT.Location = new Point(64, 257);
             GenderTXT.Name = "GenderTXT";
-            GenderTXT.Size = new Size(45, 17);
+            GenderTXT.Size = new Size(38, 16);
             GenderTXT.TabIndex = 2;
             GenderTXT.Text = "label1";
             // 
@@ -69,7 +74,7 @@
             // 
             AdminID.AutoSize = true;
             AdminID.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            AdminID.Location = new Point(86, 11);
+            AdminID.Location = new Point(57, 13);
             AdminID.Name = "AdminID";
             AdminID.Size = new Size(45, 17);
             AdminID.TabIndex = 3;
@@ -79,23 +84,74 @@
             // 
             AdminLnameTXT.AutoSize = true;
             AdminLnameTXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            AdminLnameTXT.Location = new Point(108, 225);
+            AdminLnameTXT.Location = new Point(114, 223);
             AdminLnameTXT.Name = "AdminLnameTXT";
             AdminLnameTXT.Size = new Size(45, 17);
             AdminLnameTXT.TabIndex = 4;
             AdminLnameTXT.Text = "label1";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(24, 13);
+            label1.Name = "label1";
+            label1.Size = new Size(21, 15);
+            label1.TabIndex = 5;
+            label1.Text = "ID:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(15, 225);
+            label2.Name = "label2";
+            label2.Size = new Size(42, 15);
+            label2.TabIndex = 6;
+            label2.Text = "Name:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(15, 256);
+            label3.Name = "label3";
+            label3.Size = new Size(48, 15);
+            label3.TabIndex = 7;
+            label3.Text = "Gender:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(15, 241);
+            label4.Name = "label4";
+            label4.Size = new Size(39, 15);
+            label4.TabIndex = 8;
+            label4.Text = "Email:";
+            // 
+            // AdminEmailTXT
+            // 
+            AdminEmailTXT.AutoSize = true;
+            AdminEmailTXT.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            AdminEmailTXT.Location = new Point(57, 241);
+            AdminEmailTXT.Name = "AdminEmailTXT";
+            AdminEmailTXT.Size = new Size(38, 16);
+            AdminEmailTXT.TabIndex = 9;
+            AdminEmailTXT.Text = "label1";
+            // 
             // AdminDetailsUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(AdminEmailTXT);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(AdminLnameTXT);
             Controls.Add(AdminID);
             Controls.Add(GenderTXT);
             Controls.Add(AdminFnameTXT);
             Controls.Add(AdminPicPB);
             Name = "AdminDetailsUC";
-            Size = new Size(220, 308);
+            Size = new Size(216, 280);
             ((System.ComponentModel.ISupportInitialize)AdminPicPB).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -108,5 +164,10 @@
         private Label GenderTXT;
         private Label AdminID;
         private Label AdminLnameTXT;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label AdminEmailTXT;
     }
 }
