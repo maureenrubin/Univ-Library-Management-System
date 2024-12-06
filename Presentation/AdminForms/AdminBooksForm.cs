@@ -25,20 +25,20 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private System.Windows.Forms.Timer sideBooksTransition;
         private System.Windows.Forms.Timer crudBooksTransition;
         private Animations animations;
-        private bool sidebarExpanded;
+        private bool sidebarExpanded = false;
         private byte[] BooksPicture;
         private readonly BooksEntity booksEntity;
 
 
         public AdminBooksForm(IBookServices bookServices, 
-                              BooksEntity booksEntity)
+                              BooksEntity booksEntity, Animations animations)
         {
 
 
             InitializeComponent();
             this.crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
             this.sideBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            this.animations = new Animations();
+            this.animations = animations;
             this.animations.CrudBooksTransition(crudBooksTransition, BooksPanel, sidebarExpanded);
             this.animations.SideBooksTransition(sideBooksTransition, BooksPanel, sidebarExpanded);
 

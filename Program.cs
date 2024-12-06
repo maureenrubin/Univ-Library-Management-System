@@ -1,5 +1,6 @@
 using LibraryManagementSystem.Data_Connectivity.Context;
 using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Helpers.Animation;
 using LibraryManagementSystem.Presentation.AdminForms;
 using LibraryManagementSystem.Presentation.UserForms;
 using LibraryManagementSystem.Repositories;
@@ -38,17 +39,15 @@ namespace WinFormsApp2
             services.AddScoped<ICourseServices, CourseServices>();
             services.AddScoped<ICreateAccountServices, CreateAccountServices>();
             services.AddScoped<IUserServices, UserServices>();
-            
 
             services.AddScoped<AdminEntity>();
             services.AddScoped<BooksEntity>();
             services.AddScoped<UserEntity>();
             services.AddScoped<CourseEntity>();
 
-
             services.AddScoped<LoginForm>();
             services.AddScoped<CreateAdminAccForm>();
-
+            services.AddScoped<HomeForm>();
          
             
             services.AddScoped<MainForm_ADMIN>();
@@ -60,9 +59,10 @@ namespace WinFormsApp2
 
 
             services.AddScoped<UserMainForm>();
+            services.AddScoped<UserBookForm>();
 
 
-
+            services.AddScoped<Animations>();
 
             services.AddDbContext<LMSDbContext>(options =>
                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));

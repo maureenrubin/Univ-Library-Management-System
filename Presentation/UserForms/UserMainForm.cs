@@ -1,6 +1,8 @@
 ﻿using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers.Animation;
+using LibraryManagementSystem.Presentation.AdminForms;
 using LibraryManagementSystem.Repositories.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp2;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace LibraryManagementSystem.Presentation.UserForms
@@ -17,28 +20,20 @@ namespace LibraryManagementSystem.Presentation.UserForms
     public partial class UserMainForm : Form
     {
         public UserEntity CurrentUsers;
-        private readonly BooksEntity booksEntity;
-        private readonly IBookServices bookServices;
-        private readonly IUserServices userServices;
+        private readonly Animations animations;
 
-        private System.Windows.Forms.Timer viewUserTransition;
-        private Animations animation;
-        private bool _sidebarExpanded;
+        private System.Windows.Forms.Timer viewUserProfile;
+        private bool sidebarExpanded = false;
 
-        public UserMainForm(
-                            IBookServices bookServices, 
-                            BooksEntity booksEntity,
-                            IUserServices userServices)
+        public UserMainForm(Animations animations)
         {
 
             InitializeComponent();
-            this.viewUserTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            this.animation = new Animations();
-            this.animation.ViewSideTransition(viewUserTransition, UserPanel, _sidebarExpanded);
 
-            this.userServices = userServices;
-            this.bookServices = bookServices;
-            LoadBookDetails();
+            this.animations = animations;
+            this.viewUserProfile = new System.Windows.Forms.Timer { Interval = 10 };
+      
+
         }
 
         private void UserMainForm_Load(object sender, EventArgs e)
@@ -47,7 +42,7 @@ namespace LibraryManagementSystem.Presentation.UserForms
             {
                 StudentCourseTEXT.Text = $"{CurrentUsers.CourseName}";
                 StudentNameTEXT.Text = $"{CurrentUsers.FirstName} {CurrentUsers.LastName}";
-                
+
 
                 if (CurrentUsers.UserPicture != null && CurrentUsers.UserPicture.Length > 0)
                 {
@@ -60,26 +55,29 @@ namespace LibraryManagementSystem.Presentation.UserForms
             }
         }
 
-
-        private async void LoadBookDetails()
+        private void HomeButton_Click(object sender, EventArgs e)
         {
-            var bookList = await bookServices.GetAllBooksAsync();
-            UserBooksFLP.Controls.Clear();
-
-            foreach (var book in bookList)
-            {
-                DisplayBooksToUI(book);
-            }
+            var homeForm = Program.ServiceProvider.GetRequiredService<HomeForm>();
+            animations.LoadForm(BooksPanel, homeForm);
         }
 
-        private void DisplayBooksToUI (BooksEntity booksEntity)
-        {
-            AdminBooksUserControl bookDisplay = new AdminBooksUserControl(booksEntity);
-            UserBooksFLP.Controls.Add(bookDisplay);
-        } 
         private void UserViewProfileBTN_Click(object sender, EventArgs e)
         {
-            viewUserTransition.Start();
+            animations.ViewSideProfile(viewUserProfile, UserPanel, 10, 283);
+            viewUserProfile.Start();
+           
+        }
+
+        private void BooksButton_Click(object sender, EventArgs e)
+        {
+            var userBooksForm = Program.ServiceProvider.GetRequiredService<UserBookForm>();
+            animations.LoadForm(BooksPanel, userBooksForm);
+        }
+
+        private void ViewBooksButton_Click(object sender, EventArgs e)
+        {
+            var userBooksForm = Program.ServiceProvider.GetRequiredService<UserBookForm>();
+            animations.LoadForm(BooksPanel, userBooksForm);
         }
     }
 }

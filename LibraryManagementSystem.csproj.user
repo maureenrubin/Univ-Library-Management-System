@@ -13,6 +13,9 @@
     <Compile Update="Presentation\AdminForms\AdminTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Presentation\AdminForms\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Presentation\AdminForms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -30,6 +33,9 @@
     </Compile>
     <Compile Update="Presentation\UserControls\UserDetailsUC.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\UserForms\UserBookForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\UserForms\UserMainForm.cs">
       <SubType>Form</SubType>

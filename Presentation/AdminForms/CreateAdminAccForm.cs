@@ -33,12 +33,40 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             this.createAcoountServices = createAcoountServices;
             this.adminServices = adminServices;
             this.manageAdminsForms = manageAdminsForm;
-            
 
         }
-        
-        
-        private async void CreateAdminBTN_Click(object sender, EventArgs e)
+
+        private void SelectImageBTN_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Images Files | *.jp;*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    AdminPicture = File.ReadAllBytes(openFileDialog.FileName);
+                    AdminPicPB.Image = Image.FromStream(new MemoryStream(AdminPicture));
+                }
+            }
+        }
+
+        private void ShowPasswordTB_CheckedChanged(object sender, EventArgs e)
+        {
+            PasswordTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
+            ConfirmPassTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
+        }
+
+        private void GoBackBTN_Click(object sender, EventArgs e)
+        {
+            FormsControlHelper.ClearControls(this);
+
+
+            this.Hide();
+            var adminMainForm = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
+            adminMainForm.Show();
+        }
+
+        private async void CreateAdminBTN_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -50,7 +78,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 string gender = GenderCB.Text;
                 byte[] adminPicture = null;
 
-            
+
 
                 if (AdminPicPB.Image != null)
                 {
@@ -100,36 +128,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
-        private void SelectImageBTN_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Images Files | *.jp;*.jpg;*.jpeg;*.png;*.bmp";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    AdminPicture = File.ReadAllBytes(openFileDialog.FileName);
-                    AdminPicPB.Image = Image.FromStream(new MemoryStream(AdminPicture));
-                }
-            }
-        }
-
-        private void ShowPasswordTB_CheckedChanged(object sender, EventArgs e)
-        {
-            PasswordTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
-            ConfirmPassTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
-        }
-
-        private void GoBackBTN_Click(object sender, EventArgs e)
+        private void CancelBTN_Click(object sender, EventArgs e)
         {
             FormsControlHelper.ClearControls(this);
-
-
-            this.Hide();
-            var adminMainForm = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
-            adminMainForm.Show();
         }
-
-        
     }
 }

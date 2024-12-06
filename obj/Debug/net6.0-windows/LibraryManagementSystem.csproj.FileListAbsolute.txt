@@ -50,11 +50,13 @@ C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagement
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.AdminForms.AdminManageUserForm.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.AdminForms.AdminTransactionForm.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.AdminForms.CreateAdminAccForm.resources
+C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.AdminForms.HomeForm.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.AdminForms.LoginForm.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.AdminForms.ManageAdminsForm.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.AdminBooksUserControl.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.UserControls.AdminDetailsUC.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.UserControls.UserDetailsUC.resources
+C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.UserForms.UserBookForm.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Presentation.UserForms.UserMainForm.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.Properties.Resources.resources
 C:\Users\i7\source\repos\WinFormsApp2\obj\Debug\net6.0-windows\LibraryManagementSystem.csproj.GenerateResource.cache

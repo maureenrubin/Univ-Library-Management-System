@@ -51,9 +51,9 @@
             AddAdminBTN.FlatStyle = FlatStyle.Flat;
             AddAdminBTN.Image = (Image)resources.GetObject("AddAdminBTN.Image");
             AddAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            AddAdminBTN.Location = new Point(40, 2);
+            AddAdminBTN.Location = new Point(40, 12);
             AddAdminBTN.Name = "AddAdminBTN";
-            AddAdminBTN.Size = new Size(90, 68);
+            AddAdminBTN.Size = new Size(149, 58);
             AddAdminBTN.TabIndex = 10;
             AddAdminBTN.Text = "Add New Administrator";
             AddAdminBTN.TextAlign = ContentAlignment.BottomCenter;
@@ -76,9 +76,9 @@
             RemoveAdminBTN.FlatStyle = FlatStyle.Flat;
             RemoveAdminBTN.Image = (Image)resources.GetObject("RemoveAdminBTN.Image");
             RemoveAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            RemoveAdminBTN.Location = new Point(136, 2);
+            RemoveAdminBTN.Location = new Point(195, 12);
             RemoveAdminBTN.Name = "RemoveAdminBTN";
-            RemoveAdminBTN.Size = new Size(90, 68);
+            RemoveAdminBTN.Size = new Size(144, 58);
             RemoveAdminBTN.TabIndex = 12;
             RemoveAdminBTN.Text = "Remove Administrator";
             RemoveAdminBTN.TextAlign = ContentAlignment.BottomCenter;
@@ -88,6 +88,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(169, 131, 110);
             ClientSize = new Size(1360, 756);
             Controls.Add(RemoveAdminBTN);
             Controls.Add(panel1);

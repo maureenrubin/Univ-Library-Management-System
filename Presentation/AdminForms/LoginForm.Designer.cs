@@ -41,6 +41,7 @@
             label1 = new Label();
             label2 = new Label();
             LoginBTN = new Krypton.Toolkit.KryptonButton();
+            ForgotPassLBL = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -49,7 +50,7 @@
             // UsernameTXT
             // 
             UsernameTXT.Cursor = Cursors.IBeam;
-            UsernameTXT.Location = new Point(218, 358);
+            UsernameTXT.Location = new Point(286, 408);
             UsernameTXT.Name = "UsernameTXT";
             UsernameTXT.Size = new Size(331, 40);
             UsernameTXT.StateActive.Back.Color1 = Color.White;
@@ -73,7 +74,7 @@
             // PasswordTXT
             // 
             PasswordTXT.Cursor = Cursors.IBeam;
-            PasswordTXT.Location = new Point(218, 442);
+            PasswordTXT.Location = new Point(286, 492);
             PasswordTXT.Name = "PasswordTXT";
             PasswordTXT.PasswordChar = '●';
             PasswordTXT.Size = new Size(331, 40);
@@ -99,7 +100,7 @@
             ExitBTN.FlatAppearance.BorderSize = 0;
             ExitBTN.FlatStyle = FlatStyle.Flat;
             ExitBTN.Image = Properties.Resources.Close_Window;
-            ExitBTN.Location = new Point(1449, 0);
+            ExitBTN.Location = new Point(1448, 2);
             ExitBTN.Name = "ExitBTN";
             ExitBTN.Size = new Size(22, 23);
             ExitBTN.TabIndex = 8;
@@ -111,26 +112,26 @@
             label4.AutoSize = true;
             label4.FlatStyle = FlatStyle.System;
             label4.Font = new Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(274, 244);
+            label4.Location = new Point(311, 347);
             label4.Name = "label4";
-            label4.Size = new Size(215, 26);
+            label4.Size = new Size(283, 26);
             label4.TabIndex = 12;
-            label4.Text = "LOGIN YOUR ACCOUNT";
+            label4.Text = "PLEASE LOGIN YOUR ACCOUNT";
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.FromArgb(169, 131, 110);
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(789, 229);
+            pictureBox2.Location = new Point(792, 209);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(597, 419);
+            pictureBox2.Size = new Size(545, 423);
             pictureBox2.TabIndex = 15;
             pictureBox2.TabStop = false;
             // 
             // ShowPassCB
             // 
             ShowPassCB.AutoSize = true;
-            ShowPassCB.Location = new Point(230, 499);
+            ShowPassCB.Location = new Point(298, 549);
             ShowPassCB.Name = "ShowPassCB";
             ShowPassCB.Size = new Size(108, 19);
             ShowPassCB.TabIndex = 3;
@@ -143,7 +144,7 @@
             label5.AutoSize = true;
             label5.FlatStyle = FlatStyle.System;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(327, 623);
+            label5.Location = new Point(395, 673);
             label5.Name = "label5";
             label5.Size = new Size(0, 16);
             label5.TabIndex = 17;
@@ -151,7 +152,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Male_User;
-            pictureBox1.Location = new Point(187, 358);
+            pictureBox1.Location = new Point(259, 408);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(25, 40);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -161,7 +162,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.Password;
-            pictureBox3.Location = new Point(187, 442);
+            pictureBox3.Location = new Point(259, 492);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(25, 40);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -172,7 +173,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(132, 184);
+            label1.Location = new Point(197, 248);
             label1.Name = "label1";
             label1.Size = new Size(530, 20);
             label1.TabIndex = 21;
@@ -182,7 +183,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Perpetua Titling MT", 36F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(90, 68);
+            label2.Location = new Point(142, 111);
             label2.Name = "label2";
             label2.Size = new Size(627, 116);
             label2.TabIndex = 20;
@@ -191,7 +192,7 @@
             // LoginBTN
             // 
             LoginBTN.Cursor = Cursors.Hand;
-            LoginBTN.Location = new Point(218, 566);
+            LoginBTN.Location = new Point(286, 616);
             LoginBTN.Name = "LoginBTN";
             LoginBTN.Size = new Size(331, 40);
             LoginBTN.StateCommon.Back.Color1 = Color.FromArgb(152, 96, 64);
@@ -210,8 +211,8 @@
             LoginBTN.StateNormal.Border.Color1 = Color.White;
             LoginBTN.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             LoginBTN.StateNormal.Content.ShortText.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LoginBTN.StatePressed.Back.Color1 = Color.Honeydew;
-            LoginBTN.StatePressed.Back.Color2 = Color.Honeydew;
+            LoginBTN.StatePressed.Back.Color1 = Color.FromArgb(152, 96, 64);
+            LoginBTN.StatePressed.Back.Color2 = Color.FromArgb(152, 96, 64);
             LoginBTN.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             LoginBTN.StatePressed.Border.Rounding = 10F;
             LoginBTN.StatePressed.Content.ShortText.Color1 = Color.White;
@@ -222,12 +223,24 @@
             LoginBTN.Values.Text = "L O G I N";
             LoginBTN.Click += LoginBTN_Click_1;
             // 
+            // ForgotPassLBL
+            // 
+            ForgotPassLBL.AutoSize = true;
+            ForgotPassLBL.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            ForgotPassLBL.Location = new Point(364, 669);
+            ForgotPassLBL.Name = "ForgotPassLBL";
+            ForgotPassLBL.Size = new Size(166, 20);
+            ForgotPassLBL.TabIndex = 23;
+            ForgotPassLBL.Text = "Forgot your password?";
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(169, 131, 110);
             ClientSize = new Size(1473, 873);
+            Controls.Add(pictureBox2);
+            Controls.Add(ForgotPassLBL);
             Controls.Add(LoginBTN);
             Controls.Add(label1);
             Controls.Add(label2);
@@ -236,7 +249,6 @@
             Controls.Add(label5);
             Controls.Add(ShowPassCB);
             Controls.Add(ExitBTN);
-            Controls.Add(pictureBox2);
             Controls.Add(label4);
             Controls.Add(PasswordTXT);
             Controls.Add(UsernameTXT);
@@ -264,5 +276,6 @@
         private Label label1;
         private Label label2;
         private Krypton.Toolkit.KryptonButton LoginBTN;
+        private Label ForgotPassLBL;
     }
 }

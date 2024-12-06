@@ -133,7 +133,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Azure;
+            BackColor = Color.Transparent;
             Controls.Add(LblCreatedAt);
             Controls.Add(label5);
             Controls.Add(StudentID);

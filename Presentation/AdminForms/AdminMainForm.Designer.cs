@@ -40,12 +40,12 @@
             AccountsButton = new Button();
             BooksButton = new Button();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            HomeButton = new Button();
             ViewAdminButton = new Button();
             ViewProfileBTN = new Button();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel4 = new Krypton.Toolkit.KryptonPanel();
-            kryptonPanel5 = new Krypton.Toolkit.KryptonPanel();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             MainPanel = new Panel();
@@ -61,8 +61,6 @@
             kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).BeginInit();
-            kryptonPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             MainPanel.SuspendLayout();
             SuspendLayout();
@@ -78,7 +76,7 @@
             AdminPanel.Dock = DockStyle.Right;
             AdminPanel.Location = new Point(1458, 0);
             AdminPanel.Name = "AdminPanel";
-            AdminPanel.Size = new Size(10, 871);
+            AdminPanel.Size = new Size(10, 877);
             AdminPanel.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             AdminPanel.StateCommon.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             AdminPanel.TabIndex = 1;
@@ -88,7 +86,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Gadugi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(64, 73);
+            label1.Location = new Point(64, 84);
             label1.Name = "label1";
             label1.Size = new Size(134, 25);
             label1.TabIndex = 5;
@@ -99,10 +97,10 @@
             LogoutBTN.BackColor = Color.Transparent;
             LogoutBTN.FlatAppearance.BorderSize = 0;
             LogoutBTN.FlatStyle = FlatStyle.Flat;
-            LogoutBTN.ForeColor = Color.Red;
+            LogoutBTN.ForeColor = Color.Maroon;
             LogoutBTN.Image = (Image)resources.GetObject("LogoutBTN.Image");
             LogoutBTN.ImageAlign = ContentAlignment.MiddleRight;
-            LogoutBTN.Location = new Point(82, 783);
+            LogoutBTN.Location = new Point(73, 782);
             LogoutBTN.Name = "LogoutBTN";
             LogoutBTN.Size = new Size(136, 39);
             LogoutBTN.TabIndex = 4;
@@ -130,7 +128,7 @@
             AddAdminBTN.FlatStyle = FlatStyle.Flat;
             AddAdminBTN.Image = (Image)resources.GetObject("AddAdminBTN.Image");
             AddAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            AddAdminBTN.Location = new Point(64, 369);
+            AddAdminBTN.Location = new Point(62, 381);
             AddAdminBTN.Name = "AddAdminBTN";
             AddAdminBTN.Size = new Size(135, 52);
             AddAdminBTN.TabIndex = 9;
@@ -142,7 +140,7 @@
             // AccountPic_PB
             // 
             AccountPic_PB.BackColor = Color.Transparent;
-            AccountPic_PB.Location = new Point(27, 107);
+            AccountPic_PB.Location = new Point(27, 118);
             AccountPic_PB.Name = "AccountPic_PB";
             AccountPic_PB.Size = new Size(217, 204);
             AccountPic_PB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -163,11 +161,12 @@
             TransactionButton.Cursor = Cursors.Hand;
             TransactionButton.FlatAppearance.BorderSize = 0;
             TransactionButton.FlatStyle = FlatStyle.Flat;
+            TransactionButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             TransactionButton.Image = (Image)resources.GetObject("TransactionButton.Image");
             TransactionButton.ImageAlign = ContentAlignment.MiddleRight;
-            TransactionButton.Location = new Point(681, 12);
+            TransactionButton.Location = new Point(1187, 12);
             TransactionButton.Name = "TransactionButton";
-            TransactionButton.Size = new Size(156, 52);
+            TransactionButton.Size = new Size(166, 52);
             TransactionButton.TabIndex = 8;
             TransactionButton.Text = "Review Transactions";
             TransactionButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -180,11 +179,12 @@
             AccountsButton.Cursor = Cursors.Hand;
             AccountsButton.FlatAppearance.BorderSize = 0;
             AccountsButton.FlatStyle = FlatStyle.Flat;
+            AccountsButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             AccountsButton.Image = Properties.Resources.Student_Male;
             AccountsButton.ImageAlign = ContentAlignment.MiddleRight;
-            AccountsButton.Location = new Point(532, 12);
+            AccountsButton.Location = new Point(813, 11);
             AccountsButton.Name = "AccountsButton";
-            AccountsButton.Size = new Size(143, 52);
+            AccountsButton.Size = new Size(150, 52);
             AccountsButton.TabIndex = 6;
             AccountsButton.Text = "Manage Students";
             AccountsButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -197,11 +197,12 @@
             BooksButton.Cursor = Cursors.Hand;
             BooksButton.FlatAppearance.BorderSize = 0;
             BooksButton.FlatStyle = FlatStyle.Flat;
+            BooksButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             BooksButton.Image = (Image)resources.GetObject("BooksButton.Image");
             BooksButton.ImageAlign = ContentAlignment.MiddleRight;
-            BooksButton.Location = new Point(376, 12);
+            BooksButton.Location = new Point(632, 11);
             BooksButton.Name = "BooksButton";
-            BooksButton.Size = new Size(150, 52);
+            BooksButton.Size = new Size(137, 52);
             BooksButton.TabIndex = 7;
             BooksButton.Text = "Manage Books";
             BooksButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -210,6 +211,7 @@
             // 
             // kryptonPanel2
             // 
+            kryptonPanel2.Controls.Add(HomeButton);
             kryptonPanel2.Controls.Add(ViewAdminButton);
             kryptonPanel2.Controls.Add(ViewProfileBTN);
             kryptonPanel2.Controls.Add(BooksButton);
@@ -222,17 +224,36 @@
             kryptonPanel2.StateCommon.Color2 = Color.FromArgb(152, 96, 64);
             kryptonPanel2.TabIndex = 3;
             // 
+            // HomeButton
+            // 
+            HomeButton.BackColor = Color.Transparent;
+            HomeButton.Cursor = Cursors.Hand;
+            HomeButton.FlatAppearance.BorderSize = 0;
+            HomeButton.FlatStyle = FlatStyle.Flat;
+            HomeButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            HomeButton.Image = (Image)resources.GetObject("HomeButton.Image");
+            HomeButton.ImageAlign = ContentAlignment.TopCenter;
+            HomeButton.Location = new Point(158, 11);
+            HomeButton.Name = "HomeButton";
+            HomeButton.Size = new Size(75, 56);
+            HomeButton.TabIndex = 10;
+            HomeButton.Text = "Home";
+            HomeButton.TextAlign = ContentAlignment.BottomCenter;
+            HomeButton.UseVisualStyleBackColor = false;
+            HomeButton.Click += HomeButton_Click;
+            // 
             // ViewAdminButton
             // 
             ViewAdminButton.BackColor = Color.Transparent;
             ViewAdminButton.Cursor = Cursors.Hand;
             ViewAdminButton.FlatAppearance.BorderSize = 0;
             ViewAdminButton.FlatStyle = FlatStyle.Flat;
+            ViewAdminButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             ViewAdminButton.Image = (Image)resources.GetObject("ViewAdminButton.Image");
             ViewAdminButton.ImageAlign = ContentAlignment.MiddleRight;
-            ViewAdminButton.Location = new Point(843, 12);
+            ViewAdminButton.Location = new Point(994, 12);
             ViewAdminButton.Name = "ViewAdminButton";
-            ViewAdminButton.Size = new Size(143, 52);
+            ViewAdminButton.Size = new Size(158, 52);
             ViewAdminButton.TabIndex = 9;
             ViewAdminButton.Text = " View Admin Details";
             ViewAdminButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -245,11 +266,12 @@
             ViewProfileBTN.Cursor = Cursors.Hand;
             ViewProfileBTN.FlatAppearance.BorderSize = 0;
             ViewProfileBTN.FlatStyle = FlatStyle.Flat;
+            ViewProfileBTN.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             ViewProfileBTN.Image = (Image)resources.GetObject("ViewProfileBTN.Image");
             ViewProfileBTN.ImageAlign = ContentAlignment.TopCenter;
-            ViewProfileBTN.Location = new Point(49, 12);
+            ViewProfileBTN.Location = new Point(47, 7);
             ViewProfileBTN.Name = "ViewProfileBTN";
-            ViewProfileBTN.Size = new Size(88, 52);
+            ViewProfileBTN.Size = new Size(105, 60);
             ViewProfileBTN.TabIndex = 8;
             ViewProfileBTN.Text = "View Profile";
             ViewProfileBTN.TextAlign = ContentAlignment.BottomCenter;
@@ -274,28 +296,20 @@
             // 
             // kryptonPanel4
             // 
-            kryptonPanel4.Controls.Add(kryptonPanel5);
             kryptonPanel4.Dock = DockStyle.Bottom;
-            kryptonPanel4.Location = new Point(0, 871);
+            kryptonPanel4.Location = new Point(0, 877);
             kryptonPanel4.Name = "kryptonPanel4";
-            kryptonPanel4.Size = new Size(1468, 16);
+            kryptonPanel4.Size = new Size(1468, 10);
             kryptonPanel4.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             kryptonPanel4.TabIndex = 7;
-            // 
-            // kryptonPanel5
-            // 
-            kryptonPanel5.Location = new Point(1458, 0);
-            kryptonPanel5.Name = "kryptonPanel5";
-            kryptonPanel5.Size = new Size(10, 887);
-            kryptonPanel5.TabIndex = 6;
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.LightCyan;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 0);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(476, 812);
+            pictureBox1.Size = new Size(491, 810);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -304,7 +318,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Perpetua Titling MT", 36F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(669, 189);
+            label2.Location = new Point(651, 227);
             label2.Name = "label2";
             label2.Size = new Size(627, 116);
             label2.TabIndex = 8;
@@ -316,7 +330,7 @@
             MainPanel.Controls.Add(label3);
             MainPanel.Controls.Add(label2);
             MainPanel.Controls.Add(pictureBox1);
-            MainPanel.Location = new Point(12, 65);
+            MainPanel.Location = new Point(19, 70);
             MainPanel.Name = "MainPanel";
             MainPanel.Size = new Size(1446, 810);
             MainPanel.TabIndex = 9;
@@ -324,7 +338,7 @@
             // ViewBooksButton
             // 
             ViewBooksButton.Cursor = Cursors.Hand;
-            ViewBooksButton.Location = new Point(831, 360);
+            ViewBooksButton.Location = new Point(821, 420);
             ViewBooksButton.Name = "ViewBooksButton";
             ViewBooksButton.Size = new Size(276, 40);
             ViewBooksButton.StateCommon.Back.Color1 = Color.FromArgb(152, 96, 64);
@@ -359,7 +373,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(711, 305);
+            label3.Location = new Point(701, 365);
             label3.Name = "label3";
             label3.Size = new Size(530, 20);
             label3.TabIndex = 9;
@@ -372,10 +386,10 @@
             BackColor = Color.LightCyan;
             ClientSize = new Size(1468, 887);
             Controls.Add(AdminPanel);
-            Controls.Add(kryptonPanel4);
             Controls.Add(kryptonPanel2);
-            Controls.Add(kryptonPanel1);
+            Controls.Add(kryptonPanel4);
             Controls.Add(MainPanel);
+            Controls.Add(kryptonPanel1);
             ForeColor = Color.Black;
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm_ADMIN";
@@ -393,8 +407,6 @@
             kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)kryptonPanel3).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).EndInit();
-            kryptonPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             MainPanel.ResumeLayout(false);
             MainPanel.PerformLayout();
@@ -417,12 +429,12 @@
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel3;
         private Krypton.Toolkit.KryptonPanel kryptonPanel4;
-        private Krypton.Toolkit.KryptonPanel kryptonPanel5;
         private Button ViewAdminButton;
         private PictureBox pictureBox1;
         private Label label2;
         private Panel MainPanel;
         private Label label3;
         private Krypton.Toolkit.KryptonButton ViewBooksButton;
+        private Button HomeButton;
     }
 }

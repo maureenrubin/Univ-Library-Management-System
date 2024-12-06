@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="GoBackBTN.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAPpJREFUSEvl
+        lL0OwWAYRrtb9Id2wx0YDJYmEosLsHQzuCerVWKwmLkDFoPJLYjYOV/yNvkibVXfxsCTnDRtnz4nNDj/
+        nTAMG67rxp7nTXzfH3Pellv1pEkYnyJJbMx1qeiSJzBwfSi16ikSCLFUq6WEIOG99KT+ecoIVF/VNwQd
+        RlYc1xwX9nCKShBFUYuRO4JHCucnRue1CEwY2doCi4sRqQUmjB1fxm3OoP/hFXySlAPoRFnvJAO9KAiC
+        AaKbNZqFXsTzfbhCliDla6Kd1KuHkTKimdSrh5F3oo1UdWGoSLSUmj6M5Yn6UqknDHZhA+afYQ8jufXT
+        cZwn6C2Z9irTF0oAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

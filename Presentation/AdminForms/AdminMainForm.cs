@@ -13,6 +13,7 @@ using WinFormsApp2;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
 using LibraryManagementSystem.Helpers.Animation;
+using LibraryManagementSystem.Presentation.UserForms;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -21,19 +22,19 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         public AdminEntity CurrentAdmin;
 
         private System.Windows.Forms.Timer viewsideTransition;
-        private Animations animation;
+        private readonly Animations animation;
         private bool sidebarExpanded;
+        
 
-        public MainForm_ADMIN(IBookServices bookServices)
+        public MainForm_ADMIN(IBookServices bookServices, Animations animations)
         {
 
             InitializeComponent();
 
             this.viewsideTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            this.animation = new Animations();
-            this.animation.ViewSideTransition(viewsideTransition, AdminPanel, sidebarExpanded);
-            MainPanel.Visible = true;
-
+            this.animation = animations;
+            sidebarExpanded = false;
+            
         }
 
 
@@ -56,34 +57,21 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         }
 
 
-        public void LoadForm(object Form)
-        {
-            if (this.MainPanel.Controls.Count > 0)
-                this.MainPanel.Controls.Clear();
-
-            Form f = (Form)Form;
-            f.TopLevel = false;
-            f.Dock = DockStyle.Fill;
-            this.MainPanel.Controls.Add(f);
-            this.MainPanel.Tag = f;
-            f.Show();
-        }
-
         private void BooksButton_Click(object sender, EventArgs e)
         {
             var adminBooksForm = Program.ServiceProvider.GetRequiredService<AdminBooksForm>();
-            LoadForm(adminBooksForm);
+            animation.LoadForm(MainPanel,adminBooksForm);
         }
 
         private void AccountsButton_Click(object sender, EventArgs e)
         {
             var adminManageUserForm = Program.ServiceProvider.GetRequiredService<AdminManageUserForm>();
-            LoadForm(adminManageUserForm);
+            animation.LoadForm(MainPanel, adminManageUserForm);
         }
 
         private void TransactionButton_Click(object sender, EventArgs e)
         {
-            LoadForm(new AdminTransactionForm());
+            animation.LoadForm(MainPanel, new AdminTransactionForm());
         }
 
         private void LogoutBTN_Click(object sender, EventArgs e)
@@ -103,19 +91,27 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void ViewProfileBTN_Click(object sender, EventArgs e)
         {
+            animation.ViewSideProfile(viewsideTransition, AdminPanel, 10,283);
             viewsideTransition.Start();
+            sidebarExpanded = !sidebarExpanded;
         }
 
         private void ViewAdminBtn_Click(object sender, EventArgs e)
         {
             var manageAdminsForm = Program.ServiceProvider.GetRequiredService<ManageAdminsForm>();
-            LoadForm(manageAdminsForm);
+            animation.LoadForm(MainPanel, manageAdminsForm);
         }
 
         private void ViewBooksButton_Click(object sender, EventArgs e)
         {
             var adminBooksForm = Program.ServiceProvider.GetRequiredService<AdminBooksForm>();
-            LoadForm(adminBooksForm);
+            animation.LoadForm(MainPanel, adminBooksForm);
+        }
+
+        private void HomeButton_Click(object sender, EventArgs e)
+        {
+            var homeForm = Program.ServiceProvider.GetRequiredService<HomeForm>();
+            animation.LoadForm(MainPanel, homeForm);
         }
     }
 }

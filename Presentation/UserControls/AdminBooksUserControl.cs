@@ -14,7 +14,7 @@ namespace LibraryManagementSystem.Presentation
     public partial class AdminBooksUserControl : UserControl
     {
         private readonly BooksEntity bookEntity;
-       
+
         public AdminBooksUserControl(BooksEntity bookEntity)
         {
             InitializeComponent();
@@ -28,16 +28,20 @@ namespace LibraryManagementSystem.Presentation
             BooksStockLbl.Text = bookEntity.BookStock.ToString();
             BooksGenreLbl.Text = bookEntity.Genre;
             BooksPriceLbl.Text = bookEntity.BookPrice.ToString();
+            BooksIdLbl.Text = bookEntity.BookId.ToString();
             PublishedDate.Text = bookEntity.PublishedDate.ToShortDateString();
+            
 
             if (bookEntity.BooksPicture != null)
             {
-                using(MemoryStream ms = new MemoryStream(bookEntity.BooksPicture))
+                using (MemoryStream ms = new MemoryStream(bookEntity.BooksPicture))
                 {
                     BooksPB.Image = Image.FromStream(ms);
                 }
             }
 
         }
+
+       
     }
 }

@@ -46,6 +46,7 @@
             AddUserBtn = new Krypton.Toolkit.KryptonButton();
             ManageUserBtn = new Button();
             panel3 = new Panel();
+            label9 = new Label();
             label6 = new Label();
             UserConfirmPassTXT = new Krypton.Toolkit.KryptonTextBox();
             CBShowpass = new CheckBox();
@@ -62,7 +63,6 @@
             UserEmailTXT = new Krypton.Toolkit.KryptonTextBox();
             BrowseImageBtn = new Button();
             UserPicturePB = new PictureBox();
-            label9 = new Label();
             panel1.SuspendLayout();
             StudentPanel.SuspendLayout();
             panel3.SuspendLayout();
@@ -71,6 +71,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(169, 131, 110);
             panel1.Controls.Add(label8);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label5);
@@ -81,55 +82,55 @@
             panel1.Controls.Add(ITStudentFLP);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(kryptonTextBox1);
-            panel1.Location = new Point(60, 3);
+            panel1.Location = new Point(63, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1364, 792);
+            panel1.Size = new Size(1361, 792);
             panel1.TabIndex = 0;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(1066, 68);
+            label8.Location = new Point(1082, 68);
             label8.Name = "label8";
-            label8.Size = new Size(221, 17);
+            label8.Size = new Size(184, 17);
             label8.TabIndex = 24;
-            label8.Text = "BS IN BUSINESS ADMINISTRATION";
+            label8.Text = "BUSINESS ADMINISTRATION";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(734, 68);
+            label7.Location = new Point(766, 68);
             label7.Name = "label7";
-            label7.Size = new Size(207, 17);
+            label7.Size = new Size(170, 17);
             label7.TabIndex = 23;
-            label7.Text = "BS IN ELEMENTARY EDUCATION\r\n";
+            label7.Text = "ELEMENTARY EDUCATION\r\n";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(433, 68);
+            label5.Location = new Point(455, 68);
             label5.Name = "label5";
-            label5.Size = new Size(133, 17);
+            label5.Size = new Size(96, 17);
             label5.TabIndex = 22;
-            label5.Text = "BS IN SOCIAL WORK\r\n";
+            label5.Text = "SOCIAL WORK\r\n";
             // 
             // LABLE
             // 
             LABLE.AutoSize = true;
             LABLE.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LABLE.Location = new Point(31, 68);
+            LABLE.Location = new Point(63, 68);
             LABLE.Name = "LABLE";
-            LABLE.Size = new Size(261, 17);
+            LABLE.Size = new Size(224, 17);
             LABLE.TabIndex = 21;
-            LABLE.Text = "BS IN INFORMATION AND TECHNOLOGY\r\n";
+            LABLE.Text = "INFORMATION AND TECHNOLOGY\r\n";
             // 
             // BAStudentFLP
             // 
             BAStudentFLP.AutoScroll = true;
-            BAStudentFLP.BackColor = Color.White;
+            BAStudentFLP.BackColor = Color.Azure;
             BAStudentFLP.Location = new Point(1033, 98);
             BAStudentFLP.Name = "BAStudentFLP";
             BAStudentFLP.Size = new Size(317, 673);
@@ -138,7 +139,7 @@
             // BEStudentFLP
             // 
             BEStudentFLP.AutoScroll = true;
-            BEStudentFLP.BackColor = Color.White;
+            BEStudentFLP.BackColor = Color.Azure;
             BEStudentFLP.Location = new Point(692, 98);
             BEStudentFLP.Name = "BEStudentFLP";
             BEStudentFLP.Size = new Size(317, 673);
@@ -147,7 +148,7 @@
             // SWStudentFLP
             // 
             SWStudentFLP.AutoScroll = true;
-            SWStudentFLP.BackColor = Color.White;
+            SWStudentFLP.BackColor = Color.Azure;
             SWStudentFLP.Location = new Point(348, 98);
             SWStudentFLP.Name = "SWStudentFLP";
             SWStudentFLP.Size = new Size(317, 673);
@@ -156,8 +157,8 @@
             // ITStudentFLP
             // 
             ITStudentFLP.AutoScroll = true;
-            ITStudentFLP.BackColor = Color.White;
-            ITStudentFLP.Location = new Point(6, 100);
+            ITStudentFLP.BackColor = Color.Azure;
+            ITStudentFLP.Location = new Point(15, 98);
             ITStudentFLP.Name = "ITStudentFLP";
             ITStudentFLP.Size = new Size(317, 673);
             ITStudentFLP.TabIndex = 18;
@@ -167,18 +168,18 @@
             button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.Search;
+            button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(36, 9);
+            button1.Location = new Point(33, 9);
             button1.Name = "button1";
-            button1.Size = new Size(37, 34);
+            button1.Size = new Size(36, 34);
             button1.TabIndex = 5;
             button1.UseVisualStyleBackColor = true;
             // 
             // kryptonTextBox1
             // 
             kryptonTextBox1.Cursor = Cursors.IBeam;
-            kryptonTextBox1.Location = new Point(79, 9);
+            kryptonTextBox1.Location = new Point(75, 9);
             kryptonTextBox1.Name = "kryptonTextBox1";
             kryptonTextBox1.Size = new Size(381, 34);
             kryptonTextBox1.StateActive.Back.Color1 = Color.White;
@@ -212,21 +213,21 @@
             // 
             // StudentPanel
             // 
-            StudentPanel.BackColor = Color.FromArgb(187, 206, 230);
+            StudentPanel.BackColor = Color.FromArgb(169, 131, 110);
             StudentPanel.Controls.Add(DeleteUserBtn);
             StudentPanel.Controls.Add(EditUserBtn);
             StudentPanel.Controls.Add(AddUserBtn);
             StudentPanel.Controls.Add(ManageUserBtn);
             StudentPanel.Controls.Add(panel3);
-            StudentPanel.Location = new Point(12, 101);
+            StudentPanel.Location = new Point(3, 112);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(42, 635);
+            StudentPanel.Size = new Size(54, 602);
             StudentPanel.TabIndex = 1;
             // 
             // DeleteUserBtn
             // 
             DeleteUserBtn.Cursor = Cursors.Hand;
-            DeleteUserBtn.Location = new Point(101, 266);
+            DeleteUserBtn.Location = new Point(102, 325);
             DeleteUserBtn.Name = "DeleteUserBtn";
             DeleteUserBtn.Size = new Size(164, 42);
             DeleteUserBtn.StateCommon.Back.Color1 = Color.Firebrick;
@@ -255,7 +256,7 @@
             // EditUserBtn
             // 
             EditUserBtn.Cursor = Cursors.Hand;
-            EditUserBtn.Location = new Point(101, 198);
+            EditUserBtn.Location = new Point(102, 257);
             EditUserBtn.Name = "EditUserBtn";
             EditUserBtn.Size = new Size(164, 42);
             EditUserBtn.StateCommon.Back.Color1 = Color.DodgerBlue;
@@ -284,7 +285,7 @@
             // AddUserBtn
             // 
             AddUserBtn.Cursor = Cursors.Hand;
-            AddUserBtn.Location = new Point(100, 133);
+            AddUserBtn.Location = new Point(101, 192);
             AddUserBtn.Name = "AddUserBtn";
             AddUserBtn.Size = new Size(164, 42);
             AddUserBtn.StateCommon.Back.Color1 = Color.MediumSeaGreen;
@@ -317,7 +318,7 @@
             ManageUserBtn.FlatAppearance.BorderSize = 0;
             ManageUserBtn.FlatStyle = FlatStyle.Flat;
             ManageUserBtn.Image = (Image)resources.GetObject("ManageUserBtn.Image");
-            ManageUserBtn.Location = new Point(3, 14);
+            ManageUserBtn.Location = new Point(6, 14);
             ManageUserBtn.Name = "ManageUserBtn";
             ManageUserBtn.Size = new Size(36, 44);
             ManageUserBtn.TabIndex = 1;
@@ -326,7 +327,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.AliceBlue;
+            panel3.BackColor = Color.Azure;
             panel3.Controls.Add(label9);
             panel3.Controls.Add(label6);
             panel3.Controls.Add(UserConfirmPassTXT);
@@ -346,8 +347,18 @@
             panel3.Controls.Add(UserPicturePB);
             panel3.Location = new Point(290, 14);
             panel3.Name = "panel3";
-            panel3.Size = new Size(785, 612);
+            panel3.Size = new Size(785, 579);
             panel3.TabIndex = 0;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(353, 194);
+            label9.Name = "label9";
+            label9.Size = new Size(46, 14);
+            label9.TabIndex = 19;
+            label9.Text = "Course:";
             // 
             // label6
             // 
@@ -450,9 +461,9 @@
             // CancelBtn
             // 
             CancelBtn.Cursor = Cursors.Hand;
-            CancelBtn.Location = new Point(353, 502);
+            CancelBtn.Location = new Point(366, 502);
             CancelBtn.Name = "CancelBtn";
-            CancelBtn.Size = new Size(143, 38);
+            CancelBtn.Size = new Size(151, 38);
             CancelBtn.StateCommon.Back.Color1 = Color.Crimson;
             CancelBtn.StateCommon.Back.Color2 = Color.Crimson;
             CancelBtn.StateCommon.Border.Color1 = Color.Black;
@@ -468,9 +479,9 @@
             // BTNCreateUser
             // 
             BTNCreateUser.Cursor = Cursors.Hand;
-            BTNCreateUser.Location = new Point(538, 502);
+            BTNCreateUser.Location = new Point(523, 502);
             BTNCreateUser.Name = "BTNCreateUser";
-            BTNCreateUser.Size = new Size(143, 38);
+            BTNCreateUser.Size = new Size(158, 38);
             BTNCreateUser.StateCommon.Back.Color1 = Color.RoyalBlue;
             BTNCreateUser.StateCommon.Back.Color2 = Color.RoyalBlue;
             BTNCreateUser.StateCommon.Border.Color1 = Color.Black;
@@ -654,21 +665,11 @@
             UserPicturePB.TabIndex = 0;
             UserPicturePB.TabStop = false;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(353, 194);
-            label9.Name = "label9";
-            label9.Size = new Size(46, 14);
-            label9.TabIndex = 19;
-            label9.Text = "Course:";
-            // 
             // AdminManageUserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(187, 206, 230);
+            BackColor = Color.FromArgb(169, 131, 110);
             ClientSize = new Size(1436, 795);
             Controls.Add(StudentPanel);
             Controls.Add(panel1);

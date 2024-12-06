@@ -39,12 +39,14 @@
             label4 = new Label();
             BooksPriceLbl = new Label();
             BarrowBtn = new Button();
+            label5 = new Label();
+            BooksIdLbl = new Label();
             ((System.ComponentModel.ISupportInitialize)BooksPB).BeginInit();
             SuspendLayout();
             // 
             // BooksPB
             // 
-            BooksPB.Location = new Point(20, 16);
+            BooksPB.Location = new Point(19, 30);
             BooksPB.Name = "BooksPB";
             BooksPB.Size = new Size(164, 189);
             BooksPB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -55,7 +57,7 @@
             // 
             BooksTitleLbl.AutoSize = true;
             BooksTitleLbl.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            BooksTitleLbl.Location = new Point(20, 218);
+            BooksTitleLbl.Location = new Point(19, 232);
             BooksTitleLbl.Name = "BooksTitleLbl";
             BooksTitleLbl.Size = new Size(77, 17);
             BooksTitleLbl.TabIndex = 1;
@@ -155,10 +157,34 @@
             BarrowBtn.Text = "Barrow Book";
             BarrowBtn.UseVisualStyleBackColor = false;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(19, 10);
+            label5.Name = "label5";
+            label5.Size = new Size(51, 16);
+            label5.TabIndex = 11;
+            label5.Text = "Book ID:";
+            // 
+            // BooksIdLbl
+            // 
+            BooksIdLbl.AutoSize = true;
+            BooksIdLbl.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksIdLbl.Location = new Point(76, 11);
+            BooksIdLbl.Name = "BooksIdLbl";
+            BooksIdLbl.Size = new Size(51, 16);
+            BooksIdLbl.TabIndex = 12;
+            BooksIdLbl.Text = "Book ID:";
+            // 
             // AdminBooksUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Transparent;
+            Controls.Add(BooksIdLbl);
+            Controls.Add(label5);
+            Controls.Add(PublishedDate);
             Controls.Add(BarrowBtn);
             Controls.Add(BooksPriceLbl);
             Controls.Add(label4);
@@ -166,7 +192,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(BooksStockLbl);
-            Controls.Add(PublishedDate);
             Controls.Add(BooksGenreLbl);
             Controls.Add(BooksTitleLbl);
             Controls.Add(BooksPB);
@@ -190,5 +215,7 @@
         private Label label4;
         private Label BooksPriceLbl;
         private Button BarrowBtn;
+        private Label label5;
+        private Label BooksIdLbl;
     }
 }

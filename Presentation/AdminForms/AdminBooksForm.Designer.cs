@@ -61,20 +61,20 @@
             // 
             // BooksPanel
             // 
-            BooksPanel.BackColor = Color.LightCyan;
+            BooksPanel.BackColor = Color.FromArgb(152, 96, 64);
             BooksPanel.Controls.Add(panel1);
             BooksPanel.Controls.Add(DeleteBookBtn);
             BooksPanel.Controls.Add(EditBookBtn);
             BooksPanel.Controls.Add(AddBookBtn);
             BooksPanel.Controls.Add(ManageBooksBTN);
-            BooksPanel.Location = new Point(9, 52);
+            BooksPanel.Location = new Point(12, 73);
             BooksPanel.Name = "BooksPanel";
-            BooksPanel.Size = new Size(50, 611);
+            BooksPanel.Size = new Size(47, 611);
             BooksPanel.TabIndex = 0;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(187, 206, 230, 255);
+            panel1.BackColor = Color.FromArgb(194, 144, 116);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(BooksCategoryTXT);
             panel1.Controls.Add(BrowseImageBtn);
@@ -332,7 +332,7 @@
             CancelBtn.Cursor = Cursors.Hand;
             CancelBtn.Location = new Point(393, 497);
             CancelBtn.Name = "CancelBtn";
-            CancelBtn.Size = new Size(135, 30);
+            CancelBtn.Size = new Size(157, 30);
             CancelBtn.StateCommon.Back.Color1 = Color.Crimson;
             CancelBtn.StateCommon.Back.Color2 = Color.Crimson;
             CancelBtn.StateCommon.Border.Color1 = Color.Black;
@@ -347,9 +347,9 @@
             // SaveBooksBtn
             // 
             SaveBooksBtn.Cursor = Cursors.Hand;
-            SaveBooksBtn.Location = new Point(569, 497);
+            SaveBooksBtn.Location = new Point(556, 497);
             SaveBooksBtn.Name = "SaveBooksBtn";
-            SaveBooksBtn.Size = new Size(135, 30);
+            SaveBooksBtn.Size = new Size(148, 30);
             SaveBooksBtn.StateCommon.Back.Color1 = Color.RoyalBlue;
             SaveBooksBtn.StateCommon.Back.Color2 = Color.RoyalBlue;
             SaveBooksBtn.StateCommon.Border.Color1 = Color.Black;
@@ -399,7 +399,7 @@
             // 
             // DeleteBookBtn
             // 
-            DeleteBookBtn.Location = new Point(68, 366);
+            DeleteBookBtn.Location = new Point(78, 365);
             DeleteBookBtn.Name = "DeleteBookBtn";
             DeleteBookBtn.Size = new Size(164, 42);
             DeleteBookBtn.StateCommon.Back.Color1 = Color.Firebrick;
@@ -414,7 +414,7 @@
             // 
             // EditBookBtn
             // 
-            EditBookBtn.Location = new Point(68, 303);
+            EditBookBtn.Location = new Point(78, 302);
             EditBookBtn.Name = "EditBookBtn";
             EditBookBtn.Size = new Size(164, 42);
             EditBookBtn.StateCommon.Back.Color1 = Color.Turquoise;
@@ -430,7 +430,7 @@
             // AddBookBtn
             // 
             AddBookBtn.Cursor = Cursors.Hand;
-            AddBookBtn.Location = new Point(68, 233);
+            AddBookBtn.Location = new Point(78, 232);
             AddBookBtn.Name = "AddBookBtn";
             AddBookBtn.Size = new Size(164, 42);
             AddBookBtn.StateCommon.Back.Color1 = Color.MediumSeaGreen;
@@ -459,6 +459,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(169, 131, 110);
             panel2.Controls.Add(BooksFLP);
             panel2.Dock = DockStyle.Right;
             panel2.Location = new Point(65, 0);
@@ -469,17 +470,17 @@
             // BooksFLP
             // 
             BooksFLP.AutoScroll = true;
-            BooksFLP.BackColor = Color.FromArgb(187, 206, 230, 255);
-            BooksFLP.Location = new Point(12, 24);
+            BooksFLP.BackColor = Color.FromArgb(169, 131, 110);
+            BooksFLP.Location = new Point(25, 73);
             BooksFLP.Name = "BooksFLP";
-            BooksFLP.Size = new Size(1352, 759);
+            BooksFLP.Size = new Size(1307, 688);
             BooksFLP.TabIndex = 0;
             // 
             // AdminBooksForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightCyan;
+            BackColor = Color.FromArgb(152, 96, 64);
             ClientSize = new Size(1436, 795);
             Controls.Add(BooksPanel);
             Controls.Add(panel2);
@@ -498,7 +499,6 @@
 
         private Panel BooksPanel;
         private Panel panel2;
-        private FlowLayoutPanel BooksFLP;
         private Button ManageBooksBTN;
         private Krypton.Toolkit.KryptonButton AddBookBtn;
         private Krypton.Toolkit.KryptonButton DeleteBookBtn;
@@ -520,5 +520,6 @@
         private Label label5;
         private Label label6;
         private Krypton.Toolkit.KryptonTextBox BooksCategoryTXT;
+        private FlowLayoutPanel BooksFLP;
     }
 }

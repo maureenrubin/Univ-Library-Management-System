@@ -30,70 +30,61 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserMainForm));
             UserPanel = new Krypton.Toolkit.KryptonPanel();
-            label1 = new Label();
-            UserActivityLogs = new Panel();
+            StudentCourseTEXT = new Label();
             StudentNameTEXT = new Label();
             StudentProfilePB = new PictureBox();
             kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel4 = new Krypton.Toolkit.KryptonPanel();
             BooksPanel = new Panel();
-            UserBooksFLP = new FlowLayoutPanel();
+            pictureBox1 = new PictureBox();
+            ViewBooksButton = new Krypton.Toolkit.KryptonButton();
+            label3 = new Label();
+            label2 = new Label();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            button1 = new Button();
-            SearchTXT = new Krypton.Toolkit.KryptonTextBox();
-            panel2 = new Panel();
-            UserTransactionBTN = new Button();
-            kryptonPanel5 = new Krypton.Toolkit.KryptonPanel();
+            HomeButton = new Button();
+            UserTransacButton = new Button();
+            BooksButton = new Button();
             UserViewProfileBTN = new Button();
-            StudentCourseTEXT = new Label();
             ((System.ComponentModel.ISupportInitialize)UserPanel).BeginInit();
             UserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)StudentProfilePB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).BeginInit();
             BooksPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).BeginInit();
             kryptonPanel2.SuspendLayout();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel5).BeginInit();
             SuspendLayout();
             // 
             // UserPanel
             // 
             UserPanel.Controls.Add(StudentCourseTEXT);
-            UserPanel.Controls.Add(label1);
-            UserPanel.Controls.Add(UserActivityLogs);
             UserPanel.Controls.Add(StudentNameTEXT);
             UserPanel.Controls.Add(StudentProfilePB);
             UserPanel.Dock = DockStyle.Right;
-            UserPanel.Location = new Point(1188, 82);
+            UserPanel.Location = new Point(1463, 87);
             UserPanel.Name = "UserPanel";
-            UserPanel.Size = new Size(285, 781);
+            UserPanel.Size = new Size(10, 786);
+            UserPanel.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             UserPanel.TabIndex = 0;
             // 
-            // label1
+            // StudentCourseTEXT
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Location = new Point(88, 359);
-            label1.Name = "label1";
-            label1.Size = new Size(114, 15);
-            label1.TabIndex = 4;
-            label1.Text = "Student Activity Log";
-            // 
-            // UserActivityLogs
-            // 
-            UserActivityLogs.Location = new Point(26, 377);
-            UserActivityLogs.Name = "UserActivityLogs";
-            UserActivityLogs.Size = new Size(237, 379);
-            UserActivityLogs.TabIndex = 3;
+            StudentCourseTEXT.AutoSize = true;
+            StudentCourseTEXT.BackColor = Color.Transparent;
+            StudentCourseTEXT.Location = new Point(47, 291);
+            StudentCourseTEXT.Name = "StudentCourseTEXT";
+            StudentCourseTEXT.Size = new Size(96, 15);
+            StudentCourseTEXT.TabIndex = 5;
+            StudentCourseTEXT.Text = "Student's Course\r\n";
+            StudentCourseTEXT.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // StudentNameTEXT
             // 
             StudentNameTEXT.AutoSize = true;
             StudentNameTEXT.BackColor = Color.Transparent;
             StudentNameTEXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            StudentNameTEXT.Location = new Point(88, 249);
+            StudentNameTEXT.Location = new Point(88, 274);
             StudentNameTEXT.Name = "StudentNameTEXT";
             StudentNameTEXT.Size = new Size(96, 17);
             StudentNameTEXT.TabIndex = 1;
@@ -102,7 +93,7 @@
             // StudentProfilePB
             // 
             StudentProfilePB.BackColor = Color.Transparent;
-            StudentProfilePB.Location = new Point(47, 12);
+            StudentProfilePB.Location = new Point(47, 37);
             StudentProfilePB.Name = "StudentProfilePB";
             StudentProfilePB.Size = new Size(190, 224);
             StudentProfilePB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -112,127 +103,163 @@
             // kryptonPanel3
             // 
             kryptonPanel3.Dock = DockStyle.Left;
-            kryptonPanel3.Location = new Point(0, 0);
+            kryptonPanel3.Location = new Point(0, 87);
             kryptonPanel3.Name = "kryptonPanel3";
-            kryptonPanel3.Size = new Size(10, 863);
+            kryptonPanel3.Size = new Size(23, 786);
+            kryptonPanel3.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             kryptonPanel3.TabIndex = 4;
             // 
             // kryptonPanel4
             // 
             kryptonPanel4.Dock = DockStyle.Bottom;
-            kryptonPanel4.Location = new Point(0, 863);
+            kryptonPanel4.Location = new Point(23, 863);
             kryptonPanel4.Name = "kryptonPanel4";
-            kryptonPanel4.Size = new Size(1473, 10);
+            kryptonPanel4.Size = new Size(1440, 10);
+            kryptonPanel4.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             kryptonPanel4.TabIndex = 4;
             // 
             // BooksPanel
             // 
-            BooksPanel.Controls.Add(UserBooksFLP);
-            BooksPanel.Location = new Point(16, 91);
+            BooksPanel.BackColor = Color.LightCyan;
+            BooksPanel.Controls.Add(pictureBox1);
+            BooksPanel.Controls.Add(ViewBooksButton);
+            BooksPanel.Controls.Add(label3);
+            BooksPanel.Controls.Add(label2);
+            BooksPanel.Location = new Point(16, 82);
             BooksPanel.Name = "BooksPanel";
-            BooksPanel.Size = new Size(1441, 766);
+            BooksPanel.Size = new Size(1445, 781);
             BooksPanel.TabIndex = 5;
             // 
-            // UserBooksFLP
+            // pictureBox1
             // 
-            UserBooksFLP.Location = new Point(3, 3);
-            UserBooksFLP.Name = "UserBooksFLP";
-            UserBooksFLP.Size = new Size(1435, 760);
-            UserBooksFLP.TabIndex = 0;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(504, 807);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 19;
+            pictureBox1.TabStop = false;
+            // 
+            // ViewBooksButton
+            // 
+            ViewBooksButton.Cursor = Cursors.Hand;
+            ViewBooksButton.Location = new Point(838, 439);
+            ViewBooksButton.Name = "ViewBooksButton";
+            ViewBooksButton.Size = new Size(276, 40);
+            ViewBooksButton.StateCommon.Back.Color1 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateCommon.Back.Color2 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            ViewBooksButton.StateCommon.Border.Rounding = 10F;
+            ViewBooksButton.StateCommon.Content.ShortText.Color1 = Color.Black;
+            ViewBooksButton.StateCommon.Content.ShortText.Color2 = Color.Black;
+            ViewBooksButton.StateCommon.Content.ShortText.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            ViewBooksButton.StateDisabled.Back.Color1 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateDisabled.Back.Color2 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            ViewBooksButton.StateDisabled.Border.Rounding = 10F;
+            ViewBooksButton.StateNormal.Back.Color1 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateNormal.Back.Color2 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateNormal.Border.Color1 = Color.Black;
+            ViewBooksButton.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            ViewBooksButton.StateNormal.Content.ShortText.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ViewBooksButton.StatePressed.Back.Color1 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StatePressed.Back.Color2 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            ViewBooksButton.StatePressed.Border.Rounding = 10F;
+            ViewBooksButton.StatePressed.Content.ShortText.Color1 = Color.White;
+            ViewBooksButton.StatePressed.Content.ShortText.Color2 = Color.White;
+            ViewBooksButton.StateTracking.Back.Color1 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateTracking.Back.Color2 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.TabIndex = 18;
+            ViewBooksButton.Values.Text = "View Books Here";
+            ViewBooksButton.Click += ViewBooksButton_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(718, 384);
+            label3.Name = "label3";
+            label3.Size = new Size(530, 20);
+            label3.TabIndex = 17;
+            label3.Text = "\"From shelves to screens, it’s all so clear, the library you love is always near.\"";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Perpetua Titling MT", 36F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(668, 246);
+            label2.Name = "label2";
+            label2.Size = new Size(627, 116);
+            label2.TabIndex = 16;
+            label2.Text = " UNIVERSITY LIBRARY \r\nMANAGEMENT SYSTEM\r\n";
             // 
             // kryptonPanel2
             // 
-            kryptonPanel2.Controls.Add(button1);
-            kryptonPanel2.Controls.Add(SearchTXT);
-            kryptonPanel2.Controls.Add(panel2);
+            kryptonPanel2.Controls.Add(HomeButton);
+            kryptonPanel2.Controls.Add(UserTransacButton);
+            kryptonPanel2.Controls.Add(BooksButton);
             kryptonPanel2.Controls.Add(UserViewProfileBTN);
             kryptonPanel2.Dock = DockStyle.Top;
-            kryptonPanel2.Location = new Point(10, 0);
+            kryptonPanel2.Location = new Point(0, 0);
             kryptonPanel2.Name = "kryptonPanel2";
-            kryptonPanel2.Size = new Size(1463, 82);
+            kryptonPanel2.Size = new Size(1473, 87);
+            kryptonPanel2.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
+            kryptonPanel2.StateCommon.Color2 = Color.FromArgb(152, 96, 64);
             kryptonPanel2.TabIndex = 6;
             // 
-            // button1
+            // HomeButton
             // 
-            button1.BackColor = Color.Transparent;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.Search;
-            button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(484, 29);
-            button1.Name = "button1";
-            button1.Size = new Size(37, 34);
-            button1.TabIndex = 18;
-            button1.UseVisualStyleBackColor = false;
+            HomeButton.BackColor = Color.Transparent;
+            HomeButton.Cursor = Cursors.Hand;
+            HomeButton.FlatAppearance.BorderSize = 0;
+            HomeButton.FlatStyle = FlatStyle.Flat;
+            HomeButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            HomeButton.Image = (Image)resources.GetObject("HomeButton.Image");
+            HomeButton.ImageAlign = ContentAlignment.TopCenter;
+            HomeButton.Location = new Point(46, 12);
+            HomeButton.Name = "HomeButton";
+            HomeButton.Size = new Size(78, 56);
+            HomeButton.TabIndex = 21;
+            HomeButton.Text = "Home";
+            HomeButton.TextAlign = ContentAlignment.BottomCenter;
+            HomeButton.UseVisualStyleBackColor = false;
+            HomeButton.Click += HomeButton_Click;
             // 
-            // SearchTXT
+            // UserTransacButton
             // 
-            SearchTXT.Cursor = Cursors.IBeam;
-            SearchTXT.Location = new Point(527, 29);
-            SearchTXT.Name = "SearchTXT";
-            SearchTXT.Size = new Size(479, 34);
-            SearchTXT.StateActive.Back.Color1 = Color.White;
-            SearchTXT.StateActive.Border.Color1 = Color.Black;
-            SearchTXT.StateActive.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            SearchTXT.StateActive.Border.Rounding = 10F;
-            SearchTXT.StateActive.Content.Color1 = Color.FromArgb(64, 64, 64);
-            SearchTXT.StateActive.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            SearchTXT.StateActive.Content.Padding = new Padding(5);
-            SearchTXT.StateCommon.Back.Color1 = Color.White;
-            SearchTXT.StateCommon.Border.Color1 = Color.Black;
-            SearchTXT.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            SearchTXT.StateCommon.Border.Rounding = 10F;
-            SearchTXT.StateCommon.Content.Color1 = Color.FromArgb(64, 64, 64);
-            SearchTXT.StateCommon.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            SearchTXT.StateCommon.Content.Padding = new Padding(5);
-            SearchTXT.StateDisabled.Back.Color1 = Color.White;
-            SearchTXT.StateDisabled.Border.Color1 = Color.Black;
-            SearchTXT.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            SearchTXT.StateDisabled.Border.Rounding = 10F;
-            SearchTXT.StateDisabled.Content.Color1 = Color.FromArgb(64, 64, 64);
-            SearchTXT.StateDisabled.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            SearchTXT.StateNormal.Back.Color1 = Color.FromArgb(224, 224, 224);
-            SearchTXT.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            SearchTXT.StateNormal.Border.Rounding = 10F;
-            SearchTXT.StateNormal.Border.Width = 10;
-            SearchTXT.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
-            SearchTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            SearchTXT.StateNormal.Content.Padding = new Padding(5);
-            SearchTXT.TabIndex = 19;
+            UserTransacButton.BackColor = Color.Transparent;
+            UserTransacButton.Cursor = Cursors.Hand;
+            UserTransacButton.FlatAppearance.BorderSize = 0;
+            UserTransacButton.FlatStyle = FlatStyle.Flat;
+            UserTransacButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            UserTransacButton.Image = (Image)resources.GetObject("UserTransacButton.Image");
+            UserTransacButton.ImageAlign = ContentAlignment.TopCenter;
+            UserTransacButton.Location = new Point(640, 17);
+            UserTransacButton.Name = "UserTransacButton";
+            UserTransacButton.Size = new Size(118, 51);
+            UserTransacButton.TabIndex = 10;
+            UserTransacButton.Text = "My Transactions";
+            UserTransacButton.TextAlign = ContentAlignment.BottomCenter;
+            UserTransacButton.UseVisualStyleBackColor = false;
             // 
-            // panel2
+            // BooksButton
             // 
-            panel2.BackColor = Color.Transparent;
-            panel2.Controls.Add(UserTransactionBTN);
-            panel2.Controls.Add(kryptonPanel5);
-            panel2.Location = new Point(153, 3);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(108, 76);
-            panel2.TabIndex = 0;
-            // 
-            // UserTransactionBTN
-            // 
-            UserTransactionBTN.BackColor = Color.Transparent;
-            UserTransactionBTN.Cursor = Cursors.Hand;
-            UserTransactionBTN.FlatAppearance.BorderSize = 0;
-            UserTransactionBTN.FlatStyle = FlatStyle.Flat;
-            UserTransactionBTN.Image = (Image)resources.GetObject("UserTransactionBTN.Image");
-            UserTransactionBTN.ImageAlign = ContentAlignment.TopCenter;
-            UserTransactionBTN.Location = new Point(3, 9);
-            UserTransactionBTN.Name = "UserTransactionBTN";
-            UserTransactionBTN.Size = new Size(103, 51);
-            UserTransactionBTN.TabIndex = 10;
-            UserTransactionBTN.Text = "My Transactions";
-            UserTransactionBTN.TextAlign = ContentAlignment.BottomCenter;
-            UserTransactionBTN.UseVisualStyleBackColor = false;
-            // 
-            // kryptonPanel5
-            // 
-            kryptonPanel5.Location = new Point(22, 82);
-            kryptonPanel5.Name = "kryptonPanel5";
-            kryptonPanel5.Size = new Size(733, 483);
-            kryptonPanel5.TabIndex = 0;
+            BooksButton.BackColor = Color.Transparent;
+            BooksButton.Cursor = Cursors.Hand;
+            BooksButton.FlatAppearance.BorderSize = 0;
+            BooksButton.FlatStyle = FlatStyle.Flat;
+            BooksButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            BooksButton.Image = (Image)resources.GetObject("BooksButton.Image");
+            BooksButton.ImageAlign = ContentAlignment.TopCenter;
+            BooksButton.Location = new Point(547, 11);
+            BooksButton.Name = "BooksButton";
+            BooksButton.Size = new Size(87, 57);
+            BooksButton.TabIndex = 20;
+            BooksButton.Text = "View Books";
+            BooksButton.TextAlign = ContentAlignment.BottomCenter;
+            BooksButton.UseVisualStyleBackColor = false;
+            BooksButton.Click += BooksButton_Click;
             // 
             // UserViewProfileBTN
             // 
@@ -240,9 +267,10 @@
             UserViewProfileBTN.Cursor = Cursors.Hand;
             UserViewProfileBTN.FlatAppearance.BorderSize = 0;
             UserViewProfileBTN.FlatStyle = FlatStyle.Flat;
+            UserViewProfileBTN.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             UserViewProfileBTN.Image = Properties.Resources.Student_Male;
             UserViewProfileBTN.ImageAlign = ContentAlignment.TopCenter;
-            UserViewProfileBTN.Location = new Point(37, 12);
+            UserViewProfileBTN.Location = new Point(130, 11);
             UserViewProfileBTN.Name = "UserViewProfileBTN";
             UserViewProfileBTN.Size = new Size(88, 56);
             UserViewProfileBTN.TabIndex = 9;
@@ -251,28 +279,17 @@
             UserViewProfileBTN.UseVisualStyleBackColor = false;
             UserViewProfileBTN.Click += UserViewProfileBTN_Click;
             // 
-            // StudentCourseTEXT
-            // 
-            StudentCourseTEXT.AutoSize = true;
-            StudentCourseTEXT.BackColor = Color.Transparent;
-            StudentCourseTEXT.Location = new Point(47, 279);
-            StudentCourseTEXT.Name = "StudentCourseTEXT";
-            StudentCourseTEXT.Size = new Size(96, 15);
-            StudentCourseTEXT.TabIndex = 5;
-            StudentCourseTEXT.Text = "Student's Course\r\n";
-            StudentCourseTEXT.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // UserMainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Azure;
+            BackColor = Color.FromArgb(152, 96, 64);
             ClientSize = new Size(1473, 873);
+            Controls.Add(kryptonPanel4);
             Controls.Add(UserPanel);
+            Controls.Add(kryptonPanel3);
             Controls.Add(kryptonPanel2);
             Controls.Add(BooksPanel);
-            Controls.Add(kryptonPanel3);
-            Controls.Add(kryptonPanel4);
             FormBorderStyle = FormBorderStyle.None;
             Name = "UserMainForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -285,11 +302,10 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel3).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).EndInit();
             BooksPanel.ResumeLayout(false);
+            BooksPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).EndInit();
             kryptonPanel2.ResumeLayout(false);
-            kryptonPanel2.PerformLayout();
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel5).EndInit();
             ResumeLayout(false);
         }
 
@@ -300,17 +316,16 @@
         private Krypton.Toolkit.KryptonPanel kryptonPanel4;
         private Panel BooksPanel;
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
-        private Panel panel2;
         private Label StudentNameTEXT;
         private PictureBox StudentProfilePB;
-        private Panel UserActivityLogs;
-        private Label label1;
         private Button UserViewProfileBTN;
-        private Button UserTransactionBTN;
-        private Krypton.Toolkit.KryptonPanel kryptonPanel5;
-        private FlowLayoutPanel UserBooksFLP;
-        private Button button1;
-        private Krypton.Toolkit.KryptonTextBox SearchTXT;
+        private Button UserTransacButton;
         private Label StudentCourseTEXT;
+        private Button BooksButton;
+        private Button HomeButton;
+        private PictureBox pictureBox1;
+        private Krypton.Toolkit.KryptonButton ViewBooksButton;
+        private Label label3;
+        private Label label2;
     }
 }

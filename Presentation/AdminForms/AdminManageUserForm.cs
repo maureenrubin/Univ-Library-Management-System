@@ -28,9 +28,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
 
         private System.Windows.Forms.Timer crudStudentTransition;
-        private System.Windows.Forms.Timer sideUserTransition;
-        private Animations animations;
-        private bool _sidebarExpanded;
+        private System.Windows.Forms.Timer openCrudTransition;
+        private readonly Animations animations;
+        private bool sidebarExpanded;
 
         private byte[] UserPicture;
 
@@ -39,7 +39,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         public AdminManageUserForm(
                ICreateAccountServices createAcoountServices,
                IUserServices userServices,
-               ICourseServices courseServices)
+               ICourseServices courseServices, 
+               Animations animations)
         {
 
             InitializeComponent();
@@ -48,10 +49,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             this.courseServices = courseServices;
 
             this.crudStudentTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            this.sideUserTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            this.animations = new Animations();
-            this.animations.CrudStudentTransition(crudStudentTransition, StudentPanel, _sidebarExpanded);
-            this.animations.SideStudentTransition(sideUserTransition, StudentPanel, _sidebarExpanded);
+            this.openCrudTransition = new System.Windows.Forms.Timer { Interval = 10 };
+            this.animations = animations;
+            this.animations.CrudStudentTransition(crudStudentTransition, StudentPanel, sidebarExpanded);
+            this.animations.OpenCrudTransition(openCrudTransition, StudentPanel, sidebarExpanded);
 
             LoadCources();
             LoadStudentDetails();
@@ -76,7 +77,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             try
             {
-
                 var courses = await courseServices.GetAllCourseAsync();
                 if (courses.Any())
                 {
@@ -198,12 +198,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void AddUserBtn_Click(object sender, EventArgs e)
         {
-            crudStudentTransition.Start();
+            animations.CrudStudentTransition(crudStudentTransition, StudentPanel, sidebarExpanded);
+            sidebarExpanded = !sidebarExpanded;
         }
 
         private void ManageUserBtn_Click_1(object sender, EventArgs e)
         {
-            sideUserTransition.Start();
+            animations.OpenCrudTransition(openCrudTransition, StudentPanel, sidebarExpanded);
+            sidebarExpanded = !sidebarExpanded;
         }
     }
 }
