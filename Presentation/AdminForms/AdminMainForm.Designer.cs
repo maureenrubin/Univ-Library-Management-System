@@ -40,13 +40,17 @@
             AccountsButton = new Button();
             BooksButton = new Button();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            ViewAdminBtn = new Button();
+            ViewAdminButton = new Button();
             ViewProfileBTN = new Button();
-            MainPanel = new Panel();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel4 = new Krypton.Toolkit.KryptonPanel();
             kryptonPanel5 = new Krypton.Toolkit.KryptonPanel();
+            pictureBox1 = new PictureBox();
+            label2 = new Label();
+            MainPanel = new Panel();
+            ViewBooksButton = new Krypton.Toolkit.KryptonButton();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)AdminPanel).BeginInit();
             AdminPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AccountPic_PB).BeginInit();
@@ -59,6 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).BeginInit();
             kryptonPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            MainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // AdminPanel
@@ -72,7 +78,8 @@
             AdminPanel.Dock = DockStyle.Right;
             AdminPanel.Location = new Point(1458, 0);
             AdminPanel.Name = "AdminPanel";
-            AdminPanel.Size = new Size(10, 877);
+            AdminPanel.Size = new Size(10, 871);
+            AdminPanel.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             AdminPanel.StateCommon.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             AdminPanel.TabIndex = 1;
             // 
@@ -108,10 +115,10 @@
             // 
             AccountNameLBL.AutoSize = true;
             AccountNameLBL.BackColor = Color.Transparent;
-            AccountNameLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            AccountNameLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             AccountNameLBL.Location = new Point(82, 325);
             AccountNameLBL.Name = "AccountNameLBL";
-            AccountNameLBL.Size = new Size(98, 16);
+            AccountNameLBL.Size = new Size(100, 17);
             AccountNameLBL.TabIndex = 7;
             AccountNameLBL.Text = "Nameeeeeeeee";
             // 
@@ -203,7 +210,7 @@
             // 
             // kryptonPanel2
             // 
-            kryptonPanel2.Controls.Add(ViewAdminBtn);
+            kryptonPanel2.Controls.Add(ViewAdminButton);
             kryptonPanel2.Controls.Add(ViewProfileBTN);
             kryptonPanel2.Controls.Add(BooksButton);
             kryptonPanel2.Controls.Add(TransactionButton);
@@ -211,24 +218,26 @@
             kryptonPanel2.Location = new Point(0, 0);
             kryptonPanel2.Name = "kryptonPanel2";
             kryptonPanel2.Size = new Size(1465, 70);
+            kryptonPanel2.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
+            kryptonPanel2.StateCommon.Color2 = Color.FromArgb(152, 96, 64);
             kryptonPanel2.TabIndex = 3;
             // 
-            // ViewAdminBtn
+            // ViewAdminButton
             // 
-            ViewAdminBtn.BackColor = Color.Transparent;
-            ViewAdminBtn.Cursor = Cursors.Hand;
-            ViewAdminBtn.FlatAppearance.BorderSize = 0;
-            ViewAdminBtn.FlatStyle = FlatStyle.Flat;
-            ViewAdminBtn.Image = (Image)resources.GetObject("ViewAdminBtn.Image");
-            ViewAdminBtn.ImageAlign = ContentAlignment.MiddleRight;
-            ViewAdminBtn.Location = new Point(843, 12);
-            ViewAdminBtn.Name = "ViewAdminBtn";
-            ViewAdminBtn.Size = new Size(143, 52);
-            ViewAdminBtn.TabIndex = 9;
-            ViewAdminBtn.Text = " View Admin Details";
-            ViewAdminBtn.TextAlign = ContentAlignment.MiddleLeft;
-            ViewAdminBtn.UseVisualStyleBackColor = false;
-            ViewAdminBtn.Click += ViewAdminBtn_Click;
+            ViewAdminButton.BackColor = Color.Transparent;
+            ViewAdminButton.Cursor = Cursors.Hand;
+            ViewAdminButton.FlatAppearance.BorderSize = 0;
+            ViewAdminButton.FlatStyle = FlatStyle.Flat;
+            ViewAdminButton.Image = (Image)resources.GetObject("ViewAdminButton.Image");
+            ViewAdminButton.ImageAlign = ContentAlignment.MiddleRight;
+            ViewAdminButton.Location = new Point(843, 12);
+            ViewAdminButton.Name = "ViewAdminButton";
+            ViewAdminButton.Size = new Size(143, 52);
+            ViewAdminButton.TabIndex = 9;
+            ViewAdminButton.Text = " View Admin Details";
+            ViewAdminButton.TextAlign = ContentAlignment.MiddleLeft;
+            ViewAdminButton.UseVisualStyleBackColor = false;
+            ViewAdminButton.Click += ViewAdminBtn_Click;
             // 
             // ViewProfileBTN
             // 
@@ -247,19 +256,13 @@
             ViewProfileBTN.UseVisualStyleBackColor = false;
             ViewProfileBTN.Click += ViewProfileBTN_Click;
             // 
-            // MainPanel
-            // 
-            MainPanel.Location = new Point(16, 76);
-            MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1436, 795);
-            MainPanel.TabIndex = 4;
-            // 
             // kryptonPanel1
             // 
             kryptonPanel1.Controls.Add(kryptonPanel3);
             kryptonPanel1.Location = new Point(0, 65);
             kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new Size(10, 895);
+            kryptonPanel1.Size = new Size(19, 895);
+            kryptonPanel1.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             kryptonPanel1.TabIndex = 5;
             // 
             // kryptonPanel3
@@ -273,9 +276,10 @@
             // 
             kryptonPanel4.Controls.Add(kryptonPanel5);
             kryptonPanel4.Dock = DockStyle.Bottom;
-            kryptonPanel4.Location = new Point(0, 877);
+            kryptonPanel4.Location = new Point(0, 871);
             kryptonPanel4.Name = "kryptonPanel4";
-            kryptonPanel4.Size = new Size(1468, 10);
+            kryptonPanel4.Size = new Size(1468, 16);
+            kryptonPanel4.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             kryptonPanel4.TabIndex = 7;
             // 
             // kryptonPanel5
@@ -285,6 +289,82 @@
             kryptonPanel5.Size = new Size(10, 887);
             kryptonPanel5.TabIndex = 6;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.LightCyan;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(3, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(476, 812);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Perpetua Titling MT", 36F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(669, 189);
+            label2.Name = "label2";
+            label2.Size = new Size(627, 116);
+            label2.TabIndex = 8;
+            label2.Text = " UNIVERSITY LIBRARY \r\nMANAGEMENT SYSTEM\r\n";
+            // 
+            // MainPanel
+            // 
+            MainPanel.Controls.Add(ViewBooksButton);
+            MainPanel.Controls.Add(label3);
+            MainPanel.Controls.Add(label2);
+            MainPanel.Controls.Add(pictureBox1);
+            MainPanel.Location = new Point(12, 65);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Size = new Size(1446, 810);
+            MainPanel.TabIndex = 9;
+            // 
+            // ViewBooksButton
+            // 
+            ViewBooksButton.Cursor = Cursors.Hand;
+            ViewBooksButton.Location = new Point(831, 360);
+            ViewBooksButton.Name = "ViewBooksButton";
+            ViewBooksButton.Size = new Size(276, 40);
+            ViewBooksButton.StateCommon.Back.Color1 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateCommon.Back.Color2 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            ViewBooksButton.StateCommon.Border.Rounding = 10F;
+            ViewBooksButton.StateCommon.Content.ShortText.Color1 = Color.Black;
+            ViewBooksButton.StateCommon.Content.ShortText.Color2 = Color.Black;
+            ViewBooksButton.StateCommon.Content.ShortText.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            ViewBooksButton.StateDisabled.Back.Color1 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateDisabled.Back.Color2 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            ViewBooksButton.StateDisabled.Border.Rounding = 10F;
+            ViewBooksButton.StateNormal.Back.Color1 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateNormal.Back.Color2 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateNormal.Border.Color1 = Color.Black;
+            ViewBooksButton.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            ViewBooksButton.StateNormal.Content.ShortText.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ViewBooksButton.StatePressed.Back.Color1 = Color.Honeydew;
+            ViewBooksButton.StatePressed.Back.Color2 = Color.Honeydew;
+            ViewBooksButton.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            ViewBooksButton.StatePressed.Border.Rounding = 10F;
+            ViewBooksButton.StatePressed.Content.ShortText.Color1 = Color.White;
+            ViewBooksButton.StatePressed.Content.ShortText.Color2 = Color.White;
+            ViewBooksButton.StateTracking.Back.Color1 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.StateTracking.Back.Color2 = Color.FromArgb(152, 96, 64);
+            ViewBooksButton.TabIndex = 11;
+            ViewBooksButton.Values.Text = "View Books Here";
+            ViewBooksButton.Click += ViewBooksButton_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(711, 305);
+            label3.Name = "label3";
+            label3.Size = new Size(530, 20);
+            label3.TabIndex = 9;
+            label3.Text = "\"From shelves to screens, it’s all so clear, the library you love is always near.\"";
+            // 
             // MainForm_ADMIN
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -293,9 +373,10 @@
             ClientSize = new Size(1468, 887);
             Controls.Add(AdminPanel);
             Controls.Add(kryptonPanel4);
-            Controls.Add(MainPanel);
-            Controls.Add(kryptonPanel1);
             Controls.Add(kryptonPanel2);
+            Controls.Add(kryptonPanel1);
+            Controls.Add(MainPanel);
+            ForeColor = Color.Black;
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm_ADMIN";
             StartPosition = FormStartPosition.CenterScreen;
@@ -314,6 +395,9 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).EndInit();
             kryptonPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)kryptonPanel5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            MainPanel.ResumeLayout(false);
+            MainPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -328,13 +412,17 @@
         private Button BooksButton;
         private Button AccountsButton;
         private Label label1;
-        private Panel MainPanel;
         private Button AddAdminBTN;
         private Button ViewProfileBTN;
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel3;
         private Krypton.Toolkit.KryptonPanel kryptonPanel4;
         private Krypton.Toolkit.KryptonPanel kryptonPanel5;
-        private Button ViewAdminBtn;
+        private Button ViewAdminButton;
+        private PictureBox pictureBox1;
+        private Label label2;
+        private Panel MainPanel;
+        private Label label3;
+        private Krypton.Toolkit.KryptonButton ViewBooksButton;
     }
 }

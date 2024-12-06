@@ -111,5 +111,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             var manageAdminsForm = Program.ServiceProvider.GetRequiredService<ManageAdminsForm>();
             LoadForm(manageAdminsForm);
         }
+
+        private void ViewBooksButton_Click(object sender, EventArgs e)
+        {
+            var adminBooksForm = Program.ServiceProvider.GetRequiredService<AdminBooksForm>();
+            LoadForm(adminBooksForm);
+        }
     }
 }

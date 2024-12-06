@@ -29,7 +29,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private readonly CreateAdminAccForm signInForm;
 
 
-        public LoginForm (
+        public LoginForm(
                             IAdminServices adminServices, IUserServices userServices,
                             MainForm_ADMIN mainFormAdmin,
                             CreateAdminAccForm signInForm)
@@ -42,7 +42,27 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             this.signInForm = signInForm;
         }
 
-        private async void LoginBTN_Click(object sender, EventArgs e)
+       
+        private void ExitBTN_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+        private void ShowPassCB_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (ShowPassCB.Checked)
+            {
+                PasswordTXT.PasswordChar = '\0';
+            }
+            else
+            {
+                PasswordTXT.PasswordChar = '●';
+            }
+        }
+
+        private async void LoginBTN_Click_1(object sender, EventArgs e)
         {
             string email = UsernameTXT.Text;
             string password = PasswordTXT.Text;
@@ -68,9 +88,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 FormsControlHelper.ClearControls(this);
                 return;
             }
-           
+
             var user = await userServices.GetUserByEmailAsync(email);
-           
+
             if (user != null && PasswordHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
                 MessageBox.Show("Student Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -87,25 +107,5 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             MessageBox.Show("Incorrect email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
-
-        private void ExitBTN_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-
-        private void ShowPassCB_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (ShowPassCB.Checked)
-            {
-                PasswordTXT.PasswordChar = '\0';
-            }
-            else
-            {
-                PasswordTXT.PasswordChar = '●';
-            }
-        }
-
     }
 }
