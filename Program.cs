@@ -47,7 +47,7 @@ namespace WinFormsApp2
 
             services.AddScoped<LoginForm>();
             services.AddScoped<CreateAdminAccForm>();
-            services.AddScoped<HomeForm>();
+            services.AddScoped<AdminHomeForm>();
          
             
             services.AddScoped<MainForm_ADMIN>();
@@ -60,7 +60,7 @@ namespace WinFormsApp2
 
             services.AddScoped<UserMainForm>();
             services.AddScoped<UserBookForm>();
-
+            services.AddScoped<UserHomeForm>();
 
             services.AddScoped<Animations>();
 

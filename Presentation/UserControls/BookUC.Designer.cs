@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagementSystem.Presentation
 {
-    partial class AdminBooksUserControl
+    partial class BookUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -57,6 +57,7 @@
             // 
             BooksTitleLbl.AutoSize = true;
             BooksTitleLbl.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            BooksTitleLbl.ForeColor = SystemColors.ControlLight;
             BooksTitleLbl.Location = new Point(19, 232);
             BooksTitleLbl.Name = "BooksTitleLbl";
             BooksTitleLbl.Size = new Size(77, 17);
@@ -67,6 +68,7 @@
             // 
             BooksGenreLbl.AutoSize = true;
             BooksGenreLbl.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksGenreLbl.ForeColor = SystemColors.ControlLightLight;
             BooksGenreLbl.Location = new Point(268, 42);
             BooksGenreLbl.Name = "BooksGenreLbl";
             BooksGenreLbl.Size = new Size(38, 16);
@@ -77,6 +79,7 @@
             // 
             PublishedDate.AutoSize = true;
             PublishedDate.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            PublishedDate.ForeColor = SystemColors.ControlLightLight;
             PublishedDate.Location = new Point(268, 119);
             PublishedDate.Name = "PublishedDate";
             PublishedDate.Size = new Size(65, 16);
@@ -87,6 +90,7 @@
             // 
             BooksStockLbl.AutoSize = true;
             BooksStockLbl.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksStockLbl.ForeColor = SystemColors.ControlLightLight;
             BooksStockLbl.Location = new Point(268, 73);
             BooksStockLbl.Name = "BooksStockLbl";
             BooksStockLbl.Size = new Size(25, 16);
@@ -97,6 +101,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlLightLight;
             label1.Location = new Point(204, 42);
             label1.Name = "label1";
             label1.Size = new Size(46, 16);
@@ -107,6 +112,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlLightLight;
             label2.Location = new Point(204, 103);
             label2.Name = "label2";
             label2.Size = new Size(70, 32);
@@ -117,6 +123,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlLightLight;
             label3.Location = new Point(204, 73);
             label3.Name = "label3";
             label3.Size = new Size(53, 16);
@@ -127,6 +134,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ControlLightLight;
             label4.Location = new Point(204, 150);
             label4.Name = "label4";
             label4.Size = new Size(41, 16);
@@ -137,6 +145,7 @@
             // 
             BooksPriceLbl.AutoSize = true;
             BooksPriceLbl.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksPriceLbl.ForeColor = SystemColors.ControlLightLight;
             BooksPriceLbl.Location = new Point(268, 150);
             BooksPriceLbl.Name = "BooksPriceLbl";
             BooksPriceLbl.Size = new Size(25, 16);
@@ -177,7 +186,7 @@
             BooksIdLbl.TabIndex = 12;
             BooksIdLbl.Text = "Book ID:";
             // 
-            // AdminBooksUserControl
+            // BookUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -195,7 +204,7 @@
             Controls.Add(BooksGenreLbl);
             Controls.Add(BooksTitleLbl);
             Controls.Add(BooksPB);
-            Name = "AdminBooksUserControl";
+            Name = "BookUC";
             Size = new Size(354, 269);
             ((System.ComponentModel.ISupportInitialize)BooksPB).EndInit();
             ResumeLayout(false);

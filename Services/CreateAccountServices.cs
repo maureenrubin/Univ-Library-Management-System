@@ -54,6 +54,7 @@ namespace LibraryManagementSystem.Repositories
                     AdminPicture = adminDTO.AdminPicture,
                     Gender = adminDTO.Gender,
                     Role = adminDTO.Role,
+                    CreatedAt = adminDTO.CreatedAt,
                     PasswordHash = passwordHash,
                     PasswordSalt = passwordSalt,
                 };

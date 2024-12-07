@@ -112,6 +112,7 @@
             label4.AutoSize = true;
             label4.FlatStyle = FlatStyle.System;
             label4.Font = new Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ButtonHighlight;
             label4.Location = new Point(311, 347);
             label4.Name = "label4";
             label4.Size = new Size(283, 26);
@@ -122,7 +123,7 @@
             // 
             pictureBox2.BackColor = Color.FromArgb(169, 131, 110);
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(792, 209);
+            pictureBox2.Location = new Point(791, 212);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(545, 423);
             pictureBox2.TabIndex = 15;
@@ -173,6 +174,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ButtonFace;
             label1.Location = new Point(197, 248);
             label1.Name = "label1";
             label1.Size = new Size(530, 20);
@@ -183,6 +185,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Perpetua Titling MT", 36F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.InactiveBorder;
             label2.Location = new Point(142, 111);
             label2.Name = "label2";
             label2.Size = new Size(627, 116);
@@ -227,6 +230,7 @@
             // 
             ForgotPassLBL.AutoSize = true;
             ForgotPassLBL.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            ForgotPassLBL.ForeColor = SystemColors.ButtonHighlight;
             ForgotPassLBL.Location = new Point(364, 669);
             ForgotPassLBL.Name = "ForgotPassLBL";
             ForgotPassLBL.Size = new Size(166, 20);

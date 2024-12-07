@@ -13,7 +13,7 @@
     <Compile Update="Presentation\AdminForms\AdminTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Presentation\AdminForms\HomeForm.cs">
+    <Compile Update="Presentation\AdminForms\AdminHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\AdminForms\LoginForm.cs">
@@ -25,7 +25,7 @@
     <Compile Update="Presentation\AdminForms\CreateAdminAccForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Presentation\UserControls\AdminBooksUserControl.cs">
+    <Compile Update="Presentation\UserControls\BookUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Presentation\UserControls\AdminDetailsUC.cs">
@@ -35,6 +35,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Presentation\UserForms\UserBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\UserForms\UserHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\UserForms\UserMainForm.cs">

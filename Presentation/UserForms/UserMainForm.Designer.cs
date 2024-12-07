@@ -45,6 +45,7 @@
             UserTransacButton = new Button();
             BooksButton = new Button();
             UserViewProfileBTN = new Button();
+            LogoutButton = new Button();
             ((System.ComponentModel.ISupportInitialize)UserPanel).BeginInit();
             UserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)StudentProfilePB).BeginInit();
@@ -58,6 +59,7 @@
             // 
             // UserPanel
             // 
+            UserPanel.Controls.Add(LogoutButton);
             UserPanel.Controls.Add(StudentCourseTEXT);
             UserPanel.Controls.Add(StudentNameTEXT);
             UserPanel.Controls.Add(StudentProfilePB);
@@ -105,16 +107,16 @@
             kryptonPanel3.Dock = DockStyle.Left;
             kryptonPanel3.Location = new Point(0, 87);
             kryptonPanel3.Name = "kryptonPanel3";
-            kryptonPanel3.Size = new Size(23, 786);
+            kryptonPanel3.Size = new Size(24, 786);
             kryptonPanel3.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             kryptonPanel3.TabIndex = 4;
             // 
             // kryptonPanel4
             // 
             kryptonPanel4.Dock = DockStyle.Bottom;
-            kryptonPanel4.Location = new Point(23, 863);
+            kryptonPanel4.Location = new Point(24, 863);
             kryptonPanel4.Name = "kryptonPanel4";
-            kryptonPanel4.Size = new Size(1440, 10);
+            kryptonPanel4.Size = new Size(1439, 10);
             kryptonPanel4.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             kryptonPanel4.TabIndex = 4;
             // 
@@ -125,17 +127,18 @@
             BooksPanel.Controls.Add(ViewBooksButton);
             BooksPanel.Controls.Add(label3);
             BooksPanel.Controls.Add(label2);
-            BooksPanel.Location = new Point(16, 82);
+            BooksPanel.Location = new Point(24, 87);
             BooksPanel.Name = "BooksPanel";
-            BooksPanel.Size = new Size(1445, 781);
+            BooksPanel.Size = new Size(1437, 770);
             BooksPanel.TabIndex = 5;
             // 
             // pictureBox1
             // 
+            pictureBox1.Dock = DockStyle.Left;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(504, 807);
+            pictureBox1.Size = new Size(504, 770);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 19;
             pictureBox1.TabStop = false;
@@ -279,6 +282,22 @@
             UserViewProfileBTN.UseVisualStyleBackColor = false;
             UserViewProfileBTN.Click += UserViewProfileBTN_Click;
             // 
+            // LogoutButton
+            // 
+            LogoutButton.BackColor = Color.Transparent;
+            LogoutButton.FlatAppearance.BorderSize = 0;
+            LogoutButton.FlatStyle = FlatStyle.Flat;
+            LogoutButton.ForeColor = Color.Black;
+            LogoutButton.Image = (Image)resources.GetObject("LogoutButton.Image");
+            LogoutButton.ImageAlign = ContentAlignment.MiddleRight;
+            LogoutButton.Location = new Point(88, 661);
+            LogoutButton.Name = "LogoutButton";
+            LogoutButton.Size = new Size(136, 39);
+            LogoutButton.TabIndex = 6;
+            LogoutButton.Text = "Logout Account";
+            LogoutButton.TextAlign = ContentAlignment.MiddleLeft;
+            LogoutButton.UseVisualStyleBackColor = false;
+            // 
             // UserMainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -327,5 +346,6 @@
         private Krypton.Toolkit.KryptonButton ViewBooksButton;
         private Label label3;
         private Label label2;
+        private Button LogoutButton;
     }
 }

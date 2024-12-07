@@ -29,6 +29,8 @@ namespace LibraryManagementSystem.Domain.Entities
         [MaxLength(10)]
         public string Role { get; set; } = "Admin";
 
+        public DateTime CreatedAt { get; set; } 
+
         [Required]
         [MaxLength(10)]
         public string Gender { get; set; }

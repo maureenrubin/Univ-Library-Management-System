@@ -1,6 +1,6 @@
-﻿namespace LibraryManagementSystem.Presentation.AdminForms
+﻿namespace LibraryManagementSystem.Presentation.UserForms
 {
-    partial class HomeForm
+    partial class UserHomeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserHomeForm));
+            pictureBox1 = new PictureBox();
             ViewBooksButton = new Krypton.Toolkit.KryptonButton();
             label3 = new Label();
             label2 = new Label();
-            pictureBox1 = new PictureBox();
             HomePanel = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             HomePanel.SuspendLayout();
             SuspendLayout();
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Left;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(504, 791);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 23;
+            pictureBox1.TabStop = false;
+            // 
             // ViewBooksButton
             // 
             ViewBooksButton.Cursor = Cursors.Hand;
-            ViewBooksButton.Location = new Point(786, 414);
+            ViewBooksButton.Location = new Point(845, 410);
             ViewBooksButton.Name = "ViewBooksButton";
             ViewBooksButton.Size = new Size(276, 40);
             ViewBooksButton.StateCommon.Back.Color1 = Color.FromArgb(152, 96, 64);
@@ -68,7 +79,7 @@
             ViewBooksButton.StatePressed.Content.ShortText.Color2 = Color.White;
             ViewBooksButton.StateTracking.Back.Color1 = Color.FromArgb(152, 96, 64);
             ViewBooksButton.StateTracking.Back.Color2 = Color.FromArgb(152, 96, 64);
-            ViewBooksButton.TabIndex = 14;
+            ViewBooksButton.TabIndex = 22;
             ViewBooksButton.Values.Text = "View Books Here";
             ViewBooksButton.Click += ViewBooksButton_Click;
             // 
@@ -76,54 +87,44 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(715, 381);
+            label3.Location = new Point(725, 355);
             label3.Name = "label3";
             label3.Size = new Size(530, 20);
-            label3.TabIndex = 13;
+            label3.TabIndex = 21;
             label3.Text = "\"From shelves to screens, it’s all so clear, the library you love is always near.\"";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Perpetua Titling MT", 36F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(665, 243);
+            label2.Location = new Point(675, 217);
             label2.Name = "label2";
             label2.Size = new Size(627, 116);
-            label2.TabIndex = 12;
+            label2.TabIndex = 20;
             label2.Text = " UNIVERSITY LIBRARY \r\nMANAGEMENT SYSTEM\r\n";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(488, 807);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 15;
-            pictureBox1.TabStop = false;
             // 
             // HomePanel
             // 
+            HomePanel.BackColor = Color.LightCyan;
             HomePanel.Controls.Add(pictureBox1);
-            HomePanel.Controls.Add(ViewBooksButton);
             HomePanel.Controls.Add(label2);
+            HomePanel.Controls.Add(ViewBooksButton);
             HomePanel.Controls.Add(label3);
-            HomePanel.Dock = DockStyle.Top;
+            HomePanel.Dock = DockStyle.Fill;
             HomePanel.Location = new Point(0, 0);
             HomePanel.Name = "HomePanel";
-            HomePanel.Size = new Size(1430, 771);
-            HomePanel.TabIndex = 16;
+            HomePanel.Size = new Size(1445, 791);
+            HomePanel.TabIndex = 24;
             // 
-            // HomeForm
+            // UserHomeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightCyan;
-            ClientSize = new Size(1430, 771);
+            ClientSize = new Size(1445, 791);
             Controls.Add(HomePanel);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "HomeForm";
-            Text = "HomeForm";
+            Name = "UserHomeForm";
+            Text = "UserHomeForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             HomePanel.ResumeLayout(false);
             HomePanel.PerformLayout();
@@ -132,10 +133,10 @@
 
         #endregion
 
+        private PictureBox pictureBox1;
         private Krypton.Toolkit.KryptonButton ViewBooksButton;
         private Label label3;
         private Label label2;
-        private PictureBox pictureBox1;
         private Panel HomePanel;
     }
 }

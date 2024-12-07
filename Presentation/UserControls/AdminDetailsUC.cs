@@ -31,6 +31,7 @@ namespace LibraryManagementSystem.Presentation.UserControls
             AdminID.Text = adminEntity.AdminID.ToString();
             AdminEmailTXT.Text = adminEntity.Email;
             GenderTXT.Text = adminEntity.Gender;
+            CreatedAtLBL.Text = adminEntity.CreatedAt.ToShortDateString();
 
 
             if (adminEntity.AdminPicture != null && adminEntity.AdminPicture.Length > 0)

@@ -110,7 +110,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void HomeButton_Click(object sender, EventArgs e)
         {
-            var homeForm = Program.ServiceProvider.GetRequiredService<HomeForm>();
+            var homeForm = Program.ServiceProvider.GetRequiredService<AdminHomeForm>();
             animation.LoadForm(MainPanel, homeForm);
         }
     }

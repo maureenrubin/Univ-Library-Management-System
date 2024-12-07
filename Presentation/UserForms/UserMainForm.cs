@@ -32,7 +32,7 @@ namespace LibraryManagementSystem.Presentation.UserForms
 
             this.animations = animations;
             this.viewUserProfile = new System.Windows.Forms.Timer { Interval = 10 };
-      
+
 
         }
 
@@ -57,15 +57,15 @@ namespace LibraryManagementSystem.Presentation.UserForms
 
         private void HomeButton_Click(object sender, EventArgs e)
         {
-            var homeForm = Program.ServiceProvider.GetRequiredService<HomeForm>();
-            animations.LoadForm(BooksPanel, homeForm);
+            var userHomeForm = Program.ServiceProvider.GetRequiredService<UserHomeForm>();
+            animations.LoadForm(BooksPanel, userHomeForm);
         }
 
         private void UserViewProfileBTN_Click(object sender, EventArgs e)
         {
             animations.ViewSideProfile(viewUserProfile, UserPanel, 10, 283);
             viewUserProfile.Start();
-           
+
         }
 
         private void BooksButton_Click(object sender, EventArgs e)
@@ -79,5 +79,7 @@ namespace LibraryManagementSystem.Presentation.UserForms
             var userBooksForm = Program.ServiceProvider.GetRequiredService<UserBookForm>();
             animations.LoadForm(BooksPanel, userBooksForm);
         }
+
+      
     }
 }

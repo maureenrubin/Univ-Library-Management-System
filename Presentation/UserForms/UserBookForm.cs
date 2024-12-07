@@ -43,7 +43,7 @@ namespace LibraryManagementSystem.Presentation.UserForms
 
         private void DisplayBooksToUI(BooksEntity booksEntity)
         {
-            AdminBooksUserControl bookDisplay = new AdminBooksUserControl(booksEntity);
+            BookUC bookDisplay = new BookUC(booksEntity);
             UserBooksFLP.Controls.Add(bookDisplay);
         }
     }

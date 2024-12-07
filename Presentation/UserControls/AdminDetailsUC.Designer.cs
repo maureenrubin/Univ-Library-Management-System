@@ -38,6 +38,8 @@
             label3 = new Label();
             label4 = new Label();
             AdminEmailTXT = new Label();
+            label5 = new Label();
+            CreatedAtLBL = new Label();
             ((System.ComponentModel.ISupportInitialize)AdminPicPB).BeginInit();
             SuspendLayout();
             // 
@@ -54,6 +56,7 @@
             // 
             AdminFnameTXT.AutoSize = true;
             AdminFnameTXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            AdminFnameTXT.ForeColor = SystemColors.ControlLightLight;
             AdminFnameTXT.Location = new Point(225, 48);
             AdminFnameTXT.Name = "AdminFnameTXT";
             AdminFnameTXT.Size = new Size(45, 17);
@@ -64,6 +67,7 @@
             // 
             GenderTXT.AutoSize = true;
             GenderTXT.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            GenderTXT.ForeColor = SystemColors.ControlLightLight;
             GenderTXT.Location = new Point(232, 100);
             GenderTXT.Name = "GenderTXT";
             GenderTXT.Size = new Size(38, 16);
@@ -74,7 +78,7 @@
             // 
             AdminID.AutoSize = true;
             AdminID.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            AdminID.Location = new Point(57, 13);
+            AdminID.Location = new Point(71, 11);
             AdminID.Name = "AdminID";
             AdminID.Size = new Size(45, 17);
             AdminID.TabIndex = 3;
@@ -84,6 +88,7 @@
             // 
             AdminLnameTXT.AutoSize = true;
             AdminLnameTXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            AdminLnameTXT.ForeColor = SystemColors.ControlLightLight;
             AdminLnameTXT.Location = new Point(276, 48);
             AdminLnameTXT.Name = "AdminLnameTXT";
             AdminLnameTXT.Size = new Size(45, 17);
@@ -93,7 +98,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(24, 13);
+            label1.Location = new Point(38, 11);
             label1.Name = "label1";
             label1.Size = new Size(21, 15);
             label1.TabIndex = 5;
@@ -102,6 +107,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = SystemColors.ControlLightLight;
             label2.Location = new Point(186, 50);
             label2.Name = "label2";
             label2.Size = new Size(42, 15);
@@ -111,6 +117,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = SystemColors.ControlLightLight;
             label3.Location = new Point(183, 99);
             label3.Name = "label3";
             label3.Size = new Size(48, 15);
@@ -120,6 +127,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.ForeColor = SystemColors.ControlLightLight;
             label4.Location = new Point(183, 74);
             label4.Name = "label4";
             label4.Size = new Size(39, 15);
@@ -130,17 +138,41 @@
             // 
             AdminEmailTXT.AutoSize = true;
             AdminEmailTXT.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            AdminEmailTXT.ForeColor = SystemColors.ControlLightLight;
             AdminEmailTXT.Location = new Point(225, 74);
             AdminEmailTXT.Name = "AdminEmailTXT";
             AdminEmailTXT.Size = new Size(38, 16);
             AdminEmailTXT.TabIndex = 9;
             AdminEmailTXT.Text = "label1";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = SystemColors.ControlLightLight;
+            label5.Location = new Point(183, 125);
+            label5.Name = "label5";
+            label5.Size = new Size(81, 15);
+            label5.TabIndex = 10;
+            label5.Text = "Date Created: ";
+            // 
+            // CreatedAtLBL
+            // 
+            CreatedAtLBL.AutoSize = true;
+            CreatedAtLBL.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            CreatedAtLBL.ForeColor = SystemColors.ControlLightLight;
+            CreatedAtLBL.Location = new Point(276, 124);
+            CreatedAtLBL.Name = "CreatedAtLBL";
+            CreatedAtLBL.Size = new Size(38, 16);
+            CreatedAtLBL.TabIndex = 11;
+            CreatedAtLBL.Text = "label1";
+            // 
             // AdminDetailsUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(CreatedAtLBL);
+            Controls.Add(label5);
             Controls.Add(AdminLnameTXT);
             Controls.Add(AdminEmailTXT);
             Controls.Add(label4);
@@ -170,5 +202,7 @@
         private Label label3;
         private Label label4;
         private Label AdminEmailTXT;
+        private Label label5;
+        private Label CreatedAtLBL;
     }
 }

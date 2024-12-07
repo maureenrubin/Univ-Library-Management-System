@@ -118,14 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="LogoutButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAJ1JREFUSEvt
-        k90NgCAQgxnBEd1ERnAD3UQ3cRQs2vBSkXiiT3zJhZ96bVRwDTMhhBG11ChaKhBXVBVoqUBrIdJHSwWa
-        JaRn73wuTw7DK6CZQyKYpyBuKdCsn0uCuFSg5ULivi9UR5sjiFMFYi7E85H3wCwXEm/xUKjXb1Kiyj+5
-        45fTNbH303sS2TgmaKlAs4YItFSgtRCBlo2nOLcDKNgcDUsFZpsAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAuAAAAT/CAIAAADL7NAqAAABKmlDQ1BJQ0MgUHJvZmlsZQAAKM+Vkb1L
@@ -35890,40 +35882,6 @@
         byWz6OBgi+kbAZk7xh7egj+yxugfmQKMA85NJodIcpTRkDeh/q6EnlmJcOnUNjB8RJJ/LyX/gvoeIn1x
         4WGsWWx5AOkttrq7KNz/3rvANhlJ81ZQJzb3dii3K/NgtPD/rdhNsl8ycTvkjqNMY1gvOyVp5136v5Nk
         YDE4jGT6gNEgLZBxezvaZNyYIA6YN+5iz77/H/moe0Y57x7OAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="HomeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAMNJREFUSEvt
-        k2ENgzAUhCthEpCAFCTgZEiYA+ZgFnAwC3MwCdsdu2asFOhL+2+95APa17tLSOr+U6ePRj60VVbIbcAd
-        vPRuNCojBLbgqQIP162O5IlBClwWlCtCQL8I3KOXxSYag6AjbEUwXIKAVM6K2BcOXgOjlVFRa2FI3UDM
-        aGV9l7gB+TtQCuZ9i/DdgUE8QMyUCv0+q1PFrzCYQMycyqSobfFQYLKSVcLfwJln67dmlQw6MovrYO6p
-        JTO1pMoi596iMC4TXuMsYAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="UserTransacButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAYtJREFUSEtj
-        GAWDF7x//eIAEO8ngAugagvQxLFisMEwYOm16uD71y//E4MXTVv2EZs4NgwyF2oF0BLPVV9gEk/v3fl/
-        6dghMH1y11Y4vn3pPFh+z6olKAbhwyBzoVagWvL6+ROwBSD60a3rcPzi0QOwPDZLTl07hiEGwjgtweYT
-        mC9AGN2Sa3cv/Xfr9vy//NBSFHEQxmkJyMUgQ0H01VPHwBjkE5g8uiVWzbb/y5aV/Q+aGPK/b0svihxV
-        LHn85O5/vVqj/5tOrP+/7/zu/8sOojqAaj4BGezW5fE/fmYCRtzgtIQQRrYEFB+zd88Es7PmZ4MxTA6E
-        ibYE5iOYb9AtAcVJ89qm/8GTQv83AWmYHAhTxRIQBqcuYHChxwcI47QElk9g7Ee3b4AxyDKQGLolIEx2
-        PoGxTwDzCQhTNccTwhRZcujwzf/48Nmzd8EaYZbcvP4QqzpkjGoJsLS09Fp9khCOydzxe86kZf+La/b/
-        wSaPiZFKYWKBldfaBEvP1QdANFRoFAxJwMAAABB4yhVBbEFbAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="BooksButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAahJREFUSEtj
-        GAUUAQUDAwEFFV17YjFUG/EAZEGprdeXPb4x//el1xLEGxLL/nsaO2yGaicOKKjoOIAsAOHPdTOIwukO
-        Afuh2okDMEuuhaTADXlaMfF/a2L5/9qY/P8tMbkY2Mcl6LmDe/B8GLZzDiiGGocdYPNJDjBIimYd/z99
-        29X/x+9/JIirOqd9U1A1MIAaiQmwWZKSUv2/YtGl//UzNmM1FB3PXb//P8gcqJGYAJ8l/WtOgQ1Zvvs0
-        2MIGJDx5/RnqWALzCcgQUPAlNa2A49xJe/83z95KXUtA/PSuTXBL0OUptmTP5Sf/+xbvxMArD1yhniWE
-        8OCxpMPe91+Bteefcs/IzyAcGlf8l7qWKOtF5EQnff/39/3/D+8f/T92bN//+Nx66vpEUd1Ir7e3592V
-        y6fAFtDEEhBwdvPy8fULXgDDTn6x34KTyv8ERGX8ikrM+YkFf4tOyn0Pw36h8Z+V1HS9oMYRB2wdPB+D
-        gg+EkX2IC4eERp2DaiUehEVET1mzZvmXuXNm/icG+/kHvwTVS1DtxANQqQoKZ6IxOZaMAghgYAAARLs6
-        2bVIgO8AAAAASUVORK5CYII=
 </value>
   </data>
 </root>

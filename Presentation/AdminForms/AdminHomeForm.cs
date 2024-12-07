@@ -14,12 +14,12 @@ using WinFormsApp2;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
-    public partial class HomeForm : Form
+    public partial class AdminHomeForm : Form
     {
   
         private readonly Animations animations;
 
-        public HomeForm(
+        public AdminHomeForm(
                             Animations animations)
         {
             InitializeComponent();

@@ -26,5 +26,7 @@ namespace LibraryManagementSystem.Domain.DTO
         public string? Role { get; set; } = "Admin";
 
         public string? Gender { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

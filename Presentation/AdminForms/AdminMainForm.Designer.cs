@@ -306,6 +306,7 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.LightCyan;
+            pictureBox1.Dock = DockStyle.Left;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
@@ -318,7 +319,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Perpetua Titling MT", 36F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(651, 227);
+            label2.Location = new Point(657, 247);
             label2.Name = "label2";
             label2.Size = new Size(627, 116);
             label2.TabIndex = 8;
@@ -338,7 +339,7 @@
             // ViewBooksButton
             // 
             ViewBooksButton.Cursor = Cursors.Hand;
-            ViewBooksButton.Location = new Point(821, 420);
+            ViewBooksButton.Location = new Point(827, 440);
             ViewBooksButton.Name = "ViewBooksButton";
             ViewBooksButton.Size = new Size(276, 40);
             ViewBooksButton.StateCommon.Back.Color1 = Color.FromArgb(152, 96, 64);
@@ -373,7 +374,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(701, 365);
+            label3.Location = new Point(707, 385);
             label3.Name = "label3";
             label3.Size = new Size(530, 20);
             label3.TabIndex = 9;

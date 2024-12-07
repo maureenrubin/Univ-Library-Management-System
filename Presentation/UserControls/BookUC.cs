@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace LibraryManagementSystem.Presentation
 {
-    public partial class AdminBooksUserControl : UserControl
+    public partial class BookUC : UserControl
     {
         private readonly BooksEntity bookEntity;
 
-        public AdminBooksUserControl(BooksEntity bookEntity)
+        public BookUC(BooksEntity bookEntity)
         {
             InitializeComponent();
             this.bookEntity = bookEntity;

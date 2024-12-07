@@ -111,7 +111,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             FormsControlHelper.ClearControls(this);
 
-            AdminBooksUserControl bookDisplay = new AdminBooksUserControl(book);
+            BookUC bookDisplay = new BookUC(book);
             BooksFLP.Controls.Add(bookDisplay);
 
         }
@@ -145,7 +145,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void DisplayBooksToUI(BooksEntity addedBooks)
         {
-            AdminBooksUserControl bookDisplay = new AdminBooksUserControl(addedBooks);
+            BookUC bookDisplay = new BookUC(addedBooks);
 
 
             BooksFLP.Controls.Add(bookDisplay);
