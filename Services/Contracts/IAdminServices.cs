@@ -12,6 +12,9 @@ namespace LibraryManagementSystem.Repositories.Interfaces
         Task<AdminEntity> GetAdminByEmailAsync(string email);
         
         Task<IEnumerable<AdminEntity>> GetAllAdminAsync();
+       
+        Task UpdateAdminAsync(AdminEntity updatedAdmin);
 
+        Task<AdminEntity> GetAdminByIdAsync(int adminId);
     }
 }

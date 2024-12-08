@@ -1,4 +1,5 @@
 ﻿using LibraryManagementSystem.Domain.DTO;
+using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Presentation.UserControls;
 using LibraryManagementSystem.Repositories;
@@ -21,6 +22,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     {
         private readonly IAdminServices adminServices;
 
+
         public ManageAdminsForm(IAdminServices adminServices)
         {
             InitializeComponent();
@@ -28,22 +30,24 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             LoadAdminDetails();
         }
 
-       
+
         public async void LoadAdminDetails()
         {
             try
             {
-                var adminList = await adminServices.GetAllAdminAsync();
-
                 FormsControlHelper.ClearControls(this);
+
+                var adminList = await adminServices.GetAllAdminAsync();
 
                 foreach (var admin in adminList)
                 {
                     AdminDetailsUC adminDetails = new AdminDetailsUC(admin);
+                    adminDetails.AdminClicked += AdminDetailsUC_AdminClicked;
                     AdminsFLP.Controls.Add(adminDetails);
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception($"Error Loading Admin Details: {ex.Message}", ex);
             }
@@ -55,6 +59,24 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             signInForm.Show();
         }
 
+        private async void UpdateAdminBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
 
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error Updating Admin: {ex.Message}", ex);
+            }
+        }
+
+        private void AdminDetailsUC_AdminClicked(object? sender, AdminEntity adminEntity)
+        {
+            var updateAdminForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
+            updateAdminForm.LoadAdminDetails(adminEntity);
+            updateAdminForm.ShowDialog();
+        }
     }
 }

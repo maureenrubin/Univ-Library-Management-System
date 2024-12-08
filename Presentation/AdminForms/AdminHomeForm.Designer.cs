@@ -48,8 +48,8 @@
             ViewBooksButton.StateCommon.Back.Color2 = Color.FromArgb(152, 96, 64);
             ViewBooksButton.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             ViewBooksButton.StateCommon.Border.Rounding = 10F;
-            ViewBooksButton.StateCommon.Content.ShortText.Color1 = Color.Black;
-            ViewBooksButton.StateCommon.Content.ShortText.Color2 = Color.Black;
+            ViewBooksButton.StateCommon.Content.ShortText.Color1 = Color.White;
+            ViewBooksButton.StateCommon.Content.ShortText.Color2 = Color.White;
             ViewBooksButton.StateCommon.Content.ShortText.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             ViewBooksButton.StateDisabled.Back.Color1 = Color.FromArgb(152, 96, 64);
             ViewBooksButton.StateDisabled.Back.Color2 = Color.FromArgb(152, 96, 64);

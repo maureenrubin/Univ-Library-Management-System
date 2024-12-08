@@ -33,6 +33,7 @@
             AddAdminBTN = new Button();
             panel1 = new Panel();
             RemoveAdminBTN = new Button();
+            UpdateAdminBTN = new Button();
             SuspendLayout();
             // 
             // AdminsFLP
@@ -49,13 +50,15 @@
             AddAdminBTN.Cursor = Cursors.Hand;
             AddAdminBTN.FlatAppearance.BorderSize = 0;
             AddAdminBTN.FlatStyle = FlatStyle.Flat;
+            AddAdminBTN.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            AddAdminBTN.ForeColor = Color.Aqua;
             AddAdminBTN.Image = (Image)resources.GetObject("AddAdminBTN.Image");
             AddAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            AddAdminBTN.Location = new Point(40, 12);
+            AddAdminBTN.Location = new Point(53, 12);
             AddAdminBTN.Name = "AddAdminBTN";
-            AddAdminBTN.Size = new Size(149, 58);
+            AddAdminBTN.Size = new Size(108, 58);
             AddAdminBTN.TabIndex = 10;
-            AddAdminBTN.Text = "Add New Administrator";
+            AddAdminBTN.Text = "Add New Admin";
             AddAdminBTN.TextAlign = ContentAlignment.BottomCenter;
             AddAdminBTN.UseVisualStyleBackColor = false;
             AddAdminBTN.Click += AddAdminBTN_Click;
@@ -74,15 +77,34 @@
             RemoveAdminBTN.Cursor = Cursors.Hand;
             RemoveAdminBTN.FlatAppearance.BorderSize = 0;
             RemoveAdminBTN.FlatStyle = FlatStyle.Flat;
+            RemoveAdminBTN.ForeColor = Color.Red;
             RemoveAdminBTN.Image = (Image)resources.GetObject("RemoveAdminBTN.Image");
             RemoveAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            RemoveAdminBTN.Location = new Point(195, 12);
+            RemoveAdminBTN.Location = new Point(268, 12);
             RemoveAdminBTN.Name = "RemoveAdminBTN";
-            RemoveAdminBTN.Size = new Size(144, 58);
+            RemoveAdminBTN.Size = new Size(106, 58);
             RemoveAdminBTN.TabIndex = 12;
-            RemoveAdminBTN.Text = "Remove Administrator";
+            RemoveAdminBTN.Text = "Remove Admin";
             RemoveAdminBTN.TextAlign = ContentAlignment.BottomCenter;
             RemoveAdminBTN.UseVisualStyleBackColor = false;
+            // 
+            // UpdateAdminBTN
+            // 
+            UpdateAdminBTN.BackColor = Color.Transparent;
+            UpdateAdminBTN.Cursor = Cursors.Hand;
+            UpdateAdminBTN.FlatAppearance.BorderSize = 0;
+            UpdateAdminBTN.FlatStyle = FlatStyle.Flat;
+            UpdateAdminBTN.ForeColor = Color.SpringGreen;
+            UpdateAdminBTN.Image = (Image)resources.GetObject("UpdateAdminBTN.Image");
+            UpdateAdminBTN.ImageAlign = ContentAlignment.TopCenter;
+            UpdateAdminBTN.Location = new Point(167, 12);
+            UpdateAdminBTN.Name = "UpdateAdminBTN";
+            UpdateAdminBTN.Size = new Size(95, 58);
+            UpdateAdminBTN.TabIndex = 13;
+            UpdateAdminBTN.Text = "Update Admin";
+            UpdateAdminBTN.TextAlign = ContentAlignment.BottomCenter;
+            UpdateAdminBTN.UseVisualStyleBackColor = false;
+            UpdateAdminBTN.Click += UpdateAdminBTN_Click;
             // 
             // ManageAdminsForm
             // 
@@ -90,6 +112,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(169, 131, 110);
             ClientSize = new Size(1360, 756);
+            Controls.Add(UpdateAdminBTN);
             Controls.Add(RemoveAdminBTN);
             Controls.Add(panel1);
             Controls.Add(AddAdminBTN);
@@ -106,5 +129,6 @@
         private Button AddAdminBTN;
         private Panel panel1;
         private Button RemoveAdminBTN;
+        private Button UpdateAdminBTN;
     }
 }

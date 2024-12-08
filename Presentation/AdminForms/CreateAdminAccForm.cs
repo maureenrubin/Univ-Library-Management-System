@@ -1,4 +1,5 @@
 ﻿using LibraryManagementSystem.Domain.DTO;
+using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Presentation.UserControls;
 using LibraryManagementSystem.Repositories.Interfaces;
@@ -33,7 +34,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             this.createAcoountServices = createAcoountServices;
             this.adminServices = adminServices;
             this.manageAdminsForms = manageAdminsForm;
-
+            
         }
 
         private void SelectImageBTN_Click(object sender, EventArgs e)
@@ -131,6 +132,29 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private void CancelBTN_Click(object sender, EventArgs e)
         {
             FormsControlHelper.ClearControls(this);
+        }
+
+        public void LoadAdminDetails(AdminEntity adminEntity)
+        {
+            FirstNameTB.Text = adminEntity.FirstName;
+            LastNameTB.Text = adminEntity.LastName;
+            EmailTB.Text = adminEntity.Email;
+            GenderCB.Text = adminEntity.Gender;
+            
+            if(adminEntity.AdminPicture != null && adminEntity.AdminPicture.Length > 0)
+            {
+                using (var ms = new MemoryStream(adminEntity.AdminPicture))
+                {
+                    AdminPicPB.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                AdminPicPB.Image = null; 
+            }
+
+            PasswordTB.Text = string.Empty;
+            ConfirmPassTB.Text = string.Empty;
         }
     }
 }

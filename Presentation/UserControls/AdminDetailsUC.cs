@@ -15,14 +15,16 @@ namespace LibraryManagementSystem.Presentation.UserControls
     public partial class AdminDetailsUC : UserControl
     {
         private readonly AdminEntity adminEntity;
-
+        public event EventHandler<AdminEntity> AdminClicked;
 
         public AdminDetailsUC(AdminEntity adminEntity)
         {
             InitializeComponent();
             this.adminEntity = adminEntity;
+            this.Click += AdminDetailsUC_Click;
             LoadAdminDetails();
         }
+        
 
         private void LoadAdminDetails()
         {
@@ -41,10 +43,12 @@ namespace LibraryManagementSystem.Presentation.UserControls
                     AdminPicPB.Image = Image.FromStream(ms);
                 }
             }
-            else
-            {
-                MessageBox.Show("Invalid image data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
+        }
+
+        private void AdminDetailsUC_Click(object sender, EventArgs e)
+        {
+            AdminClicked?.Invoke(this, adminEntity);
         }
 
        

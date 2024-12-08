@@ -85,12 +85,13 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Gadugi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(64, 84);
+            label1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(53, 85);
             label1.Name = "label1";
-            label1.Size = new Size(134, 25);
+            label1.Size = new Size(168, 30);
             label1.TabIndex = 5;
-            label1.Text = "MY PROFILE";
+            label1.Text = "ADMIN PROFILE";
             // 
             // LogoutBTN
             // 
@@ -114,6 +115,7 @@
             AccountNameLBL.AutoSize = true;
             AccountNameLBL.BackColor = Color.Transparent;
             AccountNameLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            AccountNameLBL.ForeColor = Color.White;
             AccountNameLBL.Location = new Point(82, 325);
             AccountNameLBL.Name = "AccountNameLBL";
             AccountNameLBL.Size = new Size(100, 17);
@@ -126,6 +128,7 @@
             AddAdminBTN.Cursor = Cursors.Hand;
             AddAdminBTN.FlatAppearance.BorderSize = 0;
             AddAdminBTN.FlatStyle = FlatStyle.Flat;
+            AddAdminBTN.ForeColor = Color.White;
             AddAdminBTN.Image = (Image)resources.GetObject("AddAdminBTN.Image");
             AddAdminBTN.ImageAlign = ContentAlignment.TopCenter;
             AddAdminBTN.Location = new Point(62, 381);
@@ -162,6 +165,7 @@
             TransactionButton.FlatAppearance.BorderSize = 0;
             TransactionButton.FlatStyle = FlatStyle.Flat;
             TransactionButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TransactionButton.ForeColor = Color.White;
             TransactionButton.Image = (Image)resources.GetObject("TransactionButton.Image");
             TransactionButton.ImageAlign = ContentAlignment.MiddleRight;
             TransactionButton.Location = new Point(1187, 12);
@@ -180,6 +184,7 @@
             AccountsButton.FlatAppearance.BorderSize = 0;
             AccountsButton.FlatStyle = FlatStyle.Flat;
             AccountsButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            AccountsButton.ForeColor = Color.White;
             AccountsButton.Image = Properties.Resources.Student_Male;
             AccountsButton.ImageAlign = ContentAlignment.MiddleRight;
             AccountsButton.Location = new Point(813, 11);
@@ -198,6 +203,7 @@
             BooksButton.FlatAppearance.BorderSize = 0;
             BooksButton.FlatStyle = FlatStyle.Flat;
             BooksButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            BooksButton.ForeColor = Color.White;
             BooksButton.Image = (Image)resources.GetObject("BooksButton.Image");
             BooksButton.ImageAlign = ContentAlignment.MiddleRight;
             BooksButton.Location = new Point(632, 11);
@@ -231,6 +237,7 @@
             HomeButton.FlatAppearance.BorderSize = 0;
             HomeButton.FlatStyle = FlatStyle.Flat;
             HomeButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            HomeButton.ForeColor = Color.White;
             HomeButton.Image = (Image)resources.GetObject("HomeButton.Image");
             HomeButton.ImageAlign = ContentAlignment.TopCenter;
             HomeButton.Location = new Point(158, 11);
@@ -249,6 +256,7 @@
             ViewAdminButton.FlatAppearance.BorderSize = 0;
             ViewAdminButton.FlatStyle = FlatStyle.Flat;
             ViewAdminButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ViewAdminButton.ForeColor = Color.White;
             ViewAdminButton.Image = (Image)resources.GetObject("ViewAdminButton.Image");
             ViewAdminButton.ImageAlign = ContentAlignment.MiddleRight;
             ViewAdminButton.Location = new Point(994, 12);
@@ -267,6 +275,7 @@
             ViewProfileBTN.FlatAppearance.BorderSize = 0;
             ViewProfileBTN.FlatStyle = FlatStyle.Flat;
             ViewProfileBTN.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ViewProfileBTN.ForeColor = Color.White;
             ViewProfileBTN.Image = (Image)resources.GetObject("ViewProfileBTN.Image");
             ViewProfileBTN.ImageAlign = ContentAlignment.TopCenter;
             ViewProfileBTN.Location = new Point(47, 7);
@@ -346,8 +355,8 @@
             ViewBooksButton.StateCommon.Back.Color2 = Color.FromArgb(152, 96, 64);
             ViewBooksButton.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             ViewBooksButton.StateCommon.Border.Rounding = 10F;
-            ViewBooksButton.StateCommon.Content.ShortText.Color1 = Color.Black;
-            ViewBooksButton.StateCommon.Content.ShortText.Color2 = Color.Black;
+            ViewBooksButton.StateCommon.Content.ShortText.Color1 = Color.White;
+            ViewBooksButton.StateCommon.Content.ShortText.Color2 = Color.White;
             ViewBooksButton.StateCommon.Content.ShortText.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             ViewBooksButton.StateDisabled.Back.Color1 = Color.FromArgb(152, 96, 64);
             ViewBooksButton.StateDisabled.Back.Color2 = Color.FromArgb(152, 96, 64);
