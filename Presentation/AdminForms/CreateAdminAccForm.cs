@@ -24,11 +24,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private readonly IAdminServices adminServices;
         private readonly ManageAdminsForm manageAdminsForms;
         private byte[] AdminPicture;
+        private bool IsUpdateMode = false;
+        private int AdminIdToUpdate;
+
 
         public CreateAdminAccForm(
-                                    ICreateAccountServices createAcoountServices,
-                                    IAdminServices adminServices,
-                                    ManageAdminsForm manageAdminsForm)
+            ICreateAccountServices createAcoountServices,
+            IAdminServices adminServices,
+            ManageAdminsForm manageAdminsForm)
         {
             InitializeComponent();
             this.createAcoountServices = createAcoountServices;
@@ -37,35 +40,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             
         }
 
-        private void SelectImageBTN_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Images Files | *.jp;*.jpg;*.jpeg;*.png;*.bmp";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    AdminPicture = File.ReadAllBytes(openFileDialog.FileName);
-                    AdminPicPB.Image = Image.FromStream(new MemoryStream(AdminPicture));
-                }
-            }
-        }
-
-        private void ShowPasswordTB_CheckedChanged(object sender, EventArgs e)
-        {
-            PasswordTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
-            ConfirmPassTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
-        }
-
-        private void GoBackBTN_Click(object sender, EventArgs e)
-        {
-            FormsControlHelper.ClearControls(this);
-
-
-            this.Hide();
-            var adminMainForm = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
-            adminMainForm.Show();
-        }
 
         private async void CreateAdminBTN_Click_1(object sender, EventArgs e)
         {
@@ -78,7 +52,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 string confirmPass = ConfirmPassTB.Text;
                 string gender = GenderCB.Text;
                 byte[] adminPicture = null;
-
 
 
                 if (AdminPicPB.Image != null)
@@ -98,14 +71,15 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     MessageBox.Show("All fields are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+               
 
-                if (password != confirmPass)
+                if (!IsUpdateMode && password != confirmPass)
                 {
                     MessageBox.Show("Password do not match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                var createAdminDto = new AdminDTO
+                var adminDto = new AdminDTO
                 {
                     LastName = lastName,
                     FirstName = firstName,
@@ -117,11 +91,27 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 };
 
-                await createAcoountServices.CreateAdminAccountAsync(createAdminDto);
-                MessageBox.Show("New Administrator created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FormsControlHelper.ClearControls(this);
+                if (IsUpdateMode)
+                {
+                    adminDto.AdminID = AdminIdToUpdate;
+                    await adminServices.UpdateAdminAsync(adminDto);
+                    MessageBox.Show("Administrator updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              
+                }
+                else
+                {
 
+                    adminDto.Password = password;
+                    adminDto.ConfirmPass = confirmPass;
+                    await createAcoountServices.CreateAdminAccountAsync(adminDto);
+                    MessageBox.Show("New Administrator created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                }
+               
+                FormsControlHelper.ClearControls(this);
                 manageAdminsForms.LoadAdminDetails();
+                Close();
+
             }
             catch (Exception ex)
             {
@@ -136,6 +126,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         public void LoadAdminDetails(AdminEntity adminEntity)
         {
+            IsUpdateMode = true;
+            AdminIdToUpdate = adminEntity.AdminID;
+
             FirstNameTB.Text = adminEntity.FirstName;
             LastNameTB.Text = adminEntity.LastName;
             EmailTB.Text = adminEntity.Email;
@@ -153,8 +146,41 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 AdminPicPB.Image = null; 
             }
 
-            PasswordTB.Text = string.Empty;
-            ConfirmPassTB.Text = string.Empty;
+            PasswordTB.Enabled = false;
+            ConfirmPassTB.Enabled = false;
         }
+
+
+        private void SelectImageBTN_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Images Files | *.jp;*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    AdminPicture = File.ReadAllBytes(openFileDialog.FileName);
+                    AdminPicPB.Image = Image.FromStream(new MemoryStream(AdminPicture));
+                }
+            }
+        }
+
+
+        private void ShowPasswordTB_CheckedChanged(object sender, EventArgs e)
+        {
+            PasswordTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
+            ConfirmPassTB.PasswordChar = ShowPasswordTB.Checked ? '\0' : '●';
+        }
+
+        private void GoBackBTN_Click(object sender, EventArgs e)
+        {
+            FormsControlHelper.ClearControls(this);
+
+
+            this.Hide();
+            var adminMainForm = Program.ServiceProvider.GetRequiredService<MainForm_ADMIN>();
+            adminMainForm.Show();
+        }
+
     }
 }

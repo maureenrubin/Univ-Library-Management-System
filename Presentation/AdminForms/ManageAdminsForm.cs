@@ -76,7 +76,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             var updateAdminForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
             updateAdminForm.LoadAdminDetails(adminEntity);
-            updateAdminForm.ShowDialog();
+            updateAdminForm.Show();
+            LoadAdminDetails();
         }
     }
 }

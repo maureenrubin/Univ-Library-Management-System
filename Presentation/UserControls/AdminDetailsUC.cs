@@ -1,5 +1,7 @@
 ﻿using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Presentation.AdminForms;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp2;
 
 namespace LibraryManagementSystem.Presentation.UserControls
 {
@@ -51,6 +54,6 @@ namespace LibraryManagementSystem.Presentation.UserControls
             AdminClicked?.Invoke(this, adminEntity);
         }
 
-       
+
     }
 }

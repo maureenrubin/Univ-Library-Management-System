@@ -54,26 +54,22 @@ namespace LibraryManagementSystem.Repositories
             return await dbContext.Admins.ToListAsync();
         }
 
-        public async Task UpdateAdminAsync(AdminEntity updatedAdmin)
+        public async Task UpdateAdminAsync(AdminDTO adminDTO)
         {
             try
             {
-                var existingAdmin = await dbContext.Admins.FindAsync(updatedAdmin.AdminID);
+                var existingAdmin = await dbContext.Admins.SingleOrDefaultAsync(a => a.AdminID == adminDTO.AdminID);
 
                 if(existingAdmin == null)
                 {
                     throw new Exception("Admin not found");
                 }
 
-                existingAdmin.FirstName = updatedAdmin.FirstName;
-                existingAdmin.LastName = updatedAdmin.LastName;
-                existingAdmin.Email = updatedAdmin.Email;
-                existingAdmin.Gender = updatedAdmin.Gender;
-
-                if (updatedAdmin.AdminPicture != null)
-                {
-                    existingAdmin.AdminPicture = updatedAdmin.AdminPicture;
-                }
+                existingAdmin.FirstName = adminDTO.FirstName;
+                existingAdmin.LastName = adminDTO.LastName;
+                existingAdmin.Email = adminDTO.Email;
+                existingAdmin.Gender = adminDTO.Gender;
+                existingAdmin.AdminPicture = adminDTO.AdminPicture;
 
                 await dbContext.SaveChangesAsync();
 

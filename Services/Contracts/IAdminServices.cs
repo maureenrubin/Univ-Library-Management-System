@@ -1,4 +1,5 @@
-﻿using LibraryManagementSystem.Domain.Entities;
+﻿using LibraryManagementSystem.Domain.DTO;
+using LibraryManagementSystem.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace LibraryManagementSystem.Repositories.Interfaces
         Task<AdminEntity> GetAdminByEmailAsync(string email);
         
         Task<IEnumerable<AdminEntity>> GetAllAdminAsync();
-       
-        Task UpdateAdminAsync(AdminEntity updatedAdmin);
+
+        Task UpdateAdminAsync(AdminDTO adminDTO);
 
         Task<AdminEntity> GetAdminByIdAsync(int adminId);
     }

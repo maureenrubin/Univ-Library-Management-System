@@ -448,6 +448,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(194, 144, 116);
             ClientSize = new Size(902, 610);
+            Controls.Add(FirstNameTB);
             Controls.Add(CancelBTN);
             Controls.Add(CreateAdminBTN);
             Controls.Add(panel4);
@@ -467,7 +468,6 @@
             Controls.Add(PasswordTB);
             Controls.Add(EmailTB);
             Controls.Add(LastNameTB);
-            Controls.Add(FirstNameTB);
             Controls.Add(GoBackBTN);
             Controls.Add(label2);
             Controls.Add(label1);
