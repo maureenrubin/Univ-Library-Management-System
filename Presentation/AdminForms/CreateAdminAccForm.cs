@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,8 +59,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 {
                     using (var ms = new MemoryStream())
                     {
-                        AdminPicPB.Image.Save(ms, AdminPicPB.Image.RawFormat);
-                        adminPicture = ms.ToArray();
+                        using (var cloneImage = new Bitmap(AdminPicPB.Image))
+                        {
+                            cloneImage.Save(ms, ImageFormat.Png);
+                            adminPicture = ms.ToArray();
+                        }
                     }
                 }
 
@@ -101,14 +105,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 else
                 {
 
-                    adminDto.Password = password;
-                    adminDto.ConfirmPass = confirmPass;
+                    PasswordHelper.GeneratePasswordHashAndSalt(adminDto.Password);
                     await createAcoountServices.CreateAdminAccountAsync(adminDto);
                     MessageBox.Show("New Administrator created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
                 }
                
                 FormsControlHelper.ClearControls(this);
+                this.Refresh();
                 manageAdminsForms.LoadAdminDetails();
                 Close();
 
@@ -134,6 +138,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             EmailTB.Text = adminEntity.Email;
             GenderCB.Text = adminEntity.Gender;
             
+            
             if(adminEntity.AdminPicture != null && adminEntity.AdminPicture.Length > 0)
             {
                 using (var ms = new MemoryStream(adminEntity.AdminPicture))
@@ -141,13 +146,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     AdminPicPB.Image = Image.FromStream(ms);
                 }
             }
-            else
-            {
-                AdminPicPB.Image = null; 
-            }
-
-            PasswordTB.Enabled = false;
-            ConfirmPassTB.Enabled = false;
+           
+           
         }
 
 

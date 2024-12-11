@@ -57,7 +57,7 @@
             AdminFnameTXT.AutoSize = true;
             AdminFnameTXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             AdminFnameTXT.ForeColor = SystemColors.ControlLightLight;
-            AdminFnameTXT.Location = new Point(225, 48);
+            AdminFnameTXT.Location = new Point(219, 48);
             AdminFnameTXT.Name = "AdminFnameTXT";
             AdminFnameTXT.Size = new Size(45, 17);
             AdminFnameTXT.TabIndex = 1;
@@ -68,7 +68,7 @@
             GenderTXT.AutoSize = true;
             GenderTXT.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             GenderTXT.ForeColor = SystemColors.ControlLightLight;
-            GenderTXT.Location = new Point(232, 100);
+            GenderTXT.Location = new Point(232, 98);
             GenderTXT.Name = "GenderTXT";
             GenderTXT.Size = new Size(38, 16);
             GenderTXT.TabIndex = 2;
@@ -98,7 +98,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(38, 11);
+            label1.Location = new Point(44, 13);
             label1.Name = "label1";
             label1.Size = new Size(21, 15);
             label1.TabIndex = 5;
@@ -108,7 +108,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(186, 50);
+            label2.Location = new Point(183, 50);
             label2.Name = "label2";
             label2.Size = new Size(42, 15);
             label2.TabIndex = 6;
@@ -170,7 +170,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
+            BackColor = Color.FromArgb(152, 96, 64);
             Controls.Add(CreatedAtLBL);
             Controls.Add(label5);
             Controls.Add(AdminLnameTXT);
@@ -183,6 +183,7 @@
             Controls.Add(GenderTXT);
             Controls.Add(AdminFnameTXT);
             Controls.Add(AdminPicPB);
+            Cursor = Cursors.Hand;
             Name = "AdminDetailsUC";
             Size = new Size(377, 194);
             ((System.ComponentModel.ISupportInitialize)AdminPicPB).EndInit();

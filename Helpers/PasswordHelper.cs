@@ -32,5 +32,15 @@ namespace LibraryManagementSystem.Helpers
             }
         }
 
+        public static (byte[] hash, byte[] salt) GeneratePasswordHashAndSalt(string password)
+        {
+            using(var hmac = new System.Security.Cryptography.HMACSHA512())
+            {
+                var salt = hmac.Key;
+                var hash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password)); // Hash password
+                return (hash, salt);
+            }
+        }
+
     }
 }

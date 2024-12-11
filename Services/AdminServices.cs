@@ -1,6 +1,8 @@
 ﻿using LibraryManagementSystem.Data_Connectivity.Context;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Helpers;
+using LibraryManagementSystem.Presentation.AdminForms;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,25 +15,21 @@ namespace LibraryManagementSystem.Repositories
 {
     public class AdminServices : IAdminServices
     {
-        private readonly LMSDbContext dbContext;
+        private readonly DbContextOptions<LMSDbContext> _dbContextOptions;
 
 
-        public AdminServices(LMSDbContext dbContext)
+        public AdminServices(DbContextOptions<LMSDbContext> dbContextOptions)
         {
-            this.dbContext = dbContext;
+            this._dbContextOptions = dbContextOptions;
 
         }
 
         public async Task<AdminEntity?> GetAdminByIdAsync(int adminId)
         {
-            try
+            using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
             {
-                return await dbContext.Admins
+                return await dbContextOptions.Admins
                .SingleOrDefaultAsync(a => a.AdminID == adminId);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error Getting Admin Id: {ex.Message}", ex);
             }
         }
 
@@ -39,40 +37,61 @@ namespace LibraryManagementSystem.Repositories
         {
             try
             {
-                return await dbContext.Admins
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+                {
+                    return await dbContextOptions.Admins
                     .SingleOrDefaultAsync(a => a.Email == email);
-                   
+              
+                }
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error Getiing Admin Email:  {ex.Message}", ex);
             }
         }
-        
+
         public async Task<IEnumerable<AdminEntity>> GetAllAdminAsync()
         {
-            return await dbContext.Admins.ToListAsync();
+            using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+            {
+                return await dbContextOptions.Admins.ToListAsync();
+
+            }
         }
 
         public async Task UpdateAdminAsync(AdminDTO adminDTO)
         {
             try
             {
-                var existingAdmin = await dbContext.Admins.SingleOrDefaultAsync(a => a.AdminID == adminDTO.AdminID);
-
-                if(existingAdmin == null)
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
-                    throw new Exception("Admin not found");
+                    var existingAdmin = await dbContextOptions.Admins.SingleOrDefaultAsync(a => a.AdminID == adminDTO.AdminID);
+
+                    if (existingAdmin == null)
+                    {
+                        throw new Exception("Admin not found");
+                    }
+
+                    existingAdmin.FirstName = adminDTO.FirstName;
+                    existingAdmin.LastName = adminDTO.LastName;
+                    existingAdmin.Email = adminDTO.Email;
+                    existingAdmin.Gender = adminDTO.Gender;
+                    existingAdmin.AdminPicture = adminDTO.AdminPicture;
+
+                    if (!string.IsNullOrEmpty(adminDTO.Password))
+                    {
+                        (existingAdmin.PasswordHash, existingAdmin.PasswordSalt) = PasswordHelper.GeneratePasswordHashAndSalt(adminDTO.Password);
+                    }
+                    await dbContextOptions.SaveChangesAsync();
+
+                    if (existingAdmin.AdminPicture != null)
+                    {
+                        
+                    }
+                   
+                    
+                    
                 }
-
-                existingAdmin.FirstName = adminDTO.FirstName;
-                existingAdmin.LastName = adminDTO.LastName;
-                existingAdmin.Email = adminDTO.Email;
-                existingAdmin.Gender = adminDTO.Gender;
-                existingAdmin.AdminPicture = adminDTO.AdminPicture;
-
-                await dbContext.SaveChangesAsync();
-
 
             }
             catch (Exception ex)

@@ -46,6 +46,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     AdminsFLP.Controls.Add(adminDetails);
                 }
 
+                
             }
             catch (Exception ex)
             {
@@ -76,7 +77,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             var updateAdminForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
             updateAdminForm.LoadAdminDetails(adminEntity);
-            updateAdminForm.Show();
+            updateAdminForm.ShowDialog();
             LoadAdminDetails();
         }
     }
