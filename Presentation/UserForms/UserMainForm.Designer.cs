@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserMainForm));
             UserPanel = new Krypton.Toolkit.KryptonPanel();
+            LogoutButton = new Button();
             StudentCourseTEXT = new Label();
             StudentNameTEXT = new Label();
             StudentProfilePB = new PictureBox();
@@ -45,7 +46,6 @@
             UserTransacButton = new Button();
             BooksButton = new Button();
             UserViewProfileBTN = new Button();
-            LogoutButton = new Button();
             ((System.ComponentModel.ISupportInitialize)UserPanel).BeginInit();
             UserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)StudentProfilePB).BeginInit();
@@ -64,17 +64,33 @@
             UserPanel.Controls.Add(StudentNameTEXT);
             UserPanel.Controls.Add(StudentProfilePB);
             UserPanel.Dock = DockStyle.Right;
-            UserPanel.Location = new Point(1463, 87);
+            UserPanel.Location = new Point(1195, 87);
             UserPanel.Name = "UserPanel";
-            UserPanel.Size = new Size(10, 786);
+            UserPanel.Size = new Size(278, 786);
             UserPanel.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             UserPanel.TabIndex = 0;
+            // 
+            // LogoutButton
+            // 
+            LogoutButton.BackColor = Color.Transparent;
+            LogoutButton.FlatAppearance.BorderSize = 0;
+            LogoutButton.FlatStyle = FlatStyle.Flat;
+            LogoutButton.ForeColor = Color.Black;
+            LogoutButton.Image = (Image)resources.GetObject("LogoutButton.Image");
+            LogoutButton.ImageAlign = ContentAlignment.MiddleRight;
+            LogoutButton.Location = new Point(88, 661);
+            LogoutButton.Name = "LogoutButton";
+            LogoutButton.Size = new Size(136, 39);
+            LogoutButton.TabIndex = 6;
+            LogoutButton.Text = "Logout Account";
+            LogoutButton.TextAlign = ContentAlignment.MiddleLeft;
+            LogoutButton.UseVisualStyleBackColor = false;
             // 
             // StudentCourseTEXT
             // 
             StudentCourseTEXT.AutoSize = true;
             StudentCourseTEXT.BackColor = Color.Transparent;
-            StudentCourseTEXT.Location = new Point(47, 291);
+            StudentCourseTEXT.Location = new Point(47, 300);
             StudentCourseTEXT.Name = "StudentCourseTEXT";
             StudentCourseTEXT.Size = new Size(96, 15);
             StudentCourseTEXT.TabIndex = 5;
@@ -116,7 +132,7 @@
             kryptonPanel4.Dock = DockStyle.Bottom;
             kryptonPanel4.Location = new Point(24, 863);
             kryptonPanel4.Name = "kryptonPanel4";
-            kryptonPanel4.Size = new Size(1439, 10);
+            kryptonPanel4.Size = new Size(1171, 10);
             kryptonPanel4.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             kryptonPanel4.TabIndex = 4;
             // 
@@ -281,22 +297,6 @@
             UserViewProfileBTN.TextAlign = ContentAlignment.BottomCenter;
             UserViewProfileBTN.UseVisualStyleBackColor = false;
             UserViewProfileBTN.Click += UserViewProfileBTN_Click;
-            // 
-            // LogoutButton
-            // 
-            LogoutButton.BackColor = Color.Transparent;
-            LogoutButton.FlatAppearance.BorderSize = 0;
-            LogoutButton.FlatStyle = FlatStyle.Flat;
-            LogoutButton.ForeColor = Color.Black;
-            LogoutButton.Image = (Image)resources.GetObject("LogoutButton.Image");
-            LogoutButton.ImageAlign = ContentAlignment.MiddleRight;
-            LogoutButton.Location = new Point(88, 661);
-            LogoutButton.Name = "LogoutButton";
-            LogoutButton.Size = new Size(136, 39);
-            LogoutButton.TabIndex = 6;
-            LogoutButton.Text = "Logout Account";
-            LogoutButton.TextAlign = ContentAlignment.MiddleLeft;
-            LogoutButton.UseVisualStyleBackColor = false;
             // 
             // UserMainForm
             // 

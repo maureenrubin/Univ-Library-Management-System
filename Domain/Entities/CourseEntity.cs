@@ -12,7 +12,8 @@ namespace LibraryManagementSystem.Domain.Entities
         [Key]
         public int CourseId { get; set; }
 
-        public string Course { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
+        public ICollection<UserEntity> Users { get; set; }
     }
 }

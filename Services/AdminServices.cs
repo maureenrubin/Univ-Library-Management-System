@@ -81,16 +81,10 @@ namespace LibraryManagementSystem.Repositories
                     if (!string.IsNullOrEmpty(adminDTO.Password))
                     {
                         (existingAdmin.PasswordHash, existingAdmin.PasswordSalt) = PasswordHelper.GeneratePasswordHashAndSalt(adminDTO.Password);
+
                     }
                     await dbContextOptions.SaveChangesAsync();
 
-                    if (existingAdmin.AdminPicture != null)
-                    {
-                        
-                    }
-                   
-                    
-                    
                 }
 
             }

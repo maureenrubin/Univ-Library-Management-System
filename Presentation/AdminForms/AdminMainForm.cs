@@ -14,6 +14,7 @@ using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
 using LibraryManagementSystem.Helpers.Animation;
 using LibraryManagementSystem.Presentation.UserForms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -91,9 +92,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void ViewProfileBTN_Click(object sender, EventArgs e)
         {
-            animation.ViewSideProfile(viewsideTransition, AdminPanel, 10,283);
+            viewsideTransition.Interval = 20;
+            animation.TransitionPanelWidth(viewsideTransition, AdminPanel, 10, 283, sidebarExpanded);
             viewsideTransition.Start();
-            sidebarExpanded = !sidebarExpanded;
         }
 
         private void ViewAdminBtn_Click(object sender, EventArgs e)

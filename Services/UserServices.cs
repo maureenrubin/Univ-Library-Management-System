@@ -23,46 +23,55 @@ namespace LibraryManagementSystem.Repositories
 
         public async Task<UserEntity?> GetUserByEmailAsync(string email)
         {
-            using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+            try
             {
-
-
-                return await dbContextOptions.Users
-                       .SingleOrDefaultAsync(u => u.Email == email);
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+                {
+                    return await dbContextOptions.Users
+                           .Include(u => u.Course)
+                           .SingleOrDefaultAsync(u => u.Email == email);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving users email.{ex.Message} ", ex);
             }
         }
 
         public async Task<IEnumerable<UserEntity>> GetAllUsersAsync()
         {
-            using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+            try
             {
-                try
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
                     return await dbContextOptions.Users
-                          .Join(dbContextOptions.Courses,
-                                 user => user.CourseId,
-                                 course => course.CourseId,
-                                 (user, course) => new UserEntity
-                                 {
-                                     UserId = user.UserId,
-                                     FirstName = user.FirstName,
-                                     LastName = user.LastName,
-                                     CourseId = user.CourseId,
-                                     CourseName = course.Course,
-                                     UserPicture = user.UserPicture,
-                                     CreatedAt = user.CreatedAt
-
-                                 })
-
-
+                        .Include(u => u.Course)
                         .ToListAsync();
 
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Error retrieving all Users. {ex.Message}", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving all Users. {ex.Message}", ex);
+            }
 
+        }
+        
+
+        public async Task<UserEntity> GetUserByIdAsync (int userId)
+        {
+            try
+            {
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+                {
+                    return await dbContextOptions.Users
+                        .Include(u => u.Course)
+                        .SingleOrDefaultAsync(u => u.UserId == userId);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving user by Id {ex.Message}", ex);
             }
         }
 
@@ -72,6 +81,7 @@ namespace LibraryManagementSystem.Repositories
             {
 
                 return await dbContextOptions.Users
+                        .Include(u => u.Course)
                         .Where(u => u.CourseId == courseId)
                         .ToListAsync();
             }

@@ -46,7 +46,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     AdminsFLP.Controls.Add(adminDetails);
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -56,11 +56,27 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void AddAdminBTN_Click(object sender, EventArgs e)
         {
-            var signInForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
-            signInForm.Show();
+            try
+            {
+                var addadminForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
+                addadminForm.ShowDialog();
+
+            }catch (Exception ex)
+            {
+                throw new Exception($"Error Adding admin: {ex.Message} ", ex);
+            }
         }
 
-        private async void UpdateAdminBTN_Click(object sender, EventArgs e)
+      
+        private void AdminDetailsUC_AdminClicked(object? sender, AdminEntity adminEntity)
+        {
+            var updateAdminForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
+            updateAdminForm.LoadAdminDetails(adminEntity);
+            updateAdminForm.ShowDialog();
+
+        }
+
+        private void UpdateAdminBTN_Click(object sender, EventArgs e)
         {
             try
             {
@@ -71,14 +87,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             {
                 throw new Exception($"Error Updating Admin: {ex.Message}", ex);
             }
-        }
-
-        private void AdminDetailsUC_AdminClicked(object? sender, AdminEntity adminEntity)
-        {
-            var updateAdminForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
-            updateAdminForm.LoadAdminDetails(adminEntity);
-            updateAdminForm.ShowDialog();
-            LoadAdminDetails();
         }
     }
 }

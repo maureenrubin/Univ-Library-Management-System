@@ -22,6 +22,9 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
                 .Property(s => s.UserId)
                 .ValueGeneratedOnAdd();
 
+            builder
+                .HasOne(s => s.Course)
+                .WithMany(c => c.Users);
 
         }
 

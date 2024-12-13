@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LibraryManagementSystem.Helpers.Animation
 {
     public class Animations
     {
-
         private int _animationStep;
         private bool _sidebarExpanded;
-       
+
         public Animations(int animationStep = 10)
         {
-            this._animationStep = animationStep;
-            this._sidebarExpanded = false;
-
+            _animationStep = animationStep;
+            _sidebarExpanded = false;
         }
 
         public void LoadForm(Panel mainPanel, Form newForm)
         {
-            if (mainPanel.Controls.Count > 0) mainPanel.Controls.Clear();
+            if (mainPanel.Controls.Count > 0)
+                mainPanel.Controls.Clear();
 
             newForm.TopLevel = false;
             newForm.Dock = DockStyle.Fill;
@@ -31,17 +27,17 @@ namespace LibraryManagementSystem.Helpers.Animation
             newForm.Show();
         }
 
-        public void ViewSideProfile(System.Windows.Forms.Timer timer, Panel panel, int collapsedWidth, int expandedWidth)
+        public void TransitionPanelWidth(System.Windows.Forms.Timer timer, Panel panel, int collapsedWidth, int expandedWidth, bool isExpanded)
         {
             timer.Tick += (sender, e) =>
             {
-                if (_sidebarExpanded)
+                if (isExpanded)
                 {
                     panel.Width -= _animationStep;
                     if (panel.Width <= collapsedWidth)
                     {
                         panel.Width = collapsedWidth;
-                        _sidebarExpanded = false;
+                        isExpanded = false;
                         timer.Stop();
                     }
                 }
@@ -51,7 +47,7 @@ namespace LibraryManagementSystem.Helpers.Animation
                     if (panel.Width >= expandedWidth)
                     {
                         panel.Width = expandedWidth;
-                        _sidebarExpanded = true;
+                        isExpanded = true;
                         timer.Stop();
                     }
                 }
@@ -59,119 +55,25 @@ namespace LibraryManagementSystem.Helpers.Animation
             timer.Start();
         }
 
-        public void SideBooksTransition(System.Windows.Forms.Timer timer, Panel BooksPanel, bool sidebarExpanded)
+
+        public void SideBooksTransition(System.Windows.Forms.Timer timer, Panel booksPanel, bool sidebarExpanded)
         {
-            timer.Tick += (sender, e) =>
-            {
-                if (sidebarExpanded)
-                {
-                    BooksPanel.Width -= _animationStep;
-                    if (BooksPanel.Width <= 50)
-                    {
-                        sidebarExpanded = false;
-                        timer.Stop();
-
-                    }
-                }
-                else
-                {
-                    BooksPanel.Width += _animationStep;
-                    if (BooksPanel.Width >= 246)
-                    {
-                        sidebarExpanded = true;
-                        timer.Stop();
-                    }
-                }
-            };
-
-
-
+            TransitionPanelWidth(timer, booksPanel, 50, 246, sidebarExpanded);
         }
 
-
-        public void CrudBooksTransition(System.Windows.Forms.Timer timer, Panel BooksPanel, bool sidebarExpanded)
+        public void CrudBooksTransition(System.Windows.Forms.Timer timer, Panel booksPanel, bool sidebarExpanded)
         {
-            timer.Tick += (sender, e) =>
-            {
-                if (sidebarExpanded)
-                {
-                    BooksPanel.Width -= _animationStep;
-                    if (BooksPanel.Width <= 263)
-                    {
-                        sidebarExpanded = false;
-                        timer.Stop();
-
-                    }
-                }
-                else
-                {
-                    BooksPanel.Width += _animationStep;
-                    if (BooksPanel.Width >= 1092)
-                    {
-                        sidebarExpanded = true;
-                        timer.Stop();
-                    }
-                }
-            };
-
+            TransitionPanelWidth(timer, booksPanel, 263, 1092, sidebarExpanded);
         }
 
-        public void OpenCrudTransition(System.Windows.Forms.Timer timer, Panel StudentPanel, bool sidebarExpanded)
+        public void OpenCrudTransition(System.Windows.Forms.Timer timer, Panel studentPanel)
         {
-            timer.Tick += (sender, e) =>
-            {
-                if (sidebarExpanded)
-                {
-                    StudentPanel.Width -= _animationStep;
-                    if (StudentPanel.Width <= 50)
-                    {
-                        sidebarExpanded = false;
-                        timer.Stop();
-
-                    }
-                }
-                else
-                {
-                    StudentPanel.Width += _animationStep;
-                    if (StudentPanel.Width >= 287)
-                    {
-                        sidebarExpanded = true;
-                        timer.Stop();
-                    }
-                }
-            };
-
-
-
+            TransitionPanelWidth(timer, studentPanel, 50, 287,  _sidebarExpanded);
         }
 
-        public void CrudStudentTransition(System.Windows.Forms.Timer timer, Panel StudentPanel, bool sidebarExpanded)
+        public void CrudStudentTransition(System.Windows.Forms.Timer timer, Panel studentPanel, bool sidebarExpanded)
         {
-            timer.Tick += (sender, e) =>
-            {
-                if (sidebarExpanded)
-                {
-                    StudentPanel.Width -= _animationStep;
-                    if (StudentPanel.Width <= 263)
-                    {
-                        sidebarExpanded = false;
-                        timer.Stop();
-
-                    }
-                }
-                else
-                {
-                    StudentPanel.Width += _animationStep;
-                    if (StudentPanel.Width >= 1092)
-                    {
-                        sidebarExpanded = true;
-                        timer.Stop();
-                    }
-                }
-            };
-
+            TransitionPanelWidth(timer, studentPanel, 263, 1092, sidebarExpanded);
         }
-
-        
     }
 }

@@ -36,23 +36,27 @@ namespace LibraryManagementSystem.Presentation.UserForms
 
         }
 
-        private void UserMainForm_Load(object sender, EventArgs e)
+        private  void UserMainForm_Load(object sender, EventArgs e)
         {
-            if (CurrentUsers != null)
-            {
-                StudentCourseTEXT.Text = $"{CurrentUsers.CourseName}";
-                StudentNameTEXT.Text = $"{CurrentUsers.FirstName} {CurrentUsers.LastName}";
-
-
-                if (CurrentUsers.UserPicture != null && CurrentUsers.UserPicture.Length > 0)
+                if (CurrentUsers != null)
                 {
-                    using (var ms = new MemoryStream(CurrentUsers.UserPicture))
-                    {
-                        StudentProfilePB.Image = Image.FromStream(ms);
-                    }
-                }
 
-            }
+                    StudentNameTEXT.Text = $"{CurrentUsers.FirstName} {CurrentUsers.LastName}";
+
+                    if (CurrentUsers.Course != null)
+                    {
+                        StudentCourseTEXT.Text = CurrentUsers.Course.Name;
+                    }
+
+                    if (CurrentUsers.UserPicture != null && CurrentUsers.UserPicture.Length > 0)
+                    {
+                        using (var ms = new MemoryStream(CurrentUsers.UserPicture))
+                        {
+                            StudentProfilePB.Image = Image.FromStream(ms);
+                        }
+                    }
+              
+                }
         }
 
         private void HomeButton_Click(object sender, EventArgs e)
@@ -63,9 +67,9 @@ namespace LibraryManagementSystem.Presentation.UserForms
 
         private void UserViewProfileBTN_Click(object sender, EventArgs e)
         {
-            animations.ViewSideProfile(viewUserProfile, UserPanel, 10, 283);
+            viewUserProfile.Interval = 20;
+            animations.TransitionPanelWidth(viewUserProfile, UserPanel, 10, 283, sidebarExpanded);
             viewUserProfile.Start();
-
         }
 
         private void BooksButton_Click(object sender, EventArgs e)

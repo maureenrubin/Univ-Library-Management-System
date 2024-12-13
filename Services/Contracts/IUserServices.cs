@@ -12,7 +12,7 @@ namespace LibraryManagementSystem.Repositories.Interfaces
         Task<UserEntity>GetUserByEmailAsync(string email);
         
         Task<IEnumerable<UserEntity>> GetAllUsersAsync();
-       
+        Task<UserEntity> GetUserByIdAsync(int userId);
         Task<IEnumerable<UserEntity>> GetUserByCourseAsync(int courseId);
     }
 }

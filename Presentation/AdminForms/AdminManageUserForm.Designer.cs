@@ -41,10 +41,10 @@
             button1 = new Button();
             kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
             StudentPanel = new Panel();
+            ManageStudentBtn = new Button();
             DeleteUserBtn = new Krypton.Toolkit.KryptonButton();
             EditUserBtn = new Krypton.Toolkit.KryptonButton();
             AddUserBtn = new Krypton.Toolkit.KryptonButton();
-            ManageUserBtn = new Button();
             panel3 = new Panel();
             label9 = new Label();
             label6 = new Label();
@@ -63,6 +63,10 @@
             UserEmailTXT = new Krypton.Toolkit.KryptonTextBox();
             BrowseImageBtn = new Button();
             UserPicturePB = new PictureBox();
+            label10 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
             panel1.SuspendLayout();
             StudentPanel.SuspendLayout();
             panel3.SuspendLayout();
@@ -72,6 +76,10 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(169, 131, 110);
+            panel1.Controls.Add(label13);
+            panel1.Controls.Add(label12);
+            panel1.Controls.Add(label11);
+            panel1.Controls.Add(label10);
             panel1.Controls.Add(label8);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label5);
@@ -91,7 +99,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(1082, 68);
+            label8.Location = new Point(1153, 68);
             label8.Name = "label8";
             label8.Size = new Size(184, 17);
             label8.TabIndex = 24;
@@ -101,7 +109,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(766, 68);
+            label7.Location = new Point(824, 68);
             label7.Name = "label7";
             label7.Size = new Size(170, 17);
             label7.TabIndex = 23;
@@ -111,7 +119,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(455, 68);
+            label5.Location = new Point(524, 68);
             label5.Name = "label5";
             label5.Size = new Size(96, 17);
             label5.TabIndex = 22;
@@ -121,11 +129,11 @@
             // 
             LABLE.AutoSize = true;
             LABLE.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LABLE.Location = new Point(63, 68);
+            LABLE.Location = new Point(111, 68);
             LABLE.Name = "LABLE";
-            LABLE.Size = new Size(224, 17);
+            LABLE.Size = new Size(205, 17);
             LABLE.TabIndex = 21;
-            LABLE.Text = "INFORMATION AND TECHNOLOGY\r\n";
+            LABLE.Text = "INFORMATION N TECHNOLOGY\r\n";
             // 
             // BAStudentFLP
             // 
@@ -214,15 +222,28 @@
             // StudentPanel
             // 
             StudentPanel.BackColor = Color.FromArgb(169, 131, 110);
+            StudentPanel.Controls.Add(ManageStudentBtn);
             StudentPanel.Controls.Add(DeleteUserBtn);
             StudentPanel.Controls.Add(EditUserBtn);
             StudentPanel.Controls.Add(AddUserBtn);
-            StudentPanel.Controls.Add(ManageUserBtn);
             StudentPanel.Controls.Add(panel3);
-            StudentPanel.Location = new Point(3, 112);
+            StudentPanel.Location = new Point(5, 112);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(54, 602);
+            StudentPanel.Size = new Size(50, 602);
             StudentPanel.TabIndex = 1;
+            // 
+            // ManageStudentBtn
+            // 
+            ManageStudentBtn.Cursor = Cursors.Hand;
+            ManageStudentBtn.FlatAppearance.BorderSize = 0;
+            ManageStudentBtn.FlatStyle = FlatStyle.Flat;
+            ManageStudentBtn.Image = (Image)resources.GetObject("ManageStudentBtn.Image");
+            ManageStudentBtn.Location = new Point(7, 14);
+            ManageStudentBtn.Name = "ManageStudentBtn";
+            ManageStudentBtn.Size = new Size(36, 44);
+            ManageStudentBtn.TabIndex = 5;
+            ManageStudentBtn.UseVisualStyleBackColor = true;
+            ManageStudentBtn.Click += ManageStudentBtn_Click;
             // 
             // DeleteUserBtn
             // 
@@ -312,19 +333,6 @@
             AddUserBtn.Values.Text = "ADD STUDENT";
             AddUserBtn.Click += AddUserBtn_Click;
             // 
-            // ManageUserBtn
-            // 
-            ManageUserBtn.Cursor = Cursors.Hand;
-            ManageUserBtn.FlatAppearance.BorderSize = 0;
-            ManageUserBtn.FlatStyle = FlatStyle.Flat;
-            ManageUserBtn.Image = (Image)resources.GetObject("ManageUserBtn.Image");
-            ManageUserBtn.Location = new Point(6, 14);
-            ManageUserBtn.Name = "ManageUserBtn";
-            ManageUserBtn.Size = new Size(36, 44);
-            ManageUserBtn.TabIndex = 1;
-            ManageUserBtn.UseVisualStyleBackColor = true;
-            ManageUserBtn.Click += ManageUserBtn_Click_1;
-            // 
             // panel3
             // 
             panel3.BackColor = Color.Azure;
@@ -356,9 +364,9 @@
             label9.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             label9.Location = new Point(353, 194);
             label9.Name = "label9";
-            label9.Size = new Size(46, 14);
+            label9.Size = new Size(59, 14);
             label9.TabIndex = 19;
-            label9.Text = "Course:";
+            label9.Text = "Course Id:";
             // 
             // label6
             // 
@@ -665,6 +673,46 @@
             UserPicturePB.TabIndex = 0;
             UserPicturePB.TabStop = false;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(15, 68);
+            label10.Name = "label10";
+            label10.Size = new Size(90, 17);
+            label10.TabIndex = 25;
+            label10.Text = "COURSE ID: 1";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(391, 68);
+            label11.Name = "label11";
+            label11.Size = new Size(90, 17);
+            label11.TabIndex = 26;
+            label11.Text = "COURSE ID: 2";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(705, 68);
+            label12.Name = "label12";
+            label12.Size = new Size(90, 17);
+            label12.TabIndex = 27;
+            label12.Text = "COURSE ID: 3";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.Location = new Point(1044, 68);
+            label13.Name = "label13";
+            label13.Size = new Size(90, 17);
+            label13.TabIndex = 28;
+            label13.Text = "COURSE ID: 4";
+            // 
             // AdminManageUserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -690,7 +738,6 @@
         private Panel panel1;
         private Panel StudentPanel;
         private Panel panel3;
-        private Button ManageUserBtn;
         private Krypton.Toolkit.KryptonButton AddUserBtn;
         private Krypton.Toolkit.KryptonButton EditUserBtn;
         private Krypton.Toolkit.KryptonButton DeleteUserBtn;
@@ -721,5 +768,10 @@
         private Label LABLE;
         private Label label8;
         private Label label9;
+        private Button ManageStudentBtn;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label10;
     }
 }

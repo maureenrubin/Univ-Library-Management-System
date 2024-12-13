@@ -31,8 +31,9 @@ namespace LibraryManagementSystem.Presentation.UserControls
 
         private void LoadAdminDetails()
         {
-            AdminFnameTXT.Text = adminEntity.FirstName;
-            AdminLnameTXT.Text = adminEntity.LastName;
+            string fullName = $"{adminEntity.FirstName} {adminEntity.LastName}";
+
+            AdminNameTXT.Text = fullName;
             AdminID.Text = adminEntity.AdminID.ToString();
             AdminEmailTXT.Text = adminEntity.Email;
             GenderTXT.Text = adminEntity.Gender;

@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             AdminPicPB = new PictureBox();
-            AdminFnameTXT = new Label();
+            AdminNameTXT = new Label();
             GenderTXT = new Label();
             AdminID = new Label();
-            AdminLnameTXT = new Label();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -52,16 +51,16 @@
             AdminPicPB.TabIndex = 0;
             AdminPicPB.TabStop = false;
             // 
-            // AdminFnameTXT
+            // AdminNameTXT
             // 
-            AdminFnameTXT.AutoSize = true;
-            AdminFnameTXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            AdminFnameTXT.ForeColor = SystemColors.ControlLightLight;
-            AdminFnameTXT.Location = new Point(219, 48);
-            AdminFnameTXT.Name = "AdminFnameTXT";
-            AdminFnameTXT.Size = new Size(45, 17);
-            AdminFnameTXT.TabIndex = 1;
-            AdminFnameTXT.Text = "label1";
+            AdminNameTXT.AutoSize = true;
+            AdminNameTXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            AdminNameTXT.ForeColor = SystemColors.ControlLightLight;
+            AdminNameTXT.Location = new Point(225, 48);
+            AdminNameTXT.Name = "AdminNameTXT";
+            AdminNameTXT.Size = new Size(45, 17);
+            AdminNameTXT.TabIndex = 1;
+            AdminNameTXT.Text = "label1";
             // 
             // GenderTXT
             // 
@@ -83,17 +82,6 @@
             AdminID.Size = new Size(45, 17);
             AdminID.TabIndex = 3;
             AdminID.Text = "label1";
-            // 
-            // AdminLnameTXT
-            // 
-            AdminLnameTXT.AutoSize = true;
-            AdminLnameTXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            AdminLnameTXT.ForeColor = SystemColors.ControlLightLight;
-            AdminLnameTXT.Location = new Point(276, 48);
-            AdminLnameTXT.Name = "AdminLnameTXT";
-            AdminLnameTXT.Size = new Size(45, 17);
-            AdminLnameTXT.TabIndex = 4;
-            AdminLnameTXT.Text = "label1";
             // 
             // label1
             // 
@@ -173,7 +161,6 @@
             BackColor = Color.FromArgb(152, 96, 64);
             Controls.Add(CreatedAtLBL);
             Controls.Add(label5);
-            Controls.Add(AdminLnameTXT);
             Controls.Add(AdminEmailTXT);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -181,7 +168,7 @@
             Controls.Add(label1);
             Controls.Add(AdminID);
             Controls.Add(GenderTXT);
-            Controls.Add(AdminFnameTXT);
+            Controls.Add(AdminNameTXT);
             Controls.Add(AdminPicPB);
             Cursor = Cursors.Hand;
             Name = "AdminDetailsUC";
@@ -194,10 +181,9 @@
         #endregion
 
         private PictureBox AdminPicPB;
-        private Label AdminFnameTXT;
+        private Label AdminNameTXT;
         private Label GenderTXT;
         private Label AdminID;
-        private Label AdminLnameTXT;
         private Label label1;
         private Label label2;
         private Label label3;

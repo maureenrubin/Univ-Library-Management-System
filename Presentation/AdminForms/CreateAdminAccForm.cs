@@ -77,12 +77,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 }
                
 
-                if (!IsUpdateMode && password != confirmPass)
-                {
-                    MessageBox.Show("Password do not match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
+               
                 var adminDto = new AdminDTO
                 {
                     LastName = lastName,
@@ -94,6 +89,12 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     Gender = gender,
 
                 };
+                
+                if (IsUpdateMode && password != confirmPass)
+                {
+                    MessageBox.Show("Password doesn't match. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 if (IsUpdateMode)
                 {
