@@ -30,10 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminManageUserForm));
             panel1 = new Panel();
-            label8 = new Label();
-            label7 = new Label();
-            label5 = new Label();
             LABLE = new Label();
+            label5 = new Label();
+            label7 = new Label();
+            label13 = new Label();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label8 = new Label();
             BAStudentFLP = new FlowLayoutPanel();
             BEStudentFLP = new FlowLayoutPanel();
             SWStudentFLP = new FlowLayoutPanel();
@@ -63,10 +67,6 @@
             UserEmailTXT = new Krypton.Toolkit.KryptonTextBox();
             BrowseImageBtn = new Button();
             UserPicturePB = new PictureBox();
-            label10 = new Label();
-            label11 = new Label();
-            label12 = new Label();
-            label13 = new Label();
             panel1.SuspendLayout();
             StudentPanel.SuspendLayout();
             panel3.SuspendLayout();
@@ -76,14 +76,14 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(169, 131, 110);
+            panel1.Controls.Add(LABLE);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label7);
             panel1.Controls.Add(label13);
             panel1.Controls.Add(label12);
             panel1.Controls.Add(label11);
             panel1.Controls.Add(label10);
             panel1.Controls.Add(label8);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(LABLE);
             panel1.Controls.Add(BAStudentFLP);
             panel1.Controls.Add(BEStudentFLP);
             panel1.Controls.Add(SWStudentFLP);
@@ -95,80 +95,120 @@
             panel1.Size = new Size(1361, 792);
             panel1.TabIndex = 0;
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(1153, 68);
-            label8.Name = "label8";
-            label8.Size = new Size(184, 17);
-            label8.TabIndex = 24;
-            label8.Text = "BUSINESS ADMINISTRATION";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(824, 68);
-            label7.Name = "label7";
-            label7.Size = new Size(170, 17);
-            label7.TabIndex = 23;
-            label7.Text = "ELEMENTARY EDUCATION\r\n";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(524, 68);
-            label5.Name = "label5";
-            label5.Size = new Size(96, 17);
-            label5.TabIndex = 22;
-            label5.Text = "SOCIAL WORK\r\n";
-            // 
             // LABLE
             // 
             LABLE.AutoSize = true;
             LABLE.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LABLE.Location = new Point(111, 68);
+            LABLE.Location = new Point(120, 68);
             LABLE.Name = "LABLE";
             LABLE.Size = new Size(205, 17);
             LABLE.TabIndex = 21;
             LABLE.Text = "INFORMATION N TECHNOLOGY\r\n";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(514, 68);
+            label5.Name = "label5";
+            label5.Size = new Size(96, 17);
+            label5.TabIndex = 22;
+            label5.Text = "SOCIAL WORK\r\n";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(818, 68);
+            label7.Name = "label7";
+            label7.Size = new Size(170, 17);
+            label7.TabIndex = 23;
+            label7.Text = "ELEMENTARY EDUCATION\r\n";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.Location = new Point(1054, 68);
+            label13.Name = "label13";
+            label13.Size = new Size(90, 17);
+            label13.TabIndex = 28;
+            label13.Text = "COURSE ID: 4";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(733, 68);
+            label12.Name = "label12";
+            label12.Size = new Size(90, 17);
+            label12.TabIndex = 27;
+            label12.Text = "COURSE ID: 3";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(429, 68);
+            label11.Name = "label11";
+            label11.Size = new Size(90, 17);
+            label11.TabIndex = 26;
+            label11.Text = "COURSE ID: 2";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(33, 68);
+            label10.Name = "label10";
+            label10.Size = new Size(90, 17);
+            label10.TabIndex = 25;
+            label10.Text = "COURSE ID: 1";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(1140, 68);
+            label8.Name = "label8";
+            label8.Size = new Size(184, 17);
+            label8.TabIndex = 24;
+            label8.Text = "BUSINESS ADMINISTRATION";
+            // 
             // BAStudentFLP
             // 
             BAStudentFLP.AutoScroll = true;
-            BAStudentFLP.BackColor = Color.Azure;
-            BAStudentFLP.Location = new Point(1033, 98);
+            BAStudentFLP.BackColor = Color.FromArgb(169, 131, 110);
+            BAStudentFLP.Location = new Point(1023, 98);
             BAStudentFLP.Name = "BAStudentFLP";
-            BAStudentFLP.Size = new Size(317, 673);
+            BAStudentFLP.Size = new Size(325, 673);
             BAStudentFLP.TabIndex = 20;
             // 
             // BEStudentFLP
             // 
             BEStudentFLP.AutoScroll = true;
-            BEStudentFLP.BackColor = Color.Azure;
+            BEStudentFLP.BackColor = Color.FromArgb(169, 131, 110);
             BEStudentFLP.Location = new Point(692, 98);
             BEStudentFLP.Name = "BEStudentFLP";
-            BEStudentFLP.Size = new Size(317, 673);
+            BEStudentFLP.Size = new Size(325, 673);
             BEStudentFLP.TabIndex = 19;
             // 
             // SWStudentFLP
             // 
             SWStudentFLP.AutoScroll = true;
-            SWStudentFLP.BackColor = Color.Azure;
-            SWStudentFLP.Location = new Point(348, 98);
+            SWStudentFLP.BackColor = Color.FromArgb(169, 131, 110);
+            SWStudentFLP.Location = new Point(361, 98);
             SWStudentFLP.Name = "SWStudentFLP";
-            SWStudentFLP.Size = new Size(317, 673);
+            SWStudentFLP.Size = new Size(325, 673);
             SWStudentFLP.TabIndex = 19;
             // 
             // ITStudentFLP
             // 
             ITStudentFLP.AutoScroll = true;
-            ITStudentFLP.BackColor = Color.Azure;
-            ITStudentFLP.Location = new Point(15, 98);
+            ITStudentFLP.BackColor = Color.FromArgb(169, 131, 110);
+            ITStudentFLP.Location = new Point(30, 98);
             ITStudentFLP.Name = "ITStudentFLP";
-            ITStudentFLP.Size = new Size(317, 673);
+            ITStudentFLP.Size = new Size(325, 673);
             ITStudentFLP.TabIndex = 18;
             // 
             // button1
@@ -672,46 +712,6 @@
             UserPicturePB.SizeMode = PictureBoxSizeMode.Zoom;
             UserPicturePB.TabIndex = 0;
             UserPicturePB.TabStop = false;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(15, 68);
-            label10.Name = "label10";
-            label10.Size = new Size(90, 17);
-            label10.TabIndex = 25;
-            label10.Text = "COURSE ID: 1";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(391, 68);
-            label11.Name = "label11";
-            label11.Size = new Size(90, 17);
-            label11.TabIndex = 26;
-            label11.Text = "COURSE ID: 2";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(705, 68);
-            label12.Name = "label12";
-            label12.Size = new Size(90, 17);
-            label12.TabIndex = 27;
-            label12.Text = "COURSE ID: 3";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(1044, 68);
-            label13.Name = "label13";
-            label13.Size = new Size(90, 17);
-            label13.TabIndex = 28;
-            label13.Text = "COURSE ID: 4";
             // 
             // AdminManageUserForm
             // 

@@ -11,6 +11,7 @@ using LibraryManagementSystem.Helpers.Animation;
 using LibraryManagementSystem.Repositories.Interfaces;
 using LibraryManagementSystem.Presentation.UserControls;
 using LibraryManagementSystem.Repositories;
+using LibraryManagementSystem.Domain.Entities;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -29,8 +30,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         
         private bool sidebarExpanded;
         private byte[] UserPicture;
-
-
+        private bool IsUpdateMode = false;
+        private int UserIdToUpdate;
 
         public AdminManageUserForm(
                ICreateAccountServices createAcoountServices,
@@ -65,8 +66,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 foreach (var student in userList)
                 {
                     var userDisplay = new UserDetailsUC(student, userServices);
+                    userDisplay.StudentClicked += UserDetailsUC_StudentCliked;
                     UserControlHelper.AddUserControlToPanel(userDisplay, ITStudentFLP, SWStudentFLP, BEStudentFLP, BAStudentFLP);
                 }
+
+                
             }
             catch (Exception ex)
             {
@@ -74,6 +78,31 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
+        private void UserDetailsUC_StudentCliked(object? sender, UserEntity userEntity)
+        {
+            animations.CrudStudentTransition(crudStudentTransition, StudentPanel, sidebarExpanded);
+            animations.OpenCrudTransition(openCrudTransition, StudentPanel);
+            LoadtoUpdateStudentDetails(userEntity);
+        }
+
+        private async void LoadtoUpdateStudentDetails(UserEntity userEntity)
+        {
+            IsUpdateMode = true;
+            UserIdToUpdate = userEntity.UserId;
+
+            UserFirstNameTXT.Text = userEntity.FirstName;
+            UserLastNameTXT.Text = userEntity.LastName;
+            UserEmailTXT.Text = userEntity.Email;
+            
+            if (userEntity.UserPicture != null && userEntity.UserPicture.Length > 0)
+            {
+                using(var ms = new MemoryStream(userEntity.UserPicture))
+                {
+                    UserPicturePB.Image = Image.FromStream(ms);
+                }
+            }
+
+        }
         private async void LoadCources()
         {
             try
@@ -122,7 +151,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     return;
                 }
 
-                if (password != confirmPassword)
+                if (IsUpdateMode && password != confirmPassword)
                 {
                     MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -139,7 +168,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 }
 
 
-                var createUser = new UserDTO
+
+                var newUser = new UserDTO
                 {
                     FirstName = firstName,
                     LastName = lastName,
@@ -153,10 +183,23 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 };
 
-                await createAcoountServices.CreateUserAccountAsync(createUser);
-                MessageBox.Show("Student account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (IsUpdateMode)
+                {
+                    newUser.UserId = UserIdToUpdate;
+                    await userServices.UpdateUserAsync(newUser);
+                    MessageBox.Show("Student updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                }
+                else
+                {
+                    PasswordHelper.GeneratePasswordHashAndSalt(newUser.Password);
+                    await createAcoountServices.CreateUserAccountAsync(newUser);
+                    MessageBox.Show("Student account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
                 FormsControlHelper.ClearControls(this);
                 LoadStudentDetails();
+                
 
             }
             catch (Exception ex)
@@ -194,7 +237,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private void AddUserBtn_Click(object sender, EventArgs e)
         {
             animations.CrudStudentTransition(crudStudentTransition, StudentPanel, sidebarExpanded);
-            sidebarExpanded = !sidebarExpanded;
         }
 
 

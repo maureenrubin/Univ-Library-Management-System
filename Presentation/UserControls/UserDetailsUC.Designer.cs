@@ -31,8 +31,7 @@
             StudentProfilePB = new PictureBox();
             label1 = new Label();
             label2 = new Label();
-            LblFirstname = new Label();
-            LblLastname = new Label();
+            LblFullName = new Label();
             LblCourse = new Label();
             StudentID = new Label();
             label5 = new Label();
@@ -42,7 +41,7 @@
             // 
             // StudentProfilePB
             // 
-            StudentProfilePB.Location = new Point(12, 14);
+            StudentProfilePB.Location = new Point(4, 11);
             StudentProfilePB.Name = "StudentProfilePB";
             StudentProfilePB.Size = new Size(65, 74);
             StudentProfilePB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -53,7 +52,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(78, 29);
+            label1.Location = new Point(70, 26);
             label1.Name = "label1";
             label1.Size = new Size(39, 14);
             label1.TabIndex = 1;
@@ -63,37 +62,27 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(77, 43);
+            label2.Location = new Point(69, 40);
             label2.Name = "label2";
             label2.Size = new Size(46, 14);
             label2.TabIndex = 2;
             label2.Text = "Course:";
             // 
-            // LblFirstname
+            // LblFullName
             // 
-            LblFirstname.AutoSize = true;
-            LblFirstname.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LblFirstname.Location = new Point(119, 29);
-            LblFirstname.Name = "LblFirstname";
-            LblFirstname.Size = new Size(60, 14);
-            LblFirstname.TabIndex = 5;
-            LblFirstname.Text = "FirstName";
-            // 
-            // LblLastname
-            // 
-            LblLastname.AutoSize = true;
-            LblLastname.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LblLastname.Location = new Point(182, 29);
-            LblLastname.Name = "LblLastname";
-            LblLastname.Size = new Size(62, 14);
-            LblLastname.TabIndex = 6;
-            LblLastname.Text = "LastName:";
+            LblFullName.AutoSize = true;
+            LblFullName.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LblFullName.Location = new Point(111, 26);
+            LblFullName.Name = "LblFullName";
+            LblFullName.Size = new Size(60, 14);
+            LblFullName.TabIndex = 5;
+            LblFullName.Text = "FirstName";
             // 
             // LblCourse
             // 
             LblCourse.AutoSize = true;
             LblCourse.Font = new Font("Gadugi", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LblCourse.Location = new Point(119, 43);
+            LblCourse.Location = new Point(111, 40);
             LblCourse.Name = "LblCourse";
             LblCourse.Size = new Size(185, 14);
             LblCourse.TabIndex = 9;
@@ -103,7 +92,7 @@
             // 
             StudentID.AutoSize = true;
             StudentID.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            StudentID.Location = new Point(26, 91);
+            StudentID.Location = new Point(18, 88);
             StudentID.Name = "StudentID";
             StudentID.Size = new Size(35, 16);
             StudentID.TabIndex = 10;
@@ -113,7 +102,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(78, 60);
+            label5.Location = new Point(70, 57);
             label5.Name = "label5";
             label5.Size = new Size(95, 14);
             label5.TabIndex = 11;
@@ -123,7 +112,7 @@
             // 
             LblCreatedAt.AutoSize = true;
             LblCreatedAt.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LblCreatedAt.Location = new Point(179, 60);
+            LblCreatedAt.Location = new Point(171, 57);
             LblCreatedAt.Name = "LblCreatedAt";
             LblCreatedAt.Size = new Size(57, 14);
             LblCreatedAt.TabIndex = 12;
@@ -133,18 +122,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
+            BackColor = Color.Azure;
             Controls.Add(LblCreatedAt);
             Controls.Add(label5);
             Controls.Add(StudentID);
             Controls.Add(LblCourse);
-            Controls.Add(LblLastname);
-            Controls.Add(LblFirstname);
+            Controls.Add(LblFullName);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(StudentProfilePB);
+            Cursor = Cursors.Hand;
             Name = "UserDetailsUC";
-            Size = new Size(306, 115);
+            Size = new Size(301, 115);
             ((System.ComponentModel.ISupportInitialize)StudentProfilePB).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -155,8 +144,7 @@
         private PictureBox StudentProfilePB;
         private Label label1;
         private Label label2;
-        private Label LblFirstname;
-        private Label LblLastname;
+        private Label LblFullName;
         private Label LblCourse;
         private Label StudentID;
         private Label label5;

@@ -41,9 +41,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 foreach (var admin in adminList)
                 {
-                    AdminDetailsUC adminDetails = new AdminDetailsUC(admin);
-                    adminDetails.AdminClicked += AdminDetailsUC_AdminClicked;
-                    AdminsFLP.Controls.Add(adminDetails);
+                    AdminDetailsUC adminDisplay = new AdminDetailsUC(admin);
+                    adminDisplay.AdminClicked += AdminDetailsUC_AdminClicked;
+                    AdminsFLP.Controls.Add(adminDisplay);
                 }
 
 

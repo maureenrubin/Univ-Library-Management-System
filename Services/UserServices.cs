@@ -1,6 +1,7 @@
 ﻿using LibraryManagementSystem.Data_Connectivity.Context;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Presentation.UserControls;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -75,15 +76,36 @@ namespace LibraryManagementSystem.Repositories
             }
         }
 
-        public async Task<IEnumerable<UserEntity>> GetUserByCourseAsync(int courseId)
+       public async Task UpdateUserAsync(UserDTO userDTO)
         {
-            using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+            try
             {
+                using (var dbContextoptions = new LMSDbContext(_dbContextOptions))
+                {
+                    var existingUser = await dbContextoptions.Users.SingleOrDefaultAsync(u => u.UserId == userDTO.UserId);
 
-                return await dbContextOptions.Users
-                        .Include(u => u.Course)
-                        .Where(u => u.CourseId == courseId)
-                        .ToListAsync();
+                    if(existingUser == null)
+                    {
+                        throw new Exception("User not found");
+                    }
+
+                    existingUser.FirstName = userDTO.FirstName;
+                    existingUser.LastName = userDTO.LastName;
+                    existingUser.Email = userDTO.Email;
+                    existingUser.UserPicture = userDTO.UserPicture;
+                    existingUser.CourseId = userDTO.CourseId;
+
+                    if (!string.IsNullOrEmpty(userDTO.Password))
+                    {
+                        (existingUser.PasswordHash, existingUser.PasswordSalt) = PasswordHelper.GeneratePasswordHashAndSalt(userDTO.Password);
+                    }
+
+                    await dbContextoptions.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error Updating User: {ex.Message}", ex);
             }
         }
 

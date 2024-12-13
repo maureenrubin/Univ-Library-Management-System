@@ -33,15 +33,16 @@
             AddAdminBTN = new Button();
             panel1 = new Panel();
             RemoveAdminBTN = new Button();
-            UpdateAdminBTN = new Button();
+            button1 = new Button();
+            SearchTXT = new Krypton.Toolkit.KryptonTextBox();
             SuspendLayout();
             // 
             // AdminsFLP
             // 
             AdminsFLP.AutoScroll = true;
-            AdminsFLP.Location = new Point(40, 76);
+            AdminsFLP.Location = new Point(28, 81);
             AdminsFLP.Name = "AdminsFLP";
-            AdminsFLP.Size = new Size(812, 656);
+            AdminsFLP.Size = new Size(896, 680);
             AdminsFLP.TabIndex = 0;
             // 
             // AddAdminBTN
@@ -51,10 +52,10 @@
             AddAdminBTN.FlatAppearance.BorderSize = 0;
             AddAdminBTN.FlatStyle = FlatStyle.Flat;
             AddAdminBTN.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            AddAdminBTN.ForeColor = Color.Aqua;
+            AddAdminBTN.ForeColor = Color.MediumBlue;
             AddAdminBTN.Image = (Image)resources.GetObject("AddAdminBTN.Image");
             AddAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            AddAdminBTN.Location = new Point(53, 12);
+            AddAdminBTN.Location = new Point(704, 17);
             AddAdminBTN.Name = "AddAdminBTN";
             AddAdminBTN.Size = new Size(108, 58);
             AddAdminBTN.TabIndex = 10;
@@ -65,10 +66,10 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Azure;
-            panel1.Location = new Point(894, 76);
+            panel1.BackColor = Color.LightCyan;
+            panel1.Location = new Point(963, 81);
             panel1.Name = "panel1";
-            panel1.Size = new Size(436, 656);
+            panel1.Size = new Size(436, 680);
             panel1.TabIndex = 11;
             // 
             // RemoveAdminBTN
@@ -77,10 +78,11 @@
             RemoveAdminBTN.Cursor = Cursors.Hand;
             RemoveAdminBTN.FlatAppearance.BorderSize = 0;
             RemoveAdminBTN.FlatStyle = FlatStyle.Flat;
-            RemoveAdminBTN.ForeColor = Color.Red;
+            RemoveAdminBTN.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            RemoveAdminBTN.ForeColor = Color.DarkRed;
             RemoveAdminBTN.Image = (Image)resources.GetObject("RemoveAdminBTN.Image");
             RemoveAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            RemoveAdminBTN.Location = new Point(268, 12);
+            RemoveAdminBTN.Location = new Point(818, 17);
             RemoveAdminBTN.Name = "RemoveAdminBTN";
             RemoveAdminBTN.Size = new Size(106, 58);
             RemoveAdminBTN.TabIndex = 12;
@@ -88,31 +90,62 @@
             RemoveAdminBTN.TextAlign = ContentAlignment.BottomCenter;
             RemoveAdminBTN.UseVisualStyleBackColor = false;
             // 
-            // UpdateAdminBTN
+            // button1
             // 
-            UpdateAdminBTN.BackColor = Color.Transparent;
-            UpdateAdminBTN.Cursor = Cursors.Hand;
-            UpdateAdminBTN.FlatAppearance.BorderSize = 0;
-            UpdateAdminBTN.FlatStyle = FlatStyle.Flat;
-            UpdateAdminBTN.ForeColor = Color.SpringGreen;
-            UpdateAdminBTN.Image = (Image)resources.GetObject("UpdateAdminBTN.Image");
-            UpdateAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            UpdateAdminBTN.Location = new Point(167, 12);
-            UpdateAdminBTN.Name = "UpdateAdminBTN";
-            UpdateAdminBTN.Size = new Size(95, 58);
-            UpdateAdminBTN.TabIndex = 13;
-            UpdateAdminBTN.Text = "Update Admin";
-            UpdateAdminBTN.TextAlign = ContentAlignment.BottomCenter;
-            UpdateAdminBTN.UseVisualStyleBackColor = false;
-            UpdateAdminBTN.Click += UpdateAdminBTN_Click;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+            button1.Location = new Point(59, 31);
+            button1.Name = "button1";
+            button1.Size = new Size(36, 34);
+            button1.TabIndex = 18;
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // SearchTXT
+            // 
+            SearchTXT.Cursor = Cursors.IBeam;
+            SearchTXT.Location = new Point(101, 31);
+            SearchTXT.Name = "SearchTXT";
+            SearchTXT.Size = new Size(381, 34);
+            SearchTXT.StateActive.Back.Color1 = Color.White;
+            SearchTXT.StateActive.Border.Color1 = Color.Black;
+            SearchTXT.StateActive.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            SearchTXT.StateActive.Border.Rounding = 10F;
+            SearchTXT.StateActive.Content.Color1 = Color.FromArgb(64, 64, 64);
+            SearchTXT.StateActive.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SearchTXT.StateActive.Content.Padding = new Padding(5);
+            SearchTXT.StateCommon.Back.Color1 = Color.White;
+            SearchTXT.StateCommon.Border.Color1 = Color.Black;
+            SearchTXT.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            SearchTXT.StateCommon.Border.Rounding = 10F;
+            SearchTXT.StateCommon.Content.Color1 = Color.FromArgb(64, 64, 64);
+            SearchTXT.StateCommon.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SearchTXT.StateCommon.Content.Padding = new Padding(5);
+            SearchTXT.StateDisabled.Back.Color1 = Color.White;
+            SearchTXT.StateDisabled.Border.Color1 = Color.Black;
+            SearchTXT.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            SearchTXT.StateDisabled.Border.Rounding = 10F;
+            SearchTXT.StateDisabled.Content.Color1 = Color.FromArgb(64, 64, 64);
+            SearchTXT.StateDisabled.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SearchTXT.StateNormal.Back.Color1 = Color.FromArgb(224, 224, 224);
+            SearchTXT.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            SearchTXT.StateNormal.Border.Rounding = 10F;
+            SearchTXT.StateNormal.Border.Width = 10;
+            SearchTXT.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
+            SearchTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SearchTXT.StateNormal.Content.Padding = new Padding(5);
+            SearchTXT.TabIndex = 19;
             // 
             // ManageAdminsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(169, 131, 110);
-            ClientSize = new Size(1360, 756);
-            Controls.Add(UpdateAdminBTN);
+            ClientSize = new Size(1446, 810);
+            Controls.Add(button1);
+            Controls.Add(SearchTXT);
             Controls.Add(RemoveAdminBTN);
             Controls.Add(panel1);
             Controls.Add(AddAdminBTN);
@@ -121,6 +154,7 @@
             Name = "ManageAdminsForm";
             Text = "ManageAdminsForm";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -129,6 +163,7 @@
         private Button AddAdminBTN;
         private Panel panel1;
         private Button RemoveAdminBTN;
-        private Button UpdateAdminBTN;
+        private Button button1;
+        private Krypton.Toolkit.KryptonTextBox SearchTXT;
     }
 }

@@ -16,16 +16,18 @@ namespace LibraryManagementSystem.Presentation.UserControls
 {
     public partial class UserDetailsUC : UserControl
     {
-        
+
         public UserEntity userEntity;
         private readonly IUserServices userServices;
-        
-        public UserDetailsUC(UserEntity userEntity, 
+        public event EventHandler<UserEntity> StudentClicked;
+
+        public UserDetailsUC(UserEntity userEntity,
                              IUserServices userServices)
         {
             InitializeComponent();
             this.userServices = userServices;
             this.userEntity = userEntity;
+            this.Click += UserDetailsUC_Click;
             LoadStudentDetails();
         }
 
@@ -33,12 +35,10 @@ namespace LibraryManagementSystem.Presentation.UserControls
         {
             try
             {
-
-
                 var user = await userServices.GetUserByIdAsync(userEntity.UserId);
-
-                LblFirstname.Text = userEntity.FirstName;
-                LblLastname.Text = userEntity.LastName;
+                
+                string fullName = $"{userEntity.FirstName} {userEntity.LastName}";
+                LblFullName.Text = fullName;
                 LblCourse.Text = userEntity.Course.Name ?? "No Course";
                 LblCreatedAt.Text = userEntity.CreatedAt.ToShortDateString();
                 StudentID.Text = userEntity.UserId.ToString();
@@ -53,10 +53,13 @@ namespace LibraryManagementSystem.Presentation.UserControls
             }
             catch (Exception ex)
             {
-               throw new Exception ($"Failed to load user details. {ex.Message}", ex);
+                throw new Exception($"Failed to load user details. {ex.Message}", ex);
             }
         }
 
-        
+        private void UserDetailsUC_Click(object sender, EventArgs e)
+        {
+            StudentClicked?.Invoke(this, userEntity);
+        }
     }
 }
