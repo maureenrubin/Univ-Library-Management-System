@@ -19,6 +19,7 @@ namespace LibraryManagementSystem.Presentation.UserControls
     {
         private readonly AdminEntity adminEntity;
         public event EventHandler<AdminEntity> AdminClicked;
+        public bool IsSelected { get; private set; }
 
         public AdminDetailsUC(AdminEntity adminEntity)
         {
@@ -28,7 +29,7 @@ namespace LibraryManagementSystem.Presentation.UserControls
             LoadAdminDetails();
         }
         
-
+        
         private void LoadAdminDetails()
         {
             string fullName = $"{adminEntity.FirstName} {adminEntity.LastName}";
@@ -52,9 +53,29 @@ namespace LibraryManagementSystem.Presentation.UserControls
 
         private void AdminDetailsUC_Click(object sender, EventArgs e)
         {
+           
+            IsSelected = true;
+            this.BackColor = Color.Gray;
+
+            if (this.Parent != null)
+            {
+                foreach (var sibling in this.Parent.Controls.OfType<AdminDetailsUC>())
+                {
+                    if(sibling != this)
+                    {
+                        sibling.IsSelected = false;
+                        sibling.BackColor = SystemColors.GrayText;
+                    }
+                }
+            }
+           
             AdminClicked?.Invoke(this, adminEntity);
         }
 
+        public AdminEntity GetAdminEntity()
+        {
+            return adminEntity;
+        }
 
     }
 }

@@ -17,5 +17,7 @@ namespace LibraryManagementSystem.Repositories.Interfaces
         Task UpdateAdminAsync(AdminDTO adminDTO);
 
         Task<AdminEntity> GetAdminByIdAsync(int adminId);
+
+        Task <bool>RemoveAdminAsync(int adminId);
     }
 }

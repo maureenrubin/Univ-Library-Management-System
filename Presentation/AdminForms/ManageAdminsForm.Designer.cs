@@ -55,7 +55,7 @@
             AddAdminBTN.ForeColor = Color.MediumBlue;
             AddAdminBTN.Image = (Image)resources.GetObject("AddAdminBTN.Image");
             AddAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            AddAdminBTN.Location = new Point(704, 17);
+            AddAdminBTN.Location = new Point(517, 17);
             AddAdminBTN.Name = "AddAdminBTN";
             AddAdminBTN.Size = new Size(108, 58);
             AddAdminBTN.TabIndex = 10;
@@ -82,13 +82,14 @@
             RemoveAdminBTN.ForeColor = Color.DarkRed;
             RemoveAdminBTN.Image = (Image)resources.GetObject("RemoveAdminBTN.Image");
             RemoveAdminBTN.ImageAlign = ContentAlignment.TopCenter;
-            RemoveAdminBTN.Location = new Point(818, 17);
+            RemoveAdminBTN.Location = new Point(631, 17);
             RemoveAdminBTN.Name = "RemoveAdminBTN";
             RemoveAdminBTN.Size = new Size(106, 58);
             RemoveAdminBTN.TabIndex = 12;
             RemoveAdminBTN.Text = "Remove Admin";
             RemoveAdminBTN.TextAlign = ContentAlignment.BottomCenter;
             RemoveAdminBTN.UseVisualStyleBackColor = false;
+            RemoveAdminBTN.Click += RemoveAdminBTN_Click;
             // 
             // button1
             // 

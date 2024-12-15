@@ -94,5 +94,34 @@ namespace LibraryManagementSystem.Repositories
             }
         }
 
+        public async Task<bool> RemoveAdminAsync(int adminId)
+        {
+            try
+            {
+                using(var dbContextOptions = new LMSDbContext(_dbContextOptions))
+                {
+                    var admin = await dbContextOptions.Admins
+                        .SingleOrDefaultAsync(a => a.AdminID == adminId);
+
+                    if(admin != null)
+                    {
+                        dbContextOptions.Admins.Remove(admin);
+
+                        await dbContextOptions.SaveChangesAsync();
+                        return true; // deleted success
+                    }
+
+                    return false;
+                }
+
+
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error Removing Admin: {ex.Message}", ex);
+            }
+        }
+        
     }
 }

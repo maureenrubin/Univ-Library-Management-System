@@ -17,5 +17,7 @@ namespace LibraryManagementSystem.Repositories.Interfaces
         Task<UserEntity> GetUserByIdAsync(int userId);
 
         Task UpdateUserAsync(UserDTO userDTO);
+
+        
     }
 }

@@ -72,7 +72,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     string.IsNullOrEmpty(confirmPass))
 
                 {
-                    MessageBox.Show("All fields are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("All fields are required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                
@@ -92,7 +92,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 
                 if (IsUpdateMode && password != confirmPass)
                 {
-                    MessageBox.Show("Password doesn't match. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Passwords do not match. Please try again.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
