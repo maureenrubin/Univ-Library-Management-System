@@ -12,18 +12,15 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
     public class LMSDbContext : DbContext
     {
 
-        public LMSDbContext()
-        {
-
-        }
+       
         public LMSDbContext(DbContextOptions<LMSDbContext> options) : base(options)
         {
 
         }
 
-        public DbSet<AdminEntity> Admins { get; set; } = null!;
-        public DbSet<BooksEntity> Books { get; set; } = null!;
-        public DbSet<UserEntity> Users { get; set; } = null;
+        public DbSet<AdminEntity> Admins { get; set; }
+        public DbSet<BooksEntity> Books { get; set; } 
+        public DbSet<UserEntity> Users { get; set; }
         public DbSet<CourseEntity> Courses { get; set; }
       
 
