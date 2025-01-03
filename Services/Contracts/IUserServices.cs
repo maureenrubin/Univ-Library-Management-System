@@ -18,6 +18,6 @@ namespace LibraryManagementSystem.Repositories.Interfaces
 
         Task UpdateUserAsync(UserDTO userDTO);
 
-        
+        Task RemoveUserAsync(int userId);
     }
 }

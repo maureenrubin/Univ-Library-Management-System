@@ -130,7 +130,7 @@ namespace LibraryManagementSystem.Repositories
             }
             catch (Exception ex)
             {
-
+                throw new Exception($"Error Removing User: {ex.Message}", ex);
             }
         }
 

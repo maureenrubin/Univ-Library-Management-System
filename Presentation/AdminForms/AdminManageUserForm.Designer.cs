@@ -47,9 +47,8 @@
             StudentPanel = new Panel();
             ManageStudentBtn = new Button();
             DeleteUserBtn = new Krypton.Toolkit.KryptonButton();
-            EditUserBtn = new Krypton.Toolkit.KryptonButton();
             AddUserBtn = new Krypton.Toolkit.KryptonButton();
-            panel3 = new Panel();
+            crudPanel = new Panel();
             label9 = new Label();
             label6 = new Label();
             UserConfirmPassTXT = new Krypton.Toolkit.KryptonTextBox();
@@ -69,7 +68,7 @@
             UserPicturePB = new PictureBox();
             panel1.SuspendLayout();
             StudentPanel.SuspendLayout();
-            panel3.SuspendLayout();
+            crudPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)UserPicturePB).BeginInit();
             SuspendLayout();
             // 
@@ -264,12 +263,11 @@
             StudentPanel.BackColor = Color.FromArgb(169, 131, 110);
             StudentPanel.Controls.Add(ManageStudentBtn);
             StudentPanel.Controls.Add(DeleteUserBtn);
-            StudentPanel.Controls.Add(EditUserBtn);
             StudentPanel.Controls.Add(AddUserBtn);
-            StudentPanel.Controls.Add(panel3);
+            StudentPanel.Controls.Add(crudPanel);
             StudentPanel.Location = new Point(5, 112);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(50, 602);
+            StudentPanel.Size = new Size(289, 602);
             StudentPanel.TabIndex = 1;
             // 
             // ManageStudentBtn
@@ -288,7 +286,7 @@
             // DeleteUserBtn
             // 
             DeleteUserBtn.Cursor = Cursors.Hand;
-            DeleteUserBtn.Location = new Point(102, 325);
+            DeleteUserBtn.Location = new Point(101, 257);
             DeleteUserBtn.Name = "DeleteUserBtn";
             DeleteUserBtn.Size = new Size(164, 42);
             DeleteUserBtn.StateCommon.Back.Color1 = Color.Firebrick;
@@ -313,35 +311,7 @@
             DeleteUserBtn.StatePressed.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             DeleteUserBtn.TabIndex = 4;
             DeleteUserBtn.Values.Text = "DELETE STUDENT";
-            // 
-            // EditUserBtn
-            // 
-            EditUserBtn.Cursor = Cursors.Hand;
-            EditUserBtn.Location = new Point(102, 257);
-            EditUserBtn.Name = "EditUserBtn";
-            EditUserBtn.Size = new Size(164, 42);
-            EditUserBtn.StateCommon.Back.Color1 = Color.DodgerBlue;
-            EditUserBtn.StateCommon.Back.Color2 = Color.DodgerBlue;
-            EditUserBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            EditUserBtn.StateCommon.Border.Rounding = 6F;
-            EditUserBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
-            EditUserBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
-            EditUserBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            EditUserBtn.StateDisabled.Back.Color1 = Color.Transparent;
-            EditUserBtn.StateDisabled.Back.Color2 = Color.Transparent;
-            EditUserBtn.StateDisabled.Border.Color1 = Color.Black;
-            EditUserBtn.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            EditUserBtn.StateDisabled.Border.Rounding = 6F;
-            EditUserBtn.StateDisabled.Content.ShortText.Color1 = Color.Black;
-            EditUserBtn.StateDisabled.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            EditUserBtn.StatePressed.Back.Color1 = Color.Transparent;
-            EditUserBtn.StatePressed.Border.Color2 = Color.Black;
-            EditUserBtn.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            EditUserBtn.StatePressed.Border.Rounding = 6F;
-            EditUserBtn.StatePressed.Content.ShortText.Color2 = Color.Black;
-            EditUserBtn.StatePressed.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            EditUserBtn.TabIndex = 3;
-            EditUserBtn.Values.Text = "EDIT STUDENT";
+            DeleteUserBtn.Click += DeleteUserBtn_Click;
             // 
             // AddUserBtn
             // 
@@ -373,30 +343,30 @@
             AddUserBtn.Values.Text = "ADD STUDENT";
             AddUserBtn.Click += AddUserBtn_Click;
             // 
-            // panel3
+            // crudPanel
             // 
-            panel3.BackColor = Color.Azure;
-            panel3.Controls.Add(label9);
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(UserConfirmPassTXT);
-            panel3.Controls.Add(CBShowpass);
-            panel3.Controls.Add(label4);
-            panel3.Controls.Add(label3);
-            panel3.Controls.Add(label2);
-            panel3.Controls.Add(label1);
-            panel3.Controls.Add(CancelBtn);
-            panel3.Controls.Add(BTNCreateUser);
-            panel3.Controls.Add(UserCourseCB);
-            panel3.Controls.Add(UserLastNameTXT);
-            panel3.Controls.Add(UserFirstNameTXT);
-            panel3.Controls.Add(UserPasswordTXT);
-            panel3.Controls.Add(UserEmailTXT);
-            panel3.Controls.Add(BrowseImageBtn);
-            panel3.Controls.Add(UserPicturePB);
-            panel3.Location = new Point(290, 14);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(785, 579);
-            panel3.TabIndex = 0;
+            crudPanel.BackColor = Color.Azure;
+            crudPanel.Controls.Add(label9);
+            crudPanel.Controls.Add(label6);
+            crudPanel.Controls.Add(UserConfirmPassTXT);
+            crudPanel.Controls.Add(CBShowpass);
+            crudPanel.Controls.Add(label4);
+            crudPanel.Controls.Add(label3);
+            crudPanel.Controls.Add(label2);
+            crudPanel.Controls.Add(label1);
+            crudPanel.Controls.Add(CancelBtn);
+            crudPanel.Controls.Add(BTNCreateUser);
+            crudPanel.Controls.Add(UserCourseCB);
+            crudPanel.Controls.Add(UserLastNameTXT);
+            crudPanel.Controls.Add(UserFirstNameTXT);
+            crudPanel.Controls.Add(UserPasswordTXT);
+            crudPanel.Controls.Add(UserEmailTXT);
+            crudPanel.Controls.Add(BrowseImageBtn);
+            crudPanel.Controls.Add(UserPicturePB);
+            crudPanel.Location = new Point(290, 14);
+            crudPanel.Name = "crudPanel";
+            crudPanel.Size = new Size(785, 579);
+            crudPanel.TabIndex = 0;
             // 
             // label9
             // 
@@ -727,8 +697,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             StudentPanel.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            crudPanel.ResumeLayout(false);
+            crudPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)UserPicturePB).EndInit();
             ResumeLayout(false);
         }
@@ -737,9 +707,8 @@
 
         private Panel panel1;
         private Panel StudentPanel;
-        private Panel panel3;
+        private Panel crudPanel;
         private Krypton.Toolkit.KryptonButton AddUserBtn;
-        private Krypton.Toolkit.KryptonButton EditUserBtn;
         private Krypton.Toolkit.KryptonButton DeleteUserBtn;
         private PictureBox UserPicturePB;
         private Button BrowseImageBtn;

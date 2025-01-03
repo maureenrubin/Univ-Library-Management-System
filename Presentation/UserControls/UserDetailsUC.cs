@@ -59,6 +59,7 @@ namespace LibraryManagementSystem.Presentation.UserControls
 
         private void UserDetailsUC_Click(object sender, EventArgs e)
         {
+           // IsSelected = true;
             StudentClicked?.Invoke(this, userEntity);
         }
     }

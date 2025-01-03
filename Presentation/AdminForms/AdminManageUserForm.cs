@@ -27,7 +27,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private System.Windows.Forms.Timer crudStudentTransition;
         private System.Windows.Forms.Timer openCrudTransition;
         private readonly Animations animations;
-        
+
         private bool sidebarExpanded;
         private byte[] UserPicture;
         private bool IsUpdateMode = false;
@@ -48,7 +48,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             this.crudStudentTransition = new System.Windows.Forms.Timer { Interval = 10 };
             this.openCrudTransition = new System.Windows.Forms.Timer { Interval = 10 };
             this.animations = animations;
-            
+
             LoadCources();
             LoadStudentDetails();
 
@@ -70,7 +70,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     UserControlHelper.AddUserControlToPanel(userDisplay, ITStudentFLP, SWStudentFLP, BEStudentFLP, BAStudentFLP);
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -93,10 +93,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             UserFirstNameTXT.Text = userEntity.FirstName;
             UserLastNameTXT.Text = userEntity.LastName;
             UserEmailTXT.Text = userEntity.Email;
-            
+
             if (userEntity.UserPicture != null && userEntity.UserPicture.Length > 0)
             {
-                using(var ms = new MemoryStream(userEntity.UserPicture))
+                using (var ms = new MemoryStream(userEntity.UserPicture))
                 {
                     UserPicturePB.Image = Image.FromStream(ms);
                 }
@@ -108,7 +108,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             try
             {
                 var courses = await courseServices.GetAllCourseAsync();
-                
+
                 if (courses.Any())
                 {
                     UserCourseCB.DataSource = courses.ToList();
@@ -199,7 +199,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 FormsControlHelper.ClearControls(this);
                 LoadStudentDetails();
-                
+
 
             }
             catch (Exception ex)
@@ -230,7 +230,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
-            FormsControlHelper.ClearControls(this);
+            FormsControlHelper.ClearControls(crudPanel);
 
         }
 
@@ -243,7 +243,22 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private void ManageStudentBtn_Click(object sender, EventArgs e)
         {
             animations.OpenCrudTransition(openCrudTransition, StudentPanel);
-         
+
+        }
+
+        private void DeleteUserBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedUserIT = ITStudentFLP.Controls
+                    .OfType<UserDetailsUC>();
+                  //  .FirstOrDefault(u => u.IsSelected);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

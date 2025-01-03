@@ -54,6 +54,16 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
+
+        private void AdminDetailsUC_AdminClicked(object? sender, AdminEntity adminEntity)
+        {
+            var updateAdminForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
+            updateAdminForm.LoadAdminDetails(adminEntity);
+            updateAdminForm.ShowDialog();
+
+        }
+
+
         private void AddAdminBTN_Click(object sender, EventArgs e)
         {
             try
@@ -68,14 +78,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
-
-        private void AdminDetailsUC_AdminClicked(object? sender, AdminEntity adminEntity)
-        {
-            var updateAdminForm = Program.ServiceProvider.GetRequiredService<CreateAdminAccForm>();
-            updateAdminForm.LoadAdminDetails(adminEntity);
-            updateAdminForm.ShowDialog();
-
-        }
 
         private void UpdateAdminBTN_Click(object sender, EventArgs e)
         {
