@@ -107,6 +107,31 @@ namespace LibraryManagementSystem.Repositories
             {
                 throw new Exception($"Error Updating User: {ex.Message}", ex);
             }
+       }
+
+        public async Task RemoveUserAsync (int userId)
+        {
+            try
+            {
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+                {
+                    var user = await dbContextOptions.Users
+                        .SingleOrDefaultAsync(u => u.UserId == userId);
+
+                    if(user != null)
+                    {
+                        dbContextOptions.Users.Remove(user);
+
+                        await dbContextOptions.SaveChangesAsync();
+                        
+                    }
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
     }
