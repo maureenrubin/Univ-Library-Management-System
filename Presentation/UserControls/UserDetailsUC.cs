@@ -16,10 +16,10 @@ namespace LibraryManagementSystem.Presentation.UserControls
 {
     public partial class UserDetailsUC : UserControl
     {
-
         public UserEntity userEntity;
         private readonly IUserServices userServices;
         public event EventHandler<UserEntity> StudentClicked;
+        public bool selectedUser { get; private set; }
 
         public UserDetailsUC(UserEntity userEntity,
                              IUserServices userServices)
@@ -59,8 +59,13 @@ namespace LibraryManagementSystem.Presentation.UserControls
 
         private void UserDetailsUC_Click(object sender, EventArgs e)
         {
-           // IsSelected = true;
+            selectedUser = true;
             StudentClicked?.Invoke(this, userEntity);
+        }
+
+        public UserEntity GetUserEntity()
+        {
+            return userEntity;
         }
     }
 }

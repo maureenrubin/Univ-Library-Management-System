@@ -246,19 +246,41 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         }
 
-        private void DeleteUserBtn_Click(object sender, EventArgs e)
+        private async void DeleteUserBtn_Click(object sender, EventArgs e)
         {
-            try
+            if (!IsUpdateMode || UserIdToUpdate == 0)
             {
-                var selectedUserIT = ITStudentFLP.Controls
-                    .OfType<UserDetailsUC>();
-                  //  .FirstOrDefault(u => u.IsSelected);
-
+                MessageBox.Show("Please select a student to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            catch (Exception ex)
-            {
 
+            var confirmRemove = MessageBox.Show("Are you sure you want to remove this student?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+
+            if (confirmRemove == DialogResult.Yes)
+            {
+                try
+                {
+                    var remove = await userServices.RemoveUserAsync(UserIdToUpdate);
+
+                    if (remove)
+                    {
+                        MessageBox.Show("Student removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FormsControlHelper.ClearControls(crudPanel);
+                        LoadStudentDetails();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to remove the student.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error Removing Student: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+    
+        
     }
 }

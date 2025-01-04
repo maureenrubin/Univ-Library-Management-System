@@ -267,7 +267,7 @@
             StudentPanel.Controls.Add(crudPanel);
             StudentPanel.Location = new Point(5, 112);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(289, 602);
+            StudentPanel.Size = new Size(287, 602);
             StudentPanel.TabIndex = 1;
             // 
             // ManageStudentBtn

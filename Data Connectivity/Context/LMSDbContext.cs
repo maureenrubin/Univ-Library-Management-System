@@ -36,7 +36,7 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DJOKERZ\SQLEXPRESS;Initial Catalog=LibraryManagementDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;");
+
         }
 
 

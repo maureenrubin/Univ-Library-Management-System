@@ -109,7 +109,7 @@ namespace LibraryManagementSystem.Repositories
             }
        }
 
-        public async Task RemoveUserAsync (int userId)
+        public async Task <bool> RemoveUserAsync (int userId)
         {
             try
             {
@@ -123,9 +123,10 @@ namespace LibraryManagementSystem.Repositories
                         dbContextOptions.Users.Remove(user);
 
                         await dbContextOptions.SaveChangesAsync();
-                        
+                        return true;
                     }
-                   
+
+                    return false;
                 }
             }
             catch (Exception ex)
