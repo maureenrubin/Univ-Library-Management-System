@@ -37,15 +37,14 @@ namespace LibraryManagementSystem.Domain.Entities
         [Required]
         public string Role { get; set; } = "User";
 
-        
         public int? CourseId { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
-        public CourseEntity Course { get; set; }
-
-
       
+        
+      public CourseEntity Course { get; set; }
+      public ICollection<PurchaseEntity> Purchases { get; set; }
 
     }
 }

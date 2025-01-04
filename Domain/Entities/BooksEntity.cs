@@ -35,5 +35,8 @@ namespace LibraryManagementSystem.Domain.Entities
 
         [MaxLength(100)]
         public string Category { get; set; } = string.Empty;
+
+
+        public ICollection<PurchaseEntity> Purchase { get; set; }
     }
 }
