@@ -28,11 +28,7 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
 
         }
 
-
-
     }
-
-    
 
 }
 

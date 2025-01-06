@@ -22,7 +22,7 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
         public DbSet<BooksEntity> Books { get; set; } 
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<CourseEntity> Courses { get; set; }
-        public DbSet<PurchaseEntity> Purchases { get; set; }
+        public DbSet<BarrowedItemEntity> BarrowedItems { get; set; }
 
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
             modelBuilder.ApplyConfiguration(new AdminConfiguration());
             modelBuilder.ApplyConfiguration(new BooksConfiguration());
             modelBuilder.ApplyConfiguration(new StudentConfiguration());
-            modelBuilder.ApplyConfiguration(new PurchaseConfiguration());
+            modelBuilder.ApplyConfiguration(new BarrowItemsConfiguration());
         }
          
     }
