@@ -11,7 +11,10 @@ namespace LibraryManagementSystem.Repositories.Interfaces
     public interface IBookServices
     {
         Task<int> AddBookAsync(BooksEntity books);
+
         Task<IEnumerable<BooksEntity>> GetAllBooksAsync();
+
+        Task UpdateBookAsync(BookDTO bookDTO);
 
     }
 }
