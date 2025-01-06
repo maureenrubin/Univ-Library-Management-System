@@ -44,7 +44,7 @@ namespace LibraryManagementSystem.Domain.Entities
       
         
       public CourseEntity Course { get; set; }
-      public ICollection<PurchaseEntity> Purchases { get; set; }
+      public ICollection<BarrowedItemEntity> BarrowedItem { get; set; }
 
     }
 }
