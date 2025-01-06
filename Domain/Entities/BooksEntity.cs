@@ -36,7 +36,8 @@ namespace LibraryManagementSystem.Domain.Entities
         [MaxLength(100)]
         public string Category { get; set; } = string.Empty;
 
-        public int BookAvailable { get; set; }
+        // Calculated property for available books based on borrowed items
+        public int BookAvailable { get => BookStock - (BarrowedItem?.Sum(b => b.Quantity) ?? 0); }
 
         public ICollection<BarrowedItemEntity> BarrowedItem { get; set; }
     }

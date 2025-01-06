@@ -24,5 +24,7 @@ namespace LibraryManagementSystem.Domain.DTO
 
         public string? Category { get; set; }
 
+        
+
     }
 }
