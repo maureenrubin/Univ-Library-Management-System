@@ -11,7 +11,10 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
 {
     public class LMSDbContext : DbContext
     {
+        public LMSDbContext()
+        {
 
+        }
        
         public LMSDbContext(DbContextOptions<LMSDbContext> options) : base(options)
         {
@@ -34,6 +37,14 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
             modelBuilder.ApplyConfiguration(new StudentConfiguration());
             modelBuilder.ApplyConfiguration(new BarrowItemsConfiguration());
         }
-         
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Data Source=DJOKERZ\\SQLEXPRESS;Initial Catalog=LibraryManagementDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;");
+            }
+        }
+
     }
 }
