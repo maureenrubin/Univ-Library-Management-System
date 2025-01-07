@@ -31,6 +31,11 @@ namespace LibraryManagementSystem.Presentation.UserControls
             LoadStudentDetails();
         }
 
+        private void UserDetailsUC_Click(object sender, EventArgs e)
+        {
+            selectedUser = true;
+            StudentClicked?.Invoke(this, userEntity);
+        }
         private async void LoadStudentDetails()
         {
             try
@@ -55,12 +60,6 @@ namespace LibraryManagementSystem.Presentation.UserControls
             {
                 throw new Exception($"Failed to load user details. {ex.Message}", ex);
             }
-        }
-
-        private void UserDetailsUC_Click(object sender, EventArgs e)
-        {
-            selectedUser = true;
-            StudentClicked?.Invoke(this, userEntity);
         }
 
         public UserEntity GetUserEntity()

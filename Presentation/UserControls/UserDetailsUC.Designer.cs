@@ -134,6 +134,7 @@
             Cursor = Cursors.Hand;
             Name = "UserDetailsUC";
             Size = new Size(301, 115);
+           
             ((System.ComponentModel.ISupportInitialize)StudentProfilePB).EndInit();
             ResumeLayout(false);
             PerformLayout();
