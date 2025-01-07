@@ -79,19 +79,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         }
 
 
-        private void UpdateAdminBTN_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error Updating Admin: {ex.Message}", ex);
-            }
-        }
-
         private async void  RemoveAdminBTN_Click(object sender, EventArgs e)
         {
 
@@ -99,7 +86,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             {
                 var selectedAdmin = AdminsFLP.Controls
                     .OfType<AdminDetailsUC>()
-                    .FirstOrDefault(a => a.IsSelected);
+                    .FirstOrDefault(a => a.SelectedAdmin);
 
                 if (selectedAdmin == null)
                 {
