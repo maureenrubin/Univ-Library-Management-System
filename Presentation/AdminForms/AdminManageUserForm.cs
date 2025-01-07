@@ -103,6 +103,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
 
         }
+
         private async void LoadCources()
         {
             try
@@ -208,7 +209,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
 
 
-                var newUser = new UserDTO
+                var selectedStudent = new UserDTO
                 {
                     FirstName = firstName,
                     LastName = lastName,
@@ -225,14 +226,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 if (IsUpdateMode)
                 {
-                    newUser.UserId = UserIdToUpdate;
-                    await userServices.UpdateUserAsync(newUser);
+                    selectedStudent.UserId = UserIdToUpdate;
+                    await userServices.UpdateUserAsync(selectedStudent);
                     MessageBox.Show("Student updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                 }
                 else
                 {
-                    PasswordHelper.GeneratePasswordHashAndSalt(newUser.Password);
-                    await createAcoountServices.CreateUserAccountAsync(newUser);
+                    PasswordHelper.GeneratePasswordHashAndSalt(selectedStudent.Password);
+                    await createAcoountServices.CreateUserAccountAsync(selectedStudent);
                     MessageBox.Show("Student account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
