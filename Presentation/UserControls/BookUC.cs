@@ -14,9 +14,8 @@ namespace LibraryManagementSystem.Presentation
 {
     public partial class BookUC : UserControl
     {
-        private readonly BooksEntity bookEntity;
+        public BooksEntity bookEntity;
         private readonly IBookServices bookServices;
-
         public event EventHandler<BooksEntity> BookUCClicked;
         public bool selectedBook { get; private set; }
 
@@ -27,13 +26,18 @@ namespace LibraryManagementSystem.Presentation
             this.bookEntity = bookEntity;
             this.bookServices = bookServices;
             this.Click += BookDetailsUC_Click;
-
+            
+            foreach (Control control in Controls)
+            {
+                control.Click += BookDetailsUC_Click;
+            }
             LoadBooksDetails();
         }
 
         private void BookDetailsUC_Click(object? sender, EventArgs e)
         {
-            selectedBook = true;
+            selectedBook = !selectedBook;
+            this.BackColor = selectedBook ? Color.LightBlue : Color.White;
             BookUCClicked?.Invoke(this, bookEntity);
         }
 
@@ -53,6 +57,10 @@ namespace LibraryManagementSystem.Presentation
                 {
                     BooksPB.Image = Image.FromStream(ms);
                 }
+            }
+            else
+            {
+                BooksPB.Image = null; 
             }
 
         }
