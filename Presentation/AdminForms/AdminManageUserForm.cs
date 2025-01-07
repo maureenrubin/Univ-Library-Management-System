@@ -125,8 +125,47 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
-        private async void SaveUserBtn_Click(object sender, EventArgs e)
+        private void BrowseImageBtn_Click(object sender, EventArgs e)
         {
+            using (var openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Images Files | *.jp; *.jpg; *.jpeg; *.png; *.bmp";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    UserPicture = File.ReadAllBytes(openFileDialog.FileName);
+                    UserPicturePB.Image = Image.FromStream(new MemoryStream(UserPicture));
+                }
+            }
+        }
+
+        private void CBShowpass_CheckedChanged(object sender, EventArgs e)
+        {
+            UserPasswordTXT.PasswordChar = CBShowpass.Checked ? '\0' : '●';
+            UserConfirmPassTXT.PasswordChar = CBShowpass.Checked ? '\0' : '●';
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            FormsControlHelper.ClearControls(crudPanel);
+
+        }
+
+        private void ManageStudentBtn_Click(object sender, EventArgs e)
+        {
+            animations.OpenCrudTransition(openCrudTransition, StudentPanel);
+
+        }
+
+        private void OpenPanelToAddUserBtn_Click(object sender, EventArgs e)
+        {
+            animations.CrudStudentTransition(crudStudentTransition, StudentPanel, sidebarExpanded);
+        }
+
+
+        private async void  AddAndUpdateUserBtn_Click(object sender, EventArgs e)
+        {
+
             try
             {
                 string firstName = UserFirstNameTXT.Text;
@@ -208,43 +247,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
-        private void BrowseImageBtn_Click(object sender, EventArgs e)
-        {
-            using (var openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Images Files | *.jp; *.jpg; *.jpeg; *.png; *.bmp";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    UserPicture = File.ReadAllBytes(openFileDialog.FileName);
-                    UserPicturePB.Image = Image.FromStream(new MemoryStream(UserPicture));
-                }
-            }
-        }
-
-        private void CBShowpass_CheckedChanged(object sender, EventArgs e)
-        {
-            UserPasswordTXT.PasswordChar = CBShowpass.Checked ? '\0' : '●';
-            UserConfirmPassTXT.PasswordChar = CBShowpass.Checked ? '\0' : '●';
-        }
-
-        private void CancelBtn_Click(object sender, EventArgs e)
-        {
-            FormsControlHelper.ClearControls(crudPanel);
-
-        }
-
-        private void AddUserBtn_Click(object sender, EventArgs e)
-        {
-            animations.CrudStudentTransition(crudStudentTransition, StudentPanel, sidebarExpanded);
-        }
-
-
-        private void ManageStudentBtn_Click(object sender, EventArgs e)
-        {
-            animations.OpenCrudTransition(openCrudTransition, StudentPanel);
-
-        }
+       
 
         private async void DeleteUserBtn_Click(object sender, EventArgs e)
         {
@@ -280,7 +283,5 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 }
             }
         }
-    
-        
     }
 }
