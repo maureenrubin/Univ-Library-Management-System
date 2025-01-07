@@ -206,6 +206,7 @@
             Controls.Add(BooksPB);
             Name = "BookUC";
             Size = new Size(354, 269);
+      
             ((System.ComponentModel.ISupportInitialize)BooksPB).EndInit();
             ResumeLayout(false);
             PerformLayout();

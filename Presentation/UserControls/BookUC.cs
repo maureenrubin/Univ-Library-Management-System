@@ -1,4 +1,5 @@
 ﻿using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,26 @@ namespace LibraryManagementSystem.Presentation
     public partial class BookUC : UserControl
     {
         private readonly BooksEntity bookEntity;
+        private readonly IBookServices bookServices;
 
-        public BookUC(BooksEntity bookEntity)
+        public event EventHandler<BooksEntity> BookUCClicked;
+        public bool selectedBook { get; private set; }
+
+        public BookUC(BooksEntity bookEntity,
+                      IBookServices bookServices)
         {
             InitializeComponent();
             this.bookEntity = bookEntity;
+            this.bookServices = bookServices;
+            this.Click += BookDetailsUC_Click;
+
             LoadBooksDetails();
+        }
+
+        private void BookDetailsUC_Click(object? sender, EventArgs e)
+        {
+            selectedBook = true;
+            BookUCClicked?.Invoke(this, bookEntity);
         }
 
         private void LoadBooksDetails()
@@ -30,7 +45,7 @@ namespace LibraryManagementSystem.Presentation
             BooksPriceLbl.Text = bookEntity.BookPrice.ToString();
             BooksIdLbl.Text = bookEntity.BookId.ToString();
             PublishedDate.Text = bookEntity.PublishedDate.ToShortDateString();
-            
+
 
             if (bookEntity.BooksPicture != null)
             {
@@ -42,6 +57,5 @@ namespace LibraryManagementSystem.Presentation
 
         }
 
-       
     }
 }
