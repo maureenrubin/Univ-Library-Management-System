@@ -25,10 +25,13 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private System.Windows.Forms.Timer sideBooksTransition;
         private System.Windows.Forms.Timer crudBooksTransition;
         private Animations animations;
+
         private bool sidebarExpanded = false;
         private byte[] BooksPicture;
         private readonly BooksEntity booksEntity;
 
+        private bool BookUpdateMode = false;
+        private int BookIdUpdate;
 
         public AdminBooksForm(IBookServices bookServices, 
                               BooksEntity booksEntity, Animations animations)
@@ -111,7 +114,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             FormsControlHelper.ClearControls(this);
 
-            BookUC bookDisplay = new BookUC(book);
+            BookUC bookDisplay = new BookUC(book, bookServices);
             BooksFLP.Controls.Add(bookDisplay);
 
         }
@@ -139,15 +142,43 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             foreach (var book in bookList)
             {
+                var bookDisplay = new BookUC(book, bookServices);
+                bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
                 DisplayBooksToUI(book);
             }
         }
 
+        private void BookDetailsUC_Clicked(object? sender, BooksEntity booksEntity)
+        {
+            MessageBox.Show($"Book clicked: {booksEntity?.Title}", "Debug");
+            crudBooksTransition.Start();
+            LoadBookToUpdate(booksEntity);
+        }
+
+        private void LoadBookToUpdate(BooksEntity booksEntity)
+        {
+            BookUpdateMode = true;
+            BookIdUpdate = booksEntity.BookId;
+
+            BooksTitleTXT.Text = booksEntity.Title;
+            BooksGenreTXT.Text = booksEntity.Genre;
+            BooksPriceTXT.Text = booksEntity.BookPrice.ToString();
+            BooksStocksTXT.Text = booksEntity.BookStock.ToString();
+            BooksCategoryTXT.Text = booksEntity.Category;
+
+            if (booksEntity.BooksPicture != null)
+            {
+                using (MemoryStream ms = new MemoryStream(booksEntity.BooksPicture))
+                {
+                    BooksPB.Image = Image.FromStream(ms);
+                }
+            }
+
+        }
+
         private void DisplayBooksToUI(BooksEntity addedBooks)
         {
-            BookUC bookDisplay = new BookUC(addedBooks);
-
-
+            BookUC bookDisplay = new BookUC(addedBooks, bookServices);
             BooksFLP.Controls.Add(bookDisplay);
         }
     }

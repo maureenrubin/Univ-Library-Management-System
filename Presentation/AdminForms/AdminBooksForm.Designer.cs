@@ -67,9 +67,9 @@
             BooksPanel.Controls.Add(EditBookBtn);
             BooksPanel.Controls.Add(AddBookBtn);
             BooksPanel.Controls.Add(ManageBooksBTN);
-            BooksPanel.Location = new Point(12, 73);
+            BooksPanel.Location = new Point(12, 89);
             BooksPanel.Name = "BooksPanel";
-            BooksPanel.Size = new Size(47, 611);
+            BooksPanel.Size = new Size(1094, 611);
             BooksPanel.TabIndex = 0;
             // 
             // panel1
@@ -425,7 +425,7 @@
             EditBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
             EditBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             EditBookBtn.TabIndex = 2;
-            EditBookBtn.Values.Text = "EDIT BOOK";
+            EditBookBtn.Values.Text = "UPDATE BOOK";
             // 
             // AddBookBtn
             // 
