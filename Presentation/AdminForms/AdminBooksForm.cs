@@ -22,7 +22,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     {
         private readonly IBookServices bookServices;
 
-        private System.Windows.Forms.Timer sideBooksTransition;
+        private System.Windows.Forms.Timer sidePanelTransition;
         private System.Windows.Forms.Timer crudBooksTransition;
         private Animations animations;
 
@@ -37,24 +37,23 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                               BooksEntity booksEntity, Animations animations)
         {
 
-
             InitializeComponent();
+            this.booksEntity = booksEntity;
+            this.bookServices = bookServices;
+
             this.crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
-            this.sideBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
+            this.sidePanelTransition = new System.Windows.Forms.Timer { Interval = 10 };
             this.animations = animations;
             this.animations.CrudBooksTransition(crudBooksTransition, BooksPanel, sidebarExpanded);
-            this.animations.SideBooksTransition(sideBooksTransition, BooksPanel, sidebarExpanded);
+            this.animations.SideBooksTransition(sidePanelTransition, BooksPanel, sidebarExpanded);
 
-            this.booksEntity = booksEntity;
-            
-            this.bookServices = bookServices;
-            LoadBookDetails();
+            LoadBooksDetails();
 
         }
 
         private void ManageBooksBTN_Click(object sender, EventArgs e)
         {
-            sideBooksTransition.Start();
+            sidePanelTransition.Start();
         }
 
         private void AddBookBtn_Click(object sender, EventArgs e)
@@ -97,7 +96,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 return;
             }
 
-            var book = new BooksEntity
+            var selectedBook = new BookDTO
             {
                 BookId = bookId,
                 Title = title,
@@ -109,13 +108,21 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             };
 
-            await bookServices.AddBookAsync(book);
-            MessageBox.Show("Book Added Successfully!");
+            if (BookUpdateMode)
+            {
+                selectedBook.BookId = BookIdUpdate;
+                await bookServices.UpdateBookAsync(selectedBook);
+                MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                await bookServices.AddBookAsync(booksEntity);
+                MessageBox.Show("Book Added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
 
             FormsControlHelper.ClearControls(this);
-
-            BookUC bookDisplay = new BookUC(book, bookServices);
-            BooksFLP.Controls.Add(bookDisplay);
+            LoadBooksDetails();
 
         }
 
@@ -135,22 +142,29 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
-        private async void LoadBookDetails()
+        private async void LoadBooksDetails()
         {
-            var bookList = await bookServices.GetAllBooksAsync();
-            BooksFLP.Controls.Clear();
-
-            foreach (var book in bookList)
+            try
             {
-                var bookDisplay = new BookUC(book, bookServices);
-                bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
-                DisplayBooksToUI(book);
+                var bookList = await bookServices.GetAllBooksAsync();
+                FormsControlHelper.ClearControls(this);
+
+                foreach (var book in bookList)
+                {
+                    var bookDisplay = new BookUC(book, bookServices);
+                    bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
+                    BooksFLP.Controls.Add(bookDisplay);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error Loading Books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void BookDetailsUC_Clicked(object? sender, BooksEntity booksEntity)
         {
-            MessageBox.Show($"Book clicked: {booksEntity?.Title}", "Debug");
             crudBooksTransition.Start();
             LoadBookToUpdate(booksEntity);
         }
@@ -176,9 +190,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         }
 
-        private void DisplayBooksToUI(BooksEntity addedBooks)
+        private void DisplayBooksToUI(BooksEntity books)
         {
-            BookUC bookDisplay = new BookUC(addedBooks, bookServices);
+            BooksFLP.Controls.Clear(); // Optional, depending on the use case
+            BookUC bookDisplay = new BookUC(books, bookServices);
             BooksFLP.Controls.Add(bookDisplay);
         }
     }
