@@ -110,6 +110,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             if (BookUpdateMode)
             {
+                //last problem it doesnt update any changes
                 selectedBook.BookId = BookIdUpdate;
                 await bookServices.UpdateBookAsync(selectedBook);
                 MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -192,7 +193,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void DisplayBooksToUI(BooksEntity books)
         {
-            BooksFLP.Controls.Clear(); // Optional, depending on the use case
+            BooksFLP.Controls.Clear(); 
             BookUC bookDisplay = new BookUC(books, bookServices);
             BooksFLP.Controls.Add(bookDisplay);
         }
