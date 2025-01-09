@@ -16,5 +16,7 @@ namespace LibraryManagementSystem.Repositories.Interfaces
 
         Task UpdateBookAsync(BookDTO bookDTO);
 
+        Task<bool> RemoveBookAsync(int bookId);
+
     }
 }
