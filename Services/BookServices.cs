@@ -5,6 +5,7 @@ using LibraryManagementSystem.Migrations;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,14 +94,14 @@ namespace LibraryManagementSystem.Repositories
             }
         }
 
-        public async Task <bool> RemoveBookAsync(int bookId)
+        public async Task <bool> RemoveBookAsync (int bookId)
         {
             try
             {
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
                     var book = await dbContextOptions.Books
-                        .SingleOrDefaultAsync(a => a.BookId == bookId);
+                        .SingleOrDefaultAsync(u => u.BookId == bookId);
 
                     if (book != null)
                     {
@@ -112,13 +113,11 @@ namespace LibraryManagementSystem.Repositories
 
                     return false;
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error Removing Book: {ex.Message}", ex);
             }
         }
-
     }
 }
