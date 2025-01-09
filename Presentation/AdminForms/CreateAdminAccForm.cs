@@ -98,6 +98,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 if (IsUpdateMode)
                 {
+                    // update selected admin
                     adminDto.AdminID = AdminIdToUpdate;
                     await adminServices.UpdateAdminAsync(adminDto);
                     MessageBox.Show("Administrator updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -105,7 +106,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 }
                 else
                 {
-
+                    // add new admin
                     PasswordHelper.GeneratePasswordHashAndSalt(adminDto.Password);
                     await createAcoountServices.CreateAdminAccountAsync(adminDto);
                     MessageBox.Show("New Administrator created Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
