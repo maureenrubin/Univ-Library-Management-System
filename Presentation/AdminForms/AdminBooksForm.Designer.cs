@@ -32,8 +32,11 @@
             BooksPanel = new Panel();
             panel1 = new Panel();
             label6 = new Label();
+            DeleteBookBtn = new Krypton.Toolkit.KryptonButton();
             BooksCategoryTXT = new Krypton.Toolkit.KryptonTextBox();
+            UpdateBookBtn = new Krypton.Toolkit.KryptonButton();
             BrowseImageBtn = new Button();
+            AddBookBtn = new Krypton.Toolkit.KryptonButton();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -45,11 +48,7 @@
             BooksPriceTXT = new Krypton.Toolkit.KryptonTextBox();
             BooksGenreTXT = new Krypton.Toolkit.KryptonTextBox();
             CancelBtn = new Krypton.Toolkit.KryptonButton();
-            SaveBooksBtn = new Krypton.Toolkit.KryptonButton();
             BooksTitleTXT = new Krypton.Toolkit.KryptonTextBox();
-            DeleteBookBtn = new Krypton.Toolkit.KryptonButton();
-            EditBookBtn = new Krypton.Toolkit.KryptonButton();
-            AddBookBtn = new Krypton.Toolkit.KryptonButton();
             ManageBooksBTN = new Button();
             panel2 = new Panel();
             BooksFLP = new FlowLayoutPanel();
@@ -63,21 +62,21 @@
             // 
             BooksPanel.BackColor = Color.FromArgb(152, 96, 64);
             BooksPanel.Controls.Add(panel1);
-            BooksPanel.Controls.Add(DeleteBookBtn);
-            BooksPanel.Controls.Add(EditBookBtn);
-            BooksPanel.Controls.Add(AddBookBtn);
             BooksPanel.Controls.Add(ManageBooksBTN);
-            BooksPanel.Location = new Point(12, 89);
+            BooksPanel.Location = new Point(12, 104);
             BooksPanel.Name = "BooksPanel";
-            BooksPanel.Size = new Size(1094, 611);
+            BooksPanel.Size = new Size(932, 611);
             BooksPanel.TabIndex = 0;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(194, 144, 116);
             panel1.Controls.Add(label6);
+            panel1.Controls.Add(DeleteBookBtn);
             panel1.Controls.Add(BooksCategoryTXT);
+            panel1.Controls.Add(UpdateBookBtn);
             panel1.Controls.Add(BrowseImageBtn);
+            panel1.Controls.Add(AddBookBtn);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
@@ -89,9 +88,8 @@
             panel1.Controls.Add(BooksPriceTXT);
             panel1.Controls.Add(BooksGenreTXT);
             panel1.Controls.Add(CancelBtn);
-            panel1.Controls.Add(SaveBooksBtn);
             panel1.Controls.Add(BooksTitleTXT);
-            panel1.Location = new Point(265, 18);
+            panel1.Location = new Point(107, 14);
             panel1.Name = "panel1";
             panel1.Size = new Size(813, 577);
             panel1.TabIndex = 4;
@@ -100,16 +98,31 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(409, 427);
+            label6.Location = new Point(408, 388);
             label6.Name = "label6";
             label6.Size = new Size(58, 16);
             label6.TabIndex = 19;
             label6.Text = "Category:";
             // 
+            // DeleteBookBtn
+            // 
+            DeleteBookBtn.Location = new Point(524, 495);
+            DeleteBookBtn.Name = "DeleteBookBtn";
+            DeleteBookBtn.Size = new Size(164, 42);
+            DeleteBookBtn.StateCommon.Back.Color1 = Color.Firebrick;
+            DeleteBookBtn.StateCommon.Back.Color2 = Color.Firebrick;
+            DeleteBookBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            DeleteBookBtn.StateCommon.Border.Rounding = 6F;
+            DeleteBookBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
+            DeleteBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
+            DeleteBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            DeleteBookBtn.TabIndex = 3;
+            DeleteBookBtn.Values.Text = "DELETE BOOK";
+            // 
             // BooksCategoryTXT
             // 
             BooksCategoryTXT.Cursor = Cursors.IBeam;
-            BooksCategoryTXT.Location = new Point(499, 418);
+            BooksCategoryTXT.Location = new Point(498, 379);
             BooksCategoryTXT.Name = "BooksCategoryTXT";
             BooksCategoryTXT.Size = new Size(219, 34);
             BooksCategoryTXT.StateActive.Back.Color1 = Color.White;
@@ -141,13 +154,29 @@
             BooksCategoryTXT.StateNormal.Content.Padding = new Padding(5);
             BooksCategoryTXT.TabIndex = 5;
             // 
+            // UpdateBookBtn
+            // 
+            UpdateBookBtn.Location = new Point(313, 495);
+            UpdateBookBtn.Name = "UpdateBookBtn";
+            UpdateBookBtn.Size = new Size(164, 42);
+            UpdateBookBtn.StateCommon.Back.Color1 = Color.Turquoise;
+            UpdateBookBtn.StateCommon.Back.Color2 = Color.Turquoise;
+            UpdateBookBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            UpdateBookBtn.StateCommon.Border.Rounding = 6F;
+            UpdateBookBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
+            UpdateBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
+            UpdateBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            UpdateBookBtn.TabIndex = 2;
+            UpdateBookBtn.Values.Text = "UPDATE BOOK";
+            UpdateBookBtn.Click += UpdateBookBtn_Click;
+            // 
             // BrowseImageBtn
             // 
             BrowseImageBtn.Cursor = Cursors.Hand;
             BrowseImageBtn.FlatAppearance.BorderSize = 0;
             BrowseImageBtn.FlatStyle = FlatStyle.Popup;
             BrowseImageBtn.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            BrowseImageBtn.Location = new Point(84, 362);
+            BrowseImageBtn.Location = new Point(84, 328);
             BrowseImageBtn.Name = "BrowseImageBtn";
             BrowseImageBtn.Size = new Size(224, 27);
             BrowseImageBtn.TabIndex = 9;
@@ -155,11 +184,28 @@
             BrowseImageBtn.UseVisualStyleBackColor = true;
             BrowseImageBtn.Click += BrowseImageBtn_Click;
             // 
+            // AddBookBtn
+            // 
+            AddBookBtn.Cursor = Cursors.Hand;
+            AddBookBtn.Location = new Point(106, 495);
+            AddBookBtn.Name = "AddBookBtn";
+            AddBookBtn.Size = new Size(164, 42);
+            AddBookBtn.StateCommon.Back.Color1 = Color.MediumSeaGreen;
+            AddBookBtn.StateCommon.Back.Color2 = Color.MediumSeaGreen;
+            AddBookBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            AddBookBtn.StateCommon.Border.Rounding = 6F;
+            AddBookBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
+            AddBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
+            AddBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            AddBookBtn.TabIndex = 1;
+            AddBookBtn.Values.Text = "ADD BOOK";
+            AddBookBtn.Click += AddBookBtn_Click;
+            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(148, 431);
+            label5.Location = new Point(148, 397);
             label5.Name = "label5";
             label5.Size = new Size(86, 16);
             label5.TabIndex = 16;
@@ -169,7 +215,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(409, 348);
+            label4.Location = new Point(408, 309);
             label4.Name = "label4";
             label4.Size = new Size(44, 16);
             label4.TabIndex = 15;
@@ -179,7 +225,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(409, 267);
+            label3.Location = new Point(408, 228);
             label3.Name = "label3";
             label3.Size = new Size(36, 16);
             label3.TabIndex = 14;
@@ -189,7 +235,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(408, 187);
+            label2.Location = new Point(407, 148);
             label2.Name = "label2";
             label2.Size = new Size(41, 16);
             label2.TabIndex = 13;
@@ -199,7 +245,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(409, 111);
+            label1.Location = new Point(408, 72);
             label1.Name = "label1";
             label1.Size = new Size(33, 16);
             label1.TabIndex = 12;
@@ -207,7 +253,7 @@
             // 
             // BooksPB
             // 
-            BooksPB.Location = new Point(106, 120);
+            BooksPB.Location = new Point(106, 86);
             BooksPB.Name = "BooksPB";
             BooksPB.Size = new Size(174, 221);
             BooksPB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -217,7 +263,7 @@
             // PublisedDateTime
             // 
             PublisedDateTime.Cursor = Cursors.Hand;
-            PublisedDateTime.Location = new Point(84, 450);
+            PublisedDateTime.Location = new Point(84, 416);
             PublisedDateTime.Name = "PublisedDateTime";
             PublisedDateTime.Size = new Size(224, 23);
             PublisedDateTime.TabIndex = 6;
@@ -225,7 +271,7 @@
             // BooksStocksTXT
             // 
             BooksStocksTXT.Cursor = Cursors.IBeam;
-            BooksStocksTXT.Location = new Point(499, 339);
+            BooksStocksTXT.Location = new Point(498, 291);
             BooksStocksTXT.Name = "BooksStocksTXT";
             BooksStocksTXT.Size = new Size(219, 34);
             BooksStocksTXT.StateActive.Back.Color1 = Color.White;
@@ -260,7 +306,7 @@
             // BooksPriceTXT
             // 
             BooksPriceTXT.Cursor = Cursors.IBeam;
-            BooksPriceTXT.Location = new Point(499, 258);
+            BooksPriceTXT.Location = new Point(498, 219);
             BooksPriceTXT.Name = "BooksPriceTXT";
             BooksPriceTXT.Size = new Size(219, 34);
             BooksPriceTXT.StateActive.Back.Color1 = Color.White;
@@ -295,7 +341,7 @@
             // BooksGenreTXT
             // 
             BooksGenreTXT.Cursor = Cursors.IBeam;
-            BooksGenreTXT.Location = new Point(499, 178);
+            BooksGenreTXT.Location = new Point(498, 130);
             BooksGenreTXT.Name = "BooksGenreTXT";
             BooksGenreTXT.Size = new Size(219, 34);
             BooksGenreTXT.StateActive.Back.Color1 = Color.White;
@@ -330,7 +376,7 @@
             // CancelBtn
             // 
             CancelBtn.Cursor = Cursors.Hand;
-            CancelBtn.Location = new Point(393, 497);
+            CancelBtn.Location = new Point(33, 35);
             CancelBtn.Name = "CancelBtn";
             CancelBtn.Size = new Size(157, 30);
             CancelBtn.StateCommon.Back.Color1 = Color.Crimson;
@@ -344,28 +390,10 @@
             CancelBtn.TabIndex = 8;
             CancelBtn.Values.Text = "CANCEL";
             // 
-            // SaveBooksBtn
-            // 
-            SaveBooksBtn.Cursor = Cursors.Hand;
-            SaveBooksBtn.Location = new Point(556, 497);
-            SaveBooksBtn.Name = "SaveBooksBtn";
-            SaveBooksBtn.Size = new Size(148, 30);
-            SaveBooksBtn.StateCommon.Back.Color1 = Color.RoyalBlue;
-            SaveBooksBtn.StateCommon.Back.Color2 = Color.RoyalBlue;
-            SaveBooksBtn.StateCommon.Border.Color1 = Color.Black;
-            SaveBooksBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            SaveBooksBtn.StateCommon.Border.Rounding = 6F;
-            SaveBooksBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
-            SaveBooksBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
-            SaveBooksBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            SaveBooksBtn.TabIndex = 7;
-            SaveBooksBtn.Values.Text = "SAVE";
-            SaveBooksBtn.Click += SaveBooksBtn_Click;
-            // 
             // BooksTitleTXT
             // 
             BooksTitleTXT.Cursor = Cursors.IBeam;
-            BooksTitleTXT.Location = new Point(499, 102);
+            BooksTitleTXT.Location = new Point(498, 63);
             BooksTitleTXT.Name = "BooksTitleTXT";
             BooksTitleTXT.Size = new Size(219, 34);
             BooksTitleTXT.StateActive.Back.Color1 = Color.White;
@@ -396,53 +424,6 @@
             BooksTitleTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             BooksTitleTXT.StateNormal.Content.Padding = new Padding(5);
             BooksTitleTXT.TabIndex = 1;
-            // 
-            // DeleteBookBtn
-            // 
-            DeleteBookBtn.Location = new Point(78, 365);
-            DeleteBookBtn.Name = "DeleteBookBtn";
-            DeleteBookBtn.Size = new Size(164, 42);
-            DeleteBookBtn.StateCommon.Back.Color1 = Color.Firebrick;
-            DeleteBookBtn.StateCommon.Back.Color2 = Color.Firebrick;
-            DeleteBookBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            DeleteBookBtn.StateCommon.Border.Rounding = 6F;
-            DeleteBookBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
-            DeleteBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
-            DeleteBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            DeleteBookBtn.TabIndex = 3;
-            DeleteBookBtn.Values.Text = "DELETE BOOK";
-            // 
-            // EditBookBtn
-            // 
-            EditBookBtn.Location = new Point(78, 302);
-            EditBookBtn.Name = "EditBookBtn";
-            EditBookBtn.Size = new Size(164, 42);
-            EditBookBtn.StateCommon.Back.Color1 = Color.Turquoise;
-            EditBookBtn.StateCommon.Back.Color2 = Color.Turquoise;
-            EditBookBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            EditBookBtn.StateCommon.Border.Rounding = 6F;
-            EditBookBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
-            EditBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
-            EditBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            EditBookBtn.TabIndex = 2;
-            EditBookBtn.Values.Text = "UPDATE BOOK";
-            // 
-            // AddBookBtn
-            // 
-            AddBookBtn.Cursor = Cursors.Hand;
-            AddBookBtn.Location = new Point(78, 232);
-            AddBookBtn.Name = "AddBookBtn";
-            AddBookBtn.Size = new Size(164, 42);
-            AddBookBtn.StateCommon.Back.Color1 = Color.MediumSeaGreen;
-            AddBookBtn.StateCommon.Back.Color2 = Color.MediumSeaGreen;
-            AddBookBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            AddBookBtn.StateCommon.Border.Rounding = 6F;
-            AddBookBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
-            AddBookBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
-            AddBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            AddBookBtn.TabIndex = 1;
-            AddBookBtn.Values.Text = "ADD BOOK";
-            AddBookBtn.Click += AddBookBtn_Click;
             // 
             // ManageBooksBTN
             // 
@@ -502,11 +483,10 @@
         private Button ManageBooksBTN;
         private Krypton.Toolkit.KryptonButton AddBookBtn;
         private Krypton.Toolkit.KryptonButton DeleteBookBtn;
-        private Krypton.Toolkit.KryptonButton EditBookBtn;
+        private Krypton.Toolkit.KryptonButton UpdateBookBtn;
         private Panel panel1;
         private Krypton.Toolkit.KryptonTextBox BooksTitleTXT;
         private Krypton.Toolkit.KryptonButton CancelBtn;
-        private Krypton.Toolkit.KryptonButton SaveBooksBtn;
         private Krypton.Toolkit.KryptonTextBox BooksPriceTXT;
         private Krypton.Toolkit.KryptonTextBox BooksGenreTXT;
         private Label label2;

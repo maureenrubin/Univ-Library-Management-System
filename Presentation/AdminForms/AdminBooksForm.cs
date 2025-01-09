@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,7 +34,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private bool BookUpdateMode = false;
         private int BookIdUpdate;
 
-        public AdminBooksForm(IBookServices bookServices, 
+        public AdminBooksForm(IBookServices bookServices,
                               BooksEntity booksEntity, Animations animations)
         {
 
@@ -53,81 +54,82 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void ManageBooksBTN_Click(object sender, EventArgs e)
         {
+            crudBooksTransition.Start();
             sidePanelTransition.Start();
         }
 
-        private void AddBookBtn_Click(object sender, EventArgs e)
+        private async void AddBookBtn_Click(object sender, EventArgs e)
         {
-            crudBooksTransition.Start();
-        }
-
-        private async void SaveBooksBtn_Click(object sender, EventArgs e)
-        {
-            int bookId = 0;
-            string title = BooksTitleTXT.Text;
-            string genre = BooksGenreTXT.Text;
-
-            string category = BooksCategoryTXT.Text;
-            DateTime publishedDate = PublisedDateTime.Value;
-            byte[] booksPicture = null;
-
-
-            if (BooksPB.Image != null)
+            try
             {
-                using (var ms = new MemoryStream())
+                int bookId = 0;
+                string title = BooksTitleTXT.Text;
+                string genre = BooksGenreTXT.Text;
+                string category = BooksCategoryTXT.Text;
+
+                DateTime publishedDate = PublisedDateTime.Value;
+                byte[] booksPicture = null;
+
+
+                if (BooksPB.Image != null)
                 {
-                    BooksPB.Image.Save(ms, BooksPB.Image.RawFormat);
-                    booksPicture = ms.ToArray();
+                    using (var ms = new MemoryStream())
+                    {
+                        BooksPB.Image.Save(ms, BooksPB.Image.RawFormat);
+                        booksPicture = ms.ToArray();
+                    }
+
                 }
 
-            }
+                if (!int.TryParse(BooksStocksTXT.Text, out int bookStock) || bookStock < 0)
+                {
+                    MessageBox.Show("Invalid Book Stock.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(genre) || string.IsNullOrEmpty(category) || !int.TryParse(BooksPriceTXT.Text, out int bookPrice) ||
-                !int.TryParse(BooksStocksTXT.Text, out int bookStock))
+                if (!int.TryParse(BooksPriceTXT.Text, out int bookPrice) || bookPrice < 0)
+                {
+                    MessageBox.Show("Invalid Book Price. Please enter a valid number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            {
-                MessageBox.Show("All fields are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(genre) || string.IsNullOrEmpty(category))
+                {
+                    MessageBox.Show("All fields are required. Please fill in Title, Genre, and Category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (publishedDate > DateTime.Now)
+                {
+                    MessageBox.Show("Published Date cannot be in the future.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            if (publishedDate > DateTime.Now)
-            {
-                MessageBox.Show("Published Date cannot be in the future.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                var newBook = new BooksEntity
+                {
+                    BookId = bookId,
+                    Title = title,
+                    Genre = genre,
+                    PublishedDate = publishedDate,
+                    BookStock = bookStock,
+                    BooksPicture = booksPicture,
+                    BookPrice = bookPrice,
 
-            var selectedBook = new BookDTO
-            {
-                BookId = bookId,
-                Title = title,
-                Genre = genre,
-                PublishedDate = publishedDate,
-                BookStock = bookStock,
-                BooksPicture = booksPicture,
-                BookPrice = bookPrice,
+                };
 
-            };
-
-            if (BookUpdateMode)
-            {
-                //last problem it doesnt update any changes
-                selectedBook.BookId = BookIdUpdate;
-                await bookServices.UpdateBookAsync(selectedBook);
-                MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                await bookServices.AddBookAsync(booksEntity);
+                await bookServices.AddBookAsync(newBook);
                 MessageBox.Show("Book Added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            
 
-            FormsControlHelper.ClearControls(this);
-            LoadBooksDetails();
+
+                FormsControlHelper.ClearControls(this);
+                LoadBooksDetails();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error Adding new Books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
-
-
 
         private void BrowseImageBtn_Click(object sender, EventArgs e)
         {
@@ -164,9 +166,65 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         }
 
+        private async void UpdateBookBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(BooksTitleTXT.Text) ||
+                    string.IsNullOrWhiteSpace(BooksGenreTXT.Text) ||
+                    string.IsNullOrWhiteSpace(BooksCategoryTXT.Text) ||
+                    !int.TryParse(BooksPriceTXT.Text, out int bookPrice) || bookPrice <= 0 ||
+                    !int.TryParse(BooksStocksTXT.Text, out int bookStock) || bookStock < 0 ||
+                    PublisedDateTime.Value > DateTime.Now)
+                {
+                    MessageBox.Show("Please ensure all fields are filled correctly:" , 
+                                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //   var bookEntity = await _dbContext.Books.FindAsync(bookId);
+                byte[] booksPicture = null;
+                if (BooksPB.Image != null)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        BooksPB.Image.Save(ms, BooksPB.Image.RawFormat);
+                        booksPicture = ms.ToArray();
+                    }
+                }
+                
+
+
+                var updateBook = new BookDTO
+                {
+                    BookId = BookIdUpdate,
+                    Title = BooksTitleTXT.Text.Trim(),
+                    Genre = BooksGenreTXT.Text.Trim(),
+                    Category = BooksCategoryTXT.Text.Trim(),
+                    PublishedDate = PublisedDateTime.Value,
+                    BookStock = bookStock,
+                    BooksPicture = booksPicture,
+                    BookPrice = bookPrice,
+
+                };
+
+               
+                    await bookServices.UpdateBookAsync(updateBook);
+                    MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LoadBooksDetails();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error Updating Books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        // click book to update
         private void BookDetailsUC_Clicked(object? sender, BooksEntity booksEntity)
         {
-            crudBooksTransition.Start();
+
             LoadBookToUpdate(booksEntity);
         }
 
@@ -193,10 +251,12 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void DisplayBooksToUI(BooksEntity books)
         {
-            BooksFLP.Controls.Clear(); 
+            BooksFLP.Controls.Clear();
             BookUC bookDisplay = new BookUC(books, bookServices);
             BooksFLP.Controls.Add(bookDisplay);
         }
+
+      
     }
 
 
