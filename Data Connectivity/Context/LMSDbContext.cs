@@ -15,19 +15,20 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
         {
 
         }
-       
+
         public LMSDbContext(DbContextOptions<LMSDbContext> options) : base(options)
         {
-
+        
         }
-
+        
         public DbSet<AdminEntity> Admins { get; set; }
-        public DbSet<BooksEntity> Books { get; set; } 
+        public DbSet<BooksEntity> Books { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<CourseEntity> Courses { get; set; }
         public DbSet<BarrowedItemEntity> BarrowedItems { get; set; }
+        public DbSet<BookCategoryEntity> Categories { get; set; }
 
-       
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -36,6 +37,7 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
             modelBuilder.ApplyConfiguration(new BooksConfiguration());
             modelBuilder.ApplyConfiguration(new StudentConfiguration());
             modelBuilder.ApplyConfiguration(new BarrowItemsConfiguration());
+            modelBuilder.ApplyConfiguration(new BookCatConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -46,5 +48,5 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
             }
         }
 
-    }
+    } 
 }
