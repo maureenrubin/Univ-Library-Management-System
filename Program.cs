@@ -44,7 +44,9 @@ namespace WinFormsApp2
             services.AddScoped<BooksEntity>();
             services.AddScoped<UserEntity>();
             services.AddScoped<CourseEntity>();
-            services.AddScoped<PurchaseEntity>();
+            services.AddScoped<BarrowedItemEntity>();
+            services.AddScoped<BookCategoryEntity>();
+
 
             services.AddScoped<LoginForm>();
             services.AddScoped<CreateAdminAccForm>();
