@@ -63,7 +63,7 @@ namespace LibraryManagementSystem.Helpers.Animation
 
         public void CrudBooksTransition(System.Windows.Forms.Timer timer, Panel booksPanel, bool sidebarExpanded)
         {
-            TransitionPanelWidth(timer, booksPanel, 263, 1092, sidebarExpanded);
+            TransitionPanelWidth(timer, booksPanel, 263, 881, sidebarExpanded);
         }
 
         public void OpenCrudTransition(System.Windows.Forms.Timer timer, Panel studentPanel)
