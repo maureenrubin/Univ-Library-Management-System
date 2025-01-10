@@ -33,6 +33,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private bool BookUpdateMode = false;
         private int BookIdUpdate;
+        private byte[] booksPicture;
+
 
         public AdminBooksForm(IBookServices bookServices,
                               BooksEntity booksEntity, Animations animations)
@@ -68,7 +70,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 string category = BooksCategoryTXT.Text;
 
                 DateTime publishedDate = PublisedDateTime.Value;
-                byte[] booksPicture = null;
+
 
 
                 if (BooksPB.Image != null)
@@ -170,6 +172,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             try
             {
+
                 if (string.IsNullOrWhiteSpace(BooksTitleTXT.Text) ||
                     string.IsNullOrWhiteSpace(BooksGenreTXT.Text) ||
                     string.IsNullOrWhiteSpace(BooksCategoryTXT.Text) ||
@@ -177,13 +180,13 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     !int.TryParse(BooksStocksTXT.Text, out int bookStock) || bookStock < 0 ||
                     PublisedDateTime.Value > DateTime.Now)
                 {
-                    MessageBox.Show("Please ensure all fields are filled correctly:" , 
+                    MessageBox.Show("Please ensure all fields are filled correctly:",
                                     "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                //   var bookEntity = await _dbContext.Books.FindAsync(bookId);
-                byte[] booksPicture = null;
+
+
                 if (BooksPB.Image != null)
                 {
                     using (var ms = new MemoryStream())
@@ -192,7 +195,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                         booksPicture = ms.ToArray();
                     }
                 }
-                
+
 
 
                 var updateBook = new BookDTO
@@ -208,17 +211,18 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 };
 
-               
-                    await bookServices.UpdateBookAsync(updateBook);
-                    MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    LoadBooksDetails();
+                await bookServices.UpdateBookAsync(updateBook);
+                MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadBooksDetails();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error Updating Books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         // click book to update
@@ -256,7 +260,35 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             BooksFLP.Controls.Add(bookDisplay);
         }
 
-      
+        private async void DeleteBookBtn_Click(object sender, EventArgs e)
+        {
+            if(!BookUpdateMode || BookIdUpdate == 0)
+            {
+                MessageBox.Show("Please select a book to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var confirmRemove = MessageBox.Show("Are you sure you want to remove this book?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
+            if(confirmRemove == DialogResult.Yes)
+            {
+                try
+                {
+                    var removeBook = await bookServices.RemoveBookAsync(BookIdUpdate);
+
+                    if (removeBook)
+                    {
+                        MessageBox.Show("Book removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FormsControlHelper.ClearControls(BooksPanel);
+                        LoadBooksDetails();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error Deleting Books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 
 

@@ -63,9 +63,9 @@
             BooksPanel.BackColor = Color.FromArgb(152, 96, 64);
             BooksPanel.Controls.Add(panel1);
             BooksPanel.Controls.Add(ManageBooksBTN);
-            BooksPanel.Location = new Point(12, 104);
+            BooksPanel.Location = new Point(12, 132);
             BooksPanel.Name = "BooksPanel";
-            BooksPanel.Size = new Size(932, 611);
+            BooksPanel.Size = new Size(881, 611);
             BooksPanel.TabIndex = 0;
             // 
             // panel1
@@ -89,7 +89,7 @@
             panel1.Controls.Add(BooksGenreTXT);
             panel1.Controls.Add(CancelBtn);
             panel1.Controls.Add(BooksTitleTXT);
-            panel1.Location = new Point(107, 14);
+            panel1.Location = new Point(56, 13);
             panel1.Name = "panel1";
             panel1.Size = new Size(813, 577);
             panel1.TabIndex = 4;
@@ -118,6 +118,7 @@
             DeleteBookBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             DeleteBookBtn.TabIndex = 3;
             DeleteBookBtn.Values.Text = "DELETE BOOK";
+            DeleteBookBtn.Click += DeleteBookBtn_Click;
             // 
             // BooksCategoryTXT
             // 
@@ -454,7 +455,7 @@
             BooksFLP.BackColor = Color.FromArgb(169, 131, 110);
             BooksFLP.Location = new Point(25, 73);
             BooksFLP.Name = "BooksFLP";
-            BooksFLP.Size = new Size(1307, 688);
+            BooksFLP.Size = new Size(1304, 688);
             BooksFLP.TabIndex = 0;
             // 
             // AdminBooksForm
