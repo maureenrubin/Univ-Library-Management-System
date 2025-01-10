@@ -32,6 +32,14 @@ namespace LibraryManagementSystem.Repositories
             }
         }
 
+        public async Task<BooksEntity> GetBookByIdAsync(int bookId)
+        {
+            using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+            {
+                return await dbContextOptions.Books.SingleOrDefaultAsync(b => b.BookId == bookId); 
+            }
+        }
+
         public async Task<int> AddBookAsync(BooksEntity book)
         {
             try
@@ -86,7 +94,11 @@ namespace LibraryManagementSystem.Repositories
                     existingBook.Genre = bookDTO.Genre;
                     existingBook.Title = bookDTO.Title;
                     existingBook.BookStock = bookDTO.BookStock;
+                    existingBook.Category = bookDTO.Category;
+
+                    await dbContextOptions.SaveChangesAsync();
                 }
+                
             }
             catch (Exception ex)
             {
