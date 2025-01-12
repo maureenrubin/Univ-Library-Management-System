@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminBooksForm));
             BooksPanel = new Panel();
             panel1 = new Panel();
+            BookCategoryCB = new ComboBox();
+            bookCategoryEntityBindingSource = new BindingSource(components);
             label6 = new Label();
             DeleteBookBtn = new Krypton.Toolkit.KryptonButton();
-            BooksCategoryTXT = new Krypton.Toolkit.KryptonTextBox();
             UpdateBookBtn = new Krypton.Toolkit.KryptonButton();
             BrowseImageBtn = new Button();
             AddBookBtn = new Krypton.Toolkit.KryptonButton();
@@ -54,6 +56,7 @@
             BooksFLP = new FlowLayoutPanel();
             BooksPanel.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)bookCategoryEntityBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BooksPB).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -71,9 +74,9 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(194, 144, 116);
+            panel1.Controls.Add(BookCategoryCB);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(DeleteBookBtn);
-            panel1.Controls.Add(BooksCategoryTXT);
             panel1.Controls.Add(UpdateBookBtn);
             panel1.Controls.Add(BrowseImageBtn);
             panel1.Controls.Add(AddBookBtn);
@@ -93,6 +96,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(813, 577);
             panel1.TabIndex = 4;
+            // 
+            // BookCategoryCB
+            // 
+            BookCategoryCB.DataSource = bookCategoryEntityBindingSource;
+            BookCategoryCB.Font = new Font("Gadugi", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            BookCategoryCB.FormattingEnabled = true;
+            BookCategoryCB.Location = new Point(498, 377);
+            BookCategoryCB.Name = "BookCategoryCB";
+            BookCategoryCB.Size = new Size(219, 27);
+            BookCategoryCB.TabIndex = 20;
             // 
             // label6
             // 
@@ -119,41 +132,6 @@
             DeleteBookBtn.TabIndex = 3;
             DeleteBookBtn.Values.Text = "DELETE BOOK";
             DeleteBookBtn.Click += DeleteBookBtn_Click;
-            // 
-            // BooksCategoryTXT
-            // 
-            BooksCategoryTXT.Cursor = Cursors.IBeam;
-            BooksCategoryTXT.Location = new Point(498, 379);
-            BooksCategoryTXT.Name = "BooksCategoryTXT";
-            BooksCategoryTXT.Size = new Size(219, 34);
-            BooksCategoryTXT.StateActive.Back.Color1 = Color.White;
-            BooksCategoryTXT.StateActive.Border.Color1 = Color.Black;
-            BooksCategoryTXT.StateActive.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            BooksCategoryTXT.StateActive.Border.Rounding = 10F;
-            BooksCategoryTXT.StateActive.Content.Color1 = Color.FromArgb(64, 64, 64);
-            BooksCategoryTXT.StateActive.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            BooksCategoryTXT.StateActive.Content.Padding = new Padding(5);
-            BooksCategoryTXT.StateCommon.Back.Color1 = Color.White;
-            BooksCategoryTXT.StateCommon.Border.Color1 = Color.Black;
-            BooksCategoryTXT.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            BooksCategoryTXT.StateCommon.Border.Rounding = 10F;
-            BooksCategoryTXT.StateCommon.Content.Color1 = Color.FromArgb(64, 64, 64);
-            BooksCategoryTXT.StateCommon.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            BooksCategoryTXT.StateCommon.Content.Padding = new Padding(5);
-            BooksCategoryTXT.StateDisabled.Back.Color1 = Color.White;
-            BooksCategoryTXT.StateDisabled.Border.Color1 = Color.Black;
-            BooksCategoryTXT.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            BooksCategoryTXT.StateDisabled.Border.Rounding = 10F;
-            BooksCategoryTXT.StateDisabled.Content.Color1 = Color.FromArgb(64, 64, 64);
-            BooksCategoryTXT.StateDisabled.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            BooksCategoryTXT.StateNormal.Back.Color1 = Color.FromArgb(224, 224, 224);
-            BooksCategoryTXT.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            BooksCategoryTXT.StateNormal.Border.Rounding = 10F;
-            BooksCategoryTXT.StateNormal.Border.Width = 10;
-            BooksCategoryTXT.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
-            BooksCategoryTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            BooksCategoryTXT.StateNormal.Content.Padding = new Padding(5);
-            BooksCategoryTXT.TabIndex = 5;
             // 
             // UpdateBookBtn
             // 
@@ -472,6 +450,7 @@
             BooksPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)bookCategoryEntityBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)BooksPB).EndInit();
             panel2.ResumeLayout(false);
             ResumeLayout(false);
@@ -500,7 +479,8 @@
         private Button BrowseImageBtn;
         private Label label5;
         private Label label6;
-        private Krypton.Toolkit.KryptonTextBox BooksCategoryTXT;
         private FlowLayoutPanel BooksFLP;
+        private ComboBox BookCategoryCB;
+        private BindingSource bookCategoryEntityBindingSource;
     }
 }

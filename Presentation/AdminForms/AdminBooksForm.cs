@@ -16,12 +16,14 @@ using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Helpers.Animation;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
+using LibraryManagementSystem.Services.Contracts;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
     public partial class AdminBooksForm : Form
     {
         private readonly IBookServices bookServices;
+        private readonly ICategoryServices categoryServices;
 
         private System.Windows.Forms.Timer sidePanelTransition;
         private System.Windows.Forms.Timer crudBooksTransition;
@@ -37,12 +39,14 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
 
         public AdminBooksForm(IBookServices bookServices,
-                              BooksEntity booksEntity, Animations animations)
+                              BooksEntity booksEntity, Animations animations,
+                              ICategoryServices categoryServices)
         {
 
             InitializeComponent();
             this.booksEntity = booksEntity;
             this.bookServices = bookServices;
+            this.categoryServices = categoryServices;
 
             this.crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
             this.sidePanelTransition = new System.Windows.Forms.Timer { Interval = 10 };
@@ -51,6 +55,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             this.animations.SideBooksTransition(sidePanelTransition, BooksPanel, sidebarExpanded);
 
             LoadBooksDetails();
+            LoadBookCategories();
 
         }
 
@@ -67,8 +72,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 int bookId = 0;
                 string title = BooksTitleTXT.Text;
                 string genre = BooksGenreTXT.Text;
-                string category = BooksCategoryTXT.Text;
-
                 DateTime publishedDate = PublisedDateTime.Value;
 
 
@@ -80,7 +83,12 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                         BooksPB.Image.Save(ms, BooksPB.Image.RawFormat);
                         booksPicture = ms.ToArray();
                     }
+                }
 
+                if (BookCategoryCB.SelectedValue == null || !int.TryParse(BookCategoryCB.SelectedValue.ToString(), out int selectedCategory))
+                {
+                    MessageBox.Show("Please select a valid category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 if (!int.TryParse(BooksStocksTXT.Text, out int bookStock) || bookStock < 0)
@@ -95,9 +103,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     return;
                 }
 
-                if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(genre) || string.IsNullOrEmpty(category))
+                if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(genre))
                 {
-                    MessageBox.Show("All fields are required. Please fill in Title, Genre, and Category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("All fields are required. Please fill in Title, and Genre.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (publishedDate > DateTime.Now)
@@ -115,7 +123,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     BookStock = bookStock,
                     BooksPicture = booksPicture,
                     BookPrice = bookPrice,
-
+                    CategoryId = selectedCategory
                 };
 
                 await bookServices.AddBookAsync(newBook);
@@ -168,14 +176,35 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         }
 
+        private async void LoadBookCategories()
+        {
+            try
+            {
+                var bookCategories = await categoryServices.GetAllBookCategoriesAsync();
+
+                if (bookCategories != null && bookCategories.Any())
+                {
+                    BookCategoryCB.DataSource = bookCategories.ToList();
+                    BookCategoryCB.DisplayMember = "CategoriesName";
+                    BookCategoryCB.ValueMember = "CategoriesId";
+                }
+                else
+                {
+                    MessageBox.Show("No categories available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error Loading Book Categories: {ex.Message} ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private async void UpdateBookBtn_Click(object sender, EventArgs e)
         {
             try
             {
-
                 if (string.IsNullOrWhiteSpace(BooksTitleTXT.Text) ||
                     string.IsNullOrWhiteSpace(BooksGenreTXT.Text) ||
-                    string.IsNullOrWhiteSpace(BooksCategoryTXT.Text) ||
                     !int.TryParse(BooksPriceTXT.Text, out int bookPrice) || bookPrice <= 0 ||
                     !int.TryParse(BooksStocksTXT.Text, out int bookStock) || bookStock < 0 ||
                     PublisedDateTime.Value > DateTime.Now)
@@ -185,7 +214,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     return;
                 }
 
-
+                if (BookCategoryCB.SelectedValue == null || !int.TryParse(BookCategoryCB.SelectedValue.ToString(), out int selectedCategoryId))
+                {
+                    MessageBox.Show("Please select a valid category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 if (BooksPB.Image != null)
                 {
@@ -203,7 +236,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     BookId = BookIdUpdate,
                     Title = BooksTitleTXT.Text.Trim(),
                     Genre = BooksGenreTXT.Text.Trim(),
-                    Category = BooksCategoryTXT.Text.Trim(),
+                    CategoryId = selectedCategoryId,
                     PublishedDate = PublisedDateTime.Value,
                     BookStock = bookStock,
                     BooksPicture = booksPicture,
@@ -216,7 +249,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LoadBooksDetails();
-
+                FormsControlHelper.ClearControls(BooksPanel);
             }
             catch (Exception ex)
             {
@@ -242,7 +275,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             BooksGenreTXT.Text = booksEntity.Genre;
             BooksPriceTXT.Text = booksEntity.BookPrice.ToString();
             BooksStocksTXT.Text = booksEntity.BookStock.ToString();
-            BooksCategoryTXT.Text = booksEntity.Category;
+
+            if(booksEntity.CategoryId != 0)
+            {
+                BookCategoryCB.SelectedValue = booksEntity.CategoryId;
+            }
 
             if (booksEntity.BooksPicture != null)
             {
