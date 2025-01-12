@@ -228,7 +228,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         // click book to update
         private void BookDetailsUC_Clicked(object? sender, BooksEntity booksEntity)
         {
-
+            crudBooksTransition.Start();
+            sidePanelTransition.Start();
             LoadBookToUpdate(booksEntity);
         }
 
