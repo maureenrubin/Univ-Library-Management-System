@@ -5,6 +5,8 @@ using LibraryManagementSystem.Presentation.AdminForms;
 using LibraryManagementSystem.Presentation.UserForms;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
+using LibraryManagementSystem.Services;
+using LibraryManagementSystem.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +41,7 @@ namespace WinFormsApp2
             services.AddScoped<ICourseServices, CourseServices>();
             services.AddScoped<ICreateAccountServices, CreateAccountServices>();
             services.AddScoped<IUserServices, UserServices>();
+            services.AddScoped<ICategoryServices, CategoryServices>();
 
             services.AddScoped<AdminEntity>();
             services.AddScoped<BooksEntity>();
