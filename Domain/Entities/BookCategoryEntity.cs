@@ -17,5 +17,6 @@ namespace LibraryManagementSystem.Domain.Entities
         public DateTime CreatedAt { get; set; }
 
         public BooksEntity Book { get; set; }
+
     }
 }

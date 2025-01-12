@@ -33,8 +33,8 @@ namespace LibraryManagementSystem.Domain.Entities
         [Column(TypeName = "varbinary(max)")]
         public byte[]? BooksPicture { get; set; }
 
-        [MaxLength(100)]
-        public string Category { get; set; } = string.Empty;
+       
+        public int? CategoryId { get; set; }
 
         // Calculated property for available books based on borrowed items
         public int BookAvailable { get => BookStock - (BarrowedItem?.Sum(b => b.Quantity) ?? 0); }
