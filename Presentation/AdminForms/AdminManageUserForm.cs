@@ -12,6 +12,7 @@ using LibraryManagementSystem.Repositories.Interfaces;
 using LibraryManagementSystem.Presentation.UserControls;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Domain.Entities;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -154,21 +155,16 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void ManageStudentBtn_Click(object sender, EventArgs e)
         {
-            animations.OpenCrudTransition(openCrudTransition, StudentPanel);
-
-        }
-
-        private void OpenPanelToAddUserBtn_Click(object sender, EventArgs e)
-        {
             animations.CrudStudentTransition(crudStudentTransition, StudentPanel, sidebarExpanded);
+
         }
 
 
-        private async void  AddAndUpdateUserBtn_Click(object sender, EventArgs e)
+        private async void AddStudentBtn_Click(object sender, EventArgs e)
         {
-
             try
             {
+
                 string firstName = UserFirstNameTXT.Text;
                 string lastName = UserLastNameTXT.Text;
                 string email = UserEmailTXT.Text;
@@ -197,19 +193,19 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     return;
                 }
 
-                byte[] userPicture = null;
+
                 if (UserPicturePB.Image != null)
                 {
                     using (var ms = new MemoryStream())
                     {
                         UserPicturePB.Image.Save(ms, UserPicturePB.Image.RawFormat);
-                        userPicture = ms.ToArray();
+                        UserPicture = ms.ToArray();
                     }
                 }
 
 
 
-                var selectedStudent = new UserDTO
+                var newStudent = new UserDTO
                 {
                     FirstName = firstName,
                     LastName = lastName,
@@ -218,24 +214,15 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     Password = password,
                     ConfirmPassword = confirmPassword,
                     Role = "User",
-                    UserPicture = userPicture,
+                    UserPicture = UserPicture,
 
 
                 };
 
+                PasswordHelper.GeneratePasswordHashAndSalt(newStudent.Password);
+                await createAcoountServices.CreateUserAccountAsync(newStudent);
+                MessageBox.Show("Student account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (IsUpdateMode)
-                {
-                    selectedStudent.UserId = UserIdToUpdate;
-                    await userServices.UpdateUserAsync(selectedStudent);
-                    MessageBox.Show("Student updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                }
-                else
-                {
-                    PasswordHelper.GeneratePasswordHashAndSalt(selectedStudent.Password);
-                    await createAcoountServices.CreateUserAccountAsync(selectedStudent);
-                    MessageBox.Show("Student account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
 
                 FormsControlHelper.ClearControls(this);
                 LoadStudentDetails();
@@ -244,13 +231,69 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error Saving User: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error Adding Student: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-       
 
-        private async void DeleteUserBtn_Click(object sender, EventArgs e)
+        private async void UpdateStudentBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedCourseId;
+
+                if (string.IsNullOrWhiteSpace(UserFirstNameTXT.Text) || string.IsNullOrWhiteSpace(UserLastNameTXT.Text) ||
+                   string.IsNullOrWhiteSpace(UserPasswordTXT.Text) || string.IsNullOrWhiteSpace(UserConfirmPassTXT.Text) ||
+                   string.IsNullOrWhiteSpace(UserEmailTXT.Text))
+                {
+                    MessageBox.Show("Please ensure all fields are filled correctly: ", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (UserCourseCB.SelectedValue == null || !int.TryParse(UserCourseCB.SelectedValue.ToString(), out selectedCourseId))
+                {
+                    MessageBox.Show("Invalid course selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
+                if (UserPicturePB.Image != null)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        UserPicturePB.Image.Save(ms, UserPicturePB.Image.RawFormat);
+                        UserPicture = ms.ToArray();
+                    }
+                }
+
+                var updateStudent = new UserDTO
+                {
+                    UserId = UserIdToUpdate,
+                    FirstName = UserFirstNameTXT.Text.Trim(),
+                    LastName = UserLastNameTXT.Text.Trim(),
+                    CourseId = selectedCourseId,
+                    Email = UserEmailTXT.Text.Trim(),
+                    Password = UserPasswordTXT.Text.Trim(),
+                    ConfirmPassword = UserConfirmPassTXT.Text.Trim(),
+                    Role = "User",
+                    UserPicture = UserPicture
+                };
+
+                PasswordHelper.GeneratePasswordHashAndSalt(updateStudent.Password);
+                await userServices.UpdateUserAsync(updateStudent);
+                MessageBox.Show("Student details updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                FormsControlHelper.ClearControls(crudPanel);
+                LoadStudentDetails();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error Updating Student: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private async void DeleteStudentBtn_Click(object sender, EventArgs e)
         {
             if (!IsUpdateMode || UserIdToUpdate == 0)
             {

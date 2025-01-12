@@ -45,12 +45,12 @@
             button1 = new Button();
             SearchUserBtn = new Krypton.Toolkit.KryptonTextBox();
             StudentPanel = new Panel();
-            OpenPanelToAddUserBtn = new Krypton.Toolkit.KryptonButton();
             ManageStudentBtn = new Button();
-            DeleteUserBtn = new Krypton.Toolkit.KryptonButton();
             crudPanel = new Panel();
-            AddAndUpdateUserBtn = new Krypton.Toolkit.KryptonButton();
+            AddStudentBtn = new Krypton.Toolkit.KryptonButton();
+            DeleteStudentBtn = new Krypton.Toolkit.KryptonButton();
             label9 = new Label();
+            UpdateStudentBtn = new Krypton.Toolkit.KryptonButton();
             label6 = new Label();
             UserConfirmPassTXT = new Krypton.Toolkit.KryptonTextBox();
             CBShowpass = new CheckBox();
@@ -261,44 +261,12 @@
             // StudentPanel
             // 
             StudentPanel.BackColor = Color.FromArgb(169, 131, 110);
-            StudentPanel.Controls.Add(OpenPanelToAddUserBtn);
             StudentPanel.Controls.Add(ManageStudentBtn);
-            StudentPanel.Controls.Add(DeleteUserBtn);
             StudentPanel.Controls.Add(crudPanel);
             StudentPanel.Location = new Point(5, 112);
             StudentPanel.Name = "StudentPanel";
-            StudentPanel.Size = new Size(1091, 602);
+            StudentPanel.Size = new Size(52, 602);
             StudentPanel.TabIndex = 1;
-            // 
-            // OpenPanelToAddUserBtn
-            // 
-            OpenPanelToAddUserBtn.Cursor = Cursors.Hand;
-            OpenPanelToAddUserBtn.Location = new Point(101, 208);
-            OpenPanelToAddUserBtn.Name = "OpenPanelToAddUserBtn";
-            OpenPanelToAddUserBtn.Size = new Size(164, 42);
-            OpenPanelToAddUserBtn.StateCommon.Back.Color1 = Color.MediumSeaGreen;
-            OpenPanelToAddUserBtn.StateCommon.Back.Color2 = Color.MediumSeaGreen;
-            OpenPanelToAddUserBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            OpenPanelToAddUserBtn.StateCommon.Border.Rounding = 6F;
-            OpenPanelToAddUserBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
-            OpenPanelToAddUserBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
-            OpenPanelToAddUserBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            OpenPanelToAddUserBtn.StateDisabled.Back.Color1 = Color.Transparent;
-            OpenPanelToAddUserBtn.StateDisabled.Back.Color2 = Color.Transparent;
-            OpenPanelToAddUserBtn.StateDisabled.Border.Color1 = Color.Black;
-            OpenPanelToAddUserBtn.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            OpenPanelToAddUserBtn.StateDisabled.Border.Rounding = 6F;
-            OpenPanelToAddUserBtn.StateDisabled.Content.ShortText.Color1 = Color.Black;
-            OpenPanelToAddUserBtn.StateDisabled.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            OpenPanelToAddUserBtn.StatePressed.Back.Color1 = Color.Transparent;
-            OpenPanelToAddUserBtn.StatePressed.Border.Color2 = Color.Black;
-            OpenPanelToAddUserBtn.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            OpenPanelToAddUserBtn.StatePressed.Border.Rounding = 6F;
-            OpenPanelToAddUserBtn.StatePressed.Content.ShortText.Color2 = Color.Black;
-            OpenPanelToAddUserBtn.StatePressed.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            OpenPanelToAddUserBtn.TabIndex = 6;
-            OpenPanelToAddUserBtn.Values.Text = "ADD STUDENT";
-            OpenPanelToAddUserBtn.Click += OpenPanelToAddUserBtn_Click;
             // 
             // ManageStudentBtn
             // 
@@ -313,41 +281,13 @@
             ManageStudentBtn.UseVisualStyleBackColor = true;
             ManageStudentBtn.Click += ManageStudentBtn_Click;
             // 
-            // DeleteUserBtn
-            // 
-            DeleteUserBtn.Cursor = Cursors.Hand;
-            DeleteUserBtn.Location = new Point(101, 266);
-            DeleteUserBtn.Name = "DeleteUserBtn";
-            DeleteUserBtn.Size = new Size(164, 42);
-            DeleteUserBtn.StateCommon.Back.Color1 = Color.Firebrick;
-            DeleteUserBtn.StateCommon.Back.Color2 = Color.Firebrick;
-            DeleteUserBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            DeleteUserBtn.StateCommon.Border.Rounding = 6F;
-            DeleteUserBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
-            DeleteUserBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
-            DeleteUserBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            DeleteUserBtn.StateDisabled.Back.Color1 = Color.Transparent;
-            DeleteUserBtn.StateDisabled.Back.Color2 = Color.Transparent;
-            DeleteUserBtn.StateDisabled.Border.Color1 = Color.Black;
-            DeleteUserBtn.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            DeleteUserBtn.StateDisabled.Border.Rounding = 6F;
-            DeleteUserBtn.StateDisabled.Content.ShortText.Color1 = Color.Black;
-            DeleteUserBtn.StateDisabled.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            DeleteUserBtn.StatePressed.Back.Color1 = Color.Transparent;
-            DeleteUserBtn.StatePressed.Border.Color2 = Color.Black;
-            DeleteUserBtn.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            DeleteUserBtn.StatePressed.Border.Rounding = 6F;
-            DeleteUserBtn.StatePressed.Content.ShortText.Color2 = Color.Black;
-            DeleteUserBtn.StatePressed.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            DeleteUserBtn.TabIndex = 4;
-            DeleteUserBtn.Values.Text = "DELETE STUDENT";
-            DeleteUserBtn.Click += DeleteUserBtn_Click;
-            // 
             // crudPanel
             // 
             crudPanel.BackColor = Color.Azure;
-            crudPanel.Controls.Add(AddAndUpdateUserBtn);
+            crudPanel.Controls.Add(AddStudentBtn);
+            crudPanel.Controls.Add(DeleteStudentBtn);
             crudPanel.Controls.Add(label9);
+            crudPanel.Controls.Add(UpdateStudentBtn);
             crudPanel.Controls.Add(label6);
             crudPanel.Controls.Add(UserConfirmPassTXT);
             crudPanel.Controls.Add(CBShowpass);
@@ -363,44 +303,104 @@
             crudPanel.Controls.Add(UserEmailTXT);
             crudPanel.Controls.Add(BrowseImageBtn);
             crudPanel.Controls.Add(UserPicturePB);
-            crudPanel.Location = new Point(290, 14);
+            crudPanel.Location = new Point(88, 14);
             crudPanel.Name = "crudPanel";
             crudPanel.Size = new Size(785, 579);
             crudPanel.TabIndex = 0;
             // 
-            // AddAndUpdateUserBtn
+            // AddStudentBtn
             // 
-            AddAndUpdateUserBtn.Cursor = Cursors.Hand;
-            AddAndUpdateUserBtn.Location = new Point(523, 502);
-            AddAndUpdateUserBtn.Name = "AddAndUpdateUserBtn";
-            AddAndUpdateUserBtn.Size = new Size(158, 38);
-            AddAndUpdateUserBtn.StateCommon.Back.Color1 = Color.RoyalBlue;
-            AddAndUpdateUserBtn.StateCommon.Back.Color2 = Color.RoyalBlue;
-            AddAndUpdateUserBtn.StateCommon.Border.Color1 = Color.Black;
-            AddAndUpdateUserBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            AddAndUpdateUserBtn.StateCommon.Border.Rounding = 6F;
-            AddAndUpdateUserBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
-            AddAndUpdateUserBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
-            AddAndUpdateUserBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            AddAndUpdateUserBtn.TabIndex = 20;
-            AddAndUpdateUserBtn.Values.Text = "SAVE";
-            AddAndUpdateUserBtn.Click += AddAndUpdateUserBtn_Click;
+            AddStudentBtn.Cursor = Cursors.Hand;
+            AddStudentBtn.Location = new Point(77, 471);
+            AddStudentBtn.Name = "AddStudentBtn";
+            AddStudentBtn.Size = new Size(158, 38);
+            AddStudentBtn.StateCommon.Back.Color1 = Color.RoyalBlue;
+            AddStudentBtn.StateCommon.Back.Color2 = Color.RoyalBlue;
+            AddStudentBtn.StateCommon.Border.Color1 = Color.Black;
+            AddStudentBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            AddStudentBtn.StateCommon.Border.Rounding = 6F;
+            AddStudentBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
+            AddStudentBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
+            AddStudentBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            AddStudentBtn.TabIndex = 20;
+            AddStudentBtn.Values.Text = "ADD STUDENT";
+            AddStudentBtn.Click += AddStudentBtn_Click;
+            // 
+            // DeleteStudentBtn
+            // 
+            DeleteStudentBtn.Cursor = Cursors.Hand;
+            DeleteStudentBtn.Location = new Point(525, 471);
+            DeleteStudentBtn.Name = "DeleteStudentBtn";
+            DeleteStudentBtn.Size = new Size(164, 42);
+            DeleteStudentBtn.StateCommon.Back.Color1 = Color.Firebrick;
+            DeleteStudentBtn.StateCommon.Back.Color2 = Color.Firebrick;
+            DeleteStudentBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            DeleteStudentBtn.StateCommon.Border.Rounding = 6F;
+            DeleteStudentBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
+            DeleteStudentBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
+            DeleteStudentBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            DeleteStudentBtn.StateDisabled.Back.Color1 = Color.Transparent;
+            DeleteStudentBtn.StateDisabled.Back.Color2 = Color.Transparent;
+            DeleteStudentBtn.StateDisabled.Border.Color1 = Color.Black;
+            DeleteStudentBtn.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            DeleteStudentBtn.StateDisabled.Border.Rounding = 6F;
+            DeleteStudentBtn.StateDisabled.Content.ShortText.Color1 = Color.Black;
+            DeleteStudentBtn.StateDisabled.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            DeleteStudentBtn.StatePressed.Back.Color1 = Color.Transparent;
+            DeleteStudentBtn.StatePressed.Border.Color2 = Color.Black;
+            DeleteStudentBtn.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            DeleteStudentBtn.StatePressed.Border.Rounding = 6F;
+            DeleteStudentBtn.StatePressed.Content.ShortText.Color2 = Color.Black;
+            DeleteStudentBtn.StatePressed.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            DeleteStudentBtn.TabIndex = 4;
+            DeleteStudentBtn.Values.Text = "DELETE STUDENT";
+            DeleteStudentBtn.Click += DeleteStudentBtn_Click;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(353, 194);
+            label9.Location = new Point(337, 177);
             label9.Name = "label9";
             label9.Size = new Size(59, 14);
             label9.TabIndex = 19;
             label9.Text = "Course Id:";
             // 
+            // UpdateStudentBtn
+            // 
+            UpdateStudentBtn.Cursor = Cursors.Hand;
+            UpdateStudentBtn.Location = new Point(302, 471);
+            UpdateStudentBtn.Name = "UpdateStudentBtn";
+            UpdateStudentBtn.Size = new Size(164, 42);
+            UpdateStudentBtn.StateCommon.Back.Color1 = Color.MediumSeaGreen;
+            UpdateStudentBtn.StateCommon.Back.Color2 = Color.MediumSeaGreen;
+            UpdateStudentBtn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            UpdateStudentBtn.StateCommon.Border.Rounding = 6F;
+            UpdateStudentBtn.StateCommon.Content.ShortText.Color1 = Color.Black;
+            UpdateStudentBtn.StateCommon.Content.ShortText.Color2 = Color.Black;
+            UpdateStudentBtn.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            UpdateStudentBtn.StateDisabled.Back.Color1 = Color.Transparent;
+            UpdateStudentBtn.StateDisabled.Back.Color2 = Color.Transparent;
+            UpdateStudentBtn.StateDisabled.Border.Color1 = Color.Black;
+            UpdateStudentBtn.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            UpdateStudentBtn.StateDisabled.Border.Rounding = 6F;
+            UpdateStudentBtn.StateDisabled.Content.ShortText.Color1 = Color.Black;
+            UpdateStudentBtn.StateDisabled.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            UpdateStudentBtn.StatePressed.Back.Color1 = Color.Transparent;
+            UpdateStudentBtn.StatePressed.Border.Color2 = Color.Black;
+            UpdateStudentBtn.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            UpdateStudentBtn.StatePressed.Border.Rounding = 6F;
+            UpdateStudentBtn.StatePressed.Content.ShortText.Color2 = Color.Black;
+            UpdateStudentBtn.StatePressed.Content.ShortText.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            UpdateStudentBtn.TabIndex = 6;
+            UpdateStudentBtn.Values.Text = "UPDATE STUDENT";
+            UpdateStudentBtn.Click += UpdateStudentBtn_Click;
+            // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(353, 408);
+            label6.Location = new Point(337, 381);
             label6.Name = "label6";
             label6.Size = new Size(103, 14);
             label6.TabIndex = 18;
@@ -409,7 +409,7 @@
             // UserConfirmPassTXT
             // 
             UserConfirmPassTXT.Cursor = Cursors.IBeam;
-            UserConfirmPassTXT.Location = new Point(462, 398);
+            UserConfirmPassTXT.Location = new Point(446, 372);
             UserConfirmPassTXT.Name = "UserConfirmPassTXT";
             UserConfirmPassTXT.PasswordChar = '●';
             UserConfirmPassTXT.Size = new Size(219, 34);
@@ -446,7 +446,7 @@
             // 
             CBShowpass.AutoSize = true;
             CBShowpass.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            CBShowpass.Location = new Point(475, 438);
+            CBShowpass.Location = new Point(460, 412);
             CBShowpass.Name = "CBShowpass";
             CBShowpass.Size = new Size(107, 18);
             CBShowpass.TabIndex = 7;
@@ -458,7 +458,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(353, 331);
+            label4.Location = new Point(337, 314);
             label4.Name = "label4";
             label4.Size = new Size(59, 14);
             label4.TabIndex = 14;
@@ -468,7 +468,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(353, 252);
+            label3.Location = new Point(337, 235);
             label3.Name = "label3";
             label3.Size = new Size(37, 14);
             label3.TabIndex = 13;
@@ -478,7 +478,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(353, 137);
+            label2.Location = new Point(337, 120);
             label2.Name = "label2";
             label2.Size = new Size(58, 14);
             label2.TabIndex = 12;
@@ -488,7 +488,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(353, 61);
+            label1.Location = new Point(337, 44);
             label1.Name = "label1";
             label1.Size = new Size(60, 14);
             label1.TabIndex = 11;
@@ -497,9 +497,9 @@
             // CancelBtn
             // 
             CancelBtn.Cursor = Cursors.Hand;
-            CancelBtn.Location = new Point(366, 502);
+            CancelBtn.Location = new Point(24, 20);
             CancelBtn.Name = "CancelBtn";
-            CancelBtn.Size = new Size(151, 38);
+            CancelBtn.Size = new Size(151, 24);
             CancelBtn.StateCommon.Back.Color1 = Color.Crimson;
             CancelBtn.StateCommon.Back.Color2 = Color.Crimson;
             CancelBtn.StateCommon.Border.Color1 = Color.Black;
@@ -516,7 +516,7 @@
             // 
             UserCourseCB.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             UserCourseCB.FormattingEnabled = true;
-            UserCourseCB.Location = new Point(462, 191);
+            UserCourseCB.Location = new Point(446, 174);
             UserCourseCB.Name = "UserCourseCB";
             UserCourseCB.Size = new Size(219, 22);
             UserCourseCB.TabIndex = 3;
@@ -524,7 +524,7 @@
             // UserLastNameTXT
             // 
             UserLastNameTXT.Cursor = Cursors.IBeam;
-            UserLastNameTXT.Location = new Point(462, 125);
+            UserLastNameTXT.Location = new Point(446, 108);
             UserLastNameTXT.Name = "UserLastNameTXT";
             UserLastNameTXT.Size = new Size(219, 34);
             UserLastNameTXT.StateActive.Back.Color1 = Color.White;
@@ -559,7 +559,7 @@
             // UserFirstNameTXT
             // 
             UserFirstNameTXT.Cursor = Cursors.IBeam;
-            UserFirstNameTXT.Location = new Point(462, 50);
+            UserFirstNameTXT.Location = new Point(446, 33);
             UserFirstNameTXT.Name = "UserFirstNameTXT";
             UserFirstNameTXT.Size = new Size(219, 34);
             UserFirstNameTXT.StateActive.Back.Color1 = Color.White;
@@ -594,7 +594,7 @@
             // UserPasswordTXT
             // 
             UserPasswordTXT.Cursor = Cursors.IBeam;
-            UserPasswordTXT.Location = new Point(462, 322);
+            UserPasswordTXT.Location = new Point(446, 305);
             UserPasswordTXT.Name = "UserPasswordTXT";
             UserPasswordTXT.PasswordChar = '●';
             UserPasswordTXT.Size = new Size(219, 34);
@@ -630,7 +630,7 @@
             // UserEmailTXT
             // 
             UserEmailTXT.Cursor = Cursors.IBeam;
-            UserEmailTXT.Location = new Point(462, 243);
+            UserEmailTXT.Location = new Point(446, 226);
             UserEmailTXT.Name = "UserEmailTXT";
             UserEmailTXT.Size = new Size(219, 34);
             UserEmailTXT.StateActive.Back.Color1 = Color.White;
@@ -666,7 +666,7 @@
             // 
             BrowseImageBtn.FlatStyle = FlatStyle.Flat;
             BrowseImageBtn.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            BrowseImageBtn.Location = new Point(60, 286);
+            BrowseImageBtn.Location = new Point(60, 314);
             BrowseImageBtn.Name = "BrowseImageBtn";
             BrowseImageBtn.Size = new Size(206, 27);
             BrowseImageBtn.TabIndex = 8;
@@ -676,7 +676,7 @@
             // 
             // UserPicturePB
             // 
-            UserPicturePB.Location = new Point(77, 45);
+            UserPicturePB.Location = new Point(77, 73);
             UserPicturePB.Name = "UserPicturePB";
             UserPicturePB.Size = new Size(174, 221);
             UserPicturePB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -708,7 +708,7 @@
         private Panel panel1;
         private Panel StudentPanel;
         private Panel crudPanel;
-        private Krypton.Toolkit.KryptonButton DeleteUserBtn;
+        private Krypton.Toolkit.KryptonButton DeleteStudentBtn;
         private PictureBox UserPicturePB;
         private Button BrowseImageBtn;
         private Krypton.Toolkit.KryptonTextBox UserEmailTXT;
@@ -740,7 +740,7 @@
         private Label label12;
         private Label label11;
         private Label label10;
-        private Krypton.Toolkit.KryptonButton AddAndUpdateUserBtn;
-        private Krypton.Toolkit.KryptonButton OpenPanelToAddUserBtn;
+        private Krypton.Toolkit.KryptonButton AddStudentBtn;
+        private Krypton.Toolkit.KryptonButton UpdateStudentBtn;
     }
 }
