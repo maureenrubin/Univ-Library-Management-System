@@ -72,6 +72,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 int bookId = 0;
                 string title = BooksTitleTXT.Text;
                 string genre = BooksGenreTXT.Text;
+                int selectedCategoryId;
                 DateTime publishedDate = PublisedDateTime.Value;
 
 
@@ -85,7 +86,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     }
                 }
 
-                if (BookCategoryCB.SelectedValue == null || !int.TryParse(BookCategoryCB.SelectedValue.ToString(), out int selectedCategory))
+                if (BookCategoryCB.SelectedValue == null || !int.TryParse(BookCategoryCB.SelectedValue.ToString(), out selectedCategoryId))
                 {
                     MessageBox.Show("Please select a valid category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -123,7 +124,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     BookStock = bookStock,
                     BooksPicture = booksPicture,
                     BookPrice = bookPrice,
-                    CategoryId = selectedCategory
+                    CategoryId = selectedCategoryId
                 };
 
                 await bookServices.AddBookAsync(newBook);
@@ -182,23 +183,31 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             {
                 var bookCategories = await categoryServices.GetAllBookCategoriesAsync();
 
-                if (bookCategories != null && bookCategories.Any())
+                if (bookCategories == null || !bookCategories.Any())
                 {
-                    BookCategoryCB.DataSource = bookCategories.ToList();
-                    BookCategoryCB.DisplayMember = "CategoriesName";
-                    BookCategoryCB.ValueMember = "CategoriesId";
+                    MessageBox.Show("No categories available.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-                else
+
+                var validCategories = bookCategories
+                    .Where(c => !string.IsNullOrEmpty(c.CategoryName) && c.BCategoryId != null)
+                    .ToList();
+
+                if (!validCategories.Any())
                 {
-                    MessageBox.Show("No categories available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No valid categories available.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
+
+                BookCategoryCB.DataSource = validCategories;
+                BookCategoryCB.DisplayMember = "CategoryName"; // Display text
+                BookCategoryCB.ValueMember = "BCategoryId";   // Underlying value
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error Loading Book Categories: {ex.Message} ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"Error Loading Book Categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private async void UpdateBookBtn_Click(object sender, EventArgs e)
         {
             try

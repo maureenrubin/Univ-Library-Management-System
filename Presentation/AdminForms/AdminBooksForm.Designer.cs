@@ -99,7 +99,6 @@
             // 
             // BookCategoryCB
             // 
-            BookCategoryCB.DataSource = bookCategoryEntityBindingSource;
             BookCategoryCB.Font = new Font("Gadugi", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             BookCategoryCB.FormattingEnabled = true;
             BookCategoryCB.Location = new Point(498, 377);
