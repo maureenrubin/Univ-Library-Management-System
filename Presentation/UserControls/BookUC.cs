@@ -48,6 +48,7 @@ namespace LibraryManagementSystem.Presentation
             BooksGenreLbl.Text = bookEntity.Genre;
             BooksPriceLbl.Text = bookEntity.BookPrice.ToString();
             BooksIdLbl.Text = bookEntity.BookId.ToString();
+           // BookCategoryLbl = bookEntity.BookCategory
             PublishedDate.Text = bookEntity.PublishedDate.ToShortDateString();
 
 
