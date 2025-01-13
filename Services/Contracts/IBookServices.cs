@@ -14,7 +14,7 @@ namespace LibraryManagementSystem.Repositories.Interfaces
 
         Task <BooksEntity> GetBookByIdAsync(int bookId);
 
-        Task<int> AddBookAsync(BooksEntity books);
+        Task<int> AddBookAsync(BooksEntity book);
 
         Task UpdateBookAsync(BookDTO bookDTO);
 

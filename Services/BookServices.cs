@@ -48,7 +48,7 @@ namespace LibraryManagementSystem.Repositories
                 {
 
 
-                    var addBook = new BooksEntity
+                    var addBook = new BookDTO
                     {
                         Title = book.Title,
                         Genre = book.Genre,
@@ -56,7 +56,7 @@ namespace LibraryManagementSystem.Repositories
                         BookStock = book.BookStock,
                         BookPrice = book.BookPrice,
                         BooksPicture = book.BooksPicture,
-                        Category = book.Category,
+                        CategoryId = book.CategoryId,
 
 
                     };
@@ -94,7 +94,7 @@ namespace LibraryManagementSystem.Repositories
                     existingBook.Genre = bookDTO.Genre;
                     existingBook.Title = bookDTO.Title;
                     existingBook.BookStock = bookDTO.BookStock;
-                    existingBook.Category = bookDTO.Category;
+                    existingBook.CategoryId = bookDTO.CategoryId;
 
                     await dbContextOptions.SaveChangesAsync();
                 }
