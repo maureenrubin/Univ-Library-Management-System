@@ -64,6 +64,58 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             crudBooksTransition.Start();
             sidePanelTransition.Start();
         }
+        private async Task LoadBooksDetails()
+        {
+            try
+            {
+                var bookList = await bookServices.GetAllBooksAsync();
+                FormsControlHelper.ClearControls(this);
+
+                foreach (var book in bookList)
+                {
+                    var bookDisplay = new BookUC(book, bookServices, categoryServices);
+                    bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
+                    BooksFLP.Controls.Add(bookDisplay);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error Loading Books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private async void LoadBookCategories()
+        {
+            try
+            {
+                var bookCategories = await categoryServices.GetAllBookCategoriesAsync();
+
+                if (bookCategories == null || !bookCategories.Any())
+                {
+                    MessageBox.Show("No categories available.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var validCategories = bookCategories
+                    .Where(c => !string.IsNullOrEmpty(c.CategoryName) && c.BCategoryId != null)
+                    .ToList();
+
+                if (!validCategories.Any())
+                {
+                    MessageBox.Show("No valid categories available.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                BookCategoryCB.DataSource = validCategories;
+                BookCategoryCB.DisplayMember = "CategoryName"; // Display text
+                BookCategoryCB.ValueMember = "BCategoryId";   // Underlying value
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error Loading Book Categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private async void AddBookBtn_Click(object sender, EventArgs e)
         {
@@ -156,58 +208,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
-        private async Task LoadBooksDetails()
-        {
-            try
-            {
-                var bookList = await bookServices.GetAllBooksAsync();
-                FormsControlHelper.ClearControls(this);
-
-                foreach (var book in bookList)
-                {
-                    var bookDisplay = new BookUC(book, bookServices, categoryServices);
-                    bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
-                    BooksFLP.Controls.Add(bookDisplay);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error Loading Books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private async void LoadBookCategories()
-        {
-            try
-            {
-                var bookCategories = await categoryServices.GetAllBookCategoriesAsync();
-
-                if (bookCategories == null || !bookCategories.Any())
-                {
-                    MessageBox.Show("No categories available.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                var validCategories = bookCategories
-                    .Where(c => !string.IsNullOrEmpty(c.CategoryName) && c.BCategoryId != null)
-                    .ToList();
-
-                if (!validCategories.Any())
-                {
-                    MessageBox.Show("No valid categories available.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                BookCategoryCB.DataSource = validCategories;
-                BookCategoryCB.DisplayMember = "CategoryName"; // Display text
-                BookCategoryCB.ValueMember = "BCategoryId";   // Underlying value
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error Loading Book Categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+     
 
         private async void UpdateBookBtn_Click(object sender, EventArgs e)
         {

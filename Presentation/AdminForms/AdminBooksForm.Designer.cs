@@ -51,10 +51,10 @@
             BooksTitleTXT = new Krypton.Toolkit.KryptonTextBox();
             ManageBooksBTN = new Button();
             panel2 = new Panel();
-            BooksFLP = new FlowLayoutPanel();
-            panel3 = new Panel();
             button1 = new Button();
             SearchBookTXT = new Krypton.Toolkit.KryptonTextBox();
+            panel3 = new Panel();
+            BooksFLP = new FlowLayoutPanel();
             BooksPanel.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BooksPB).BeginInit();
@@ -419,31 +419,15 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(169, 131, 110);
+            panel2.Controls.Add(BooksFLP);
             panel2.Controls.Add(button1);
             panel2.Controls.Add(SearchBookTXT);
             panel2.Controls.Add(panel3);
-            panel2.Controls.Add(BooksFLP);
             panel2.Dock = DockStyle.Right;
             panel2.Location = new Point(65, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(1371, 795);
             panel2.TabIndex = 1;
-            // 
-            // BooksFLP
-            // 
-            BooksFLP.AutoScroll = true;
-            BooksFLP.BackColor = Color.FromArgb(169, 131, 110);
-            BooksFLP.Location = new Point(25, 98);
-            BooksFLP.Name = "BooksFLP";
-            BooksFLP.Size = new Size(1318, 673);
-            BooksFLP.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            panel3.Location = new Point(25, 65);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1318, 27);
-            panel3.TabIndex = 1;
             // 
             // button1
             // 
@@ -452,7 +436,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(55, 12);
+            button1.Location = new Point(23, 25);
             button1.Name = "button1";
             button1.Size = new Size(26, 34);
             button1.TabIndex = 18;
@@ -461,7 +445,7 @@
             // SearchBookTXT
             // 
             SearchBookTXT.Cursor = Cursors.IBeam;
-            SearchBookTXT.Location = new Point(87, 12);
+            SearchBookTXT.Location = new Point(55, 25);
             SearchBookTXT.Name = "SearchBookTXT";
             SearchBookTXT.Size = new Size(425, 34);
             SearchBookTXT.StateActive.Back.Color1 = Color.White;
@@ -493,6 +477,22 @@
             SearchBookTXT.StateNormal.Content.Padding = new Padding(5);
             SearchBookTXT.TabIndex = 19;
             SearchBookTXT.TextChanged += SearchBookTXT_TextChanged;
+            // 
+            // panel3
+            // 
+            panel3.Location = new Point(23, 65);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1320, 27);
+            panel3.TabIndex = 1;
+            // 
+            // BooksFLP
+            // 
+            BooksFLP.AutoScroll = true;
+            BooksFLP.BackColor = Color.FromArgb(169, 131, 110);
+            BooksFLP.Location = new Point(25, 98);
+            BooksFLP.Name = "BooksFLP";
+            BooksFLP.Size = new Size(1318, 673);
+            BooksFLP.TabIndex = 0;
             // 
             // AdminBooksForm
             // 
