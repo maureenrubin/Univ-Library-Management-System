@@ -10,6 +10,9 @@ namespace LibraryManagementSystem.Services.Contracts
     public interface ICategoryServices
     {
         Task<IEnumerable<BookCategoryEntity>> GetAllBookCategoriesAsync();
-        
+
+        Task<BookCategoryEntity> GetCategoryByIdAsync(int categoryId);
+
+
     }
 }

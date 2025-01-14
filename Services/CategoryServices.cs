@@ -36,8 +36,16 @@ namespace LibraryManagementSystem.Services
             {
                 throw new Exception($"Error retrieving all Categories. {ex.Message}", ex);
             }
-          
            
+        }
+
+        public async Task <BookCategoryEntity> GetCategoryByIdAsync(int categoryId)
+        {
+            using( var dbContextOptions = new LMSDbContext(_dbContextOptions))
+            {
+                return await dbContextOptions.BookCategory
+                    .FirstOrDefaultAsync(c => c.BCategoryId == categoryId);
+            }
         }
     }
 }
