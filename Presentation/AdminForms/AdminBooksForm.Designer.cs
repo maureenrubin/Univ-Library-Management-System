@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminBooksForm));
             BooksPanel = new Panel();
             panel1 = new Panel();
             BookCategoryCB = new ComboBox();
-            bookCategoryEntityBindingSource = new BindingSource(components);
             label6 = new Label();
             DeleteBookBtn = new Krypton.Toolkit.KryptonButton();
             UpdateBookBtn = new Krypton.Toolkit.KryptonButton();
@@ -54,9 +52,11 @@
             ManageBooksBTN = new Button();
             panel2 = new Panel();
             BooksFLP = new FlowLayoutPanel();
+            panel3 = new Panel();
+            button1 = new Button();
+            SearchBookTXT = new Krypton.Toolkit.KryptonTextBox();
             BooksPanel.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)bookCategoryEntityBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BooksPB).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -68,7 +68,7 @@
             BooksPanel.Controls.Add(ManageBooksBTN);
             BooksPanel.Location = new Point(12, 132);
             BooksPanel.Name = "BooksPanel";
-            BooksPanel.Size = new Size(881, 611);
+            BooksPanel.Size = new Size(47, 611);
             BooksPanel.TabIndex = 0;
             // 
             // panel1
@@ -419,6 +419,9 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(169, 131, 110);
+            panel2.Controls.Add(button1);
+            panel2.Controls.Add(SearchBookTXT);
+            panel2.Controls.Add(panel3);
             panel2.Controls.Add(BooksFLP);
             panel2.Dock = DockStyle.Right;
             panel2.Location = new Point(65, 0);
@@ -430,10 +433,66 @@
             // 
             BooksFLP.AutoScroll = true;
             BooksFLP.BackColor = Color.FromArgb(169, 131, 110);
-            BooksFLP.Location = new Point(25, 73);
+            BooksFLP.Location = new Point(25, 98);
             BooksFLP.Name = "BooksFLP";
-            BooksFLP.Size = new Size(1304, 688);
+            BooksFLP.Size = new Size(1318, 673);
             BooksFLP.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            panel3.Location = new Point(25, 65);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1318, 27);
+            panel3.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+            button1.Location = new Point(55, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(26, 34);
+            button1.TabIndex = 18;
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // SearchBookTXT
+            // 
+            SearchBookTXT.Cursor = Cursors.IBeam;
+            SearchBookTXT.Location = new Point(87, 12);
+            SearchBookTXT.Name = "SearchBookTXT";
+            SearchBookTXT.Size = new Size(425, 34);
+            SearchBookTXT.StateActive.Back.Color1 = Color.White;
+            SearchBookTXT.StateActive.Border.Color1 = Color.Black;
+            SearchBookTXT.StateActive.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            SearchBookTXT.StateActive.Border.Rounding = 10F;
+            SearchBookTXT.StateActive.Content.Color1 = Color.FromArgb(64, 64, 64);
+            SearchBookTXT.StateActive.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SearchBookTXT.StateActive.Content.Padding = new Padding(5);
+            SearchBookTXT.StateCommon.Back.Color1 = Color.White;
+            SearchBookTXT.StateCommon.Border.Color1 = Color.Black;
+            SearchBookTXT.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            SearchBookTXT.StateCommon.Border.Rounding = 10F;
+            SearchBookTXT.StateCommon.Content.Color1 = Color.FromArgb(64, 64, 64);
+            SearchBookTXT.StateCommon.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SearchBookTXT.StateCommon.Content.Padding = new Padding(5);
+            SearchBookTXT.StateDisabled.Back.Color1 = Color.White;
+            SearchBookTXT.StateDisabled.Border.Color1 = Color.Black;
+            SearchBookTXT.StateDisabled.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            SearchBookTXT.StateDisabled.Border.Rounding = 10F;
+            SearchBookTXT.StateDisabled.Content.Color1 = Color.FromArgb(64, 64, 64);
+            SearchBookTXT.StateDisabled.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SearchBookTXT.StateNormal.Back.Color1 = Color.FromArgb(224, 224, 224);
+            SearchBookTXT.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            SearchBookTXT.StateNormal.Border.Rounding = 10F;
+            SearchBookTXT.StateNormal.Border.Width = 10;
+            SearchBookTXT.StateNormal.Content.Color1 = Color.FromArgb(64, 64, 64);
+            SearchBookTXT.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SearchBookTXT.StateNormal.Content.Padding = new Padding(5);
+            SearchBookTXT.TabIndex = 19;
+            SearchBookTXT.TextChanged += SearchBookTXT_TextChanged;
             // 
             // AdminBooksForm
             // 
@@ -449,9 +508,9 @@
             BooksPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)bookCategoryEntityBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)BooksPB).EndInit();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -480,6 +539,8 @@
         private Label label6;
         private FlowLayoutPanel BooksFLP;
         private ComboBox BookCategoryCB;
-        private BindingSource bookCategoryEntityBindingSource;
+        private Panel panel3;
+        private Button button1;
+        private Krypton.Toolkit.KryptonTextBox SearchBookTXT;
     }
 }

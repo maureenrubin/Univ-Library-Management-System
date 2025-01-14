@@ -156,7 +156,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
         }
 
-        private async void LoadBooksDetails()
+        private async Task LoadBooksDetails()
         {
             try
             {
@@ -165,7 +165,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 foreach (var book in bookList)
                 {
-                    var bookDisplay = new BookUC(book, bookServices);
+                    var bookDisplay = new BookUC(book, bookServices, categoryServices);
                     bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
                     BooksFLP.Controls.Add(bookDisplay);
                 }
@@ -208,6 +208,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 MessageBox.Show($"Error Loading Book Categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private async void UpdateBookBtn_Click(object sender, EventArgs e)
         {
             try
@@ -257,8 +258,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 await bookServices.UpdateBookAsync(updateBook);
                 MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                LoadBooksDetails();
                 FormsControlHelper.ClearControls(BooksPanel);
+                LoadBooksDetails();
             }
             catch (Exception ex)
             {
@@ -285,7 +286,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             BooksPriceTXT.Text = booksEntity.BookPrice.ToString();
             BooksStocksTXT.Text = booksEntity.BookStock.ToString();
 
-            if(booksEntity.CategoryId != 0)
+            if (booksEntity.CategoryId != 0)
             {
                 BookCategoryCB.SelectedValue = booksEntity.CategoryId;
             }
@@ -303,21 +304,21 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private void DisplayBooksToUI(BooksEntity books)
         {
             BooksFLP.Controls.Clear();
-            BookUC bookDisplay = new BookUC(books, bookServices);
+            BookUC bookDisplay = new BookUC(books, bookServices, categoryServices);
             BooksFLP.Controls.Add(bookDisplay);
         }
 
         private async void DeleteBookBtn_Click(object sender, EventArgs e)
         {
-            if(!BookUpdateMode || BookIdUpdate == 0)
+            if (!BookUpdateMode || BookIdUpdate == 0)
             {
                 MessageBox.Show("Please select a book to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             var confirmRemove = MessageBox.Show("Are you sure you want to remove this book?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
-            if(confirmRemove == DialogResult.Yes)
+
+            if (confirmRemove == DialogResult.Yes)
             {
                 try
                 {
@@ -334,6 +335,39 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 {
                     MessageBox.Show($"Error Deleting Books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private async void SearchBookTXT_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchBook = SearchBookTXT.Text.Trim();
+
+                if (string.IsNullOrEmpty(searchBook))
+                {
+                   await LoadBooksDetails();
+                    return;
+                }
+
+                var allBooks = await bookServices.GetAllBooksAsync();
+
+                var  filteredBooks = allBooks
+                    .Where(b => (!string.IsNullOrEmpty(b.Title) && b.Title.Contains(searchBook, StringComparison.OrdinalIgnoreCase)) 
+                    || (!string.IsNullOrEmpty(b.BookCategory?.CategoryName) && b.BookCategory.CategoryName.Contains(searchBook, StringComparison.OrdinalIgnoreCase)))
+                     .ToList();
+             
+                BooksFLP.Controls.Clear();
+                foreach (var book in filteredBooks)
+                {
+                    var bookDisplay = new BookUC(book, bookServices, categoryServices);
+                    bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
+                    BooksFLP.Controls.Add(bookDisplay);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error during searching books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
