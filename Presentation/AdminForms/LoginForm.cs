@@ -42,7 +42,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             this.signInForm = signInForm;
         }
 
-       
+
         private void ExitBTN_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -105,6 +105,12 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
 
             MessageBox.Show("Incorrect email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        private void ForgotPassLBL_Click(object sender, EventArgs e)
+        {
+            // forgot pass form
 
         }
     }

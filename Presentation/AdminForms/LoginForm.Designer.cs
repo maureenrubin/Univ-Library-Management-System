@@ -229,6 +229,7 @@
             // ForgotPassLBL
             // 
             ForgotPassLBL.AutoSize = true;
+            ForgotPassLBL.Cursor = Cursors.Hand;
             ForgotPassLBL.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             ForgotPassLBL.ForeColor = SystemColors.ButtonHighlight;
             ForgotPassLBL.Location = new Point(364, 669);
@@ -236,6 +237,7 @@
             ForgotPassLBL.Size = new Size(166, 20);
             ForgotPassLBL.TabIndex = 23;
             ForgotPassLBL.Text = "Forgot your password?";
+            ForgotPassLBL.Click += ForgotPassLBL_Click;
             // 
             // LoginForm
             // 
