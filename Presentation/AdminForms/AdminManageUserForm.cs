@@ -57,7 +57,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         }
 
 
-        private async void LoadStudentDetails()
+        private async Task LoadStudentDetails()
         {
             try
             {
@@ -315,6 +315,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                         MessageBox.Show("Student removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         FormsControlHelper.ClearControls(crudPanel);
                         LoadStudentDetails();
+                        
                     }
                     else
                     {
@@ -326,6 +327,42 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     MessageBox.Show($"Error Removing Student: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private async void SearchUserBtn_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchStudent = SearchUserBtn.Text.Trim();
+
+                if (string.IsNullOrEmpty(searchStudent))
+                {
+                    await LoadStudentDetails();
+                    return;
+                }
+
+                var allStudent = await userServices.GetAllUsersAsync();
+
+                var filteredStudent = allStudent
+                    .Where(student => (!string.IsNullOrEmpty(student.FirstName) && student.FirstName.Contains(searchStudent, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(student.Course.Name) && student.Course.Name.Contains(searchStudent, StringComparison.OrdinalIgnoreCase)))
+                    .ToList();
+
+                FormsControlHelper.ClearControls(PANEL);
+
+                foreach (var student in filteredStudent)
+                {
+                    var userDisplay = new UserDetailsUC(student, userServices);
+                    userDisplay.StudentClicked += UserDetailsUC_StudentCliked;
+                    UserControlHelper.AddUserControlToPanel(userDisplay, ITStudentFLP, SWStudentFLP, BEStudentFLP, BAStudentFLP);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during searching students: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+
         }
     }
 }

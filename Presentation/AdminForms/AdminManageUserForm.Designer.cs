@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminManageUserForm));
-            panel1 = new Panel();
+            PANEL = new Panel();
             LABLE = new Label();
             label5 = new Label();
             label7 = new Label();
@@ -66,33 +66,33 @@
             UserEmailTXT = new Krypton.Toolkit.KryptonTextBox();
             BrowseImageBtn = new Button();
             UserPicturePB = new PictureBox();
-            panel1.SuspendLayout();
+            PANEL.SuspendLayout();
             StudentPanel.SuspendLayout();
             crudPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)UserPicturePB).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // PANEL
             // 
-            panel1.BackColor = Color.FromArgb(169, 131, 110);
-            panel1.Controls.Add(LABLE);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(label13);
-            panel1.Controls.Add(label12);
-            panel1.Controls.Add(label11);
-            panel1.Controls.Add(label10);
-            panel1.Controls.Add(label8);
-            panel1.Controls.Add(BAStudentFLP);
-            panel1.Controls.Add(BEStudentFLP);
-            panel1.Controls.Add(SWStudentFLP);
-            panel1.Controls.Add(ITStudentFLP);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(SearchUserBtn);
-            panel1.Location = new Point(63, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1361, 792);
-            panel1.TabIndex = 0;
+            PANEL.BackColor = Color.FromArgb(169, 131, 110);
+            PANEL.Controls.Add(LABLE);
+            PANEL.Controls.Add(label5);
+            PANEL.Controls.Add(label7);
+            PANEL.Controls.Add(label13);
+            PANEL.Controls.Add(label12);
+            PANEL.Controls.Add(label11);
+            PANEL.Controls.Add(label10);
+            PANEL.Controls.Add(label8);
+            PANEL.Controls.Add(BAStudentFLP);
+            PANEL.Controls.Add(BEStudentFLP);
+            PANEL.Controls.Add(SWStudentFLP);
+            PANEL.Controls.Add(ITStudentFLP);
+            PANEL.Controls.Add(button1);
+            PANEL.Controls.Add(SearchUserBtn);
+            PANEL.Location = new Point(63, 3);
+            PANEL.Name = "PANEL";
+            PANEL.Size = new Size(1361, 792);
+            PANEL.TabIndex = 0;
             // 
             // LABLE
             // 
@@ -257,6 +257,7 @@
             SearchUserBtn.StateNormal.Content.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point);
             SearchUserBtn.StateNormal.Content.Padding = new Padding(5);
             SearchUserBtn.TabIndex = 17;
+            SearchUserBtn.TextChanged += SearchUserBtn_TextChanged;
             // 
             // StudentPanel
             // 
@@ -690,12 +691,12 @@
             BackColor = Color.FromArgb(169, 131, 110);
             ClientSize = new Size(1436, 795);
             Controls.Add(StudentPanel);
-            Controls.Add(panel1);
+            Controls.Add(PANEL);
             FormBorderStyle = FormBorderStyle.None;
             Name = "AdminManageUserForm";
             Text = "AdminAccountForm";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            PANEL.ResumeLayout(false);
+            PANEL.PerformLayout();
             StudentPanel.ResumeLayout(false);
             crudPanel.ResumeLayout(false);
             crudPanel.PerformLayout();
@@ -705,7 +706,7 @@
 
         #endregion
 
-        private Panel panel1;
+        private Panel PANEL;
         private Panel StudentPanel;
         private Panel crudPanel;
         private Krypton.Toolkit.KryptonButton DeleteStudentBtn;
