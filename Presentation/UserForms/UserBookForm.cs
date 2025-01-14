@@ -2,6 +2,7 @@
 using LibraryManagementSystem.Presentation.AdminForms;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
+using LibraryManagementSystem.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +19,11 @@ namespace LibraryManagementSystem.Presentation.UserForms
     {
         private readonly IBookServices bookServices;
         private readonly BooksEntity booksEntity;
+        private readonly ICategoryServices categoryServices;
 
         public UserBookForm(IBookServices bookServices,
-                            BooksEntity booksEntity)
+                            BooksEntity booksEntity,
+                            ICategoryServices  categoryServices)
         {
             InitializeComponent();
             this.bookServices = bookServices;
@@ -43,7 +46,7 @@ namespace LibraryManagementSystem.Presentation.UserForms
 
         private void DisplayBooksToUI(BooksEntity booksEntity)
         {
-            BookUC bookDisplay = new BookUC(booksEntity);
+            BookUC bookDisplay = new BookUC(booksEntity, bookServices, categoryServices);
             UserBooksFLP.Controls.Add(bookDisplay);
         }
     }
