@@ -13,6 +13,8 @@ using LibraryManagementSystem.Presentation.UserControls;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Domain.Entities;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Diagnostics.CodeAnalysis;
+using System.Xml.Serialization;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -61,8 +63,9 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             try
             {
-                var userList = await userServices.GetAllUsersAsync();
                 FormsControlHelper.ClearControls(this);
+                var userList = await userServices.GetAllUsersAsync();
+                
 
                 foreach (var student in userList)
                 {
@@ -335,6 +338,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             {
                 string searchStudent = SearchUserBtn.Text.Trim();
 
+                FormsControlHelper.ClearControls(this);
+
                 if (string.IsNullOrEmpty(searchStudent))
                 {
                     await LoadStudentDetails();
@@ -344,12 +349,12 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 var allStudent = await userServices.GetAllUsersAsync();
 
                 var filteredStudent = allStudent
-                    .Where(student => (!string.IsNullOrEmpty(student.FirstName) && student.FirstName.Contains(searchStudent, StringComparison.OrdinalIgnoreCase)) ||
-                    (!string.IsNullOrEmpty(student.Course.Name) && student.Course.Name.Contains(searchStudent, StringComparison.OrdinalIgnoreCase)))
-                    .ToList();
+                 .Where(u => (!string.IsNullOrEmpty(u.Email) && u.Email.Contains(searchStudent, StringComparison.OrdinalIgnoreCase))
+                     || (!string.IsNullOrEmpty(u.FirstName) && u.FirstName.Contains(searchStudent, StringComparison.OrdinalIgnoreCase))
+                     || (!string.IsNullOrEmpty(u.LastName) && u.LastName.Contains(searchStudent, StringComparison.OrdinalIgnoreCase)))
+                      .ToList();
 
-                FormsControlHelper.ClearControls(PANEL);
-
+                FormsControlHelper.ClearControls(this);
                 foreach (var student in filteredStudent)
                 {
                     var userDisplay = new UserDetailsUC(student, userServices);
