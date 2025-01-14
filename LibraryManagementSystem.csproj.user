@@ -25,6 +25,9 @@
     <Compile Update="Presentation\AdminForms\ManageAdminsForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Presentation\AdminForms\ResetPassForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Presentation\UserControls\BookUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
