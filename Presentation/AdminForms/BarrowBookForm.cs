@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,30 +19,48 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private readonly BooksEntity booksEntity;
         private readonly IBookServices bookServices;
         private readonly ICategoryServices categoryServices;
+        private readonly IBarrowServices barrowServices;
 
 
         public BarrowBookForm(IBookServices bookServices,
                               ICategoryServices categoryServices,
+                              IBarrowServices barrowServices,
                               BooksEntity booksEntity)
         {
             InitializeComponent();
             this.bookServices = bookServices;
             this.categoryServices = categoryServices;
             this.booksEntity = booksEntity;
-
+            this.barrowServices = barrowServices;
 
             LoadBarrowBookDetails();
         }
 
-        private void LoadBarrowBookDetails()
+        private async void LoadBarrowBookDetails()
         {
             try
             {
-                var allBook = bookServices.GetAllBooksAsync();
+                int bookId = booksEntity.BookId;
+                int userId = 2017;
 
-                if(allBook == null)
+                var bookDetails = await barrowServices.GetBookDetailsAsync(booksEntity.BookId, userId);
+
+                BookIdLBL.Text = bookDetails.BookId.ToString();
+                BookTitle.Text = bookDetails.Title;
+                BarrowDateLBL.Text = bookDetails.BarrowedDate.ToShortDateString();
+                BarrowedPriceLBL.Text = bookDetails.BookPrice.ToString("C");
+                DueDateLBL.Text = bookDetails.DueDate.ToShortDateString();
+
+                if(bookDetails.BooksPicture != null)
                 {
-                    MessageBox.Show("No book", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    using (var ms = new MemoryStream(bookDetails.BooksPicture))
+                    {
+                        BookPB.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    BookPB.Image = null;
                 }
 
 

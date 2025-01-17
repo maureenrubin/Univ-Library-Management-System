@@ -294,7 +294,7 @@
             // 
             // CancelBarrowBTN
             // 
-            CancelBarrowBTN.Location = new Point(462, 304);
+            CancelBarrowBTN.Location = new Point(260, 304);
             CancelBarrowBTN.Name = "CancelBarrowBTN";
             CancelBarrowBTN.Size = new Size(125, 38);
             CancelBarrowBTN.StateCommon.Back.Color1 = Color.Firebrick;
@@ -310,7 +310,7 @@
             // BarrowNowBTN
             // 
             BarrowNowBTN.Cursor = Cursors.Hand;
-            BarrowNowBTN.Location = new Point(609, 304);
+            BarrowNowBTN.Location = new Point(407, 304);
             BarrowNowBTN.Name = "BarrowNowBTN";
             BarrowNowBTN.Size = new Size(125, 38);
             BarrowNowBTN.StateCommon.Back.Color1 = Color.MediumSeaGreen;
@@ -357,7 +357,7 @@
             Controls.Add(ExitBTN);
             FormBorderStyle = FormBorderStyle.None;
             Name = "BarrowBookForm";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "BarrowBookForm";
             ((System.ComponentModel.ISupportInitialize)BookPB).EndInit();
             panel1.ResumeLayout(false);
