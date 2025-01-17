@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace LibraryManagementSystem.Domain.Entities
 {
     public class BarrowedItemEntity
     {
+        [Key]
         public int BarrowedItemId { get; set; }
 
         public DateTime BarrowedDate { get; set; }
@@ -23,7 +25,8 @@ namespace LibraryManagementSystem.Domain.Entities
         public decimal BarrowedPrice { get; set; }
 
         public int Quantity { get; set; }
-       
+
+        public int BookStock  { get; set; }
 
         public UserEntity User { get; set; }
         public BooksEntity Book { get; set; }
