@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryManagementSystem.Domain.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace LibraryManagementSystem.Services.Contracts
 {
     public interface IBarrowServices
     {
+        Task<BarrowBookDTO> GetBookDetailsAsync(int bookId, int userId);
 
-
+        Task AddBarrowBookAsync(BarrowBookDTO barrowBookDTO);
     }
 }
