@@ -28,7 +28,9 @@ namespace LibraryManagementSystem.Repositories
         {
             using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
             {
-                return await dbContextOptions.Books.ToListAsync();
+                return await dbContextOptions.Books
+                    .Include(b => b.BookCategory)
+                    .ToListAsync();
             }
         }
 
@@ -69,7 +71,7 @@ namespace LibraryManagementSystem.Repositories
             }
             catch (Exception ex)
             {
-                throw new Exception($"An Error Occured: {ex.Message}", ex);
+                throw new Exception($"Error Adding Book: {ex.Message}", ex);
             }
 
         }
