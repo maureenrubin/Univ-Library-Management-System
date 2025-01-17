@@ -1,6 +1,9 @@
 ﻿using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Presentation.AdminForms;
 using LibraryManagementSystem.Repositories.Interfaces;
+using LibraryManagementSystem.Services;
 using LibraryManagementSystem.Services.Contracts;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp2;
 
 namespace LibraryManagementSystem.Presentation
 {
@@ -17,7 +21,8 @@ namespace LibraryManagementSystem.Presentation
     {
         public BooksEntity bookEntity;
         private readonly IBookServices bookServices;
-        private readonly ICategoryServices categoryServices; 
+        private readonly ICategoryServices categoryServices;
+        private readonly IBarrowServices barrowServices;
 
 
         public event EventHandler<BooksEntity> BookUCClicked;
@@ -25,14 +30,16 @@ namespace LibraryManagementSystem.Presentation
 
         public BookUC(BooksEntity bookEntity,
                       IBookServices bookServices,
-                      ICategoryServices categoryServices)
+                      ICategoryServices categoryServices,
+                      IBarrowServices barrowServices)
         {
             InitializeComponent();
             this.bookEntity = bookEntity;
             this.bookServices = bookServices;
             this.categoryServices = categoryServices;
+            this.barrowServices = barrowServices;
             this.Click += BookDetailsUC_Click;
-            
+
             foreach (Control control in Controls)
             {
                 control.Click += BookDetailsUC_Click;
@@ -43,7 +50,7 @@ namespace LibraryManagementSystem.Presentation
         private void BookDetailsUC_Click(object? sender, EventArgs e)
         {
             selectedBook = !selectedBook;
-            this.BackColor = selectedBook ? Color.DimGray : Color.White;
+            this.BackColor = selectedBook ? Color.DimGray : Color.Black;
             BookUCClicked?.Invoke(this, bookEntity);
         }
 
@@ -51,11 +58,11 @@ namespace LibraryManagementSystem.Presentation
         {
             try
             {
-                
+
                 if (bookEntity == null) throw new Exception("Book entity is null. Cannot load book details.");
 
                 string categoryName = "No Category";
-               
+
                 if (bookEntity.CategoryId > 0)
                 {
                     var category = await categoryServices.GetCategoryByIdAsync(bookEntity.CategoryId);
@@ -88,9 +95,16 @@ namespace LibraryManagementSystem.Presentation
                 throw new Exception($"Failed to load book details. {ex.Message}", ex);
             }
 
-            
+
 
         }
 
+        private void BarrowBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var barrowForm = Program.ServiceProvider.GetRequiredService<BarrowBookForm>();
+            barrowForm.Show();
+
+        }
     }
 }
