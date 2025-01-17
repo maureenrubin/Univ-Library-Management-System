@@ -20,14 +20,18 @@ namespace LibraryManagementSystem.Presentation.UserForms
         private readonly IBookServices bookServices;
         private readonly BooksEntity booksEntity;
         private readonly ICategoryServices categoryServices;
+        private readonly IBarrowServices barrowServices;
 
         public UserBookForm(IBookServices bookServices,
                             BooksEntity booksEntity,
-                            ICategoryServices  categoryServices)
+                            ICategoryServices  categoryServices,
+                            IBarrowServices barrowServices)
         {
             InitializeComponent();
             this.bookServices = bookServices;
             this.booksEntity = booksEntity;
+            this.categoryServices = categoryServices;
+            this.barrowServices = barrowServices;
 
             LoadBookDetails();
         }
@@ -46,7 +50,7 @@ namespace LibraryManagementSystem.Presentation.UserForms
 
         private void DisplayBooksToUI(BooksEntity booksEntity)
         {
-            BookUC bookDisplay = new BookUC(booksEntity, bookServices, categoryServices);
+            BookUC bookDisplay = new BookUC(booksEntity, bookServices, categoryServices, barrowServices);
             UserBooksFLP.Controls.Add(bookDisplay);
         }
     }
