@@ -27,7 +27,7 @@ namespace LibraryManagementSystem.Services
             {
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
-                   
+                   //findasync unable to locate PK in my entity
                     var book = await dbContextOptions.Books.FindAsync(bookId);
                     if (book == null) throw new Exception($"Book with ID {bookId} not found.");
 
