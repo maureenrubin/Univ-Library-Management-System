@@ -48,7 +48,7 @@
             label8 = new Label();
             QuantityTXT = new Krypton.Toolkit.KryptonTextBox();
             CancelBarrowBTN = new Krypton.Toolkit.KryptonButton();
-            BarrowNowBTN = new Krypton.Toolkit.KryptonButton();
+            BarrowBookBTN = new Krypton.Toolkit.KryptonButton();
             BookTitle = new Label();
             ((System.ComponentModel.ISupportInitialize)BookPB).BeginInit();
             panel1.SuspendLayout();
@@ -307,21 +307,22 @@
             CancelBarrowBTN.TabIndex = 31;
             CancelBarrowBTN.Values.Text = "CANCEL";
             // 
-            // BarrowNowBTN
+            // BarrowBookBTN
             // 
-            BarrowNowBTN.Cursor = Cursors.Hand;
-            BarrowNowBTN.Location = new Point(407, 304);
-            BarrowNowBTN.Name = "BarrowNowBTN";
-            BarrowNowBTN.Size = new Size(125, 38);
-            BarrowNowBTN.StateCommon.Back.Color1 = Color.MediumSeaGreen;
-            BarrowNowBTN.StateCommon.Back.Color2 = Color.MediumSeaGreen;
-            BarrowNowBTN.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            BarrowNowBTN.StateCommon.Border.Rounding = 6F;
-            BarrowNowBTN.StateCommon.Content.ShortText.Color1 = Color.Black;
-            BarrowNowBTN.StateCommon.Content.ShortText.Color2 = Color.Black;
-            BarrowNowBTN.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            BarrowNowBTN.TabIndex = 32;
-            BarrowNowBTN.Values.Text = "BARROW NOW!";
+            BarrowBookBTN.Cursor = Cursors.Hand;
+            BarrowBookBTN.Location = new Point(407, 304);
+            BarrowBookBTN.Name = "BarrowBookBTN";
+            BarrowBookBTN.Size = new Size(125, 38);
+            BarrowBookBTN.StateCommon.Back.Color1 = Color.MediumSeaGreen;
+            BarrowBookBTN.StateCommon.Back.Color2 = Color.MediumSeaGreen;
+            BarrowBookBTN.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            BarrowBookBTN.StateCommon.Border.Rounding = 6F;
+            BarrowBookBTN.StateCommon.Content.ShortText.Color1 = Color.Black;
+            BarrowBookBTN.StateCommon.Content.ShortText.Color2 = Color.Black;
+            BarrowBookBTN.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            BarrowBookBTN.TabIndex = 32;
+            BarrowBookBTN.Values.Text = "BARROW NOW!";
+            BarrowBookBTN.Click += BarrowBookBTN_Click;
             // 
             // BookTitle
             // 
@@ -340,7 +341,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(813, 646);
             Controls.Add(BookTitle);
-            Controls.Add(BarrowNowBTN);
+            Controls.Add(BarrowBookBTN);
             Controls.Add(CancelBarrowBTN);
             Controls.Add(panel1);
             Controls.Add(BarrowedPriceLBL);
@@ -388,7 +389,7 @@
         private Label label6;
         private Panel panel1;
         private Krypton.Toolkit.KryptonButton CancelBarrowBTN;
-        private Krypton.Toolkit.KryptonButton BarrowNowBTN;
+        private Krypton.Toolkit.KryptonButton BarrowBookBTN;
         private Label label9;
         private Label label8;
         private DateTimePicker dateTimePicker1;

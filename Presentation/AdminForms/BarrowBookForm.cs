@@ -1,4 +1,5 @@
-﻿using LibraryManagementSystem.Domain.Entities;
+﻿using LibraryManagementSystem.Domain.DTO;
+using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Repositories.Interfaces;
 using LibraryManagementSystem.Services.Contracts;
 using System;
@@ -16,11 +17,12 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 {
     public partial class BarrowBookForm : Form
     {
-        private readonly BooksEntity booksEntity;
         private readonly IBookServices bookServices;
         private readonly ICategoryServices categoryServices;
         private readonly IBarrowServices barrowServices;
 
+        private readonly BooksEntity booksEntity;
+        private int currentUser;
 
         public BarrowBookForm(IBookServices bookServices,
                               ICategoryServices categoryServices,
@@ -30,44 +32,45 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             InitializeComponent();
             this.bookServices = bookServices;
             this.categoryServices = categoryServices;
-            this.booksEntity = booksEntity;
             this.barrowServices = barrowServices;
-
-            LoadBarrowBookDetails();
+            this.booksEntity = booksEntity;
         }
 
-        private async void LoadBarrowBookDetails()
+
+        public async Task LoadBarrowBookDetails(int bookId)
         {
             try
             {
-                int bookId = booksEntity.BookId;
-                int userId = 2017;
 
-                var bookDetails = await barrowServices.GetBookDetailsAsync(booksEntity.BookId, userId);
+                var bookDetails = await barrowServices.GetBookByIdAsync(bookId);
 
-                BookIdLBL.Text = bookDetails.BookId.ToString();
-                BookTitle.Text = bookDetails.Title;
-                BarrowDateLBL.Text = bookDetails.BarrowedDate.ToShortDateString();
-                BarrowedPriceLBL.Text = bookDetails.BookPrice.ToString("C");
-                DueDateLBL.Text = bookDetails.DueDate.ToShortDateString();
-
-                if(bookDetails.BooksPicture != null)
+                if (bookDetails is not null)
                 {
-                    using (var ms = new MemoryStream(bookDetails.BooksPicture))
+                    BookIdLBL.Text = bookDetails.BookId.ToString();
+                    BookTitle.Text = bookDetails.Title;
+                    BarrowedPriceLBL.Text = bookDetails.BookPrice.ToString("C");
+
+
+                    if (bookDetails.BooksPicture != null)
                     {
-                        BookPB.Image = Image.FromStream(ms);
+                        using (var ms = new MemoryStream(bookDetails.BooksPicture))
+                        {
+                            BookPB.Image = Image.FromStream(ms);
+
+                        }
+                    }
+                    else
+                    {
+                        BookPB.Image = null;
                     }
                 }
-                else
-                {
-                    BookPB.Image = null;
-                }
 
-
+                BarrowDateLBL.Text = DateTime.UtcNow.ToShortDateString();
+                DueDateLBL.Text = DateTime.Now.AddDays(7).ToShortDateString();
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to load barrowed book details. {ex.Message}", ex);
+                MessageBox.Show($"Failed to load barrowed books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -75,6 +78,28 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private void ExitBTN_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private async void BarrowBookBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var addBarrowBook = new BarrowedItemEntity
+                {
+                    BookId = booksEntity.BookId,
+                    UserId = currentUser,
+                    Quantity = 1,
+                    BarrowedDate = DateTime.UtcNow,
+                    DueDate = DateTime.UtcNow.AddDays(7),
+                    BarrowedPrice = booksEntity.BookPrice
+                };
+                await barrowServices.AddBarrowBookAsync(addBarrowBook);
+                MessageBox.Show("Book successfully barrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to Barrow Books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
