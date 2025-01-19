@@ -21,68 +21,45 @@ namespace LibraryManagementSystem.Services
             this._dbContextOptions = dbContextOptions;
         }
 
-        public async Task<BarrowBookDTO> GetBookDetailsAsync(int bookId, int userId)
+        public async Task <BooksEntity> GetBookByIdAsync(int bookId)
         {
             try
             {
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
-                   //findasync unable to locate PK in my entity
-                    var book = await dbContextOptions.Books.FindAsync(bookId);
-                    if (book == null) throw new Exception($"Book with ID {bookId} not found.");
-
-                    var user = await dbContextOptions.Users.FindAsync(userId);
-                    if (user == null) throw new Exception($"User with ID {userId} not found.");
-
-                    var admin = await dbContextOptions.Admins.FirstOrDefaultAsync();
-                    if (admin == null) throw new Exception("Admin not found.");
-
-                    var barrowBookDTO = new BarrowBookDTO
-                    {
-                        BookId = book.BookId,
-                        UserId = user.UserId,
-                        BarrowedDate = DateTime.Now,
-                        Title = book.Title,
-                        DueDate = DateTime.Now.AddDays(7), 
-                        Quantity = 1, 
-                        BarrowedPrice = book.BookPrice,
-                        BooksPicture = book.BooksPicture
-                       
-                    };
-                    return barrowBookDTO;
+                    return await dbContextOptions.Books.FirstOrDefaultAsync(b => b.BookId == bookId);
                 }
-
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error Fetching Barrowed Book: {ex.Message}", ex);
+                throw new Exception($"Error Fetching Book Id:{ex.Message} ", ex);
             }
         }
 
-        public async Task AddBarrowBookAsync(BarrowBookDTO barrowBookDTO)
+        public async Task AddBarrowBookAsync(BarrowedItemEntity barrowBook)
         {
             try
             {
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
-                    var book = await dbContextOptions.Books.FindAsync(barrowBookDTO.BookId);
+                    var book = await dbContextOptions.Books.FirstOrDefaultAsync();
 
                     if (book == null) throw new Exception("Book not found");
-                    if (book.BookStock < barrowBookDTO.Quantity) throw new Exception("Not enough stock available");
+                    if (book.BookStock < barrowBook.Quantity) throw new Exception("Not enough stock available");
 
-                    book.BookStock -= barrowBookDTO.Quantity;
+                    book.BookStock -= barrowBook.Quantity;
 
                     var barrowedBook = new BarrowedItemEntity
                     {
-                        BookId = barrowBookDTO.BookId,
-                        UserId = barrowBookDTO.UserId,
-                        BarrowedDate = barrowBookDTO.BarrowedDate,
-                        DueDate = barrowBookDTO.DueDate,
-                        Quantity = barrowBookDTO.Quantity,
-                        BarrowedPrice = barrowBookDTO.BarrowedPrice
+                        BookId = barrowBook.BookId,
+                        UserId = barrowBook.UserId,
+                        BarrowedDate = barrowBook.BarrowedDate,
+                        DueDate = barrowBook.DueDate,
+                        Quantity = barrowBook.Quantity,
+                        BarrowedPrice = barrowBook.BarrowedPrice
                     };
 
-                    await dbContextOptions.BarrowedItems.AddAsync(barrowedBook);
+                    await dbContextOptions.BarrowBook.AddAsync(barrowedBook);
                     await dbContextOptions.SaveChangesAsync();
                 }
             }
