@@ -89,6 +89,8 @@ namespace LibraryManagementSystem.Presentation
                 {
                     BooksPB.Image = null;
                 }
+
+                
             }
             catch (Exception ex)
             {
@@ -99,12 +101,27 @@ namespace LibraryManagementSystem.Presentation
 
         }
 
-        private void BarrowBtn_Click(object sender, EventArgs e)
+        private  async void BarrowBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var barrowForm = Program.ServiceProvider.GetRequiredService<BarrowBookForm>();
-            barrowForm.Show();
-
+            try
+            {
+                var barrowForm = Program.ServiceProvider.GetRequiredService<BarrowBookForm>();
+              
+                if(bookEntity is not null)
+                {
+                    await barrowForm.LoadBarrowBookDetails(bookEntity.BookId);
+                    barrowForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No book selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occur: {ex.Message}", ex);
+            }
+            
         }
     }
 }
