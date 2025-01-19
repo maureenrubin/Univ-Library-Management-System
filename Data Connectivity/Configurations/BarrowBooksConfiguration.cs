@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Data_Connectivity.Configurations
 {
-    public class BarrowItemsConfiguration : IEntityTypeConfiguration<BarrowedItemEntity>
+    public class BarrowBooksConfiguration : IEntityTypeConfiguration<BarrowedItemEntity>
     {
         public void Configure(EntityTypeBuilder<BarrowedItemEntity> builder)
         {
+            builder.ToTable("BarrowBook");
             builder.HasKey(p => p.BarrowedItemId);
 
             
@@ -23,7 +24,7 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
 
             builder.Property(p => p.BarrowedPrice)
                 .IsRequired()
-                .HasDefaultValueSql("decimal(18,2)");
+                .HasDefaultValue(0m);
 
             builder.Property(p => p.Quantity)
                 .IsRequired();
