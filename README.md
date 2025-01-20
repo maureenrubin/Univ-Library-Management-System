@@ -1,4 +1,4 @@
-The University Library Management System is a desktop application designed to manage a university library. It allows students to borrow and return books, while admins can manage book inventory, track borrowed books, and generate reports.
+🌸 The University Library Management System is a desktop application designed to manage a university library. It allows students to borrow and return books, while admins can manage book inventory, track borrowed books, and generate reports. 🌸
 
 KEY FEATURES ARE;
 - Student Access: Browse and borrow books.
