@@ -13,6 +13,6 @@ namespace LibraryManagementSystem.Services.Contracts
         // Task<BarrowBookDTO> GetBookDetailsAsync();
         Task<BooksEntity> GetBookByIdAsync(int bookId);
 
-        Task AddBarrowBookAsync(BarrowedItemEntity barrowBook);
+        Task AddBarrowBookAsync(BarrowBookEntity barrowBook);
     }
 }

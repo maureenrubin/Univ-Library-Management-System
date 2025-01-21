@@ -36,20 +36,45 @@ namespace LibraryManagementSystem.Services
             }
         }
 
-        public async Task AddBarrowBookAsync(BarrowedItemEntity barrowBook)
+        public async Task AddBarrowBookAsync(BarrowBookEntity barrowBook)
         {
             try
             {
+                if (barrowBook == null)
+                {
+                    MessageBox.Show("Invalid Barrow Book. ");
+                    return;
+                }
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
-                    var book = await dbContextOptions.Books.FirstOrDefaultAsync();
+                    var userExist = await dbContextOptions.Users
+                        .FirstOrDefaultAsync(u => u.UserId == barrowBook.UserId);
+                    
+                    if (userExist == null)
+                    {
+                        MessageBox.Show("User not found");
+                        return;
+                    }
 
-                    if (book == null) throw new Exception("Book not found");
-                    if (book.BookStock < barrowBook.Quantity) throw new Exception("Not enough stock available");
+                    var book = await dbContextOptions.Books
+                        .Include(b => b.Category)
+                        .FirstOrDefaultAsync(b => b.BookId == barrowBook.BookId);
+                    
+                    if(book == null)
+                    {
+                        MessageBox.Show("Book not found");
+                        return;
+                    }
+
+                    if (book.BookStock < barrowBook.Quantity)
+                    {
+                        MessageBox.Show("Not enough stock available");
+                        return;
+                    }
 
                     book.BookStock -= barrowBook.Quantity;
 
-                    var barrowedBook = new BarrowedItemEntity
+                    var addBarrow = new BarrowBookDTO
                     {
                         BookId = barrowBook.BookId,
                         UserId = barrowBook.UserId,
@@ -59,7 +84,7 @@ namespace LibraryManagementSystem.Services
                         BarrowedPrice = barrowBook.BarrowedPrice
                     };
 
-                    await dbContextOptions.BarrowBook.AddAsync(barrowedBook);
+                    await dbContextOptions.BarrowBook.AddAsync(barrowBook);
                     await dbContextOptions.SaveChangesAsync();
                 }
             }

@@ -1,6 +1,7 @@
 using LibraryManagementSystem.Data_Connectivity.Context;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers.Animation;
+using LibraryManagementSystem.Presentation;
 using LibraryManagementSystem.Presentation.AdminForms;
 using LibraryManagementSystem.Presentation.UserForms;
 using LibraryManagementSystem.Repositories;
@@ -42,19 +43,20 @@ namespace WinFormsApp2
             services.AddScoped<ICreateAccountServices, CreateAccountServices>();
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<ICategoryServices, CategoryServices>();
+            services.AddScoped<IBarrowServices, BarrowServices>();
 
             services.AddScoped<AdminEntity>();
             services.AddScoped<BooksEntity>();
             services.AddScoped<UserEntity>();
             services.AddScoped<CourseEntity>();
-            services.AddScoped<BarrowedItemEntity>();
+            services.AddScoped<BarrowBookEntity>(); 
             services.AddScoped<BookCategoryEntity>();
 
 
             services.AddScoped<LoginForm>();
             services.AddScoped<CreateAdminAccForm>();
             services.AddScoped<AdminHomeForm>();
-         
+            services.AddScoped<BarrowBookForm>();
             
             services.AddScoped<MainForm_ADMIN>();
             services.AddScoped<AdminManageUserForm>();
@@ -62,7 +64,7 @@ namespace WinFormsApp2
             services.AddScoped<AdminTransactionForm>();
             services.AddScoped<ManageAdminsForm>();
             services.AddScoped<ResetPassForm>();
-       
+            services.AddScoped<BookUC>();
 
 
             services.AddScoped<UserMainForm>();
