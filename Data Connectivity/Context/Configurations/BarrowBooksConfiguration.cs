@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Data_Connectivity.Configurations
 {
-    public class BarrowBooksConfiguration : IEntityTypeConfiguration<BarrowedItemEntity>
+    public class BarrowBooksConfiguration : IEntityTypeConfiguration<BarrowBookEntity>
     {
-        public void Configure(EntityTypeBuilder<BarrowedItemEntity> builder)
+        public void Configure(EntityTypeBuilder<BarrowBookEntity> builder)
         {
             builder.ToTable("BarrowBook");
+
             builder.HasKey(p => p.BarrowedItemId);
 
             
@@ -32,15 +33,17 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
             builder.Property(p => p.DueDate)
                 .IsRequired();
 
+            // User Relationship
             builder.HasOne(p => p.User)
-                .WithMany(u => u.BarrowedItem)
+                .WithMany(u => u.BarrowBooks)
                 .HasForeignKey(p => p.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Book Relationship
             builder.HasOne(p => p.Book)
-                .WithMany(b => b.BarrowedItem)
+                .WithMany(b => b.BarrowBooks)
                 .HasForeignKey(b => b.BookId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
 
 

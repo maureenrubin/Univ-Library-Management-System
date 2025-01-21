@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Data_Connectivity.Configurations
 {
-    public class StudentConfiguration : IEntityTypeConfiguration<UserEntity>
+    public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {
 
         public void Configure(EntityTypeBuilder<UserEntity> builder)
@@ -24,7 +24,8 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
 
             builder
                 .HasOne(s => s.Course)
-                .WithMany(c => c.Users);
+                .WithMany(c => c.User)
+                .HasForeignKey(s => s.CourseId);
 
         }
 

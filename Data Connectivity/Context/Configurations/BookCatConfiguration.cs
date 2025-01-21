@@ -17,10 +17,10 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
             builder
                 .HasKey(c => c.BCategoryId);
 
-            builder.HasOne(bc => bc.Book)
-                .WithMany(b => b.BookCategories)
-                .HasForeignKey(bc => bc.BookId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.Property(c => c.CategoryName)
+                .IsRequired();
+
+            
         }
     }
 }

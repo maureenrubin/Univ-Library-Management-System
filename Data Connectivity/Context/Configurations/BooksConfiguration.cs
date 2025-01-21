@@ -24,9 +24,8 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
                 .IsRequired()
                 .HasMaxLength(255);
 
-            builder.Property(b => b.Category)
-                .IsRequired()
-                .HasMaxLength(100);
+            builder.Property(b => b.CategoryId)
+                .IsRequired();
 
             builder.Property(b => b.PublishedDate)
                 .IsRequired();
@@ -38,6 +37,13 @@ namespace LibraryManagementSystem.Data_Connectivity.Configurations
             builder.Property(b => b.BookPrice)
                 .IsRequired()
                 .HasColumnType("decimal(18,2)");
+
+            builder.HasOne(b => b.Category) // Navigation property
+                 .WithMany()
+                 .HasForeignKey(b => b.CategoryId) // Foreign key in BooksEntity
+                 .OnDelete(DeleteBehavior.Restrict); //delete books if category is deleted
+            
+
 
             builder.ToTable("Books");
                 
