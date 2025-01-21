@@ -84,7 +84,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             try
             {
-                var addBarrowBook = new BarrowedItemEntity
+                var addBarrowBook = new BarrowBookEntity
                 {
                     BookId = booksEntity.BookId,
                     UserId = currentUser,
