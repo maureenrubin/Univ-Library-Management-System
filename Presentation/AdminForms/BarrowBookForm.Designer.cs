@@ -50,6 +50,8 @@
             CancelBarrowBTN = new Krypton.Toolkit.KryptonButton();
             BarrowBookBTN = new Krypton.Toolkit.KryptonButton();
             BookTitle = new Label();
+            labeel = new Label();
+            StockLBL = new Label();
             ((System.ComponentModel.ISupportInitialize)BookPB).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -124,7 +126,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(369, 155);
+            label4.Location = new Point(366, 149);
             label4.Name = "label4";
             label4.Size = new Size(97, 16);
             label4.TabIndex = 22;
@@ -135,7 +137,7 @@
             BarrowDateLBL.AutoSize = true;
             BarrowDateLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             BarrowDateLBL.ForeColor = SystemColors.ActiveCaptionText;
-            BarrowDateLBL.Location = new Point(472, 155);
+            BarrowDateLBL.Location = new Point(469, 149);
             BarrowDateLBL.Name = "BarrowDateLBL";
             BarrowDateLBL.Size = new Size(74, 17);
             BarrowDateLBL.TabIndex = 23;
@@ -146,7 +148,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(369, 192);
+            label3.Location = new Point(369, 180);
             label3.Name = "label3";
             label3.Size = new Size(64, 16);
             label3.TabIndex = 24;
@@ -157,7 +159,7 @@
             DueDateLBL.AutoSize = true;
             DueDateLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DueDateLBL.ForeColor = SystemColors.ActiveCaptionText;
-            DueDateLBL.Location = new Point(447, 192);
+            DueDateLBL.Location = new Point(447, 180);
             DueDateLBL.Name = "DueDateLBL";
             DueDateLBL.Size = new Size(74, 17);
             DueDateLBL.TabIndex = 25;
@@ -168,7 +170,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(369, 228);
+            label5.Location = new Point(369, 214);
             label5.Name = "label5";
             label5.Size = new Size(98, 16);
             label5.TabIndex = 26;
@@ -179,7 +181,7 @@
             BarrowedPriceLBL.AutoSize = true;
             BarrowedPriceLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             BarrowedPriceLBL.ForeColor = SystemColors.ActiveCaptionText;
-            BarrowedPriceLBL.Location = new Point(481, 228);
+            BarrowedPriceLBL.Location = new Point(481, 214);
             BarrowedPriceLBL.Name = "BarrowedPriceLBL";
             BarrowedPriceLBL.Size = new Size(40, 17);
             BarrowedPriceLBL.TabIndex = 27;
@@ -335,11 +337,35 @@
             BookTitle.TabIndex = 33;
             BookTitle.Text = "mm/dd/yy";
             // 
+            // labeel
+            // 
+            labeel.AutoSize = true;
+            labeel.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labeel.ForeColor = SystemColors.ActiveCaptionText;
+            labeel.Location = new Point(369, 249);
+            labeel.Name = "labeel";
+            labeel.Size = new Size(74, 16);
+            labeel.TabIndex = 34;
+            labeel.Text = "Book Stock:";
+            // 
+            // StockLBL
+            // 
+            StockLBL.AutoSize = true;
+            StockLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            StockLBL.ForeColor = SystemColors.ActiveCaptionText;
+            StockLBL.Location = new Point(481, 249);
+            StockLBL.Name = "StockLBL";
+            StockLBL.Size = new Size(40, 17);
+            StockLBL.TabIndex = 35;
+            StockLBL.Text = "10.00";
+            // 
             // BarrowBookForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(813, 646);
+            Controls.Add(labeel);
+            Controls.Add(StockLBL);
             Controls.Add(BookTitle);
             Controls.Add(BarrowBookBTN);
             Controls.Add(CancelBarrowBTN);
@@ -396,5 +422,7 @@
         private Krypton.Toolkit.KryptonButton UpdateBarrowBTN;
         private Label BookTitle;
         private Label BooksTitlesLBL;
+        private Label labeel;
+        private Label StockLBL;
     }
 }
