@@ -1,6 +1,8 @@
 ﻿using LibraryManagementSystem.Data_Connectivity.Configurations;
 using LibraryManagementSystem.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +27,7 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
         public DbSet<BooksEntity> Books { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<CourseEntity> Courses { get; set; }
-        public DbSet<BarrowedItemEntity> BarrowBook { get; set; }
+        public DbSet<BarrowBookEntity> BarrowBook { get; set; }
         public DbSet<BookCategoryEntity> BookCategory { get; set; }
 
 
@@ -34,17 +36,43 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new AdminConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new BooksConfiguration());
-            modelBuilder.ApplyConfiguration(new StudentConfiguration());
-            modelBuilder.ApplyConfiguration(new BarrowBooksConfiguration());
+
+            modelBuilder.Entity<BarrowBookEntity>()
+                .HasOne(b => b.User)
+                .WithMany(u => u.BarrowBooks)
+                .HasForeignKey(b => b.UserId);
+
+            modelBuilder.Entity<BarrowBookEntity>()
+                .HasOne(b => b.Book)
+                .WithMany(bk => bk.BarrowBooks)
+                .HasForeignKey(b => b.BookId);
+
+
             modelBuilder.ApplyConfiguration(new BookCatConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+          
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DJOKERZ\\SQLEXPRESS;Initial Catalog=LibraryManagementDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;");
+                var configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+
+                var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+                Console.WriteLine($"Connection String: {connectionString}");
+
+                if (string.IsNullOrEmpty(connectionString))
+                {
+                    throw new ArgumentNullException("connectionString", "Connection string is missing or empty in appsettings.json");
+                }
+
+                optionsBuilder.UseSqlServer(connectionString);
             }
         }
 
