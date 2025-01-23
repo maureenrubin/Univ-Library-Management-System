@@ -36,12 +36,11 @@ namespace LibraryManagementSystem.Presentation.UserControls
             selectedUser = true;
             StudentClicked?.Invoke(this, userEntity);
         }
-        private async void LoadStudentDetails()
+        private void LoadStudentDetails()
         {
             try
             {
-                var user = await userServices.GetUserByIdAsync(userEntity.UserId);
-                
+              
                 string fullName = $"{userEntity.FirstName} {userEntity.LastName}";
                 LblFullName.Text = fullName;
                 LblCourse.Text = userEntity.Course.Name ?? "No Course";
