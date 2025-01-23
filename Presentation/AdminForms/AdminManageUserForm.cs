@@ -105,6 +105,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     UserPicturePB.Image = Image.FromStream(ms);
                 }
             }
+          
 
         }
 
@@ -159,7 +160,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private void ManageStudentBtn_Click(object sender, EventArgs e)
         {
             animations.CrudStudentTransition(crudStudentTransition, StudentPanel, sidebarExpanded);
-
         }
 
 
@@ -228,7 +228,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
 
                 FormsControlHelper.ClearControls(this);
-                LoadStudentDetails();
+                await LoadStudentDetails();
 
 
             }
@@ -287,7 +287,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 MessageBox.Show("Student details updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 FormsControlHelper.ClearControls(crudPanel);
-                LoadStudentDetails();
+                await LoadStudentDetails();
 
             }
             catch (Exception ex)
@@ -317,7 +317,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     {
                         MessageBox.Show("Student removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         FormsControlHelper.ClearControls(crudPanel);
-                        LoadStudentDetails();
+                        await LoadStudentDetails();
                         
                     }
                     else
