@@ -1,5 +1,6 @@
 ﻿using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Presentation.AdminForms;
+using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
 using LibraryManagementSystem.Services;
 using LibraryManagementSystem.Services.Contracts;
@@ -22,7 +23,9 @@ namespace LibraryManagementSystem.Presentation
         public BooksEntity bookEntity;
         private readonly IBookServices bookServices;
         private readonly ICategoryServices categoryServices;
-        private readonly IBarrowServices barrowServices;
+        private readonly IBorrowBookServices borrowServices;
+        private readonly IUserServices userServices;
+        private readonly UserEntity userEntity;
 
 
         public event EventHandler<BooksEntity> BookUCClicked;
@@ -31,13 +34,18 @@ namespace LibraryManagementSystem.Presentation
         public BookUC(BooksEntity bookEntity,
                       IBookServices bookServices,
                       ICategoryServices categoryServices,
-                      IBarrowServices barrowServices)
+                      IBorrowBookServices borrowServices,
+                      IUserServices userServices,
+                      UserEntity userEntity)
         {
             InitializeComponent();
             this.bookEntity = bookEntity;
+            this.userEntity = userEntity;
+            
             this.bookServices = bookServices;
             this.categoryServices = categoryServices;
-            this.barrowServices = barrowServices;
+            this.borrowServices = borrowServices;
+            this.userServices = userServices;
             this.Click += BookDetailsUC_Click;
 
             foreach (Control control in Controls)
@@ -105,16 +113,25 @@ namespace LibraryManagementSystem.Presentation
         {
             try
             {
-                var barrowForm = Program.ServiceProvider.GetRequiredService<BarrowBookForm>();
-              
-                if(bookEntity is not null)
+                if (bookEntity is not null && bookEntity.BookId > 0)
                 {
+                    // Initialize BorrowBookForm with dependencies and pass bookEntity
+                    var barrowForm = new BorrowBookForm(
+                        bookServices,
+                        categoryServices,
+                        borrowServices,
+                        userServices,
+                        bookEntity,
+                        userEntity
+                    );
+
+                    // Load book details and show the form
                     await barrowForm.LoadBarrowBookDetails(bookEntity.BookId);
                     barrowForm.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("No book selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Invalid book data or no book selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
