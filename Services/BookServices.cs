@@ -36,16 +36,24 @@ namespace LibraryManagementSystem.Repositories
 
         public async Task<BooksEntity> GetBookByIdAsync(int bookId)
         {
-            using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+            try
             {
-                var book = await dbContextOptions.Books.FirstOrDefaultAsync(b => b.BookId == bookId);
-
-                if(book == null)
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
-                    throw new Exception("Book not found. ");
+                    var book = await dbContextOptions.Books.FirstOrDefaultAsync(b => b.BookId == bookId);
+
+                    if (book == null)
+                    {
+                        throw new Exception("Book not found. ");
+                    }
+                    return book;
                 }
-                return book;
             }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error fetcing Book Id: {ex.Message}", ex);
+            }
+            
         }
 
         public async Task<int> AddBookAsync(BooksEntity book)
@@ -75,16 +83,13 @@ namespace LibraryManagementSystem.Repositories
                     var existingBook = await dbContextOptions.Books
                         .SingleOrDefaultAsync(b => b.BookId == bookDTO.BookId);
 
-                    if(existingBook == null)
-                    {
-                        throw new Exception("Book not found");
-                    }
+                    if(existingBook == null) throw new Exception("Book not found");
+                    
 
                     existingBook.Title = bookDTO.Title;
                     existingBook.BooksPicture = bookDTO.BooksPicture;
                     existingBook.BookPrice = bookDTO.BookPrice;
                     existingBook.Genre = bookDTO.Genre;
-                    existingBook.Title = bookDTO.Title;
                     existingBook.BookStock = bookDTO.BookStock;
                     existingBook.CategoryId = bookDTO.CategoryId;
 
@@ -105,18 +110,13 @@ namespace LibraryManagementSystem.Repositories
             {
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
-                    var book = await dbContextOptions.Books
-                        .SingleOrDefaultAsync(u => u.BookId == bookId);
+                    var book = await dbContextOptions.Books.SingleOrDefaultAsync(u => u.BookId == bookId);
+                    if (book == null) return false;
 
-                    if (book != null)
-                    {
-                        dbContextOptions.Books.Remove(book);
-
-                        await dbContextOptions.SaveChangesAsync();
-                        return true;
-                    }
-
-                    return false;
+                    dbContextOptions.Books.Remove(book);
+                    await dbContextOptions.SaveChangesAsync();
+                    return true;
+                    
                 }
             }
             catch (Exception ex)
@@ -133,14 +133,12 @@ namespace LibraryManagementSystem.Repositories
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
                     var book = await dbContextOptions.Books
+                        .Include(b => b.BorrowBooks)
                         .FirstOrDefaultAsync(b => b.BookId == bookId);
 
-                    if (book == null) throw new Exception("Book not found. ");
+                    if (book == null) throw new Exception("Book not found.");
 
-                    int borrowedQuantity = book.BookStock - (book.BorrowBooks?.Sum(b => b.Quantity) ?? 0);
-                    int availableStock = book.BookStock - borrowedQuantity;
-
-                    return Math.Max(availableStock, 0);
+                    return book.BookStock - (book.BorrowBooks?.Sum(b => b.Quantity) ?? 0);
                 }
             }
             catch (Exception ex)
