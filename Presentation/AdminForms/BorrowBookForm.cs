@@ -16,20 +16,20 @@ using System.Windows.Forms;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
-    public partial class BarrowBookForm : Form
+    public partial class BorrowBookForm : Form
     {
         private readonly IBookServices bookServices;
         private readonly ICategoryServices categoryServices;
-        private readonly IBarrowServices barrowServices;
+        private readonly IBorrowBookServices borrowServices;
         private readonly IUserServices userServices;
 
         private readonly UserEntity userEntity;
         private readonly BooksEntity booksEntity;
        
 
-        public BarrowBookForm(IBookServices bookServices,
+        public BorrowBookForm(IBookServices bookServices,
                               ICategoryServices categoryServices,
-                              IBarrowServices barrowServices,
+                              IBorrowBookServices borrowServices,
                               IUserServices userServices,
                               BooksEntity booksEntity,
                               UserEntity userEntity)
@@ -37,7 +37,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             InitializeComponent();
             this.bookServices = bookServices;
             this.categoryServices = categoryServices;
-            this.barrowServices = barrowServices;
+            this.borrowServices = borrowServices;
             this.userServices = userServices;
 
             this.booksEntity = booksEntity;
@@ -50,7 +50,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             try
             {
 
-                var bookDetails = await barrowServices.GetBookByIdAsync(bookId);
+                var bookDetails = await bookServices.GetBookByIdAsync(bookId);
 
                 if (bookDetails == null)
                 {
@@ -96,30 +96,34 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private async void BarrowBookBTN_Click(object sender, EventArgs e)
         {
             try
-            { 
-                if(booksEntity == null)
-                {
-
-                    MessageBox.Show("No book selected to borrow!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if(booksEntity.BookStock < 1)
-                {
-                    MessageBox.Show("This book is out of stock", "Out of stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                int userId = userEntity.UserId;
+            {
                 int bookId = booksEntity.BookId;
-                int quantity = 1;
-                
-                await barrowServices.AddBarrowBookAsync(userId, bookId, quantity);
-                MessageBox.Show("Book successfully barrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                booksEntity.BookStock -= 1;
-                StockLBL.Text = $"{booksEntity.BookStock}";
-                BarrowBookBTN.Enabled = booksEntity.BookStock > 0;
+                var availableStock = await bookServices.GetBookAvailableStock(booksEntity.BookId);
+
+                if(availableStock > 0)
+                {
+                    int newStock = availableStock - 1;
+
+                    var addBorrowBook = new BorrowBookEntity
+                    {
+                        BookId = booksEntity.BookId,
+                        UserId = userEntity.UserId,
+                        Quantity = 1,
+                        BarrowedDate = DateTime.UtcNow,
+                        DueDate = DateTime.UtcNow.AddDays(7),
+                        BarrowedPrice = booksEntity.BookPrice 
+                    };
+
+                    await borrowServices.AddBorrowBookAsync(addBorrowBook);
+                    await bookServices.UpdateBookStockAsync(bookId, newStock);
+
+                    MessageBox.Show("Book successfully borrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);                
+                }
+                else
+                {
+                    MessageBox.Show("Sorry, the book is out of stock", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {

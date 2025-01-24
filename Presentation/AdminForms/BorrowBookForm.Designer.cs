@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagementSystem.Presentation.AdminForms
 {
-    partial class BarrowBookForm
+    partial class BorrowBookForm
     {
         /// <summary>
         /// Required designer variable.
