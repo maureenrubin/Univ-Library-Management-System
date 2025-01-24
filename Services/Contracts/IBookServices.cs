@@ -20,5 +20,11 @@ namespace LibraryManagementSystem.Repositories.Interfaces
 
         Task<bool> RemoveBookAsync(int bookId);
 
+        Task<int> GetBookAvailableStock(int bookId);
+
+        Task<bool> UpdateBookStockAsync(int bookId, int newStock);
+
+       
+
     }
 }

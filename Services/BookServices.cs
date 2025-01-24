@@ -29,7 +29,7 @@ namespace LibraryManagementSystem.Repositories
             using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
             {
                 return await dbContextOptions.Books
-                    .Include(b => b.BookCategory)
+                    .Include(b => b.Category)
                     .ToListAsync();
             }
         }
@@ -38,7 +38,13 @@ namespace LibraryManagementSystem.Repositories
         {
             using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
             {
-                return await dbContextOptions.Books.SingleOrDefaultAsync(b => b.BookId == bookId); 
+                var book = await dbContextOptions.Books.FirstOrDefaultAsync(b => b.BookId == bookId);
+
+                if(book == null)
+                {
+                    throw new Exception("Book not found. ");
+                }
+                return book;
             }
         }
 
@@ -48,22 +54,6 @@ namespace LibraryManagementSystem.Repositories
             {
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
-
-
-                    var addBook = new BookDTO
-                    {
-                        Title = book.Title,
-                        Genre = book.Genre,
-                        PublishedDate = book.PublishedDate,
-                        BookStock = book.BookStock,
-                        BookPrice = book.BookPrice,
-                        BooksPicture = book.BooksPicture,
-                        CategoryId = book.CategoryId,
-
-
-                    };
-
-
                     await dbContextOptions.Books.AddAsync(book);
                     return await dbContextOptions.SaveChangesAsync();
                 }
@@ -108,6 +98,7 @@ namespace LibraryManagementSystem.Repositories
             }
         }
 
+     
         public async Task <bool> RemoveBookAsync (int bookId)
         {
             try
@@ -131,6 +122,51 @@ namespace LibraryManagementSystem.Repositories
             catch (Exception ex)
             {
                 throw new Exception($"Error Removing Book: {ex.Message}", ex);
+            }
+        }
+        
+
+        public async Task<int> GetBookAvailableStock(int bookId)
+        {
+            try
+            {
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+                {
+                    var book = await dbContextOptions.Books
+                        .FirstOrDefaultAsync(b => b.BookId == bookId);
+
+                    if (book == null) throw new Exception("Book not found. ");
+
+                    int borrowedQuantity = book.BookStock - (book.BorrowBooks?.Sum(b => b.Quantity) ?? 0);
+                    int availableStock = book.BookStock - borrowedQuantity;
+
+                    return Math.Max(availableStock, 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error fetching book stock: {ex.Message}", ex);
+            }
+        }
+       
+        public async Task<bool> UpdateBookStockAsync(int bookId, int newStock)
+        {
+            try
+            {
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+                {
+                    var book = await dbContextOptions.Books.FirstOrDefaultAsync(b => b.BookId == bookId);
+
+                    if (book == null) throw new Exception("Book not found. ");
+
+                    book.BookStock = newStock;
+                    await dbContextOptions.SaveChangesAsync();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error updating book stock: {ex.Message}", ex);
             }
         }
     }
