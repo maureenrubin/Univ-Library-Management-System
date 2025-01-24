@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Services.Contracts
 {
-    public interface IBarrowServices
+    public interface IBorrowBookServices
     {
-        // Task<BarrowBookDTO> GetBookDetailsAsync();
-        Task<BooksEntity> GetBookByIdAsync(int bookId);
+        Task<BorrowBookEntity> GetBorrowBookByIdAsync(int barrowBookId);
 
-        Task AddBarrowBookAsync(BarrowBookEntity barrowBook);
+        Task<bool> AddBorrowBookAsync(BorrowBookEntity barrowBook);
     }
 }
