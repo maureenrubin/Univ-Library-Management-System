@@ -41,10 +41,8 @@ namespace LibraryManagementSystem.Domain.Entities
 
         public DateTime CreatedAt { get; set; }
 
-      
-        
-      public CourseEntity Course { get; set; }
-      public ICollection<BarrowedItemEntity> BarrowedItem { get; set; }
+        public CourseEntity? Course { get; set; }
+      public ICollection<BorrowBookEntity> BarrowBooks { get; set; } = new List<BorrowBookEntity>();
 
     }
 }

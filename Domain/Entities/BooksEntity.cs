@@ -33,12 +33,14 @@ namespace LibraryManagementSystem.Domain.Entities
         [Column(TypeName = "varbinary(max)")]
         public byte[]? BooksPicture { get; set; }
 
-       
-        public int? CategoryId { get; set; }
+        
+        public int CategoryId { get; set; }
 
         // Calculated property for available books based on borrowed items
-        public int BookAvailable { get => BookStock - (BarrowedItem?.Sum(b => b.Quantity) ?? 0); }
+        public int BookAvailable { get => BookStock - (BorrowBooks?.Sum(b => b.Quantity) ?? 0); }
 
-        public ICollection<BarrowedItemEntity> BarrowedItem { get; set; }
+        public BookCategoryEntity Category { get; set; }
+        public ICollection<BorrowBookEntity> BorrowBooks { get; set; } = new List<BorrowBookEntity>();
+        
     }
 }
