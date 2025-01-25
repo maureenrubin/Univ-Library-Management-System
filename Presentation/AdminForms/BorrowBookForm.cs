@@ -49,20 +49,26 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             try
             {
+                if (bookId <= 0)
+                {
+                    MessageBox.Show("Invalid Book ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 var bookDetails = await bookServices.GetBookByIdAsync(bookId);
 
-                if (bookDetails == null)
+                if (bookId == 0)
                 {
-                    MessageBox.Show("Book details could not be retrieved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid book data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                    BookIdLBL.Text = bookDetails.BookId.ToString();
-                    BookTitle.Text = bookDetails.Title;
-                    BarrowedPriceLBL.Text = bookDetails.BookPrice.ToString("C");
+
+                BookIdLBL.Text = bookDetails.BookId.ToString();
+                BookTitle.Text = bookDetails.Title;
+                BarrowedPriceLBL.Text = bookDetails.BookPrice.ToString("C");
 
 
-                    if (bookDetails.BooksPicture != null)
+                if (bookDetails.BooksPicture != null)
                     {
                         using (var ms = new MemoryStream(bookDetails.BooksPicture))
                         {
@@ -97,37 +103,57 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             try
             {
-                int bookId = booksEntity.BookId;
-
-                var availableStock = await bookServices.GetBookAvailableStock(booksEntity.BookId);
-
-                if(availableStock > 0)
+                if (booksEntity == null || booksEntity.BookId == 0)
                 {
-                    int newStock = availableStock - 1;
+                    MessageBox.Show("Invalid book data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                    var addBorrowBook = new BorrowBookEntity
-                    {
-                        BookId = booksEntity.BookId,
-                        UserId = userEntity.UserId,
-                        Quantity = 1,
-                        BarrowedDate = DateTime.UtcNow,
-                        DueDate = DateTime.UtcNow.AddDays(7),
-                        BarrowedPrice = booksEntity.BookPrice 
-                    };
+                if(userEntity.UserId == 0)
+                {
+                    MessageBox.Show("User ID is invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                    await borrowServices.AddBorrowBookAsync(addBorrowBook);
-                    await bookServices.UpdateBookStockAsync(bookId, newStock);
+                if (userEntity == null || userEntity.UserId == 0)
+                {
+                    throw new Exception("Invalid userEntity or UserId.");
+                }
 
-                    MessageBox.Show("Book successfully borrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);                
+
+                if (string.IsNullOrEmpty(StockLBL.Text) || !int.TryParse(StockLBL.Text, out int stock) || stock <= 0)
+                {
+                    MessageBox.Show("The selected book is out of stock.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var borrowBook = new BorrowBookEntity
+                {
+                    BookId = booksEntity.BookId,
+                    UserId = userEntity.UserId,
+                    Quantity = 1,
+                    BarrowedDate = DateTime.UtcNow,
+                    DueDate = DateTime.UtcNow.AddDays(7),
+                    BarrowedPrice = booksEntity.BookPrice
+
+                };
+
+                bool result = await borrowServices.AddBorrowBookAsync(borrowBook);
+
+                if (result)
+                {
+                    MessageBox.Show("Book successfully borrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await LoadBarrowBookDetails(booksEntity.BookId);
                 }
                 else
                 {
-                    MessageBox.Show("Sorry, the book is out of stock", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Failed to borrow the book. Try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to barrow book: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception($"An error accured while : {ex.Message}", ex.InnerException ?? ex);
             }
         }
     }

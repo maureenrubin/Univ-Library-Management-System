@@ -66,7 +66,6 @@
             ExitBTN.Size = new Size(22, 23);
             ExitBTN.TabIndex = 9;
             ExitBTN.UseVisualStyleBackColor = true;
-            ExitBTN.Click += ExitBTN_Click;
             // 
             // BookPB
             // 
@@ -355,11 +354,11 @@
             StockLBL.ForeColor = SystemColors.ActiveCaptionText;
             StockLBL.Location = new Point(481, 249);
             StockLBL.Name = "StockLBL";
-            StockLBL.Size = new Size(40, 17);
+            StockLBL.Size = new Size(15, 17);
             StockLBL.TabIndex = 35;
-            StockLBL.Text = "10.00";
+            StockLBL.Text = "0";
             // 
-            // BarrowBookForm
+            // BorrowBookForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -383,7 +382,7 @@
             Controls.Add(BookPB);
             Controls.Add(ExitBTN);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "BarrowBookForm";
+            Name = "BorrowBookForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BarrowBookForm";
             ((System.ComponentModel.ISupportInitialize)BookPB).EndInit();
