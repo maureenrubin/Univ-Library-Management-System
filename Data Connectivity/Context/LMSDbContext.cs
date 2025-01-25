@@ -1,5 +1,4 @@
-﻿using LibraryManagementSystem.Data_Connectivity.Configurations;
-using LibraryManagementSystem.Domain.Entities;
+﻿using LibraryManagementSystem.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +26,7 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
         public DbSet<BooksEntity> Books { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<CourseEntity> Courses { get; set; }
-        public DbSet<BarrowBookEntity> BarrowBook { get; set; }
+        public DbSet<BorrowBookEntity> BorrowBook { get; set; }
         public DbSet<BookCategoryEntity> BookCategory { get; set; }
 
 
@@ -35,22 +34,52 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfiguration(new AdminConfiguration());
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
-            modelBuilder.ApplyConfiguration(new BooksConfiguration());
+            // Admins Entity
+            modelBuilder.Entity<AdminEntity>()
+                .HasKey(a => a.AdminID);
 
-            modelBuilder.Entity<BarrowBookEntity>()
+            // Users Entity
+            modelBuilder.Entity<UserEntity>()
+                .HasKey(u => u.UserId);
+
+            // Courses to Users
+            modelBuilder.Entity<UserEntity>()
+                .HasOne(u => u.Course)
+                .WithMany(c => c.User)
+                .HasForeignKey(u => u.CourseId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Books Entity
+            modelBuilder.Entity<BooksEntity>()
+                .HasKey(b => b.BookId);
+
+            // BorrowBook to User
+            modelBuilder.Entity<BorrowBookEntity>()
                 .HasOne(b => b.User)
-                .WithMany(u => u.BarrowBooks)
+                .WithMany(u => u.BorrowBooks)
                 .HasForeignKey(b => b.UserId);
 
-            modelBuilder.Entity<BarrowBookEntity>()
+            // BorrowBook to Book
+            modelBuilder.Entity<BorrowBookEntity>()
                 .HasOne(b => b.Book)
-                .WithMany(bk => bk.BarrowBooks)
-                .HasForeignKey(b => b.BookId);
+                .WithMany(bk => bk.BorrowBooks)
+                .HasForeignKey(b => b.BookId)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            // Books to Category
+            modelBuilder.Entity<BooksEntity>()
+                .HasOne(c => c.Category)
+                .WithMany()
+                .HasForeignKey(b => b.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.ApplyConfiguration(new BookCatConfiguration());
+            // BookCategory Entity
+            modelBuilder.Entity<BookCategoryEntity>()
+                .HasKey(bc => bc.BCategoryId);
+
+            // Courses Entity
+            modelBuilder.Entity<CourseEntity>()
+                .HasKey(c => c.CourseId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
