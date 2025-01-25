@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace LibraryManagementSystem.Repositories
 {
@@ -22,7 +23,7 @@ namespace LibraryManagementSystem.Repositories
             _dbContextOptions = dbContextOptions;
         }
 
-        public async Task<UserEntity?> GetUserByEmailAsync(string email)
+        public async Task<UserEntity> GetUserByEmailAsync(string email)
         {
             try
             {
@@ -30,7 +31,7 @@ namespace LibraryManagementSystem.Repositories
                 {
                     return await dbContextOptions.Users
                            .Include(u => u.Course)
-                           .SingleOrDefaultAsync(u => u.Email == email);
+                           .FirstOrDefaultAsync(u => u.Email == email);
                 }
             }
             catch (Exception ex)
@@ -66,13 +67,13 @@ namespace LibraryManagementSystem.Repositories
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
                     return await dbContextOptions.Users
-                        .Include(u => u.Course)
-                        .SingleOrDefaultAsync(u => u.UserId == userId);
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(u => u.UserId == userId);
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error retrieving user by Id {ex.Message}", ex);
+                throw new Exception($"Error retrieving user by Id: {userId}. Details: {ex.Message}", ex);
             }
         }
 
@@ -134,6 +135,7 @@ namespace LibraryManagementSystem.Repositories
                 throw new Exception($"Error Removing User: {ex.Message}", ex);
             }
         }
+
 
     }
 }
