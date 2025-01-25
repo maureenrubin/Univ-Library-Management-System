@@ -6,6 +6,7 @@ using LibraryManagementSystem.Migrations;
 using LibraryManagementSystem.Repositories.Interfaces;
 using LibraryManagementSystem.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,21 +17,18 @@ namespace LibraryManagementSystem.Services
 {
     public class BorrowBookServices : IBorrowBookServices
     {
-        private readonly DbContextOptions<LMSDbContext> _dbContextOptions;
+        private readonly LMSDbContext appDbContext;
 
-        public BorrowBookServices(DbContextOptions<LMSDbContext> dbContextOptions)
+        public BorrowBookServices(LMSDbContext dbContext)
         {
-            this._dbContextOptions = dbContextOptions;
+            this.appDbContext = dbContext;
         }
 
-        public async Task <BorrowBookEntity> GetBorrowBookByIdAsync(int barrowBookId)
+        public async Task <BorrowBookEntity> GetBorrowBookByIdAsync(int borrowBookId)
         {
             try
             {
-                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
-                {
-                    var book = await dbContextOptions.BarrowBook
-                        .FirstOrDefaultAsync(b => b.BarrowedItemId == barrowBookId);
+                var book = await appDbContext.BorrowBook.FirstOrDefaultAsync(b => b.BarrowedItemId == borrowBookId);
 
                     if(book == null)
                     {
@@ -38,7 +36,7 @@ namespace LibraryManagementSystem.Services
                     }
 
                     return book;
-                }
+                
             }
             catch (Exception ex)
             {
@@ -47,34 +45,30 @@ namespace LibraryManagementSystem.Services
         }
 
 
-        public async Task<bool> AddBorrowBookAsync(BorrowBookEntity barrowBook)
+        public async Task<bool> AddBorrowBookAsync(BorrowBookEntity borrowBook)
         {
             try
             {
-                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
-                {
-                    var book = await dbContextOptions.Books.FirstOrDefaultAsync(b => b.BookId == barrowBook.BookId);
-                    
-                    if (book == null)throw new Exception("Book not found.");
-                    
+                var user = await appDbContext.Users.FindAsync();
+                if (user == null) throw new Exception("User not found.");
 
-                    if(book.BookAvailable < 0) throw new Exception($"Not enough stock available. Only {book.BookStock} left.");
-                    
-                    var user = await dbContextOptions.Users.FirstOrDefaultAsync(u => u.UserId == barrowBook.UserId);
-                    if (user == null)  throw new Exception("User not found.");
-                   
-                    await dbContextOptions.BarrowBook.AddAsync(barrowBook);
-                    await dbContextOptions.SaveChangesAsync();
+                var book = await appDbContext.Books.FindAsync();
+                if (book == null) throw new Exception("Book not found.");
 
-                    book.BookStock -= barrowBook.Quantity;
+                
+                if (book.BookStock < borrowBook.Quantity)
+                    throw new Exception($"Not enough stock available. Only {book.BookStock} left.");
 
-                    await dbContextOptions.SaveChangesAsync();
-                    return true;               
-                }
+                book.BookStock -= borrowBook.Quantity;
+
+                await appDbContext.BorrowBook.AddAsync(borrowBook);
+                await appDbContext.SaveChangesAsync();
+
+                return true;
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error Adding Barrowed Book: {ex.Message}", ex);
+                throw new Exception($"Error Adding Borrowed Book: {ex.Message}", ex.InnerException ?? ex);
             }
         }
     }
