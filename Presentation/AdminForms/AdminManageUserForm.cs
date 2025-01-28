@@ -15,6 +15,7 @@ using LibraryManagementSystem.Domain.Entities;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
+using System.Text.RegularExpressions;
 
 namespace LibraryManagementSystem.Presentation.AdminForms
 {
@@ -168,11 +169,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             try
             {
 
-                string firstName = UserFirstNameTXT.Text;
-                string lastName = UserLastNameTXT.Text;
-                string email = UserEmailTXT.Text;
-                string password = UserPasswordTXT.Text;
-                string confirmPassword = UserConfirmPassTXT.Text;
+                string firstName = UserFirstNameTXT.Text.Trim();
+                string lastName = UserLastNameTXT.Text.Trim();
+                string email = UserEmailTXT.Text.Trim();
+                string password = UserPasswordTXT.Text.Trim();
+                string confirmPassword = UserConfirmPassTXT.Text.Trim();
                 int selectedCourseId;
 
                 if (UserCourseCB.SelectedValue == null || !int.TryParse(UserCourseCB.SelectedValue.ToString(), out selectedCourseId))
@@ -190,9 +191,15 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     return;
                 }
 
-                if (IsUpdateMode && password != confirmPassword)
+                if(!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
                 {
-                    MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid email format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (password != confirmPassword)
+                {
+                    MessageBox.Show("Passwords do not match.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -205,8 +212,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                         UserPicture = ms.ToArray();
                     }
                 }
-
-
+                else
+                {
+                    UserPicture = null;
+                }
 
                 var newStudent = new UserDTO
                 {
@@ -278,7 +287,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     Email = UserEmailTXT.Text.Trim(),
                     Password = UserPasswordTXT.Text.Trim(),
                     ConfirmPassword = UserConfirmPassTXT.Text.Trim(),
-                    Role = "User",
                     UserPicture = UserPicture
                 };
 
