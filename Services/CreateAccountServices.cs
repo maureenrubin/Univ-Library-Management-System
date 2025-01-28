@@ -1,4 +1,4 @@
-﻿using LibraryManagementSystem.Data_Connectivity.Context;
+﻿using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
@@ -53,7 +53,6 @@ namespace LibraryManagementSystem.Repositories
                     Email = adminDTO.Email,
                     AdminPicture = adminDTO.AdminPicture,
                     Gender = adminDTO.Gender,
-                    Role = adminDTO.Role,
                     CreatedAt = adminDTO.CreatedAt,
                     PasswordHash = passwordHash,
                     PasswordSalt = passwordSalt,
@@ -61,6 +60,9 @@ namespace LibraryManagementSystem.Repositories
 
                 applicationDBContext.Admins.Add(createAdmin);
                 await applicationDBContext.SaveChangesAsync();
+
+                var role = await applicationDBContext.Roles.SingleOrDefaultAsync(r => r.RoleName == adminDTO.Role);
+
             }
             catch (Exception ex)
             {
@@ -71,7 +73,7 @@ namespace LibraryManagementSystem.Repositories
 
 
 
-
+        
         public async Task CreateUserAccountAsync(UserDTO userDTO)
         {
             try
@@ -79,8 +81,7 @@ namespace LibraryManagementSystem.Repositories
 
                 if (userDTO.Password != userDTO.ConfirmPassword)
                 {
-                    MessageBox.Show("Passwords don't match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    throw new Exception("Password doesn't match. Try again.");
                 }
 
                 var existingUser = await applicationDBContext.Users
@@ -88,8 +89,7 @@ namespace LibraryManagementSystem.Repositories
 
                 if (existingUser != null)
                 {
-                    MessageBox.Show($"A User with this email: '{userDTO.Email}' already exists. Please use a different email", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                    throw new InvalidOperationException($"A user with the email '{userDTO.Email}' already exists.");
                 }
 
                 PasswordHelper.CreatePasswordHash(userDTO.Password, out byte[] passwordHash, out byte[] passwordSalt);
@@ -103,7 +103,6 @@ namespace LibraryManagementSystem.Repositories
                     CourseId = userDTO.CourseId,
                     UserPicture = userDTO.UserPicture,
                     CreatedAt = userDTO.CreatedAt,
-                    Role = userDTO.Role,
                     PasswordHash = passwordHash,
                     PasswordSalt = passwordSalt,
 
@@ -112,6 +111,24 @@ namespace LibraryManagementSystem.Repositories
                 applicationDBContext.Users.Add(createUser);
                 await applicationDBContext.SaveChangesAsync();
 
+                var role = await applicationDBContext.Roles
+                    .SingleOrDefaultAsync(r => r.RoleName == userDTO.Role);
+
+                if (role != null)
+                {
+                    var userRole = new UserRoleEntity
+                    {
+                        UserId = createUser.UserId,
+                        RoleId = role.RoleId
+                    };
+
+                    applicationDBContext.UserRoles.Add(userRole);
+                    await applicationDBContext.SaveChangesAsync();
+                }
+                else
+                {
+                    throw new Exception($"Role '{userDTO.Role}' not found.");
+                }
             }
             catch (Exception ex)
             {
