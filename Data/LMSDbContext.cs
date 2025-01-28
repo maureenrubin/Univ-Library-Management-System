@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryManagementSystem.Data_Connectivity.Context
+namespace LibraryManagementSystem.Data
 {
     public class LMSDbContext : DbContext
     {
@@ -17,14 +17,18 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
 
         }
 
-        public LMSDbContext(DbContextOptions<LMSDbContext> options) : base(options)
-        {
-        
-        }
-        
+        public LMSDbContext(DbContextOptions<LMSDbContext> options) : base(options) { }
+
+
+
         public DbSet<AdminEntity> Admins { get; set; }
         public DbSet<BooksEntity> Books { get; set; }
         public DbSet<UserEntity> Users { get; set; }
+
+        public DbSet<RoleEntity> Roles { get; set; }
+        public DbSet<UserRoleEntity> UserRoles { get; set; }
+
+
         public DbSet<CourseEntity> Courses { get; set; }
         public DbSet<BorrowBookEntity> BorrowBook { get; set; }
         public DbSet<BookCategoryEntity> BookCategory { get; set; }
@@ -54,17 +58,20 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
                 .HasKey(b => b.BookId);
 
             // BorrowBook to User
-            modelBuilder.Entity<BorrowBookEntity>()
-                .HasOne(b => b.User)
-                .WithMany(u => u.BorrowBooks)
-                .HasForeignKey(b => b.UserId);
+            modelBuilder.Entity<BorrowBookEntity>(entity =>
+            {
+                // BorrowBook to User
+                entity.HasOne(b => b.User)
+                      .WithMany()
+                      .HasForeignKey(b => b.UserId);
 
-            // BorrowBook to Book
-            modelBuilder.Entity<BorrowBookEntity>()
-                .HasOne(b => b.Book)
-                .WithMany(bk => bk.BorrowBooks)
+                // BorrowBook to Book
+                entity.HasOne(b => b.Book)
+                .WithMany()
                 .HasForeignKey(b => b.BookId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            });
 
             // Books to Category
             modelBuilder.Entity<BooksEntity>()
@@ -80,11 +87,32 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
             // Courses Entity
             modelBuilder.Entity<CourseEntity>()
                 .HasKey(c => c.CourseId);
+
+
+            modelBuilder.Entity<UserRoleEntity>(entity =>
+            {
+                entity.HasKey(ur => new { ur.UserId, ur.RoleId });
+
+                entity.HasOne(u => u.User)
+                      .WithMany()
+                      .HasForeignKey(ur => ur.UserId);
+
+                entity.HasOne(ur => ur.Role)
+                      .WithMany(r => r.UserRoles)
+                      .HasForeignKey(ur => ur.RoleId);
+
+            });
+
+            modelBuilder.Entity<RoleEntity>()
+                .HasKey(r => r.RoleId);
+               
+
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-          
+
             if (!optionsBuilder.IsConfigured)
             {
                 var configuration = new ConfigurationBuilder()
@@ -105,5 +133,5 @@ namespace LibraryManagementSystem.Data_Connectivity.Context
             }
         }
 
-    } 
+    }
 }
