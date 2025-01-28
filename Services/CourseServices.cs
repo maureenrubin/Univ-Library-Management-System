@@ -1,4 +1,4 @@
-﻿using LibraryManagementSystem.Data_Connectivity.Context;
+﻿using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
