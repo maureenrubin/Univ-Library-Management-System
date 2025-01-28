@@ -1,5 +1,5 @@
 ﻿using Krypton.Toolkit;
-using LibraryManagementSystem.Data_Connectivity.Context;
+using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Migrations;
@@ -49,10 +49,10 @@ namespace LibraryManagementSystem.Services
         {
             try
             {
-                var user = await appDbContext.Users.FindAsync();
+                var user = await appDbContext.Users.FindAsync(borrowBook.UserId);
                 if (user == null) throw new Exception("User not found.");
 
-                var book = await appDbContext.Books.FindAsync();
+                var book = await appDbContext.Books.FindAsync(borrowBook.BookId);
                 if (book == null) throw new Exception("Book not found.");
 
                 
