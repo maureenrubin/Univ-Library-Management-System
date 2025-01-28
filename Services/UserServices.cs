@@ -1,4 +1,4 @@
-﻿using LibraryManagementSystem.Data_Connectivity.Context;
+﻿using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
@@ -58,7 +58,7 @@ namespace LibraryManagementSystem.Repositories
             }
 
         }
-        
+         
 
         public async Task<UserEntity> GetUserByIdAsync (int userId)
         {
@@ -136,6 +136,24 @@ namespace LibraryManagementSystem.Repositories
             }
         }
 
+        public async Task<List<RoleEntity>> GetRolesByUserIdAsync(int userId)
+        {
+            try
+            {
+
+                using (var dbContext = new LMSDbContext(_dbContextOptions))
+                {
+                    return await dbContext.UserRoles
+                            .Where(ur => ur.UserId == userId)
+                            .Select(ur => ur.Role)
+                            .ToListAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving user roles: {ex.Message}", ex);
+            }
+        }
 
     }
 }
