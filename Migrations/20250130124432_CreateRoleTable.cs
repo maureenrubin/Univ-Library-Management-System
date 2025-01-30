@@ -28,7 +28,7 @@ namespace LibraryManagementSystem.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     UserRoleId = table.Column<int>(type: "int", nullable: false),
-                    UserEntityUserId = table.Column<int>(type: "int", nullable: true)
+                    UserEntityUserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

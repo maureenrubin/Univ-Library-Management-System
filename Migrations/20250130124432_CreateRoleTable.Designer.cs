@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementSystem.Migrations
 {
     [DbContext(typeof(LMSDbContext))]
-    [Migration("20250128132939_CreateRoleTable")]
+    [Migration("20250130124432_CreateRoleTable")]
     partial class CreateRoleTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
