@@ -70,9 +70,6 @@ namespace LibraryManagementSystem.Repositories
             }
 
         }
-
-
-
         
         public async Task CreateUserAccountAsync(UserDTO userDTO)
         {
@@ -114,25 +111,24 @@ namespace LibraryManagementSystem.Repositories
                 var role = await applicationDBContext.Roles
                     .SingleOrDefaultAsync(r => r.RoleName == userDTO.Role);
 
-                if (role != null)
-                {
-                    var userRole = new UserRoleEntity
-                    {
-                        UserId = createUser.UserId,
-                        RoleId = role.RoleId
-                    };
+               if(role == null)
+               {
+                    throw new Exception($"Role '{userDTO.Role}' not found.");
+               }
 
+                var userRole = new UserRoleEntity
+                {
+                    UserId = createUser.UserId,
+                    RoleId = role.RoleId
+                };
+                
                     applicationDBContext.UserRoles.Add(userRole);
                     await applicationDBContext.SaveChangesAsync();
-                }
-                else
-                {
-                    throw new Exception($"Role '{userDTO.Role}' not found.");
-                }
+               
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error Adding User:  {ex.Message}", ex);
+                throw new Exception($"Error Adding User:  {ex.Message}", ex.InnerException ?? ex);
             }
 
         }

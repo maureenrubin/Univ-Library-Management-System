@@ -31,6 +31,8 @@ namespace LibraryManagementSystem.Repositories
                 {
                     return await dbContextOptions.Users
                            .Include(u => u.Course)
+                           .Include(u => u.UserRoles)
+                           .ThenInclude(ur => ur.Role)
                            .FirstOrDefaultAsync(u => u.Email == email);
                 }
             }
