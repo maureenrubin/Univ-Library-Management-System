@@ -138,24 +138,7 @@ namespace LibraryManagementSystem.Repositories
             }
         }
 
-        public async Task<List<RoleEntity>> GetRolesByUserIdAsync(int userId)
-        {
-            try
-            {
-
-                using (var dbContext = new LMSDbContext(_dbContextOptions))
-                {
-                    return await dbContext.UserRoles
-                            .Where(ur => ur.UserId == userId)
-                            .Select(ur => ur.Role)
-                            .ToListAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error retrieving user roles: {ex.Message}", ex);
-            }
-        }
+        
 
     }
 }
