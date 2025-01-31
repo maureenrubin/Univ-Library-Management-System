@@ -1,4 +1,5 @@
-﻿using LibraryManagementSystem.Data_Connectivity;
+﻿using LibraryManagementSystem.Data;
+using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Presentation.UserForms;
 using LibraryManagementSystem.Repositories;
@@ -22,7 +23,6 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private readonly IAdminServices adminServices;
         private readonly IUserServices userServices;
-
 
 
         private readonly MainForm_ADMIN mainFormAdmin;
@@ -75,7 +75,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
 
             var admin = await adminServices.GetAdminByEmailAsync(email);
-
+           
             if (admin != null && PasswordHelper.VerifyPasswordHash(password, admin.PasswordHash, admin.PasswordSalt))
             {
                 MessageBox.Show("Admin Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -90,22 +90,29 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
 
             var user = await userServices.GetUserByEmailAsync(email);
-
+           
             if (user != null && PasswordHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
-                MessageBox.Show("Student Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var userRoles = user.UserRoles?.Select(ur => ur.Role.RoleName).ToList() ?? new List<string>();
 
-                var studentMainForm = Program.ServiceProvider.GetRequiredService<UserMainForm>();
-                studentMainForm.CurrentUsers = user;
+                if (userRoles.Contains("User"))
+                {
+                    
+                    MessageBox.Show("Student Logged in Successfully, Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                this.Hide();
-                studentMainForm.Show();
-                FormsControlHelper.ClearControls(this);
-                return;
+                    
+                    this.Hide();
+                    var studentMainForm = Program.ServiceProvider.GetRequiredService<UserMainForm>();
+                    studentMainForm.CurrentUsers = user;
+                    BookUC.LoggedInUserId = user.UserId;
+
+                    studentMainForm.Show();
+                    FormsControlHelper.ClearControls(this);
+                    return;
+                }
             }
 
-            MessageBox.Show("Incorrect email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            MessageBox.Show("Invalid email or password, please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void ForgotPassLBL_Click(object sender, EventArgs e)
