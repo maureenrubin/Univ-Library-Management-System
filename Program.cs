@@ -1,4 +1,4 @@
-using LibraryManagementSystem.Data_Connectivity.Context;
+using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers.Animation;
 using LibraryManagementSystem.Presentation;
@@ -43,20 +43,21 @@ namespace WinFormsApp2
             services.AddScoped<ICreateAccountServices, CreateAccountServices>();
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<ICategoryServices, CategoryServices>();
-            services.AddScoped<IBarrowServices, BarrowServices>();
+            services.AddScoped<IBorrowBookServices, BorrowBookServices>();
+            services.AddScoped<IRoleServices, RoleServices>();
 
             services.AddScoped<AdminEntity>();
             services.AddScoped<BooksEntity>();
             services.AddScoped<UserEntity>();
             services.AddScoped<CourseEntity>();
-            services.AddScoped<BarrowBookEntity>(); 
+            services.AddScoped<BorrowTransaction>(); 
             services.AddScoped<BookCategoryEntity>();
 
 
             services.AddScoped<LoginForm>();
             services.AddScoped<CreateAdminAccForm>();
             services.AddScoped<AdminHomeForm>();
-            services.AddScoped<BarrowBookForm>();
+            services.AddScoped<BorrowBookForm>();
             
             services.AddScoped<MainForm_ADMIN>();
             services.AddScoped<AdminManageUserForm>();
