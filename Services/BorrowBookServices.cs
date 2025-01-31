@@ -24,11 +24,11 @@ namespace LibraryManagementSystem.Services
             this.appDbContext = dbContext;
         }
 
-        public async Task <BorrowBookEntity> GetBorrowBookByIdAsync(int borrowBookId)
+        public async Task <BorrowTransaction> GetBorrowBookByIdAsync(int borrowBookId)
         {
             try
             {
-                var book = await appDbContext.BorrowBook.FirstOrDefaultAsync(b => b.BarrowedItemId == borrowBookId);
+                var book = await appDbContext.BorrowBooks.FirstOrDefaultAsync(b => b.BorrowedItemId == borrowBookId);
 
                     if(book == null)
                     {
@@ -45,23 +45,13 @@ namespace LibraryManagementSystem.Services
         }
 
 
-        public async Task<bool> AddBorrowBookAsync(BorrowBookEntity borrowBook)
+        public async Task<bool> AddBorrowBookAsync(BorrowTransaction borrowBook)
         {
             try
             {
-                var user = await appDbContext.Users.FindAsync(borrowBook.UserId);
-                if (user == null) throw new Exception("User not found.");
+              
 
-                var book = await appDbContext.Books.FindAsync(borrowBook.BookId);
-                if (book == null) throw new Exception("Book not found.");
-
-                
-                if (book.BookStock < borrowBook.Quantity)
-                    throw new Exception($"Not enough stock available. Only {book.BookStock} left.");
-
-                book.BookStock -= borrowBook.Quantity;
-
-                await appDbContext.BorrowBook.AddAsync(borrowBook);
+                await appDbContext.BorrowBooks.AddAsync(borrowBook);
                 await appDbContext.SaveChangesAsync();
 
                 return true;

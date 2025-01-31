@@ -10,8 +10,8 @@ namespace LibraryManagementSystem.Services.Contracts
 {
     public interface IBorrowBookServices
     {
-        Task<BorrowBookEntity> GetBorrowBookByIdAsync(int barrowBookId);
+        Task<BorrowTransaction> GetBorrowBookByIdAsync(int barrowBookId);
 
-        Task<bool> AddBorrowBookAsync(BorrowBookEntity barrowBook);
+        Task<bool> AddBorrowBookAsync(BorrowTransaction barrowBook);
     }
 }
