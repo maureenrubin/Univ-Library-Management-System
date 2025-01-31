@@ -12,10 +12,7 @@ namespace LibraryManagementSystem.Data
 {
     public class LMSDbContext : DbContext
     {
-        public LMSDbContext()
-        {
-
-        }
+        public LMSDbContext() { }
 
         public LMSDbContext(DbContextOptions<LMSDbContext> options) : base(options) { }
 
@@ -30,7 +27,7 @@ namespace LibraryManagementSystem.Data
 
 
         public DbSet<CourseEntity> Courses { get; set; }
-        public DbSet<BorrowBookEntity> BorrowBook { get; set; }
+        public DbSet<BorrowTransaction> BorrowBooks { get; set; }
         public DbSet<BookCategoryEntity> BookCategory { get; set; }
 
 
@@ -58,18 +55,20 @@ namespace LibraryManagementSystem.Data
                 .HasKey(b => b.BookId);
 
             // BorrowBook to User
-            modelBuilder.Entity<BorrowBookEntity>(entity =>
+            modelBuilder.Entity<BorrowTransaction>(entity =>
             {
                 // BorrowBook to User
                 entity.HasOne(b => b.User)
-                      .WithMany()
-                      .HasForeignKey(b => b.UserId);
+                      .WithMany(u => u.BorrowBooks)
+                      .HasForeignKey(b => b.UserId)
+                      .HasConstraintName("FK_BorrowBook_User");
 
                 // BorrowBook to Book
                 entity.HasOne(b => b.Book)
-                .WithMany()
+                .WithMany(u => u.BorrowBooks)
                 .HasForeignKey(b => b.BookId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("FK_Borrow_Book");
 
             });
 
@@ -94,11 +93,11 @@ namespace LibraryManagementSystem.Data
                 entity.HasKey(ur => new { ur.UserId, ur.RoleId });
 
                 entity.HasOne(u => u.User)
-                      .WithMany()
+                      .WithMany(u => u.UserRoles)
                       .HasForeignKey(ur => ur.UserId);
 
                 entity.HasOne(ur => ur.Role)
-                      .WithMany(r => r.UserRoles)
+                      .WithMany(u => u.UserRoles)
                       .HasForeignKey(ur => ur.RoleId);
 
             });
