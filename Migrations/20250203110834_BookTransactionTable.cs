@@ -28,18 +28,18 @@ namespace LibraryManagementSystem.Migrations
                 name: "BorrowBooks",
                 columns: table => new
                 {
-                    BorrowedItemId = table.Column<int>(type: "int", nullable: false)
+                    BorrowedBookId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BorrowedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DueDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    BookId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
                     BorrowedPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    BookId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BorrowBooks", x => x.BorrowedItemId);
+                    table.PrimaryKey("PK_BorrowBooks", x => x.BorrowedBookId);
                     table.ForeignKey(
                         name: "FK_Borrow_Book",
                         column: x => x.BookId,

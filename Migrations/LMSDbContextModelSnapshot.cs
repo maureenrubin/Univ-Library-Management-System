@@ -136,11 +136,11 @@ namespace LibraryManagementSystem.Migrations
 
             modelBuilder.Entity("LibraryManagementSystem.Domain.Entities.BorrowTransaction", b =>
                 {
-                    b.Property<int>("BorrowedItemId")
+                    b.Property<int>("BorrowedBookId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BorrowedItemId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BorrowedBookId"), 1L, 1);
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
@@ -160,7 +160,7 @@ namespace LibraryManagementSystem.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("BorrowedItemId");
+                    b.HasKey("BorrowedBookId");
 
                     b.HasIndex("BookId");
 
