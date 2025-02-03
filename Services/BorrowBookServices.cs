@@ -17,18 +17,18 @@ namespace LibraryManagementSystem.Services
 {
     public class BorrowBookServices : IBorrowBookServices
     {
-        private readonly LMSDbContext appDbContext;
+        private readonly LMSDbContext appDBContext;
 
         public BorrowBookServices(LMSDbContext dbContext)
         {
-            this.appDbContext = dbContext;
+            this.appDBContext = dbContext;
         }
 
         public async Task <BorrowTransaction> GetBorrowBookByIdAsync(int borrowBookId)
         {
             try
             {
-                var book = await appDbContext.BorrowBooks.FirstOrDefaultAsync(b => b.BorrowedItemId == borrowBookId);
+                var book = await appDBContext.BorrowBooks.FirstOrDefaultAsync(b => b.BorrowedBookId == borrowBookId);
 
                     if(book == null)
                     {
@@ -45,20 +45,35 @@ namespace LibraryManagementSystem.Services
         }
 
 
-        public async Task<bool> AddBorrowBookAsync(BorrowTransaction borrowBook)
+        public async Task<bool> AddBorrowBookAsync(int userId, int bookId)
         {
             try
             {
-              
+                var borrowBook = await appDBContext.BorrowBooks
+                     .FirstOrDefaultAsync(b => b.UserId == userId && b.BookId == bookId);
 
-                await appDbContext.BorrowBooks.AddAsync(borrowBook);
-                await appDbContext.SaveChangesAsync();
+                if (borrowBook != null)
+                {
+                    MessageBox.Show("Book already borrowed", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
 
-                return true;
+                var addBorrow = new BorrowTransaction
+                {
+                    UserId = userId,
+                    BookId = bookId,
+                    BorrowedDate = DateTime.UtcNow,
+                    DueDate =   DateTime.UtcNow.AddDays(7),
+                    Quantity = 1
+                };
+
+                await appDBContext.BorrowBooks.AddAsync(addBorrow);
+                return await appDBContext.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error Adding Borrowed Book: {ex.Message}", ex.InnerException ?? ex);
+               
             }
         }
     }
