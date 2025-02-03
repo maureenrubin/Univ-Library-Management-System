@@ -1,4 +1,4 @@
-﻿using LibraryManagementSystem.Data_Connectivity.Context;
+﻿using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Repositories.Interfaces;
@@ -57,7 +57,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 var bookDetails = await bookServices.GetBookByIdAsync(bookId);
 
-                if (bookId == 0)
+                if (bookDetails == null)
                 {
                     MessageBox.Show("Invalid book data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -109,38 +109,23 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     return;
                 }
 
-                if(userEntity.UserId == 0)
+               var loggedInUser = await userServices.GetLoggedInUserAsync("User");
+
+                if(loggedInUser == null)
                 {
-                    MessageBox.Show("User ID is invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please log in as a user to borrow a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (userEntity == null || userEntity.UserId == 0)
-                {
-                    throw new Exception("Invalid userEntity or UserId.");
-                }
-
-
-                if (string.IsNullOrEmpty(StockLBL.Text) || !int.TryParse(StockLBL.Text, out int stock) || stock <= 0)
+                if (booksEntity.BookStock <= 0)
                 {
                     MessageBox.Show("The selected book is out of stock.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                var borrowBook = new BorrowBookEntity
-                {
-                    BookId = booksEntity.BookId,
-                    UserId = userEntity.UserId,
-                    Quantity = 1,
-                    BarrowedDate = DateTime.UtcNow,
-                    DueDate = DateTime.UtcNow.AddDays(7),
-                    BarrowedPrice = booksEntity.BookPrice
+                bool bookBorrowed = await borrowServices.AddBorrowBookAsync(userEntity.UserId, booksEntity.BookId);
 
-                };
-
-                bool result = await borrowServices.AddBorrowBookAsync(borrowBook);
-
-                if (result)
+                if (bookBorrowed)
                 {
                     MessageBox.Show("Book successfully borrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await LoadBarrowBookDetails(booksEntity.BookId);
@@ -153,7 +138,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             }
             catch (Exception ex)
             {
-                throw new Exception($"An error accured while : {ex.Message}", ex.InnerException ?? ex);
+                throw new Exception($"An error occurred while : {ex.Message}", ex.InnerException ?? ex);
             }
         }
     }
