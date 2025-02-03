@@ -139,6 +139,20 @@ namespace LibraryManagementSystem.Repositories
         }
 
         
+        public async Task<UserEntity?> GetLoggedInUserAsync(string role)
+        {
+            try
+            {
+                using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
+                {
+                    return await dbContextOptions.Users.FirstOrDefaultAsync(u => u.Role == role);
+                }
+            }
+            catch (Exception ex)
 
+            {
+                throw new Exception($"Error fetching logged-in user: {ex.Message}", ex);
+            }
+        }
     }
 }

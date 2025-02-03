@@ -19,5 +19,7 @@ namespace LibraryManagementSystem.Repositories.Interfaces
         Task UpdateUserAsync(UserDTO userDTO);
 
         Task <bool> RemoveUserAsync(int userId);
+
+        Task<UserEntity?> GetLoggedInUserAsync(string role);
     }
 }
