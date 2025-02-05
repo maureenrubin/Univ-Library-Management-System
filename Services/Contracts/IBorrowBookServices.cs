@@ -12,7 +12,7 @@ namespace LibraryManagementSystem.Services.Contracts
     {
         Task<BorrowTransaction> GetBorrowBookByIdAsync(int barrowBookId);
 
-        Task<bool> AddBorrowBookAsync(int userId, int bookId);
+        Task<bool> AddBorrowBookAsync(int userId, int bookId, int borrowQuantity);
 
 
     }

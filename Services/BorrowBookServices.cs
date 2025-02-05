@@ -45,16 +45,38 @@ namespace LibraryManagementSystem.Services
         }
 
 
-        public async Task<bool> AddBorrowBookAsync(int userId, int bookId)
+        public async Task<bool> AddBorrowBookAsync(int userId, int bookId, int borrowQuantity)
         {
             try
             {
+                var user = await appDBContext.Users.AnyAsync(u => u.UserId == userId);
+                
+                if(!user)
+                {
+                    MessageBox.Show("Invalid Student Data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                var book = await appDBContext.Books.FirstOrDefaultAsync(b => b.BookId == bookId);
+
+                if(book == null)
+                {
+                    MessageBox.Show("Book not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if(book.BookStock < borrowQuantity)
+                {
+                    MessageBox.Show("Not enough book available", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
+
                 var borrowBook = await appDBContext.BorrowBooks
                      .FirstOrDefaultAsync(b => b.UserId == userId && b.BookId == bookId);
 
                 if (borrowBook != null)
                 {
-                    MessageBox.Show("Book already borrowed", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Book already borrowed", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
 
@@ -63,11 +85,16 @@ namespace LibraryManagementSystem.Services
                     UserId = userId,
                     BookId = bookId,
                     BorrowedDate = DateTime.UtcNow,
+                    BorrowedPrice = book.BookPrice,
                     DueDate =   DateTime.UtcNow.AddDays(7),
-                    Quantity = 1
+                    Quantity = borrowQuantity
                 };
 
                 await appDBContext.BorrowBooks.AddAsync(addBorrow);
+
+                book.BookStock -= borrowQuantity;
+                appDBContext.Books.Update(book);
+
                 return await appDBContext.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
