@@ -1,6 +1,7 @@
 ﻿using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
+using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Repositories.Interfaces;
 using LibraryManagementSystem.Services.Contracts;
 using System;
@@ -25,7 +26,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private readonly UserEntity userEntity;
         private readonly BooksEntity booksEntity;
-       
+
 
         public BorrowBookForm(IBookServices bookServices,
                               ICategoryServices categoryServices,
@@ -41,9 +42,16 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             this.userServices = userServices;
 
             this.booksEntity = booksEntity;
-            this.userEntity = userEntity;
         }
 
+        public BorrowBookForm(IBookServices bookServices, ICategoryServices categoryServices, IBorrowBookServices borrowServices, IUserServices userServices, BooksEntity bookEntity)
+        {
+            this.bookServices = bookServices;
+            this.categoryServices = categoryServices;
+            this.borrowServices = borrowServices;
+            this.booksEntity = bookEntity;
+            this.userServices = userServices;
+        }
 
         public async Task LoadBarrowBookDetails(int bookId)
         {
@@ -69,18 +77,18 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
 
                 if (bookDetails.BooksPicture != null)
+                {
+                    using (var ms = new MemoryStream(bookDetails.BooksPicture))
                     {
-                        using (var ms = new MemoryStream(bookDetails.BooksPicture))
-                        {
-                            BookPB.Image = Image.FromStream(ms);
+                        BookPB.Image = Image.FromStream(ms);
 
-                        }
                     }
-                    else
-                    {
-                        BookPB.Image = null;
-                    }
-                
+                }
+                else
+                {
+                    BookPB.Image = null;
+                }
+
 
                 BarrowBookBTN.Enabled = bookDetails.BookStock > 0;
                 BarrowDateLBL.Text = DateTime.UtcNow.ToShortDateString();
@@ -103,32 +111,35 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         {
             try
             {
-                if (booksEntity == null || booksEntity.BookId == 0)
+                if (!int.TryParse(QuantityTXT.Text, out int borrowQuantity) || borrowQuantity <= 0)
                 {
-                    MessageBox.Show("Invalid book data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Enter a valid borrow quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-               var loggedInUser = await userServices.GetLoggedInUserAsync("User");
 
-                if(loggedInUser == null)
+                var loggedInUser = await userServices.GetLoggedInUserAsync("User");
+
+                if (loggedInUser == null)
                 {
                     MessageBox.Show("Please log in as a user to borrow a book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (booksEntity.BookStock <= 0)
+                if (booksEntity.BookStock < borrowQuantity)
                 {
                     MessageBox.Show("The selected book is out of stock.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                bool bookBorrowed = await borrowServices.AddBorrowBookAsync(userEntity.UserId, booksEntity.BookId);
+                bool bookBorrowed = await borrowServices.AddBorrowBookAsync(loggedInUser.UserId, booksEntity.BookId, borrowQuantity);
 
                 if (bookBorrowed)
                 {
                     MessageBox.Show("Book successfully borrowed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await LoadBarrowBookDetails(booksEntity.BookId);
+                    FormsControlHelper.ClearControls(BorrowPanel);
+                    this.Hide();
                 }
                 else
                 {
@@ -140,6 +151,11 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             {
                 throw new Exception($"An error occurred while : {ex.Message}", ex.InnerException ?? ex);
             }
+        }
+
+        private void ExitBTN_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
