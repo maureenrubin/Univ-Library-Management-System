@@ -51,10 +51,10 @@
             BooksTitleTXT = new Krypton.Toolkit.KryptonTextBox();
             ManageBooksBTN = new Button();
             panel2 = new Panel();
+            BooksFLP = new FlowLayoutPanel();
             button1 = new Button();
             SearchBookTXT = new Krypton.Toolkit.KryptonTextBox();
             panel3 = new Panel();
-            BooksFLP = new FlowLayoutPanel();
             BooksPanel.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BooksPB).BeginInit();
@@ -429,6 +429,15 @@
             panel2.Size = new Size(1371, 795);
             panel2.TabIndex = 1;
             // 
+            // BooksFLP
+            // 
+            BooksFLP.AutoScroll = true;
+            BooksFLP.BackColor = Color.FromArgb(169, 131, 110);
+            BooksFLP.Location = new Point(25, 98);
+            BooksFLP.Name = "BooksFLP";
+            BooksFLP.Size = new Size(1318, 673);
+            BooksFLP.TabIndex = 0;
+            // 
             // button1
             // 
             button1.Cursor = Cursors.Hand;
@@ -484,15 +493,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(1320, 27);
             panel3.TabIndex = 1;
-            // 
-            // BooksFLP
-            // 
-            BooksFLP.AutoScroll = true;
-            BooksFLP.BackColor = Color.FromArgb(169, 131, 110);
-            BooksFLP.Location = new Point(25, 98);
-            BooksFLP.Name = "BooksFLP";
-            BooksFLP.Size = new Size(1318, 673);
-            BooksFLP.TabIndex = 0;
             // 
             // AdminBooksForm
             // 

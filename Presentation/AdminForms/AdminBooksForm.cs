@@ -9,7 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LibraryManagementSystem.Data_Connectivity.Context;
+using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
@@ -24,6 +24,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
     {
         private readonly IBookServices bookServices;
         private readonly ICategoryServices categoryServices;
+        private readonly IBorrowBookServices borrowServices;
+        private readonly IUserServices userServices;
 
         private System.Windows.Forms.Timer sidePanelTransition;
         private System.Windows.Forms.Timer crudBooksTransition;
@@ -32,6 +34,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private bool sidebarExpanded = false;
         private byte[] BooksPicture;
         private readonly BooksEntity booksEntity;
+        private readonly UserEntity userEntity;
 
         private bool BookUpdateMode = false;
         private int BookIdUpdate;
@@ -40,13 +43,20 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         public AdminBooksForm(IBookServices bookServices,
                               BooksEntity booksEntity, Animations animations,
-                              ICategoryServices categoryServices)
+                              UserEntity userEntity,
+                              ICategoryServices categoryServices,
+                              IUserServices userServices,
+                              IBorrowBookServices borrowServices)
         {
 
             InitializeComponent();
             this.booksEntity = booksEntity;
+            this.userEntity = userEntity;
+
+            this.userServices = userServices;
             this.bookServices = bookServices;
             this.categoryServices = categoryServices;
+            this.borrowServices = borrowServices;
 
             this.crudBooksTransition = new System.Windows.Forms.Timer { Interval = 10 };
             this.sidePanelTransition = new System.Windows.Forms.Timer { Interval = 10 };
@@ -64,6 +74,8 @@ namespace LibraryManagementSystem.Presentation.AdminForms
             crudBooksTransition.Start();
             sidePanelTransition.Start();
         }
+
+
         private async Task LoadBooksDetails()
         {
             try
@@ -73,7 +85,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 foreach (var book in bookList)
                 {
-                    var bookDisplay = new BookUC(book, bookServices, categoryServices);
+                    var bookDisplay = new BookUC(book, bookServices, categoryServices, borrowServices, userServices, userEntity);
                     bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
                     BooksFLP.Controls.Add(bookDisplay);
                 }
@@ -177,6 +189,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                     BooksPicture = booksPicture,
                     BookPrice = bookPrice,
                     CategoryId = selectedCategoryId
+                    
                 };
 
                 await bookServices.AddBookAsync(newBook);
@@ -185,7 +198,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 FormsControlHelper.ClearControls(this);
                 LoadBooksDetails();
-
+               
             }
             catch (Exception ex)
             {
@@ -305,7 +318,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private void DisplayBooksToUI(BooksEntity books)
         {
             BooksFLP.Controls.Clear();
-            BookUC bookDisplay = new BookUC(books, bookServices, categoryServices);
+            BookUC bookDisplay = new BookUC(books, bookServices, categoryServices, borrowServices, userServices, userEntity);
             BooksFLP.Controls.Add(bookDisplay);
         }
 
@@ -355,13 +368,13 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 var  filteredBooks = allBooks
                     .Where(b => (!string.IsNullOrEmpty(b.Title) && b.Title.Contains(searchBook, StringComparison.OrdinalIgnoreCase)) 
-                    || (!string.IsNullOrEmpty(b.BookCategory?.CategoryName) && b.BookCategory.CategoryName.Contains(searchBook, StringComparison.OrdinalIgnoreCase)))
+                    || (!string.IsNullOrEmpty(b.Category?.CategoryName) && b.Category.CategoryName.Contains(searchBook, StringComparison.OrdinalIgnoreCase)))
                      .ToList();
              
                 BooksFLP.Controls.Clear();
                 foreach (var book in filteredBooks)
                 {
-                    var bookDisplay = new BookUC(book, bookServices, categoryServices);
+                    var bookDisplay = new BookUC(book, bookServices, categoryServices, borrowServices, userServices, userEntity);
                     bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
                     BooksFLP.Controls.Add(bookDisplay);
                 }
