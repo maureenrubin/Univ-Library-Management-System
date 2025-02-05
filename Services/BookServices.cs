@@ -40,7 +40,21 @@ namespace LibraryManagementSystem.Repositories
             {
                 using (var dbContextOptions = new LMSDbContext(_dbContextOptions))
                 {
-                    var book = await dbContextOptions.Books.FirstOrDefaultAsync(b => b.BookId == bookId);
+                    var book = await dbContextOptions.Books
+                        .Where(b => b.BookId == bookId)
+                        .Select(b => new BooksEntity
+                        {
+                            BookId = b.BookId,
+                            Title = b.Title,
+                            Genre = b.Genre,
+                            PublishedDate = b.PublishedDate,
+                            BookStock = b.BookStock,
+                            BookPrice = b.BookPrice, 
+                            CategoryId = b.CategoryId,
+                            BooksPicture = b.BooksPicture
+                        })
+                        .FirstOrDefaultAsync();
+
 
                     if (book == null)
                     {
@@ -92,6 +106,8 @@ namespace LibraryManagementSystem.Repositories
                     existingBook.Genre = bookDTO.Genre;
                     existingBook.BookStock = bookDTO.BookStock;
                     existingBook.CategoryId = bookDTO.CategoryId;
+
+                    
 
                     await dbContextOptions.SaveChangesAsync();
                 }
