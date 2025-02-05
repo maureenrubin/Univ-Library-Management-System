@@ -77,9 +77,10 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         private void LogoutBTN_Click(object sender, EventArgs e)
         {
-            this.Hide();
             var loginForm = Program.ServiceProvider.GetRequiredService<LoginForm>();
             loginForm.Show();
+
+            this.Close();
 
         }
 
