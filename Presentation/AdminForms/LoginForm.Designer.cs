@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             UsernameTXT = new Krypton.Toolkit.KryptonTextBox();
             PasswordTXT = new Krypton.Toolkit.KryptonTextBox();
             ExitBTN = new Button();
@@ -122,7 +121,7 @@
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.FromArgb(169, 131, 110);
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Image = Properties.Resources._85ba0935a7fc189eddecf0952dd2c9e1_removebg_preview;
             pictureBox2.Location = new Point(791, 212);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(545, 423);
