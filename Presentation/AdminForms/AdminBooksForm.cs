@@ -14,6 +14,7 @@ using LibraryManagementSystem.Domain.DTO;
 using LibraryManagementSystem.Domain.Entities;
 using LibraryManagementSystem.Helpers;
 using LibraryManagementSystem.Helpers.Animation;
+using LibraryManagementSystem.Presentation.UserForms;
 using LibraryManagementSystem.Repositories;
 using LibraryManagementSystem.Repositories.Interfaces;
 using LibraryManagementSystem.Services.Contracts;
@@ -34,7 +35,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private bool sidebarExpanded = false;
         private byte[] BooksPicture;
         private readonly BooksEntity booksEntity;
-        private readonly UserEntity userEntity;
+        private readonly UserBookForm bookForm;
 
         private bool BookUpdateMode = false;
         private int BookIdUpdate;
@@ -43,7 +44,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
         public AdminBooksForm(IBookServices bookServices,
                               BooksEntity booksEntity, Animations animations,
-                              UserEntity userEntity,
+                              UserBookForm bookForm,
                               ICategoryServices categoryServices,
                               IUserServices userServices,
                               IBorrowBookServices borrowServices)
@@ -51,7 +52,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
             InitializeComponent();
             this.booksEntity = booksEntity;
-            this.userEntity = userEntity;
+            this.bookForm = bookForm;
 
             this.userServices = userServices;
             this.bookServices = bookServices;
@@ -85,7 +86,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
 
                 foreach (var book in bookList)
                 {
-                    var bookDisplay = new BookUC(book, bookServices, categoryServices, borrowServices, userServices, userEntity);
+                    var bookDisplay = new BookUC(book, bookServices, categoryServices, borrowServices, userServices, bookForm);
                     bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
                     BooksFLP.Controls.Add(bookDisplay);
                 }
@@ -318,7 +319,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
         private void DisplayBooksToUI(BooksEntity books)
         {
             BooksFLP.Controls.Clear();
-            BookUC bookDisplay = new BookUC(books, bookServices, categoryServices, borrowServices, userServices, userEntity);
+            BookUC bookDisplay = new BookUC(books, bookServices, categoryServices, borrowServices, userServices, bookForm);
             BooksFLP.Controls.Add(bookDisplay);
         }
 
@@ -374,7 +375,7 @@ namespace LibraryManagementSystem.Presentation.AdminForms
                 BooksFLP.Controls.Clear();
                 foreach (var book in filteredBooks)
                 {
-                    var bookDisplay = new BookUC(book, bookServices, categoryServices, borrowServices, userServices, userEntity);
+                    var bookDisplay = new BookUC(book, bookServices, categoryServices, borrowServices, userServices, bookForm);
                     bookDisplay.BookUCClicked += BookDetailsUC_Clicked;
                     BooksFLP.Controls.Add(bookDisplay);
                 }
