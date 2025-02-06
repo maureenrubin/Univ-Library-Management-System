@@ -38,7 +38,7 @@
             label3 = new Label();
             label4 = new Label();
             BooksPriceLbl = new Label();
-            BarrowBtn = new Button();
+            BorrowBtn = new Button();
             BooksIdLbl = new Label();
             BookCategoryLbl = new Label();
             label5 = new Label();
@@ -153,19 +153,20 @@
             BooksPriceLbl.TabIndex = 9;
             BooksPriceLbl.Text = "143";
             // 
-            // BarrowBtn
+            // BorrowBtn
             // 
-            BarrowBtn.BackColor = Color.MediumSeaGreen;
-            BarrowBtn.Cursor = Cursors.Hand;
-            BarrowBtn.FlatAppearance.BorderColor = Color.Black;
-            BarrowBtn.FlatStyle = FlatStyle.Flat;
-            BarrowBtn.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            BarrowBtn.Location = new Point(204, 218);
-            BarrowBtn.Name = "BarrowBtn";
-            BarrowBtn.Size = new Size(129, 38);
-            BarrowBtn.TabIndex = 10;
-            BarrowBtn.Text = "Barrow Book";
-            BarrowBtn.UseVisualStyleBackColor = false;
+            BorrowBtn.BackColor = Color.MediumSeaGreen;
+            BorrowBtn.Cursor = Cursors.Hand;
+            BorrowBtn.FlatAppearance.BorderColor = Color.Black;
+            BorrowBtn.FlatStyle = FlatStyle.Flat;
+            BorrowBtn.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BorrowBtn.Location = new Point(221, 229);
+            BorrowBtn.Name = "BorrowBtn";
+            BorrowBtn.Size = new Size(129, 38);
+            BorrowBtn.TabIndex = 10;
+            BorrowBtn.Text = "Borrow Book";
+            BorrowBtn.UseVisualStyleBackColor = false;
+            BorrowBtn.Click += BorrowBtn_Click;
             // 
             // BooksIdLbl
             // 
@@ -204,11 +205,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(BorrowBtn);
             Controls.Add(label5);
             Controls.Add(BookCategoryLbl);
             Controls.Add(BooksIdLbl);
             Controls.Add(PublishedDate);
-            Controls.Add(BarrowBtn);
             Controls.Add(BooksPriceLbl);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -219,7 +220,7 @@
             Controls.Add(BooksTitleLbl);
             Controls.Add(BooksPB);
             Name = "BookUC";
-            Size = new Size(354, 269);
+            Size = new Size(384, 303);
             ((System.ComponentModel.ISupportInitialize)BooksPB).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -237,7 +238,7 @@
         private Label label3;
         private Label label4;
         private Label BooksPriceLbl;
-        private Button BarrowBtn;
+        private Button BorrowBtn;
         private Label BooksIdLbl;
         private Label BookCategoryLbl;
         private Label label5;
