@@ -33,6 +33,7 @@
             // 
             // UserBooksFLP
             // 
+            UserBooksFLP.AutoScroll = true;
             UserBooksFLP.Location = new Point(30, 35);
             UserBooksFLP.Name = "UserBooksFLP";
             UserBooksFLP.Size = new Size(1375, 680);
