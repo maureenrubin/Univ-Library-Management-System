@@ -90,9 +90,9 @@ namespace LibraryManagementSystem.Services
                     Quantity = borrowQuantity
                 };
 
-                await appDBContext.BorrowBooks.AddAsync(addBorrow);
-
                 book.BookStock -= borrowQuantity;
+                
+                await appDBContext.BorrowBooks.AddAsync(addBorrow);
                 appDBContext.Books.Update(book);
 
                 return await appDBContext.SaveChangesAsync() > 0;
