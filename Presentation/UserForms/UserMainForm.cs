@@ -3,6 +3,7 @@ using LibraryManagementSystem.Helpers.Animation;
 using LibraryManagementSystem.Presentation.AdminForms;
 using LibraryManagementSystem.Repositories.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,42 +22,48 @@ namespace LibraryManagementSystem.Presentation.UserForms
     {
         public UserEntity CurrentUsers;
         private readonly Animations animations;
+        private readonly IUserServices userServices;
 
         private System.Windows.Forms.Timer viewUserProfile;
         private bool sidebarExpanded = false;
 
-        public UserMainForm(Animations animations)
+        public UserMainForm(Animations animations, IUserServices userServices)
         {
 
             InitializeComponent();
 
             this.animations = animations;
             this.viewUserProfile = new System.Windows.Forms.Timer { Interval = 10 };
-
-
+            this.userServices = userServices;
         }
 
-        private  void UserMainForm_Load(object sender, EventArgs e)
+        private async void UserMainForm_Load(object sender, EventArgs e)
         {
-                if (CurrentUsers != null)
+            if (CurrentUsers == null)
+            {
+                // Retrieve the logged-in user's data using their ID
+                CurrentUsers = await userServices.GetUserByIdAsync(BookUC.LoggedInUserId);
+            }
+
+            if (CurrentUsers != null)
+            {
+
+                StudentNameTEXT.Text = $"{CurrentUsers.FirstName} {CurrentUsers.LastName}";
+
+                if (CurrentUsers.Course != null)
                 {
-
-                    StudentNameTEXT.Text = $"{CurrentUsers.FirstName} {CurrentUsers.LastName}";
-
-                    if (CurrentUsers.Course != null)
-                    {
-                        StudentCourseTEXT.Text = CurrentUsers.Course.Name;
-                    }
-
-                    if (CurrentUsers.UserPicture != null && CurrentUsers.UserPicture.Length > 0)
-                    {
-                        using (var ms = new MemoryStream(CurrentUsers.UserPicture))
-                        {
-                            StudentProfilePB.Image = Image.FromStream(ms);
-                        }
-                    }
-              
+                    StudentCourseTEXT.Text = CurrentUsers.Course.Name;
                 }
+
+                if (CurrentUsers.UserPicture != null && CurrentUsers.UserPicture.Length > 0)
+                {
+                    using (var ms = new MemoryStream(CurrentUsers.UserPicture))
+                    {
+                        StudentProfilePB.Image = Image.FromStream(ms);
+                    }
+                }
+
+            }
         }
 
         private void HomeButton_Click(object sender, EventArgs e)
@@ -84,6 +91,12 @@ namespace LibraryManagementSystem.Presentation.UserForms
             animations.LoadForm(BooksPanel, userBooksForm);
         }
 
-      
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            var loginForm = Program.ServiceProvider.GetRequiredService<LoginForm>();
+            loginForm.Show();
+
+            this.Close();
+        }
     }
 }

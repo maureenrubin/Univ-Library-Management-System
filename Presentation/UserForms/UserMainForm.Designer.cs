@@ -46,6 +46,7 @@
             UserTransacButton = new Button();
             BooksButton = new Button();
             UserViewProfileBTN = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)UserPanel).BeginInit();
             UserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)StudentProfilePB).BeginInit();
@@ -59,14 +60,15 @@
             // 
             // UserPanel
             // 
+            UserPanel.Controls.Add(label1);
             UserPanel.Controls.Add(LogoutButton);
             UserPanel.Controls.Add(StudentCourseTEXT);
             UserPanel.Controls.Add(StudentNameTEXT);
             UserPanel.Controls.Add(StudentProfilePB);
             UserPanel.Dock = DockStyle.Right;
-            UserPanel.Location = new Point(1195, 87);
+            UserPanel.Location = new Point(1463, 87);
             UserPanel.Name = "UserPanel";
-            UserPanel.Size = new Size(278, 786);
+            UserPanel.Size = new Size(10, 786);
             UserPanel.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             UserPanel.TabIndex = 0;
             // 
@@ -80,17 +82,18 @@
             LogoutButton.ImageAlign = ContentAlignment.MiddleRight;
             LogoutButton.Location = new Point(88, 661);
             LogoutButton.Name = "LogoutButton";
-            LogoutButton.Size = new Size(136, 39);
+            LogoutButton.Size = new Size(134, 39);
             LogoutButton.TabIndex = 6;
             LogoutButton.Text = "Logout Account";
             LogoutButton.TextAlign = ContentAlignment.MiddleLeft;
             LogoutButton.UseVisualStyleBackColor = false;
+            LogoutButton.Click += LogoutButton_Click;
             // 
             // StudentCourseTEXT
             // 
             StudentCourseTEXT.AutoSize = true;
             StudentCourseTEXT.BackColor = Color.Transparent;
-            StudentCourseTEXT.Location = new Point(47, 300);
+            StudentCourseTEXT.Location = new Point(44, 348);
             StudentCourseTEXT.Name = "StudentCourseTEXT";
             StudentCourseTEXT.Size = new Size(96, 15);
             StudentCourseTEXT.TabIndex = 5;
@@ -102,7 +105,7 @@
             StudentNameTEXT.AutoSize = true;
             StudentNameTEXT.BackColor = Color.Transparent;
             StudentNameTEXT.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            StudentNameTEXT.Location = new Point(88, 274);
+            StudentNameTEXT.Location = new Point(85, 322);
             StudentNameTEXT.Name = "StudentNameTEXT";
             StudentNameTEXT.Size = new Size(96, 17);
             StudentNameTEXT.TabIndex = 1;
@@ -111,7 +114,7 @@
             // StudentProfilePB
             // 
             StudentProfilePB.BackColor = Color.Transparent;
-            StudentProfilePB.Location = new Point(47, 37);
+            StudentProfilePB.Location = new Point(44, 85);
             StudentProfilePB.Name = "StudentProfilePB";
             StudentProfilePB.Size = new Size(190, 224);
             StudentProfilePB.SizeMode = PictureBoxSizeMode.Zoom;
@@ -132,7 +135,7 @@
             kryptonPanel4.Dock = DockStyle.Bottom;
             kryptonPanel4.Location = new Point(24, 863);
             kryptonPanel4.Name = "kryptonPanel4";
-            kryptonPanel4.Size = new Size(1171, 10);
+            kryptonPanel4.Size = new Size(1439, 10);
             kryptonPanel4.StateCommon.Color1 = Color.FromArgb(152, 96, 64);
             kryptonPanel4.TabIndex = 4;
             // 
@@ -154,7 +157,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(504, 770);
+            pictureBox1.Size = new Size(524, 770);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 19;
             pictureBox1.TabStop = false;
@@ -236,7 +239,7 @@
             HomeButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             HomeButton.Image = (Image)resources.GetObject("HomeButton.Image");
             HomeButton.ImageAlign = ContentAlignment.TopCenter;
-            HomeButton.Location = new Point(46, 12);
+            HomeButton.Location = new Point(46, 18);
             HomeButton.Name = "HomeButton";
             HomeButton.Size = new Size(78, 56);
             HomeButton.TabIndex = 21;
@@ -254,7 +257,7 @@
             UserTransacButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             UserTransacButton.Image = (Image)resources.GetObject("UserTransacButton.Image");
             UserTransacButton.ImageAlign = ContentAlignment.TopCenter;
-            UserTransacButton.Location = new Point(640, 17);
+            UserTransacButton.Location = new Point(1343, 18);
             UserTransacButton.Name = "UserTransacButton";
             UserTransacButton.Size = new Size(118, 51);
             UserTransacButton.TabIndex = 10;
@@ -271,7 +274,7 @@
             BooksButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             BooksButton.Image = (Image)resources.GetObject("BooksButton.Image");
             BooksButton.ImageAlign = ContentAlignment.TopCenter;
-            BooksButton.Location = new Point(547, 11);
+            BooksButton.Location = new Point(224, 17);
             BooksButton.Name = "BooksButton";
             BooksButton.Size = new Size(87, 57);
             BooksButton.TabIndex = 20;
@@ -289,7 +292,7 @@
             UserViewProfileBTN.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             UserViewProfileBTN.Image = Properties.Resources.Student_Male;
             UserViewProfileBTN.ImageAlign = ContentAlignment.TopCenter;
-            UserViewProfileBTN.Location = new Point(130, 11);
+            UserViewProfileBTN.Location = new Point(130, 18);
             UserViewProfileBTN.Name = "UserViewProfileBTN";
             UserViewProfileBTN.Size = new Size(88, 56);
             UserViewProfileBTN.TabIndex = 9;
@@ -297,6 +300,17 @@
             UserViewProfileBTN.TextAlign = ContentAlignment.BottomCenter;
             UserViewProfileBTN.UseVisualStyleBackColor = false;
             UserViewProfileBTN.Click += UserViewProfileBTN_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(69, 31);
+            label1.Name = "label1";
+            label1.Size = new Size(133, 17);
+            label1.TabIndex = 7;
+            label1.Text = "STUDENT'S PROFILE";
             // 
             // UserMainForm
             // 
@@ -347,5 +361,6 @@
         private Label label3;
         private Label label2;
         private Button LogoutButton;
+        private Label label1;
     }
 }
