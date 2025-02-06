@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ExitBTN = new Button();
             BookPB = new PictureBox();
             label1 = new Label();
             label = new Label();
@@ -54,23 +53,11 @@
             BorrowPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // ExitBTN
-            // 
-            ExitBTN.FlatAppearance.BorderSize = 0;
-            ExitBTN.FlatStyle = FlatStyle.Flat;
-            ExitBTN.Image = Properties.Resources.Close_Window;
-            ExitBTN.Location = new Point(788, 3);
-            ExitBTN.Name = "ExitBTN";
-            ExitBTN.Size = new Size(22, 23);
-            ExitBTN.TabIndex = 9;
-            ExitBTN.UseVisualStyleBackColor = true;
-            ExitBTN.Click += ExitBTN_Click_1;
-            // 
             // BookPB
             // 
-            BookPB.Location = new Point(75, 103);
+            BookPB.Location = new Point(25, 85);
             BookPB.Name = "BookPB";
-            BookPB.Size = new Size(164, 189);
+            BookPB.Size = new Size(183, 217);
             BookPB.SizeMode = PictureBoxSizeMode.Zoom;
             BookPB.TabIndex = 10;
             BookPB.TabStop = false;
@@ -91,7 +78,7 @@
             label.AutoSize = true;
             label.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label.ForeColor = SystemColors.ActiveCaptionText;
-            label.Location = new Point(267, 113);
+            label.Location = new Point(227, 107);
             label.Name = "label";
             label.Size = new Size(54, 16);
             label.TabIndex = 18;
@@ -102,7 +89,7 @@
             BookIdLBL.AutoSize = true;
             BookIdLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             BookIdLBL.ForeColor = SystemColors.ActiveCaptionText;
-            BookIdLBL.Location = new Point(345, 112);
+            BookIdLBL.Location = new Point(305, 106);
             BookIdLBL.Name = "BookIdLBL";
             BookIdLBL.Size = new Size(36, 17);
             BookIdLBL.TabIndex = 19;
@@ -113,7 +100,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(267, 145);
+            label2.Location = new Point(227, 139);
             label2.Name = "label2";
             label2.Size = new Size(67, 16);
             label2.TabIndex = 20;
@@ -124,7 +111,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(264, 176);
+            label4.Location = new Point(224, 170);
             label4.Name = "label4";
             label4.Size = new Size(97, 16);
             label4.TabIndex = 22;
@@ -135,7 +122,7 @@
             BarrowDateLBL.AutoSize = true;
             BarrowDateLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             BarrowDateLBL.ForeColor = SystemColors.ActiveCaptionText;
-            BarrowDateLBL.Location = new Point(367, 176);
+            BarrowDateLBL.Location = new Point(327, 170);
             BarrowDateLBL.Name = "BarrowDateLBL";
             BarrowDateLBL.Size = new Size(74, 17);
             BarrowDateLBL.TabIndex = 23;
@@ -146,7 +133,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(267, 207);
+            label3.Location = new Point(227, 201);
             label3.Name = "label3";
             label3.Size = new Size(64, 16);
             label3.TabIndex = 24;
@@ -157,7 +144,7 @@
             DueDateLBL.AutoSize = true;
             DueDateLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DueDateLBL.ForeColor = SystemColors.ActiveCaptionText;
-            DueDateLBL.Location = new Point(345, 207);
+            DueDateLBL.Location = new Point(305, 201);
             DueDateLBL.Name = "DueDateLBL";
             DueDateLBL.Size = new Size(74, 17);
             DueDateLBL.TabIndex = 25;
@@ -168,7 +155,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(267, 241);
+            label5.Location = new Point(227, 235);
             label5.Name = "label5";
             label5.Size = new Size(98, 16);
             label5.TabIndex = 26;
@@ -179,7 +166,7 @@
             BarrowedPriceLBL.AutoSize = true;
             BarrowedPriceLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             BarrowedPriceLBL.ForeColor = SystemColors.ActiveCaptionText;
-            BarrowedPriceLBL.Location = new Point(379, 241);
+            BarrowedPriceLBL.Location = new Point(339, 235);
             BarrowedPriceLBL.Name = "BarrowedPriceLBL";
             BarrowedPriceLBL.Size = new Size(40, 17);
             BarrowedPriceLBL.TabIndex = 27;
@@ -189,7 +176,6 @@
             // 
             BorrowPanel.BackColor = SystemColors.ControlLight;
             BorrowPanel.Controls.Add(BarrowBookBTN);
-            BorrowPanel.Controls.Add(ExitBTN);
             BorrowPanel.Controls.Add(CancelBarrowBTN);
             BorrowPanel.Controls.Add(labeel);
             BorrowPanel.Controls.Add(StockLBL);
@@ -218,9 +204,9 @@
             // BarrowBookBTN
             // 
             BarrowBookBTN.Cursor = Cursors.Hand;
-            BarrowBookBTN.Location = new Point(643, 276);
+            BarrowBookBTN.Location = new Point(615, 276);
             BarrowBookBTN.Name = "BarrowBookBTN";
-            BarrowBookBTN.Size = new Size(125, 38);
+            BarrowBookBTN.Size = new Size(152, 38);
             BarrowBookBTN.StateCommon.Back.Color1 = Color.MediumSeaGreen;
             BarrowBookBTN.StateCommon.Back.Color2 = Color.MediumSeaGreen;
             BarrowBookBTN.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -234,9 +220,9 @@
             // 
             // CancelBarrowBTN
             // 
-            CancelBarrowBTN.Location = new Point(496, 276);
+            CancelBarrowBTN.Location = new Point(456, 276);
             CancelBarrowBTN.Name = "CancelBarrowBTN";
-            CancelBarrowBTN.Size = new Size(125, 38);
+            CancelBarrowBTN.Size = new Size(134, 38);
             CancelBarrowBTN.StateCommon.Back.Color1 = Color.Firebrick;
             CancelBarrowBTN.StateCommon.Back.Color2 = Color.Firebrick;
             CancelBarrowBTN.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -246,13 +232,14 @@
             CancelBarrowBTN.StateCommon.Content.ShortText.Font = new Font("Gadugi", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             CancelBarrowBTN.TabIndex = 31;
             CancelBarrowBTN.Values.Text = "CANCEL";
+            CancelBarrowBTN.Click += CancelBarrowBTN_Click;
             // 
             // labeel
             // 
             labeel.AutoSize = true;
             labeel.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             labeel.ForeColor = SystemColors.ActiveCaptionText;
-            labeel.Location = new Point(267, 276);
+            labeel.Location = new Point(227, 270);
             labeel.Name = "labeel";
             labeel.Size = new Size(74, 16);
             labeel.TabIndex = 34;
@@ -263,7 +250,7 @@
             StockLBL.AutoSize = true;
             StockLBL.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             StockLBL.ForeColor = SystemColors.ActiveCaptionText;
-            StockLBL.Location = new Point(379, 276);
+            StockLBL.Location = new Point(339, 270);
             StockLBL.Name = "StockLBL";
             StockLBL.Size = new Size(15, 17);
             StockLBL.TabIndex = 35;
@@ -274,7 +261,7 @@
             BookTitle.AutoSize = true;
             BookTitle.Font = new Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             BookTitle.ForeColor = SystemColors.ActiveCaptionText;
-            BookTitle.Location = new Point(347, 145);
+            BookTitle.Location = new Point(307, 139);
             BookTitle.Name = "BookTitle";
             BookTitle.Size = new Size(74, 17);
             BookTitle.TabIndex = 33;
@@ -282,7 +269,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(585, 112);
+            dateTimePicker1.Location = new Point(567, 107);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 36;
@@ -292,7 +279,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = SystemColors.ActiveCaptionText;
-            label9.Location = new Point(510, 112);
+            label9.Location = new Point(492, 107);
             label9.Name = "label9";
             label9.Size = new Size(64, 16);
             label9.TabIndex = 35;
@@ -303,7 +290,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Gadugi", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = SystemColors.ActiveCaptionText;
-            label8.Location = new Point(510, 167);
+            label8.Location = new Point(492, 179);
             label8.Name = "label8";
             label8.Size = new Size(58, 16);
             label8.TabIndex = 34;
@@ -312,7 +299,7 @@
             // QuantityTXT
             // 
             QuantityTXT.Cursor = Cursors.IBeam;
-            QuantityTXT.Location = new Point(585, 158);
+            QuantityTXT.Location = new Point(567, 170);
             QuantityTXT.Name = "QuantityTXT";
             QuantityTXT.Size = new Size(160, 34);
             QuantityTXT.StateActive.Back.Color1 = Color.White;
@@ -361,8 +348,6 @@
         }
 
         #endregion
-
-        private Button ExitBTN;
         private PictureBox BookPB;
         private Label BarrowedDateLBL;
         private Label QuantityLBL;
